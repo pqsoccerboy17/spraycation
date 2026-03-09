@@ -1,0 +1,26 @@
+# Large media files
+*.zip
+*.mp4
+*.mov
+*.avi
+
+# Large images (keep small ones)
+# *.jpg
+# *.jpeg
+# *.png
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*~
+.vscode/
+
+# Lock files
+~$*
+
+# Environment
+.env
+.env.local
