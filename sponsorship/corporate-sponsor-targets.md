@@ -1,68 +1,65 @@
 # Corporate Sponsor Targets -- SPRAYCATION 2026
 
-## Tier 1: Dream Partners (National Brands, $50K+)
-These brands have strong alignment with Spraycation's values and audience.
+## Tier 1: Brand Partners (27 National Targets)
 
-### Paint & Supplies
-| Brand | Why | Contact Approach |
-|-------|-----|-----------------|
-| Montana Cans | Premium spray paint brand, supports street art community | Direct outreach to sponsorship team |
-| Liquitex | Artist-grade paints, owned by Colart | Sponsorship/partnership form |
-| Rust-Oleum | Major spray paint brand, would gain authentic artist cred | Corporate sponsorship team |
-| Sherwin-Williams | Largest paint company, community programs exist | Community engagement team |
+### Magic Maker Tier ($25,000)
 
-### Vehicle / Travel
-| Brand | Why | Contact Approach |
-|-------|-----|-----------------|
-| Winnebago / Thor | RV manufacturer, authentic road trip story | Marketing/sponsorship dept |
-| REI | Outdoor adventure, community values, women's initiatives | REI Co-op sponsorships |
-| Subaru | Community-driven brand, supports outdoor arts | Local dealer partnerships + corporate |
-| Airstream | Iconic travel brand, alignment with mobile creative life | Brand partnerships |
+| Brand | Category | Priority | Why |
+|-------|----------|----------|-----|
+| Montana Cans | Paint/Supplies | HIGH | Premium spray paint, supports street art community |
+| Liquitex | Paint/Supplies | HIGH | Artist-grade paints, owned by Colart |
+| Winnebago | Vehicle/Travel | HIGH | RV manufacturer, authentic road trip story |
+| REI Co-op | Vehicle/Travel | HIGH | Outdoor adventure, community values, women's initiatives |
+| Patagonia | Lifestyle | HIGH | Environmental + community values, women's programs |
+| Red Bull | Beverage | HIGH | Previous Zuzu collaborator, supports arts/culture |
+| Adobe | Tech/Media | MEDIUM | Creative tools, supports artists, community programs |
+| Bumble | Women/Empowerment | MEDIUM | Women-first brand, community events |
 
-### Beverage
-| Brand | Why | Contact Approach |
-|-------|-----|-----------------|
-| Red Bull | Previous collaborator with Zuzu, supports arts/culture | Existing relationship |
-| Liquid Death | Bold brand, supports arts/music, mural-friendly aesthetic | Brand partnerships |
-| Athletic Brewing | Non-alcoholic craft beer, community events alignment | Sponsorship team |
-| Best Day Brewing | Already provided in-kind for Denver 2025 | Expand relationship |
+### Culture Partner Tier ($15,000)
 
-### Lifestyle / Apparel
-| Brand | Why | Contact Approach |
-|-------|-----|-----------------|
-| Patagonia | Environmental + community values, women's programs | Corporate sponsorship |
-| Vans | Art + culture DNA, supports muralists, "Off the Wall" | Culture/art sponsorship |
-| Converse | Art community support, All Stars program | Creative All Stars program |
-| TOMS | Impact-driven brand, community focus | Impact partnerships |
+| Brand | Category | Priority | Why |
+|-------|----------|----------|-----|
+| Rust-Oleum | Paint/Supplies | HIGH | Major spray paint brand, would gain authentic artist cred |
+| Blick Art Materials | Paint/Supplies | HIGH | Retail art supply, brand visibility at events |
+| Subaru | Vehicle/Travel | MEDIUM | Community-driven brand, supports outdoor arts |
+| Liquid Death | Beverage | HIGH | Bold brand, supports arts/music, mural-friendly aesthetic |
+| Vans | Lifestyle | HIGH | Art + culture DNA, "Off the Wall" |
+| GoPro | Tech/Media | MEDIUM | Action content, creator sponsorship programs |
+| Converse | Lifestyle | MEDIUM | Art community support, All Stars program |
+| Aerie | Women/Empowerment | MEDIUM | Body positivity, empowerment messaging |
 
-### Women-Led / Empowerment
-| Brand | Why | Contact Approach |
-|-------|-----|-----------------|
-| Bumble | Women-first brand, community events, empowerment | Brand partnerships |
-| Aerie/American Eagle | Body positivity, empowerment messaging | Social impact team |
-| Glossier | Community-driven, supports women creators | Creator partnerships |
+### Community Ally Tier ($5,000)
 
-### Tech / Media
-| Brand | Why | Contact Approach |
-|-------|-----|-----------------|
-| Roku | Already mentioned in route alignment discussions | Follow existing lead |
-| Adobe | Creative tools, supports artists, community programs | Adobe Community Fund |
-| GoPro | Action content, creator sponsorship programs | GoPro Awards/Creator program |
-| Canon/Sony | Camera equipment, creator programs | Ambassador programs |
+| Brand | Category | Priority | Why |
+|-------|----------|----------|-----|
+| Athletic Brewing | Beverage | MEDIUM | Non-alcoholic craft beer, community events |
+| Spray Planet | Paint/Supplies | MEDIUM | Online spray paint retailer, artist community |
+| Best Day Brewing | Beverage | HIGH | Already provided in-kind for Denver 2025 |
+| Meow Wolf | Arts/Entertainment | MEDIUM | Immersive art experiences, creative alignment |
+| Golden Artist Colors | Paint/Supplies | MEDIUM | Professional artist paints |
+| Dr. Bronner's | Lifestyle | MEDIUM | Values-driven brand, community focus |
+| Dick Blick (local stores) | Paint/Supplies | MEDIUM | Local store partnerships per city |
+| Topo Chico | Beverage | MEDIUM | Event beverage, Latin-inspired brand |
+| Yeti | Lifestyle | MEDIUM | Outdoor/adventure, premium positioning |
+| Hydro Flask | Lifestyle | MEDIUM | Outdoor/adventure, sustainability focus |
+| Clif Bar | Food | MEDIUM | Adventure/outdoor alignment, community values |
 
 ## Tier 2: Existing Leads (Follow Up)
+
 | Brand | Status | Next Step |
 |-------|--------|-----------|
-| Loop | Sponsorship confirmed pre-2025, order + caps | Renew for 2026 |
+| Loop | Sponsorship confirmed pre-2025, caps/product | Renew for 2026, expand scope |
 | Goose | Partnership proposal sent 2025 | Follow up on proposal |
 | MSC | Partnership proposal sent 2025 | Follow up on proposal |
 | Roku | Mentioned in route alignment | Develop formal proposal |
 | Zero Proof | Outreach initiated (Denver) | Continue conversation |
-| Best Day Brewing | In-kind 2025 (Denver) | Expand to full tour 2026 |
-| Fever Dream Vintage | Denver wall partner 2025 | 2026 collaboration |
+| Best Day Brewing | In-kind 2025 (Denver) | Expand to paid partnership 2026 |
+| Fever Dream Vintage | Denver wall partner 2025 | 2026 collaboration, 4 potential partners through them |
 
 ## Tier 3: Local / City-Level Partners
+
 - Coffee shops and breweries in each target city (proven model with Beacon Coffee, Fever Dream)
-- Local art supply stores
+- Local art supply stores (Dick Blick local stores, independent shops)
 - Boutique hotels / Airbnb partnerships
 - Local media outlets for in-kind coverage
+- Arts districts and nonprofits (SLAM, 40 West, StreetWise Arts)

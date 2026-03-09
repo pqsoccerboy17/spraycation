@@ -16,7 +16,18 @@
 - [x] Create CLAUDE.md for project context
 - [x] Create this persistent project plan
 - [x] Save Claude memory files
-- [ ] Parse outreach spreadsheet (SPRAYCATION_2026_Outreach_Enhanced.xlsx -- binary, needs conversion)
+- [x] Parse outreach spreadsheet (SPRAYCATION_2026_Outreach_Enhanced.xlsx -- binary, needs conversion)
+
+## Workstream 1B: Round 2 Updates (Completed 2026-03-09)
+- [x] Updated corporate-sponsor-targets.md with 27 real brand targets (3 tiers)
+- [x] Updated outreach-tracker.md with 25 high-potential warm leads
+- [x] Updated funding-strategy.md with new pricing ($200-450K target)
+- [x] Updated tour-2026-strategy.md with correct pricing tiers
+- [x] Created 3 outreach email templates (cold, warm, grant cover letter)
+- [x] Built frontend dashboard (dashboard/index.html)
+- [x] Researched AWAW grant (April 7 deadline) -- environmental angle required
+- [x] Researched fiscal sponsorship options -- Fractured Atlas recommended first
+- [x] Updated grant-opportunities.md with AWAW details + fiscal sponsorship info
 
 ## Workstream 2: 2025 Wrap Deliverables
 These must be completed before 2026 outreach begins. See deliverables/wrap-2025-checklist.md for details.
@@ -33,6 +44,9 @@ These must be completed before 2026 outreach begins. See deliverables/wrap-2025-
 Time-sensitive deadlines. See sponsorship/grant-opportunities.md for full details.
 
 - [ ] Determine fiscal sponsorship status (Fractured Atlas, NYFA, or Austin Creative Alliance)
+- [ ] Apply to Fractured Atlas for fiscal sponsorship (NEXT STEP -- 1-2 week approval)
+- [ ] Determine environmental angle for AWAW EAG application
+- [x] Research AWAW eligibility and requirements
 - [ ] NEA Grants for Arts Projects -- apply by **Jul 9, 2026** (requires 501(c)(3) or fiscal sponsor)
 - [ ] Anonymous Was A Woman Environmental Art Grants -- deadline **April 7, 2026**
 - [ ] Amber Grants for Women -- apply monthly ($10K rolling)

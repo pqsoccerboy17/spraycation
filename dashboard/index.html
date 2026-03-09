@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPRAYCATION 2026 -- A Traveling Mural Tour</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       CSS RESET & ROOT
+       ======================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --pink: #FF2D78;
+      --pink-glow: #FF2D7888;
+      --yellow: #FFE135;
+      --charcoal: #1A1A2E;
+      --charcoal-light: #2A2A3E;
+      --warm-white: #FFF8F0;
+      --warm-white-muted: #FFF8F0CC;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --grain-opacity: 0.04;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--charcoal);
+      color: var(--warm-white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       GRAIN / NOISE OVERLAY
+       ======================================== */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: var(--grain-opacity);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+    }
+
+    /* ========================================
+       SCROLL REVEAL ANIMATION
+       ======================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       SECTION BASE
+       ======================================== */
+    section {
+      position: relative;
+      padding: 80px 24px;
+    }
+
+    @media (min-width: 768px) {
+      section {
+        padding: 120px 48px;
+      }
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-size: clamp(0.75rem, 2vw, 0.875rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 32px;
+    }
+
+    /* ========================================
+       1. HERO
+       ======================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 40px 24px;
+    }
+
+    /* Gradient orbs for background energy */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, var(--pink-glow) 0%, transparent 70%);
+      filter: blur(80px);
+      animation: float-orb 8s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      right: -10%;
+      width: 40vw;
+      height: 40vw;
+      background: radial-gradient(circle, #FFE13544 0%, transparent 70%);
+      filter: blur(60px);
+      animation: float-orb 10s ease-in-out infinite alternate-reverse;
+      z-index: 0;
+    }
+
+    @keyframes float-orb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, -20px) scale(1.1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 15vw, 12rem);
+      line-height: 0.85;
+      letter-spacing: 0.02em;
+      color: var(--warm-white);
+      margin-bottom: 24px;
+      text-shadow: 0 0 80px var(--pink-glow);
+    }
+
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 5vw, 3.5rem);
+      letter-spacing: 0.05em;
+      background: linear-gradient(135deg, var(--pink), var(--yellow), var(--pink));
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 4s ease-in-out infinite;
+      margin-bottom: 24px;
+      text-shadow: none;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+      color: var(--warm-white-muted);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    .scroll-indicator span {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-white-muted);
+    }
+
+    .scroll-arrow {
+      width: 24px;
+      height: 24px;
+      border-right: 2px solid var(--pink);
+      border-bottom: 2px solid var(--pink);
+      transform: rotate(45deg);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(12px); }
+    }
+
+    /* ========================================
+       2. IMPACT STATS
+       ======================================== */
+    .impact {
+      background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
+      border-top: 2px solid var(--pink);
+      border-bottom: 2px solid var(--pink);
+      padding: 60px 24px;
+      overflow-x: auto;
+    }
+
+    .impact-strip {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+      .impact-strip {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 960px) {
+      .impact-strip {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .stat-block {
+      text-align: center;
+      padding: 16px 8px;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-family: var(--font-display);
+      font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm-white-muted);
+    }
+
+    /* ========================================
+       3. CITY CARDS
+       ======================================== */
+    .cities {
+      background: var(--charcoal);
+    }
+
+    .city-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    @media (min-width: 640px) {
+      .city-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 960px) {
+      .city-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .city-card {
+      background: var(--charcoal-light);
+      border: 1px solid #ffffff10;
+      border-radius: 4px;
+      padding: 32px 24px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .city-card:nth-child(1) { transform: rotate(-1.5deg); }
+    .city-card:nth-child(2) { transform: rotate(1deg); }
+    .city-card:nth-child(3) { transform: rotate(-0.5deg); }
+    .city-card:nth-child(4) { transform: rotate(1.5deg); }
+
+    .city-card:hover {
+      transform: rotate(0deg) scale(1.03);
+      box-shadow: 0 8px 40px var(--pink-glow);
+    }
+
+    .city-card.spotlight {
+      border: 2px solid var(--pink);
+    }
+
+    .city-card.spotlight::before {
+      content: 'SPOTLIGHT';
+      position: absolute;
+      top: -12px;
+      left: 16px;
+      background: var(--pink);
+      color: var(--charcoal);
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      padding: 4px 12px;
+      border-radius: 2px;
+    }
+
+    .city-name {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .city-address {
+      font-size: 0.85rem;
+      color: var(--warm-white-muted);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .city-stat {
+      font-size: 0.9rem;
+      color: var(--yellow);
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    /* ========================================
+       4. PARTNERSHIP TIERS
+       ======================================== */
+    .partnerships {
+      background: linear-gradient(180deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
+    }
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .tier-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .tier-card {
+      background: var(--charcoal);
+      border: 1px solid #ffffff15;
+      border-radius: 4px;
+      padding: 40px 28px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .tier-card:nth-child(1) { transform: rotate(1deg); }
+    .tier-card:nth-child(2) { transform: rotate(-1deg); }
+    .tier-card:nth-child(3) { transform: rotate(0.5deg); }
+
+    .tier-card:hover {
+      transform: rotate(0deg) translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    .tier-card.featured {
+      border: 2px solid var(--pink);
+      background: linear-gradient(180deg, #2A1A2E 0%, var(--charcoal) 100%);
+    }
+
+    .tier-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--pink);
+      color: var(--charcoal);
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      padding: 4px 16px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .tier-name {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      color: var(--yellow);
+      margin-bottom: 8px;
+    }
+
+    .tier-price {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--warm-white);
+      margin-bottom: 16px;
+    }
+
+    .tier-desc {
+      font-size: 0.95rem;
+      color: var(--warm-white-muted);
+      line-height: 1.5;
+    }
+
+    /* ========================================
+       5. BRAND PIPELINE
+       ======================================== */
+    .pipeline {
+      background: var(--charcoal);
+    }
+
+    .pipeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 40px;
+      align-items: flex-end;
+    }
+
+    .pipeline-big-number {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5rem);
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .pipeline-big-label {
+      font-size: 0.9rem;
+      color: var(--warm-white-muted);
+      padding-bottom: 8px;
+    }
+
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 640px) {
+      .pipeline-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .pipeline-cat {
+      background: var(--charcoal-light);
+      border: 1px solid #ffffff10;
+      border-radius: 4px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .pipeline-cat:hover {
+      transform: scale(1.05);
+    }
+
+    .pipeline-cat-count {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--pink);
+    }
+
+    .pipeline-cat-name {
+      font-size: 0.8rem;
+      color: var(--warm-white-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
+    .pipeline-priority {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .priority-badge {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      padding: 8px 20px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .priority-badge.high {
+      background: var(--pink);
+      color: var(--charcoal);
+    }
+
+    .priority-badge.medium {
+      background: var(--yellow);
+      color: var(--charcoal);
+    }
+
+    .priority-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* ========================================
+       6. GRANT DEADLINES
+       ======================================== */
+    .grants {
+      background: var(--charcoal-light);
+    }
+
+    .grant-list {
+      list-style: none;
+      margin-top: 40px;
+    }
+
+    .grant-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid #ffffff10;
+    }
+
+    .grant-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .grant-amount {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--yellow);
+    }
+
+    .grant-date {
+      font-size: 0.85rem;
+      color: var(--warm-white-muted);
+      min-width: 140px;
+    }
+
+    .grant-urgency {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      padding: 4px 12px;
+      border-radius: 2px;
+    }
+
+    .grant-urgency.urgent {
+      background: var(--pink);
+      color: var(--charcoal);
+      animation: pulse-urgency 2s ease-in-out infinite;
+    }
+
+    .grant-urgency.rolling {
+      background: #ffffff20;
+      color: var(--warm-white);
+    }
+
+    .grant-urgency.upcoming {
+      background: var(--yellow);
+      color: var(--charcoal);
+    }
+
+    @keyframes pulse-urgency {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* ========================================
+       7. WRAP PROGRESS
+       ======================================== */
+    .wrap-progress {
+      background: var(--charcoal);
+    }
+
+    .progress-bar-container {
+      background: var(--charcoal-light);
+      border-radius: 4px;
+      height: 12px;
+      margin: 24px 0 40px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--pink), var(--yellow));
+      border-radius: 4px;
+      transition: width 1.5s ease;
+    }
+
+    .progress-bar-fill.animate {
+      width: 28.57%; /* 2/7 */
+    }
+
+    .progress-label {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      color: var(--warm-white-muted);
+    }
+
+    .deliverable-list {
+      list-style: none;
+    }
+
+    .deliverable-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid #ffffff08;
+    }
+
+    .deliverable-check {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      border: 2px solid #ffffff30;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+
+    .deliverable-check.draft {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    .deliverable-check.done {
+      border-color: #4CAF50;
+      background: #4CAF5020;
+      color: #4CAF50;
+    }
+
+    .deliverable-check.not-started {
+      border-color: #ffffff20;
+    }
+
+    .deliverable-name {
+      font-size: 1rem;
+      flex: 1;
+    }
+
+    .deliverable-status {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .deliverable-status.not-started {
+      background: #ffffff10;
+      color: #ffffff60;
+    }
+
+    .deliverable-status.draft {
+      background: #FFE13530;
+      color: var(--yellow);
+    }
+
+    .deliverable-status.complete {
+      background: #4CAF5030;
+      color: #4CAF50;
+    }
+
+    /* ========================================
+       8. PRESS & RECOGNITION
+       ======================================== */
+    .press {
+      background: var(--charcoal-light);
+    }
+
+    .press-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    @media (min-width: 640px) {
+      .press-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .press-card {
+      background: var(--charcoal);
+      border: 1px solid #ffffff10;
+      border-radius: 4px;
+      padding: 28px 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .press-card:nth-child(odd) { transform: rotate(-0.5deg); }
+    .press-card:nth-child(even) { transform: rotate(0.8deg); }
+
+    .press-card:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    .press-source {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      color: var(--pink);
+      margin-bottom: 8px;
+    }
+
+    .press-quote {
+      font-size: 0.95rem;
+      color: var(--warm-white-muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* ========================================
+       9. BRAND HISTORY
+       ======================================== */
+    .brand-history {
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+
+    .brand-scroll {
+      display: flex;
+      gap: 48px;
+      padding: 40px 0;
+      animation: scroll-brands 20s linear infinite;
+    }
+
+    .brand-scroll:hover {
+      animation-play-state: paused;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      color: #ffffff30;
+      transition: color 0.3s ease;
+    }
+
+    .brand-name:hover {
+      color: var(--warm-white);
+    }
+
+    @keyframes scroll-brands {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .brand-track {
+      display: flex;
+      overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+    }
+
+    /* ========================================
+       10. FOOTER
+       ======================================== */
+    .footer {
+      background: var(--charcoal);
+      border-top: 2px solid var(--pink);
+      text-align: center;
+      padding: 80px 24px 40px;
+    }
+
+    .footer-cta {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      letter-spacing: 0.03em;
+      margin-bottom: 32px;
+      background: linear-gradient(135deg, var(--pink), var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .footer-link {
+      color: var(--warm-white-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--pink);
+    }
+
+    .footer-credits {
+      font-size: 0.75rem;
+      color: #ffffff30;
+      margin-top: 40px;
+    }
+
+    /* ========================================
+       SPRAY PAINT DRIP DIVIDER
+       ======================================== */
+    .drip-divider {
+      height: 4px;
+      background: linear-gradient(90deg, transparent 0%, var(--pink) 20%, var(--yellow) 50%, var(--pink) 80%, transparent 100%);
+      position: relative;
+    }
+
+    /* ========================================
+       MOBILE SCROLL SNAP (optional enhancement)
+       ======================================== */
+    @media (max-width: 639px) {
+      .city-grid,
+      .tier-grid {
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        grid-template-columns: repeat(4, 85vw);
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 16px;
+      }
+      .tier-grid {
+        grid-template-columns: repeat(3, 85vw);
+      }
+      .city-card,
+      .tier-card {
+        scroll-snap-align: center;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       1. HERO
+       ========================================== -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">SPRAYCATION</h1>
+      <p class="hero-tagline">You Are Magic</p>
+      <p class="hero-subtitle">A female-led traveling mural tour transforming cities through public art</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       2. 2025 IMPACT
+       ========================================== -->
+  <section class="impact" id="impact">
+    <div class="section-inner">
+      <div class="impact-strip">
+        <div class="stat-block reveal">
+          <div class="stat-number" data-target="5">0</div>
+          <div class="stat-label">Murals</div>
+        </div>
+        <div class="stat-block reveal">
+          <div class="stat-number" data-target="6500" data-suffix="+">0</div>
+          <div class="stat-label">Miles</div>
+        </div>
+        <div class="stat-block reveal">
+          <div class="stat-number" data-target="5">0</div>
+          <div class="stat-label">Cities</div>
+        </div>
+        <div class="stat-block reveal">
+          <div class="stat-number" data-target="10">0</div>
+          <div class="stat-label">States</div>
+        </div>
+        <div class="stat-block reveal">
+          <div class="stat-number" data-target="3" data-suffix="x">0</div>
+          <div class="stat-label">Foot Traffic (Denver)</div>
+        </div>
+        <div class="stat-block reveal">
+          <div class="stat-number" data-text="ALL">ALL</div>
+          <div class="stat-label">Female Team</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="drip-divider"></div>
+
+  <!-- ==========================================
+       3. CITY CARDS
+       ========================================== -->
+  <section class="cities" id="cities">
+    <div class="section-inner">
+      <p class="section-label reveal">2025 Tour Stops</p>
+      <h2 class="section-title reveal">Where the Paint Hit the Wall</h2>
+      <div class="city-grid">
+        <div class="city-card spotlight reveal">
+          <div class="city-name">Denver</div>
+          <div class="city-address">Fever Dream Vintage, Colfax Ave</div>
+          <div class="city-stat">"More buzz than 3 years of traditional marketing"</div>
+        </div>
+        <div class="city-card reveal">
+          <div class="city-name">Portland</div>
+          <div class="city-address">SE Division Street</div>
+          <div class="city-stat">Community mural collaboration with local artists</div>
+        </div>
+        <div class="city-card reveal">
+          <div class="city-name">Vancouver</div>
+          <div class="city-address">Main Street District</div>
+          <div class="city-stat">First international Spraycation stop</div>
+        </div>
+        <div class="city-card reveal">
+          <div class="city-name">Boise</div>
+          <div class="city-address">Downtown Arts District</div>
+          <div class="city-stat">Sold-out mural reveal event</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       4. PARTNERSHIP TIERS
+       ========================================== -->
+  <section class="partnerships" id="partnerships">
+    <div class="section-inner">
+      <p class="section-label reveal">Partner With Us</p>
+      <h2 class="section-title reveal">Be Part of the Movement</h2>
+      <div class="tier-grid">
+        <div class="tier-card featured reveal">
+          <div class="tier-name">Magic Maker</div>
+          <div class="tier-price">$25,000</div>
+          <div class="tier-desc">Own the mural, the event, the press, and the momentum</div>
+        </div>
+        <div class="tier-card reveal">
+          <div class="tier-name">Culture Partner</div>
+          <div class="tier-price">$15,000</div>
+          <div class="tier-desc">Sponsor a mural reveal and gain multi-city brand visibility</div>
+        </div>
+        <div class="tier-card reveal">
+          <div class="tier-name">Community Ally</div>
+          <div class="tier-price">$5,000</div>
+          <div class="tier-desc">Support the movement and get your brand in the mix</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="drip-divider"></div>
+
+  <!-- ==========================================
+       5. BRAND PIPELINE
+       ========================================== -->
+  <section class="pipeline" id="pipeline">
+    <div class="section-inner">
+      <p class="section-label reveal">Sponsorship Pipeline</p>
+      <h2 class="section-title reveal">27 Brands in the Mix</h2>
+      <div class="pipeline-header reveal">
+        <div>
+          <div class="pipeline-big-number">$360K+</div>
+          <div class="pipeline-big-label">Total Pipeline Value</div>
+        </div>
+      </div>
+      <div class="pipeline-grid">
+        <div class="pipeline-cat reveal">
+          <div class="pipeline-cat-count">6</div>
+          <div class="pipeline-cat-name">Paint / Supplies</div>
+        </div>
+        <div class="pipeline-cat reveal">
+          <div class="pipeline-cat-count">5</div>
+          <div class="pipeline-cat-name">Beverage</div>
+        </div>
+        <div class="pipeline-cat reveal">
+          <div class="pipeline-cat-count">5</div>
+          <div class="pipeline-cat-name">Lifestyle</div>
+        </div>
+        <div class="pipeline-cat reveal">
+          <div class="pipeline-cat-count">4</div>
+          <div class="pipeline-cat-name">Vehicle / Travel</div>
+        </div>
+        <div class="pipeline-cat reveal">
+          <div class="pipeline-cat-count">3</div>
+          <div class="pipeline-cat-name">Tech / Media</div>
+        </div>
+        <div class="pipeline-cat reveal">
+          <div class="pipeline-cat-count">2</div>
+          <div class="pipeline-cat-name">Women / Empowerment</div>
+        </div>
+        <div class="pipeline-cat reveal">
+          <div class="pipeline-cat-count">1</div>
+          <div class="pipeline-cat-name">Food</div>
+        </div>
+        <div class="pipeline-cat reveal">
+          <div class="pipeline-cat-count">1</div>
+          <div class="pipeline-cat-name">Arts</div>
+        </div>
+      </div>
+      <div class="pipeline-priority reveal">
+        <div class="priority-badge high">
+          <span class="priority-dot"></span>
+          14 HIGH PRIORITY
+        </div>
+        <div class="priority-badge medium">
+          <span class="priority-dot"></span>
+          12 MEDIUM PRIORITY
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       6. GRANT DEADLINES
+       ========================================== -->
+  <section class="grants" id="grants">
+    <div class="section-inner">
+      <p class="section-label reveal">Funding Opportunities</p>
+      <h2 class="section-title reveal">Grant Deadlines</h2>
+      <ul class="grant-list">
+        <li class="grant-item reveal">
+          <div class="grant-name">Amber Grants</div>
+          <div class="grant-amount">$10,000</div>
+          <div class="grant-date">Monthly -- Rolling</div>
+          <div class="grant-urgency rolling">ROLLING</div>
+        </li>
+        <li class="grant-item reveal">
+          <div class="grant-name">Anonymous Was a Woman</div>
+          <div class="grant-amount">Up to $25,000</div>
+          <div class="grant-date">April 7, 2026</div>
+          <div class="grant-urgency urgent">URGENT -- 28 DAYS</div>
+        </li>
+        <li class="grant-item reveal">
+          <div class="grant-name">NEA Grants for Arts Projects</div>
+          <div class="grant-amount">Up to $100,000</div>
+          <div class="grant-date">July 9, 2026</div>
+          <div class="grant-urgency upcoming">UPCOMING</div>
+        </li>
+        <li class="grant-item reveal">
+          <div class="grant-name">Pollock-Krasner Foundation</div>
+          <div class="grant-amount">Up to $50,000</div>
+          <div class="grant-date">Rolling</div>
+          <div class="grant-urgency rolling">ROLLING</div>
+        </li>
+        <li class="grant-item reveal">
+          <div class="grant-name">State Arts Councils</div>
+          <div class="grant-amount">Varies</div>
+          <div class="grant-date">TBD per city</div>
+          <div class="grant-urgency rolling">TBD</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="drip-divider"></div>
+
+  <!-- ==========================================
+       7. 2025 WRAP PROGRESS
+       ========================================== -->
+  <section class="wrap-progress" id="progress">
+    <div class="section-inner">
+      <p class="section-label reveal">Internal Tracker</p>
+      <h2 class="section-title reveal">2025 Wrap Deliverables</h2>
+      <div class="progress-label reveal">2 of 7 items have drafts</div>
+      <div class="progress-bar-container reveal">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+      <ul class="deliverable-list">
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check not-started"></div>
+          <div class="deliverable-name">Tour Wrap Film</div>
+          <div class="deliverable-status not-started">NOT STARTED</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check not-started"></div>
+          <div class="deliverable-name">Short Trailers / Clips</div>
+          <div class="deliverable-status not-started">NOT STARTED</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check not-started"></div>
+          <div class="deliverable-name">Photo Gallery Set</div>
+          <div class="deliverable-status not-started">NOT STARTED</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check draft">~</div>
+          <div class="deliverable-name">Case Study Deck</div>
+          <div class="deliverable-status draft">DRAFT EXISTS</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check not-started"></div>
+          <div class="deliverable-name">City Package Folders</div>
+          <div class="deliverable-status not-started">NOT STARTED</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check draft">~</div>
+          <div class="deliverable-name">Partnership One-Pager</div>
+          <div class="deliverable-status draft">DRAFT COMPLETE</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check not-started"></div>
+          <div class="deliverable-name">2026 Route Preview</div>
+          <div class="deliverable-status not-started">NOT STARTED</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       8. PRESS & RECOGNITION
+       ========================================== -->
+  <section class="press" id="press">
+    <div class="section-inner">
+      <p class="section-label reveal">In the Press</p>
+      <h2 class="section-title reveal">They Noticed</h2>
+      <div class="press-grid">
+        <div class="press-card reveal">
+          <div class="press-source">Westword</div>
+          <div class="press-quote">"Fever Dream Vintage Brightens Up Colfax"</div>
+        </div>
+        <div class="press-card reveal">
+          <div class="press-source">EASTside Magazine</div>
+          <div class="press-quote">"Spraycation" -- feature story</div>
+        </div>
+        <div class="press-card reveal">
+          <div class="press-source">Almost Real Things</div>
+          <div class="press-quote">"A Creative Force with Pink Hair"</div>
+        </div>
+        <div class="press-card reveal">
+          <div class="press-source">Austin Community</div>
+          <div class="press-quote">Austin's Best Muralist 2021 -- 2024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       9. BRAND HISTORY
+       ========================================== -->
+  <section class="brand-history" id="brands">
+    <div class="section-inner">
+      <p class="section-label reveal">Previous Collaborators</p>
+      <h2 class="section-title reveal">Brands That Believed</h2>
+    </div>
+    <div class="brand-track">
+      <div class="brand-scroll" id="brandScroll">
+        <span class="brand-name">American Express</span>
+        <span class="brand-name">Coca-Cola</span>
+        <span class="brand-name">Red Bull</span>
+        <span class="brand-name">Budweiser</span>
+        <span class="brand-name">MLB</span>
+        <span class="brand-name">Fender</span>
+        <span class="brand-name">Rolling Stone</span>
+        <span class="brand-name">LIFEWTR</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="brand-name">American Express</span>
+        <span class="brand-name">Coca-Cola</span>
+        <span class="brand-name">Red Bull</span>
+        <span class="brand-name">Budweiser</span>
+        <span class="brand-name">MLB</span>
+        <span class="brand-name">Fender</span>
+        <span class="brand-name">Rolling Stone</span>
+        <span class="brand-name">LIFEWTR</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="drip-divider"></div>
+
+  <!-- ==========================================
+       10. FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="footer-cta">Let's create a cultural moment together.</div>
+    <div class="footer-links">
+      <a href="mailto:partnerships@spraycationmuraltour.com" class="footer-link">partnerships@spraycationmuraltour.com</a>
+      <a href="https://ihavepinkhair.com/spraycation" class="footer-link" target="_blank" rel="noopener">ihavepinkhair.com/spraycation</a>
+      <a href="https://instagram.com/zuzubee" class="footer-link" target="_blank" rel="noopener">@zuzubee</a>
+      <a href="https://instagram.com/spraycationmuraltour" class="footer-link" target="_blank" rel="noopener">@spraycationmuraltour</a>
+    </div>
+    <div class="footer-credits">Built with love by Mike + Claude</div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT
+       ========================================== -->
+  <script>
+    // ==========================================
+    // Scroll-driven reveal animation
+    // ==========================================
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Don't unobserve -- let it stay visible
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // ==========================================
+    // Animated number counters
+    // ==========================================
+    let countersAnimated = false;
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersAnimated) {
+          countersAnimated = true;
+          animateCounters();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const impactSection = document.getElementById('impact');
+    if (impactSection) {
+      counterObserver.observe(impactSection);
+    }
+
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stat-number[data-target]');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const suffix = counter.getAttribute('data-suffix') || '';
+        const duration = 2000;
+        const startTime = performance.now();
+
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          // Ease out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(eased * target);
+
+          if (target >= 1000) {
+            counter.textContent = current.toLocaleString() + suffix;
+          } else {
+            counter.textContent = current + suffix;
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            if (target >= 1000) {
+              counter.textContent = target.toLocaleString() + suffix;
+            } else {
+              counter.textContent = target + suffix;
+            }
+          }
+        }
+
+        requestAnimationFrame(update);
+      });
+    }
+
+    // ==========================================
+    // Progress bar animation
+    // ==========================================
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const fill = document.getElementById('progressFill');
+          if (fill) {
+            fill.classList.add('animate');
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const progressSection = document.getElementById('progress');
+    if (progressSection) {
+      progressObserver.observe(progressSection);
+    }
+
+    // ==========================================
+    // Simple parallax on hero
+    // ==========================================
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrolled = window.pageYOffset;
+          const hero = document.querySelector('.hero-content');
+          if (hero && scrolled < window.innerHeight) {
+            hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.8;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -8,11 +8,11 @@ Based on 2025 pricing tiers and 8-10 city target:
 
 | Revenue Source | Per City | 8 Cities | 10 Cities |
 |---------------|----------|----------|-----------|
-| Wall Partners ($10K) | $10,000 | $80,000 | $100,000 |
-| Celebration Events ($10-15K) | $12,500 | $100,000 | $125,000 |
-| Magic Maker packages ($20K) | $20,000 | $160,000 | $200,000 |
+| Magic Maker ($25K) | $25,000 | $200,000 | $250,000 |
+| Culture Partner ($15K) | $15,000 | $120,000 | $150,000 |
+| Community Ally ($5K) | $5,000 | $40,000 | $50,000 |
 
-Target: $150K-$300K total 2026 revenue depending on mix and scale.
+Target: $200K-$450K total 2026 revenue depending on mix and scale.
 
 ## Funding Channels
 
@@ -24,7 +24,7 @@ National brands that want authentic community activation, content, and cultural 
 - Wants authentic content (not staged ads)
 - Needs multi-city brand awareness
 - Cares about cultural impact, not just impressions
-- Budget: $20K-$100K+ per partnership
+- Budget: $5K-$25K+ per partnership (Community Ally to Magic Maker tiers)
 
 **Approach:** Lead with the Denver case study (3x foot traffic, Westword press, "more buzz than 3 years of marketing"). Show pricing tiers. Emphasize evergreen content and permanent exposure vs. traditional ad spend.
 
@@ -42,7 +42,7 @@ Public art, community development, and arts funding from government and foundati
 **Approach:** Apply 6-12 months ahead. Frame SPRAYCATION as community development + public art + women-led creative enterprise.
 
 ### 3. Wall Partner Revenue (PROVEN)
-Local businesses pay $10K to host a mural. This is already working -- Denver and Bozeman both had paying wall partners.
+Local businesses partner at the Community Ally ($5K) or Culture Partner ($15K) level to host a mural. This is already working -- Denver and Bozeman both had paying wall partners in 2025.
 
 ### 4. In-Kind Partnerships
 Brands that provide products/services instead of cash:

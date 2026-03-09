@@ -18,13 +18,13 @@ Scale SPRAYCATION nationwide with strategic brand partners. Move from self-funde
 - Alignment with partner markets (Roku mentioned as reference)
 - Denver already has 4 potential partners for 2026
 
-## Pricing Tiers (Proven in 2025)
+## Pricing Tiers (Updated for 2026)
 
 | Tier | Price | What's Included |
 |------|-------|-----------------|
-| Wall Partner | $10,000 | Host the mural, become a landmark |
-| Celebration Event | $10,000-$15,000 | Sponsor a mural reveal party with DJ, vendors, brand visibility |
-| Magic Maker | $20,000 | Full package -- mural, event, press, and momentum |
+| Community Ally | $5,000 | Brand visibility at events, social media features, community alignment |
+| Culture Partner | $15,000 | Sponsor a mural reveal party, brand integration, local press, content package |
+| Magic Maker | $25,000 | Full package -- mural integration, event sponsorship, press, evergreen content, multi-city presence |
 
 ## Value vs. Traditional Marketing
 

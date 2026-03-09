@@ -47,10 +47,23 @@ Research these grants and apply where eligible. Most require 6-12 months lead ti
 - Note: Minnesota residency required for their core grants, but worth monitoring for national expansions
 - URL: forecastpublicart.org
 
-### Anonymous Was A Woman (AWAW)
-- **Environmental Art Grants** -- 2026 cycle distributing over $470,000; projects must have a free public engagement component; deadline April 7, 2026
-- **Annual Award** -- unrestricted $50,000 grants to 15 woman-identifying artists over 40
-- URL: anonymouswasawoman.org
+### Anonymous Was A Woman (AWAW) -- Environmental Art Grant (EAG)
+- **Award:** Up to $20,000 per project
+- **Total pool:** $470,000+ (2026 cycle)
+- **Deadline:** April 7, 2026 (CONFIRMED)
+- **Grant term:** August 2026 - August 2027
+- **Administered by:** NYFA via Submittable (apply.nyfa.org)
+- **Acceptance rate:** ~2.9% (29 of 1,004 applicants in 2025)
+- **Eligibility:**
+  - Woman/female artist, 18+, U.S. resident
+  - Not currently enrolled in a degree program
+  - Project must already be in development
+  - Must have a free public component
+  - Must engage environmental issues
+- **CRITICAL:** Project must have a genuine environmental angle -- not just outdoor art
+- **Application requires:** artist statement, work samples, project narrative, timeline, budget, environmental impact statement, public engagement plan
+- **Note:** The Annual Award ($50K) is nomination-only and cannot be applied for
+- URL: https://www.nyfa.org/awards-grants/anonymous-was-a-woman-environmental-art-grants/
 
 ### Amber Grants for Women
 - Monthly grants ($10,000) for women-owned businesses, including creative arts category
@@ -98,17 +111,24 @@ Research these grants and apply where eligible. Most require 6-12 months lead ti
 - Austin Creative Alliance
 
 ## Fiscal Sponsorship Options
-If SPRAYCATION doesn't have 501(c)(3) status, partnering with a fiscal sponsor allows accepting tax-deductible donations and applying for grants that require nonprofit status:
-- **Fractured Atlas** -- arts-focused fiscal sponsorship (most common for touring artists)
-- **New York Foundation for the Arts (NYFA)** -- fiscal sponsorship
-- **Austin Creative Alliance** -- local option for Austin-based artists
+If SPRAYCATION doesn't have 501(c)(3) status, partnering with a fiscal sponsor allows accepting tax-deductible donations and applying for grants that require nonprofit status.
+
+**Recommendation: Start with Fractured Atlas** -- rolling applications, approved in 1-2 weeks, 8% admin fee, $120/year membership, no minimum budget.
+
+| Option | Fee | Setup Cost | Application Cycle | Approval Time | URL |
+|--------|-----|-----------|-------------------|---------------|-----|
+| **Fractured Atlas** | 8% admin fee | $120/year membership | Rolling | 1-2 weeks | fracturedatlas.org/fiscal-sponsorship |
+| **NYFA** | 8% (tiered) | $150 + $150 setup | Quarterly deadlines | 4+ weeks | nyfa.org/fiscal-sponsorship |
+| **Austin Creative Alliance** | 10% | Varies | Bimonthly | Varies | austincreativealliance.org/fiscalsponsorship |
+
+**Dual strategy recommended:** Fractured Atlas now for speed + ACA later for local Austin funding (unlocks City of Austin Cultural Contracts).
 
 ## Key Deadlines Summary
 
 | Grant | Deadline | Award Range |
 |-------|----------|-------------|
 | NEA Grants for Arts Projects | Feb 12, 2026 / Jul 9, 2026 | $10K-$100K |
-| AWAW Environmental Art Grants | Apr 7, 2026 | From $470K pool |
+| AWAW Environmental Art Grants | Apr 7, 2026 | Up to $20K (from $470K+ pool) |
 | Pollock-Krasner Foundation | Rolling | Up to $50K |
 | Awesome Foundation | Monthly | $1K |
 | Amber Grants for Women | Monthly | $10K |

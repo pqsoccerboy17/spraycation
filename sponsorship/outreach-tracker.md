@@ -30,6 +30,36 @@
 | TBD | Portland | LEAD | -- |
 | TBD | Vancouver | CONFIRMED (2025) | 2601 Main St |
 
+## 2026 High Potentials
+
+| Contact/Org | City | Type | Notes |
+|-------------|------|------|-------|
+| SLAM | Bozeman | Mural festival nonprofit | Potential collaboration |
+| 40 West Arts District | Denver | Arts district | 2026 wall/event partner |
+| Zeppelin Station | Denver | Venue/space | Event hosting potential |
+| Denver Arts District | Denver | Arts district | Community partnership |
+| StreetWise Arts | Denver | Arts org | Mural programming alignment |
+| 303 Magazine | Denver | Media | Press coverage, Fever Dream featured 2022 |
+| The Pink Pearl | National | Grant/donor | $5K grant + $1.5K personal contribution |
+| Urbanite Portland | Portland | Event space | Free event hosting offered |
+| Luna Mystica | Taos | Lodging | Confirmed in-kind lodging |
+| Soaring Coffee | Portland | Cafe | Wall partner potential |
+| Portal 503 | Portland | Space | Event/activation venue |
+| SLUG Mag | Salt Lake City | Media | Press coverage potential |
+| Fice Gallery | Salt Lake City | Gallery | Wall/exhibition partner |
+| Totally Boise | Boise | Media/Influencer | 60.9K followers |
+| This is Boise | Boise | Media/Influencer | 115K followers |
+| Visit Idaho | Boise | Tourism | 131K followers, tourism partnership |
+| Plunj | Boise | Wellness | Event partner potential |
+| Beacon Coffee | Bozeman | Cafe (2025 partner) | Renew for 2026 |
+| Fever Dream Vintage | Denver | Retail (2025 partner) | 4 potential 2026 partners through them |
+| Best Day Brewing | Denver | Brewery | Expand from in-kind to paid 2026 |
+| Claire Keener | Boise | Videographer | Confirmed for 2025, rebookable |
+| Matt (Portland) | Portland | Videographer | Booked for 2025, rebookable |
+| Chase | Vancouver | Videographer | Top choice for 2025 |
+| Ave | Denver | Videographer | Denver content creator |
+| Eva Moss | Portland | Photographer | Portland content |
+
 ## Grants
 
 | Grant | Deadline | Status | Amount | Notes |
