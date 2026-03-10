@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impact -- SPRAYCATION</title>
+  <meta name="description" content="The data behind SPRAYCATION: foot traffic, press coverage, brand ROI, and why murals are the most powerful marketing tool nobody's using.">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="css/shared.css">
+
+  <style>
+    /* =============================================
+       IMPACT PAGE -- Page-Specific Styles
+       ============================================= */
+
+    /* --- HERO --- */
+    .impact-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .impact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(255,45,120,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 40%, rgba(52,82,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .impact-hero .hero-content {
+      position: relative;
+      z-index: var(--z-content);
+      text-align: center;
+    }
+    .impact-hero .hero-accent {
+      display: block;
+      margin-top: var(--space-lg);
+      background: var(--gradient-energy);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .impact-hero .hero-subtitle {
+      margin-top: var(--space-lg);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* --- 2025 STATS STRIP --- */
+    .stats-strip {
+      background: var(--charcoal);
+      padding: var(--space-xl) 0;
+      overflow: hidden;
+    }
+    .stats-strip .stat-item {
+      text-align: center;
+      padding: var(--space-md);
+    }
+    .stats-strip .stat-item .t-stat-number {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+
+    /* --- ROI SECTION --- */
+    .roi-section {
+      background: var(--black);
+    }
+    .roi-card {
+      text-align: center;
+      padding: var(--space-xl) var(--space-lg);
+    }
+    .roi-card .roi-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1;
+      background: var(--gradient-energy);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--space-md);
+    }
+    .roi-card .roi-desc {
+      color: var(--white-soft);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: var(--space-sm);
+    }
+    .roi-card .roi-source {
+      font-size: 0.75rem;
+      color: var(--white-muted);
+      font-style: italic;
+    }
+
+    /* --- DENVER DEEP-DIVE --- */
+    .denver-deep {
+      position: relative;
+      overflow: hidden;
+      padding: var(--section-pad) 0;
+    }
+    .denver-deep::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,15,0.7), rgba(10,10,15,0.85)),
+                  url('assets/images/denver-mural.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+    .denver-deep .container {
+      position: relative;
+      z-index: var(--z-content);
+    }
+    .denver-deep .big-stat {
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 18vw, 14rem);
+      line-height: 0.85;
+      background: var(--gradient-energy);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .denver-deep .big-stat-desc {
+      font-family: var(--font-body);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      color: var(--white-soft);
+      font-weight: 300;
+      margin-top: var(--space-md);
+      margin-bottom: var(--space-2xl);
+    }
+    .denver-deep blockquote {
+      font-family: var(--font-accent);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      line-height: 1.5;
+      color: var(--yellow);
+      border-left: 4px solid var(--hot-pink);
+      padding-left: var(--space-lg);
+      max-width: 700px;
+      margin-bottom: var(--space-sm);
+    }
+    .denver-deep blockquote cite {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--white-muted);
+      margin-top: var(--space-md);
+      font-style: normal;
+    }
+    .denver-sub-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-2xl);
+      padding-top: var(--space-xl);
+      border-top: 1px solid var(--white-faint);
+    }
+    .denver-sub-stat {
+      text-align: center;
+    }
+    .denver-sub-stat .sub-stat-value {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--hot-pink);
+      margin-bottom: var(--space-xs);
+    }
+    .denver-sub-stat .sub-stat-label {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+      .denver-sub-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* --- CITY IMPACT CARDS --- */
+    .cities-impact {
+      background: var(--charcoal);
+    }
+    .city-impact-card .city-impact-meta {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      margin-top: var(--space-sm);
+    }
+    .city-impact-card .city-impact-highlight {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-top: var(--space-md);
+    }
+
+    /* --- PRESS IMPACT --- */
+    .press-impact {
+      background: var(--black);
+    }
+    .press-impact-card {
+      padding: var(--space-xl);
+    }
+    .press-impact-card .press-source {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--hot-pink);
+      margin-bottom: var(--space-md);
+    }
+    .press-impact-card .press-headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: var(--space-md);
+    }
+    .press-impact-card .press-meta {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+    }
+
+    /* --- BRAND LEGACY --- */
+    .brand-legacy {
+      background: var(--charcoal);
+    }
+    .legacy-card {
+      padding: var(--space-lg);
+    }
+    .legacy-card .legacy-name {
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+    .legacy-card .legacy-desc {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      line-height: 1.5;
+    }
+    .tour-partner-card {
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+    .tour-partner-card .partner-name {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .tour-partner-card .partner-role {
+      font-size: 0.8rem;
+      color: var(--white-muted);
+    }
+
+    /* --- CTA SECTION --- */
+    .impact-cta {
+      text-align: center;
+      background: var(--black);
+    }
+    .impact-cta .t-section {
+      margin-bottom: var(--space-lg);
+    }
+    .impact-cta .cta-secondary {
+      display: block;
+      margin-top: var(--space-lg);
+      font-size: 0.9rem;
+      color: var(--white-muted);
+      transition: color var(--duration-fast);
+    }
+    .impact-cta .cta-secondary:hover {
+      color: var(--hot-pink);
+    }
+
+    /* --- DRIP SVG DIVIDERS --- */
+    .drip-divider-svg {
+      display: block;
+      width: 100%;
+      height: 60px;
+      position: relative;
+      z-index: var(--z-content);
+    }
+    .drip-divider-svg--flip {
+      transform: scaleY(-1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">SPRAYCATION</a>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="cities.html">Cities</a>
+      <a href="denver.html">Denver Story</a>
+      <a href="impact.html" class="active">Impact</a>
+      <a href="partnerships.html">Partner</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Let's Talk</a>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav-overlay">
+    <a href="index.html">Home</a>
+    <a href="cities.html">Cities</a>
+    <a href="denver.html">Denver Story</a>
+    <a href="impact.html">Impact</a>
+    <a href="partnerships.html">Partner</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Let's Talk</a>
+  </div>
+
+  <!-- ====== 1. HERO ====== -->
+  <section class="impact-hero page-hero" id="impact-hero">
+    <div class="hero-content">
+      <h1 class="t-hero">THE IMPACT</h1>
+      <span class="t-accent hero-accent">Numbers Tell The Story</span>
+      <p class="t-body-lg hero-subtitle c-muted">Here's what happens when art meets a real neighborhood.</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- ====== 2. 2025 STATS STRIP ====== -->
+  <section class="stats-strip" id="stats-strip">
+    <div class="container">
+      <div class="grid grid-6 stats-grid">
+        <div class="stat-item">
+          <div class="t-stat-number" data-counter="5" data-suffix="">5</div>
+          <div class="t-stat-label">Murals</div>
+        </div>
+        <div class="stat-item">
+          <div class="t-stat-number" data-counter="6500" data-suffix="+">6,500+</div>
+          <div class="t-stat-label">Miles</div>
+        </div>
+        <div class="stat-item">
+          <div class="t-stat-number" data-counter="5" data-suffix="">5</div>
+          <div class="t-stat-label">Cities</div>
+        </div>
+        <div class="stat-item">
+          <div class="t-stat-number" data-counter="10" data-suffix="">10</div>
+          <div class="t-stat-label">States</div>
+        </div>
+        <div class="stat-item">
+          <div class="t-stat-number" data-counter="3" data-suffix="x">3x</div>
+          <div class="t-stat-label">Foot Traffic</div>
+        </div>
+        <div class="stat-item">
+          <div class="t-stat-number" style="font-size: clamp(1.2rem, 3vw, 2rem); color: var(--hot-pink);">ALL FEMALE</div>
+          <div class="t-stat-label">Team</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: stats to ROI -->
+  <svg class="drip-divider-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="drip-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#FF2D78"/>
+        <stop offset="100%" style="stop-color:#3452FF"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,0 L0,40 Q60,55 120,40 Q180,28 240,40 Q280,50 320,40 Q360,20 400,40 Q440,58 480,40 Q520,25 560,40 Q620,55 680,40 Q720,30 760,40 Q820,60 880,40 Q920,25 960,40 Q1020,55 1080,40 Q1120,28 1160,40 Q1200,55 1240,40 Q1300,22 1360,40 Q1400,52 1440,40 L1440,0 Z" fill="url(#drip-grad-1)"/>
+  </svg>
+
+  <!-- ====== 4. WHY MURALS WORK ====== -->
+  <section class="roi-section section section--dark" id="roi">
+    <div class="container">
+      <div class="section-label">The Data</div>
+      <h2 class="t-section mb-2xl">Here's What Murals Do For Neighborhoods</h2>
+
+      <div class="grid grid-3">
+        <div class="card roi-card reveal delay-1">
+          <div class="card-gradient-bar"></div>
+          <div class="roi-number">30%</div>
+          <p class="roi-desc">more foot traffic than city average</p>
+          <p class="roi-source">University of Cincinnati</p>
+        </div>
+        <div class="card roi-card reveal delay-2">
+          <div class="card-gradient-bar"></div>
+          <div class="roi-number">5x</div>
+          <p class="roi-desc">foot traffic near retail locations</p>
+          <p class="roi-source">UC study</p>
+        </div>
+        <div class="card roi-card reveal delay-3">
+          <div class="card-gradient-bar"></div>
+          <div class="roi-number">2,400%</div>
+          <p class="roi-desc">tourism growth in Wynwood</p>
+          <p class="roi-source">Miami mural district</p>
+        </div>
+        <div class="card roi-card reveal delay-1">
+          <div class="card-gradient-bar"></div>
+          <div class="roi-number">12.7M</div>
+          <p class="roi-desc">social impressions from one mural campaign</p>
+          <p class="roi-source">Afterpay case study</p>
+        </div>
+        <div class="card roi-card reveal delay-2">
+          <div class="card-gradient-bar"></div>
+          <div class="roi-number">$6</div>
+          <p class="roi-desc">return for every $1 in public art</p>
+          <p class="roi-source">Public arts research</p>
+        </div>
+        <div class="card roi-card reveal delay-3">
+          <div class="card-gradient-bar"></div>
+          <div class="roi-number">75%</div>
+          <p class="roi-desc">of Fortune 1000 increased experiential marketing budgets</p>
+          <p class="roi-source">2025 industry data</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: ROI to Denver -->
+  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="drip-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#3452FF"/>
+        <stop offset="50%" style="stop-color:#FF2D78"/>
+        <stop offset="100%" style="stop-color:#FFE135"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,0 L0,40 Q120,58 240,40 Q360,20 480,40 Q600,55 720,40 Q840,28 960,40 Q1080,58 1200,40 Q1320,22 1440,40 L1440,0 Z" fill="url(#drip-grad-2)"/>
+  </svg>
+
+  <!-- ====== 6. DENVER DEEP-DIVE ====== -->
+  <section class="denver-deep" id="denver-deep">
+    <div class="container">
+      <div class="section-label reveal">Case Study</div>
+
+      <div class="big-stat reveal" data-counter="3" data-suffix="x">3x</div>
+      <p class="big-stat-desc reveal">foot traffic increase. One mural. One weekend.</p>
+
+      <blockquote class="reveal">
+        "We've been here for 3 years, and this one mural made more people stop, talk, and share than any ad we've paid for."
+        <cite>-- Fever Dream Vintage, Denver</cite>
+      </blockquote>
+
+      <div class="denver-sub-stats">
+        <div class="denver-sub-stat reveal delay-1">
+          <div class="sub-stat-value">Westword</div>
+          <div class="sub-stat-label">Featured press coverage</div>
+        </div>
+        <div class="denver-sub-stat reveal delay-2">
+          <div class="sub-stat-value">4 Partners</div>
+          <div class="sub-stat-label">Already committed for 2026</div>
+        </div>
+        <div class="denver-sub-stat reveal delay-3">
+          <div class="sub-stat-value">2-Hour</div>
+          <div class="sub-stat-label">Mural reveal event</div>
+        </div>
+        <div class="denver-sub-stat reveal delay-3">
+          <div class="sub-stat-value">Quiet Storefront</div>
+          <div class="sub-stat-label">Turned local destination</div>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: var(--space-2xl);">
+        <a href="denver.html" class="btn btn--outline reveal">Read the Full Denver Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: Denver to cities -->
+  <svg class="drip-divider-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="drip-grad-3" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#FFE135"/>
+        <stop offset="50%" style="stop-color:#FF2D78"/>
+        <stop offset="100%" style="stop-color:#3452FF"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,0 L0,40 Q80,58 160,40 Q240,22 320,40 Q400,55 480,40 Q560,28 640,40 Q720,60 800,40 Q880,20 960,40 Q1040,52 1120,40 Q1200,30 1280,40 Q1360,55 1440,40 L1440,0 Z" fill="url(#drip-grad-3)"/>
+  </svg>
+
+  <!-- ====== 8. CITY IMPACT CARDS ====== -->
+  <section class="cities-impact section" id="cities-impact">
+    <div class="container">
+      <div class="section-label">2025 Tour</div>
+      <h2 class="t-section mb-2xl">City by City</h2>
+
+      <div class="grid grid-4">
+        <!-- Denver (featured) -->
+        <div class="card card--featured city-impact-card">
+          <span class="badge badge--pink">Spotlight</span>
+          <div class="card-gradient-bar"></div>
+          <h3 class="t-card-title">Denver</h3>
+          <p class="t-small c-muted">Fever Dream Vintage</p>
+          <p class="t-small c-muted">2903 E. Colfax Ave</p>
+          <p class="city-impact-highlight">3x foot traffic</p>
+          <p class="city-impact-meta">July 2025</p>
+        </div>
+        <!-- Portland -->
+        <div class="card city-impact-card">
+          <div class="card-gradient-bar"></div>
+          <h3 class="t-card-title">Portland</h3>
+          <p class="t-small c-muted">1324 SE 8th Ave</p>
+          <p class="t-small c-muted">Portland, Oregon</p>
+          <p class="city-impact-meta">October 2025</p>
+        </div>
+        <!-- Vancouver -->
+        <div class="card city-impact-card">
+          <div class="card-gradient-bar"></div>
+          <h3 class="t-card-title">Vancouver</h3>
+          <p class="t-small c-muted">2601 Main St</p>
+          <p class="t-small c-muted">Vancouver, BC, Canada</p>
+          <p class="city-impact-meta">October 2025</p>
+        </div>
+        <!-- Boise -->
+        <div class="card city-impact-card">
+          <div class="card-gradient-bar"></div>
+          <h3 class="t-card-title">Boise</h3>
+          <p class="t-small c-muted">210 N 9th St</p>
+          <p class="t-small c-muted">Boise, Idaho</p>
+          <p class="city-impact-meta">November 2025</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: cities to press -->
+  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="drip-grad-4" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#FF2D78"/>
+        <stop offset="100%" style="stop-color:#3452FF"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,0 L0,40 Q70,55 140,40 Q210,25 280,40 Q360,58 440,40 Q520,20 600,40 Q680,50 760,40 Q840,30 920,40 Q1000,55 1080,40 Q1160,22 1240,40 Q1320,48 1400,40 L1440,40 L1440,0 Z" fill="url(#drip-grad-4)"/>
+  </svg>
+
+  <!-- ====== 10. PRESS GRID ====== -->
+  <section class="press-impact section section--dark" id="press">
+    <div class="container">
+      <div class="section-label">In the Press</div>
+      <h2 class="t-section mb-2xl">They're Talking</h2>
+
+      <div class="grid grid-2">
+        <div class="card press-impact-card">
+          <div class="card-gradient-bar"></div>
+          <div class="press-source">Westword</div>
+          <h3 class="press-headline">Fever Dream Vintage Brightens Up Colfax</h3>
+          <p class="press-meta">By Cynthia Barnes -- July 2025</p>
+        </div>
+        <div class="card press-impact-card">
+          <div class="card-gradient-bar"></div>
+          <div class="press-source">EASTside Magazine</div>
+          <h3 class="press-headline">Spraycation Brings Color, Community, and Pink Hair Energy</h3>
+          <p class="press-meta">Austin arts & culture feature</p>
+        </div>
+        <div class="card press-impact-card">
+          <div class="card-gradient-bar"></div>
+          <div class="press-source">Almost Real Things</div>
+          <h3 class="press-headline">A Creative Force with Pink Hair</h3>
+          <p class="press-meta">Artist profile on Zuzu Perkal</p>
+        </div>
+        <div class="card press-impact-card">
+          <div class="card-gradient-bar"></div>
+          <div class="press-source">Austin Community</div>
+          <h3 class="press-headline">"Austin's Best Muralist" -- 4 Consecutive Years</h3>
+          <p class="press-meta">2021, 2022, 2023, 2024 community vote</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: press to brands -->
+  <svg class="drip-divider-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="drip-grad-5" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#3452FF"/>
+        <stop offset="50%" style="stop-color:#FF2D78"/>
+        <stop offset="100%" style="stop-color:#FFE135"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,0 L0,40 Q90,56 180,40 Q270,24 360,40 Q450,58 540,40 Q630,26 720,40 Q810,54 900,40 Q990,22 1080,40 Q1170,52 1260,40 Q1350,30 1440,40 L1440,0 Z" fill="url(#drip-grad-5)"/>
+  </svg>
+
+  <!-- ====== 12. BRAND HISTORY ====== -->
+  <section class="brand-legacy section" id="brands">
+    <div class="container">
+      <div class="section-label">Brand History</div>
+      <h2 class="t-section mb-lg">Zuzu's Legacy Partners</h2>
+      <p class="t-body-lg c-muted mb-2xl">Before Spraycation, Zuzu painted for some of the biggest names in the world.</p>
+
+      <div class="grid grid-4" style="margin-bottom: var(--space-2xl);">
+        <div class="card legacy-card">
+          <div class="card-gradient-bar"></div>
+          <div class="legacy-name">American Express</div>
+          <p class="legacy-desc">Commissioned mural for Small Business Saturday campaign</p>
+        </div>
+        <div class="card legacy-card">
+          <div class="card-gradient-bar"></div>
+          <div class="legacy-name">Coca-Cola</div>
+          <p class="legacy-desc">Brand activation mural for experiential marketing</p>
+        </div>
+        <div class="card legacy-card">
+          <div class="card-gradient-bar"></div>
+          <div class="legacy-name">Red Bull</div>
+          <p class="legacy-desc">Custom mural for Red Bull arts program</p>
+        </div>
+        <div class="card legacy-card">
+          <div class="card-gradient-bar"></div>
+          <div class="legacy-name">Budweiser</div>
+          <p class="legacy-desc">Mural series for national brand campaign</p>
+        </div>
+        <div class="card legacy-card">
+          <div class="card-gradient-bar"></div>
+          <div class="legacy-name">MLB</div>
+          <p class="legacy-desc">Stadium mural for Major League Baseball events</p>
+        </div>
+        <div class="card legacy-card">
+          <div class="card-gradient-bar"></div>
+          <div class="legacy-name">Fender</div>
+          <p class="legacy-desc">Custom art for Fender music culture campaign</p>
+        </div>
+        <div class="card legacy-card">
+          <div class="card-gradient-bar"></div>
+          <div class="legacy-name">Rolling Stone</div>
+          <p class="legacy-desc">Mural featured in Rolling Stone editorial</p>
+        </div>
+        <div class="card legacy-card">
+          <div class="card-gradient-bar"></div>
+          <div class="legacy-name">LIFEWTR</div>
+          <p class="legacy-desc">Featured artist on PepsiCo's LIFEWTR bottle series</p>
+        </div>
+      </div>
+
+      <h3 class="t-card-title mb-lg" style="color: var(--hot-pink);">2025 Tour Partners</h3>
+      <div class="grid grid-4">
+        <div class="card tour-partner-card">
+          <div>
+            <div class="partner-name">Fever Dream Vintage</div>
+            <div class="partner-role">Denver wall partner</div>
+          </div>
+        </div>
+        <div class="card tour-partner-card">
+          <div>
+            <div class="partner-name">Beacon Coffee</div>
+            <div class="partner-role">Community partner</div>
+          </div>
+        </div>
+        <div class="card tour-partner-card">
+          <div>
+            <div class="partner-name">Loop</div>
+            <div class="partner-role">Brand activation partner</div>
+          </div>
+        </div>
+        <div class="card tour-partner-card">
+          <div>
+            <div class="partner-name">Best Day Brewing</div>
+            <div class="partner-role">Event sponsor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: brands to CTA -->
+  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="drip-grad-6" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#FFE135"/>
+        <stop offset="100%" style="stop-color:#FF2D78"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,0 L0,40 Q100,58 200,40 Q300,18 400,40 Q480,52 560,40 Q640,30 720,40 Q800,55 880,40 Q960,22 1040,40 Q1120,56 1200,40 Q1280,28 1360,40 Q1420,50 1440,40 L1440,0 Z" fill="url(#drip-grad-6)"/>
+  </svg>
+
+  <!-- ====== 13. CTA ====== -->
+  <section class="impact-cta section section--dark" id="cta">
+    <div class="container">
+      <h2 class="t-section reveal">Ready to See What a<br><span class="c-pink">Partnership Looks Like?</span></h2>
+      <p class="t-body-lg c-muted reveal" style="max-width: 560px; margin: 0 auto var(--space-xl);">The proof is on the wall. The data backs it up. Now let's talk about your brand.</p>
+      <a href="partnerships.html" class="btn btn--primary reveal">View Partnership Options</a>
+      <a href="contact.html" class="cta-secondary reveal">Or just start a conversation &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Drip divider: CTA to footer -->
+  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,40 Q100,55 200,40 Q300,28 400,40 Q520,58 640,40 Q760,20 880,40 Q1000,52 1120,40 Q1240,30 1360,40 Q1420,48 1440,40 L1440,0 Z" fill="#0A0A0F"/>
+  </svg>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <div class="footer-cta">
+        <h2>Let's create a cultural moment together.</h2>
+        <a href="contact.html" class="btn btn--primary">Start a Conversation</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/spraycationmuraltour" target="_blank">Instagram</a>
+        <a href="https://instagram.com/zuzubee" target="_blank">@zuzubee</a>
+        <a href="mailto:spraythefuture@gmail.com">Email</a>
+        <a href="https://ihavepinkhair.com/spraycation" target="_blank">Website</a>
+      </div>
+      <div class="footer-bottom">
+        <p class="t-small">&copy; 2026 Spraycation Mural Tour. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== GRAIN OVERLAY ====== -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- ====== SPARKLES ====== -->
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle sparkle--sm" aria-hidden="true"></div>
+  <div class="sparkle sparkle--lg" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle sparkle--sm" aria-hidden="true"></div>
+  <div class="sparkle sparkle--lg" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle sparkle--sm" aria-hidden="true"></div>
+  <div class="sparkle sparkle--lg" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+
+  <!-- ====== PAGE TRANSITION ====== -->
+  <div class="page-transition" aria-hidden="true"><div class="drip-curtain"></div></div>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="js/shared.js"></script>
+
+  <script>
+    /* ==========================================================================
+       IMPACT PAGE -- Page-Specific Animations
+       ========================================================================== */
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // ROI stat cards
+      staggerReveal('.roi-card', '.roi-section', { stagger: 0.15 });
+
+      // City impact cards
+      staggerReveal('.city-impact-card', '.cities-impact', { stagger: 0.2 });
+
+      // Press cards
+      staggerReveal('.press-impact-card', '.press-impact', { stagger: 0.12 });
+
+      // Legacy brand cards
+      staggerReveal('.legacy-card', '.brand-legacy', { stagger: 0.08 });
+
+      // Hero parallax
+      heroParallax('.hero-content', '.impact-hero');
+
+      // Stats strip stagger
+      staggerReveal('.stat-item', '.stats-grid', {
+        y: 0,
+        start: 'top 85%',
+        stagger: 0.1
+      });
+
+    });
+  </script>
+
+</body>
+</html>

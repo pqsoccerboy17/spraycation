@@ -244,6 +244,34 @@
       background: var(--black);
       text-align: center;
     }
+
+    /* Denver Quote */
+    .denver-quote { font-family: var(--font-accent); font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--white-soft); border-left: 4px solid var(--hot-pink); padding-left: var(--space-lg); margin: var(--space-xl) auto; max-width: 700px; text-align: left; line-height: 1.6; }
+    .denver-attribution { font-family: var(--font-body); font-size: 0.9rem; color: var(--white-muted); margin-top: var(--space-md); padding-left: var(--space-lg); }
+    .denver-sub-stats { display: flex; justify-content: center; gap: var(--space-xl); flex-wrap: wrap; margin-top: var(--space-xl); }
+    .denver-sub-stat { text-align: center; }
+    .denver-sub-stat .value { font-family: var(--font-display); font-size: clamp(1rem, 2vw, 1.3rem); color: var(--yellow); display: block; }
+    .denver-sub-stat .label { font-size: 0.8rem; color: var(--white-muted); }
+
+    /* Exclusivity Callout */
+    .exclusivity-callout { border-left: 4px solid var(--hot-pink); padding: var(--space-lg); background: rgba(255,45,120,0.05); margin-top: var(--space-xl); max-width: 700px; margin-left: auto; margin-right: auto; }
+    .exclusivity-callout p { font-size: 1rem; color: var(--white-soft); font-weight: 500; }
+
+    /* Detail Section */
+    .detail-section { background: var(--charcoal-light); }
+    .detail-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); margin-top: var(--space-xl); }
+    @media (min-width: 768px) { .detail-grid { grid-template-columns: repeat(3, 1fr); } }
+    .detail-card { background: var(--charcoal); border: 1px solid var(--white-faint); border-radius: 12px; padding: var(--space-xl); }
+    .detail-card.featured { border-color: var(--hot-pink); }
+    .detail-card h3 { font-family: var(--font-accent); color: var(--hot-pink); margin-bottom: var(--space-sm); }
+    .detail-card .price { font-family: var(--font-display); font-size: 2rem; color: var(--yellow); margin-bottom: var(--space-md); }
+    .detail-card ul { list-style: none; padding: 0; }
+    .detail-card ul li { padding: var(--space-xs) 0; font-size: 0.9rem; color: var(--white-soft); font-weight: 300; border-bottom: 1px solid var(--white-faint); }
+    .detail-card ul li::before { content: '+ '; color: var(--hot-pink); font-weight: 700; }
+
+    /* Steps Section */
+    .steps-section { background: var(--charcoal); }
+    .step-card .step-number { font-family: var(--font-display); font-size: 3rem; color: var(--electric-blue); opacity: 0.3; margin-bottom: var(--space-sm); }
   </style>
 </head>
 <body>
@@ -257,6 +285,7 @@
       <a href="index.html">Home</a>
       <a href="cities.html">Cities</a>
       <a href="denver.html">Denver Story</a>
+      <a href="impact.html">Impact</a>
       <a href="partnerships.html" class="active">Partner</a>
       <a href="about.html">About</a>
       <a href="contact.html" class="nav-cta">Let's Talk</a>
@@ -266,6 +295,7 @@
     <a href="index.html">Home</a>
     <a href="cities.html">Cities</a>
     <a href="denver.html">Denver Story</a>
+    <a href="impact.html">Impact</a>
     <a href="partnerships.html">Partner</a>
     <a href="about.html">About</a>
     <a href="contact.html">Let's Talk</a>
@@ -365,19 +395,23 @@
   <!-- PARTNERSHIP TIERS -->
   <section class="section tiers-section">
     <div class="container">
-      <p class="section-label text-center reveal">Investment Tiers</p>
-      <h2 class="t-section text-center reveal mb-2xl">Choose Your <span class="c-pink">Level</span></h2>
+      <p class="section-label text-center reveal">Partnership Packages</p>
+      <h2 class="t-section text-center reveal mb-2xl">Choose Your <span class="c-pink">Package</span></h2>
       <div class="grid grid-3">
-        <!-- Community Ally -->
-        <div class="card tier-card reveal delay-1">
+        <!-- Magic Maker -->
+        <div class="card card--featured tier-card reveal delay-1">
           <div class="card-gradient-bar"></div>
-          <p class="tier-name">Community Ally</p>
-          <p class="tier-price">$5,000</p>
+          <span class="badge badge--pink" style="margin-bottom: var(--space-md);">Recommended</span>
+          <p class="tier-name">Magic Maker</p>
+          <p class="tier-price">$25,000</p>
           <ul>
-            <li>Logo on event materials</li>
-            <li>Social media mention</li>
-            <li>Community partner recognition</li>
-            <li>Event access passes</li>
+            <li>Primary wall naming</li>
+            <li>Logo integrated into mural</li>
+            <li>Featured in press release</li>
+            <li>VIP reveal event access</li>
+            <li>Social media campaign (10+ posts)</li>
+            <li>Professional photo/video package</li>
+            <li>First right of refusal for 2027</li>
           </ul>
         </div>
         <!-- Culture Partner -->
@@ -393,22 +427,69 @@
             <li>Partner spotlight content</li>
           </ul>
         </div>
-        <!-- Magic Maker -->
-        <div class="card card--featured tier-card reveal delay-3">
+        <!-- Community Ally -->
+        <div class="card tier-card reveal delay-3">
           <div class="card-gradient-bar"></div>
-          <span class="badge badge--pink" style="margin-bottom: var(--space-md);">Most Popular</span>
-          <p class="tier-name">Magic Maker</p>
-          <p class="tier-price">$25,000</p>
+          <p class="tier-name">Community Ally</p>
+          <p class="tier-price">$5,000</p>
           <ul>
-            <li>Primary wall naming</li>
-            <li>Logo integrated into mural</li>
-            <li>Featured in press release</li>
-            <li>VIP reveal event access</li>
-            <li>Social media campaign (10+ posts)</li>
-            <li>Professional photo/video package</li>
-            <li>First right of refusal for 2027</li>
+            <li>Logo on event materials</li>
+            <li>Social media mention</li>
+            <li>Community partner recognition</li>
+            <li>Event access passes</li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILED TIER BREAKDOWN -->
+  <section class="section detail-section">
+    <div class="container">
+      <p class="section-label text-center reveal">What's Included</p>
+      <h2 class="t-section text-center reveal mb-2xl">The Full <span class="c-pink">Breakdown</span></h2>
+      <div class="detail-grid">
+        <div class="detail-card featured reveal delay-1">
+          <h3>Magic Maker</h3>
+          <p class="price">$25,000</p>
+          <ul>
+            <li>Logo on all murals</li>
+            <li>Featured in all press</li>
+            <li>10+ social posts</li>
+            <li>VIP event access</li>
+            <li>Photo/video package</li>
+            <li>Content rights</li>
+            <li>Category exclusivity all cities</li>
+            <li>First right of refusal 2027</li>
+          </ul>
+        </div>
+        <div class="detail-card reveal delay-2">
+          <h3>Culture Partner</h3>
+          <p class="price">$15,000</p>
+          <ul>
+            <li>Logo on 3 city murals</li>
+            <li>Press inclusion</li>
+            <li>5+ social posts</li>
+            <li>Event access</li>
+            <li>Photo package</li>
+            <li>Content rights</li>
+            <li>Exclusivity in 3 cities</li>
+          </ul>
+        </div>
+        <div class="detail-card reveal delay-3">
+          <h3>Community Ally</h3>
+          <p class="price">$5,000</p>
+          <ul>
+            <li>Local event co-brand</li>
+            <li>Social mention</li>
+            <li>1 city photo package</li>
+            <li>Community recognition</li>
+            <li>Event passes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exclusivity-callout reveal">
+        <p>Limited to one brand per category per city. 8-10 cities in 2026. First come, first served.</p>
       </div>
     </div>
   </section>
@@ -542,16 +623,65 @@
       <p class="section-label reveal">Proven Results</p>
       <p class="denver-proof-stat reveal" data-counter="3" data-suffix="x">3x</p>
       <p class="denver-proof-sub reveal">foot traffic. One mural. One weekend.</p>
-      <a href="denver.html" class="btn btn--outline reveal">Read the Denver Story</a>
+      <blockquote class="denver-quote reveal">
+        "We've been here for 3 years, and this one mural made more people stop, talk, and share than any ad we've paid for."
+      </blockquote>
+      <p class="denver-attribution reveal">-- Fever Dream Vintage, Denver</p>
+      <div class="denver-sub-stats reveal">
+        <div class="denver-sub-stat">
+          <span class="value">Featured in Westword</span>
+          <span class="label">Press Coverage</span>
+        </div>
+        <div class="denver-sub-stat">
+          <span class="value">4 partners for 2026</span>
+          <span class="label">Direct Leads</span>
+        </div>
+        <div class="denver-sub-stat">
+          <span class="value">2-hour reveal event</span>
+          <span class="label">Community Activation</span>
+        </div>
+      </div>
+      <div style="margin-top: var(--space-xl);">
+        <a href="denver.html" class="btn btn--outline reveal">Read the Denver Story</a>
+        <a href="impact.html" class="btn btn--outline reveal" style="margin-left: var(--space-md);">See the full impact data</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT HAPPENS NEXT -->
+  <section class="section steps-section">
+    <div class="container">
+      <p class="section-label text-center reveal">How It Works</p>
+      <h2 class="t-section text-center reveal mb-2xl">What Happens <span class="c-pink">Next</span></h2>
+      <div class="grid grid-3">
+        <div class="card step-card reveal delay-1">
+          <p class="step-number">01</p>
+          <h3 class="t-card-title">We Chat</h3>
+          <p class="t-body" style="color: var(--white-muted); font-weight: 300;">15-minute intro call to learn about your brand goals and how Spraycation fits.</p>
+        </div>
+        <div class="card step-card reveal delay-2">
+          <p class="step-number">02</p>
+          <h3 class="t-card-title">Pick Your Package</h3>
+          <p class="t-body" style="color: var(--white-muted); font-weight: 300;">Choose the tier and cities that match your brand's reach and budget.</p>
+        </div>
+        <div class="card step-card reveal delay-3">
+          <p class="step-number">03</p>
+          <h3 class="t-card-title">We Make Magic</h3>
+          <p class="t-body" style="color: var(--white-muted); font-weight: 300;">Your brand joins the tour. Murals go up, content rolls out, community shows up.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="section partner-cta">
     <div class="container">
-      <h2 class="t-section reveal">Ready to Put Your Brand<br><span class="c-gradient">On The Wall?</span></h2>
-      <p class="t-body-lg c-muted reveal" style="max-width: 500px; margin: var(--space-lg) auto var(--space-xl);">Let's talk tiers, cities, and impact. Your wall is waiting.</p>
-      <a href="mailto:spraythefuture@gmail.com?subject=Partnership%20Inquiry" class="btn btn--primary reveal">Let's Talk</a>
+      <h2 class="t-section reveal">Ready to Put Your Brand <span class="c-gradient">On The Wall?</span></h2>
+      <p class="t-body-lg c-muted reveal" style="max-width: 600px; margin: var(--space-lg) auto var(--space-xl);">Let's talk about partnership packages, city selection, and what your brand can expect.</p>
+      <div class="reveal">
+        <a href="mailto:partnerships@spraycationmuraltour.com?subject=Partnership%20Inquiry" class="btn btn--primary">Let's Talk</a>
+        <a href="impact.html" class="btn btn--outline" style="margin-left: var(--space-md);">Or explore our impact data</a>
+      </div>
     </div>
   </section>
 
@@ -599,6 +729,12 @@
 
       // Stagger pipeline categories
       staggerReveal('.pipeline-cat', '.pipeline-section', { stagger: 0.08, y: 20 });
+
+      // Stagger detail cards
+      staggerReveal('.detail-card', '.detail-section', { stagger: 0.2 });
+
+      // Stagger step cards
+      staggerReveal('.step-card', '.steps-section', { stagger: 0.2 });
 
       // Hero parallax
       heroParallax('.hero-content', '.partner-hero');
