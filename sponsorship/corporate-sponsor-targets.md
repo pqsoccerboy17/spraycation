@@ -14,6 +14,7 @@
 | Red Bull | Beverage | HIGH | Previous Zuzu collaborator, supports arts/culture |
 | Adobe | Tech/Media | MEDIUM | Creative tools, supports artists, community programs |
 | Bumble | Women/Empowerment | MEDIUM | Women-first brand, community events |
+| H-E-B | Grocery/Community | HIGH | San Antonio HQ, legendary TX community investment, massive marketing budget |
 
 ### Culture Partner Tier ($15,000)
 
@@ -27,6 +28,10 @@
 | GoPro | Tech/Media | MEDIUM | Action content, creator sponsorship programs |
 | Converse | Lifestyle | MEDIUM | Art community support, All Stars program |
 | Aerie | Women/Empowerment | MEDIUM | Body positivity, empowerment messaging |
+| Yeti | Lifestyle | HIGH | Austin HQ, $1.6B company, custom drinkware collab + tour activation |
+| Tito's Handmade Vodka | Beverage | HIGH | Austin-born, massive "Love, Tito's" community giving program |
+| Kendra Scott | Women/Empowerment | HIGH | Austin-born, women's empowerment DNA, "Kendra Cares" philanthropy |
+| Whole Foods | Lifestyle | MEDIUM | Austin HQ, community arts programs, "Whole Cities Foundation" |
 
 ### Community Ally Tier ($5,000)
 
@@ -40,7 +45,8 @@
 | Dr. Bronner's | Lifestyle | MEDIUM | Values-driven brand, community focus |
 | Dick Blick (local stores) | Paint/Supplies | MEDIUM | Local store partnerships per city |
 | Topo Chico | Beverage | MEDIUM | Event beverage, Latin-inspired brand |
-| Yeti | Lifestyle | MEDIUM | Outdoor/adventure, premium positioning |
+| Deep Eddy Vodka | Beverage | MEDIUM | Austin-born spirits brand, lifestyle/events focus |
+| Austin FC | Sports/Community | MEDIUM | Austin's MLS team, community murals, local pride |
 | Hydro Flask | Lifestyle | MEDIUM | Outdoor/adventure, sustainability focus |
 | Clif Bar | Food | MEDIUM | Adventure/outdoor alignment, community values |
 
