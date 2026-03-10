@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 Planning -- SPRAYCATION</title>
+  <meta name="description" content="SPRAYCATION 2026 outreach command center. Track brand targets, grant deadlines, and deliverables.">
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <style>
+    /* =============================================
+       PLANNING PAGE -- Page-Specific Styles
+       ============================================= */
+
+    /* --- HERO --- */
+    .planning-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(255,45,120,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 40%, rgba(52,82,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .planning-hero .hero-accent {
+      display: block;
+      margin-top: var(--space-lg);
+      background: var(--gradient-energy);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .planning-hero .hero-subtitle {
+      margin-top: var(--space-lg);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* --- QUICK ACTIONS --- */
+    .quick-actions-section {
+      background: var(--charcoal);
+    }
+    .quick-actions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: var(--space-xl);
+    }
+    .quick-item {
+      background: var(--charcoal-light);
+      border-left: 4px solid var(--hot-pink);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 20px;
+      transition: transform var(--duration-med) var(--ease-out),
+                  box-shadow var(--duration-med),
+                  padding-left var(--duration-med);
+      cursor: default;
+    }
+    .quick-item:hover {
+      transform: translateX(6px);
+      box-shadow: -4px 0 20px rgba(255,45,120,0.25);
+      padding-left: 28px;
+    }
+    .quick-item-brand {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--white);
+      min-width: 140px;
+    }
+    .quick-item-action {
+      font-size: 0.9rem;
+      color: var(--white-muted);
+      flex: 1;
+      min-width: 200px;
+      font-weight: 300;
+    }
+    .quick-item-tier {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--white-faint);
+      color: var(--yellow);
+      white-space: nowrap;
+    }
+    .quick-item-copy {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border: 1px solid var(--hot-pink);
+      border-radius: 30px;
+      background: transparent;
+      color: var(--hot-pink);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-spring);
+      white-space: nowrap;
+    }
+    .quick-item-copy:hover {
+      background: var(--hot-pink);
+      color: var(--white);
+      transform: scale(1.05);
+    }
+    .quick-item-copy.copied {
+      border-color: #4CAF50;
+      background: rgba(76,175,80,0.12);
+      color: #4CAF50;
+    }
+
+    /* --- FILTER BAR --- */
+    .outreach-section {
+      background: var(--black);
+    }
+    .filter-bar {
+      margin-top: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .filter-row-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+      min-width: 70px;
+    }
+    .filter-pill {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--white-faint);
+      background: transparent;
+      color: var(--white-muted);
+      cursor: pointer;
+      transition: all var(--duration-fast);
+      white-space: nowrap;
+    }
+    .filter-pill:hover {
+      border-color: var(--hot-pink);
+      color: var(--white);
+    }
+    .filter-pill.active {
+      background: var(--hot-pink);
+      border-color: var(--hot-pink);
+      color: var(--white);
+    }
+    .results-count {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      margin-bottom: var(--space-lg);
+    }
+
+    /* --- BRAND CARDS --- */
+    .brand-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+    @media (min-width: 640px) {
+      .brand-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .brand-cards-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .brand-card {
+      background: var(--charcoal-light);
+      border: 1px solid var(--white-faint);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow var(--duration-med), border-color var(--duration-fast);
+    }
+    .brand-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      border-color: rgba(255,45,120,0.2);
+    }
+    .brand-card-header {
+      padding: 20px 20px 16px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .brand-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .brand-card-name {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .brand-card-amount {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--yellow);
+      white-space: nowrap;
+    }
+    .brand-card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .brand-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+    .brand-badge.cat-badge {
+      border-color: rgba(255,255,255,0.15);
+      color: var(--white-muted);
+    }
+    .brand-badge.priority-high {
+      border-color: var(--hot-pink);
+      color: var(--hot-pink);
+    }
+    .brand-badge.priority-medium {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+    .brand-badge.status-lead { border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); }
+    .brand-badge.status-contacted { border-color: #64B5F6; color: #64B5F6; }
+    .brand-badge.status-in-kind { border-color: #81C784; color: #81C784; }
+    .brand-badge.status-proposal-sent { border-color: #FFB74D; color: #FFB74D; }
+    .brand-badge.status-confirmed { border-color: #4CAF50; color: #4CAF50; }
+    .brand-card-rationale {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+    .brand-card-expand-icon {
+      display: inline-block;
+      font-size: 0.65rem;
+      color: var(--hot-pink);
+      margin-left: 4px;
+      transition: transform var(--duration-med) var(--ease-out);
+    }
+    .brand-card.expanded .brand-card-expand-icon {
+      transform: rotate(180deg);
+    }
+    .brand-card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .brand-card.expanded .brand-card-body {
+      max-height: 600px;
+    }
+    .brand-card-body-inner {
+      padding: 0 20px 20px;
+      border-top: 1px solid var(--white-faint);
+      padding-top: var(--space-md);
+    }
+    .brand-detail-row { margin-bottom: 12px; }
+    .brand-detail-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--hot-pink);
+      margin-bottom: 4px;
+    }
+    .brand-detail-value {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      line-height: 1.4;
+      font-weight: 300;
+    }
+    .brand-template-area {
+      width: 100%;
+      min-height: 120px;
+      background: var(--charcoal);
+      border: 1px solid var(--white-faint);
+      border-radius: 8px;
+      color: var(--white-muted);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      padding: 12px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .brand-template-area:focus {
+      outline: none;
+      border-color: var(--hot-pink);
+    }
+    .brand-copy-btn {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      margin-top: 8px;
+      border: 1px solid var(--hot-pink);
+      border-radius: 30px;
+      background: transparent;
+      color: var(--hot-pink);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-spring);
+    }
+    .brand-copy-btn:hover {
+      background: var(--hot-pink);
+      color: var(--white);
+      transform: scale(1.05);
+    }
+    .brand-copy-btn.copied {
+      border-color: #4CAF50;
+      background: rgba(76,175,80,0.12);
+      color: #4CAF50;
+    }
+
+    /* --- GRANT TRACKER --- */
+    .grants-section {
+      background: var(--charcoal);
+    }
+    .grant-list {
+      margin-top: var(--space-xl);
+    }
+    .grant-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--white-faint);
+    }
+    .grant-name {
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--white);
+      flex: 1;
+      min-width: 200px;
+    }
+    .grant-amount {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--yellow);
+    }
+    .grant-date {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      min-width: 140px;
+      font-weight: 300;
+    }
+    .grant-status-badge {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .grant-status-badge.urgent {
+      background: var(--hot-pink);
+      color: var(--white);
+      animation: pulse-urgency 2s ease-in-out infinite;
+    }
+    .grant-status-badge.rolling {
+      background: var(--white-faint);
+      color: var(--white-muted);
+    }
+    .grant-status-badge.upcoming {
+      background: var(--yellow);
+      color: var(--black);
+    }
+    @keyframes pulse-urgency {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .grant-countdown {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .grant-countdown.countdown-urgent { color: var(--hot-pink); animation: pulse-urgency 2s ease-in-out infinite; }
+    .grant-countdown.countdown-soon { color: var(--yellow); }
+    .grant-countdown.countdown-ok { color: var(--white-muted); }
+    .grant-countdown.countdown-rolling { color: rgba(255,255,255,0.35); }
+    .grant-notes {
+      width: 100%;
+      font-size: 0.82rem;
+      color: var(--white-muted);
+      font-weight: 300;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+    .grant-link {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--hot-pink);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--duration-fast);
+    }
+    .grant-link:hover {
+      border-bottom-color: var(--hot-pink);
+    }
+
+    /* --- WRAP PROGRESS --- */
+    .wrap-section {
+      background: var(--charcoal-light);
+    }
+    .progress-bar-container {
+      background: var(--charcoal);
+      border-radius: 30px;
+      height: 12px;
+      margin: var(--space-lg) 0 var(--space-xl);
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0;
+      background: var(--gradient-brand);
+      border-radius: 30px;
+      transition: width 1.5s var(--ease-out);
+    }
+    .progress-bar-fill.animate {
+      width: 28.57%; /* 2/7 */
+    }
+    .progress-label {
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+    }
+    .deliverable-list { list-style: none; }
+    .deliverable-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--white-faint);
+    }
+    .deliverable-check {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      border: 2px solid var(--white-faint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+    }
+    .deliverable-check.draft { border-color: var(--yellow); color: var(--yellow); }
+    .deliverable-check.done { border-color: #4CAF50; background: rgba(76,175,80,0.12); color: #4CAF50; }
+    .deliverable-check.not-started { border-color: var(--white-faint); }
+    .deliverable-name {
+      font-size: 1rem;
+      flex: 1;
+      color: var(--white-soft);
+      font-weight: 400;
+    }
+    .deliverable-status {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .deliverable-status.not-started { background: var(--white-faint); color: rgba(255,255,255,0.4); }
+    .deliverable-status.draft { background: rgba(255,225,53,0.15); color: var(--yellow); }
+    .deliverable-status.complete { background: rgba(76,175,80,0.15); color: #4CAF50; }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">SPRAYCATION</a>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="cities.html">Cities</a>
+      <a href="denver.html">Denver Story</a>
+      <a href="impact.html">Impact</a>
+      <a href="partnerships.html">Partner</a>
+      <a href="planning.html" class="active">2026 Planning</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Let's Talk</a>
+    </div>
+  </nav>
+  <div class="nav-overlay">
+    <a href="index.html">Home</a>
+    <a href="cities.html">Cities</a>
+    <a href="denver.html">Denver Story</a>
+    <a href="impact.html">Impact</a>
+    <a href="partnerships.html">Partner</a>
+    <a href="planning.html">2026 Planning</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Let's Talk</a>
+  </div>
+
+  <!-- ====== 1. HERO ====== -->
+  <section class="planning-hero page-hero section--dark" id="planning-hero">
+    <div class="hero-content">
+      <h1 class="t-hero">2026<br>PLANNING</h1>
+      <span class="t-accent hero-accent">Your Outreach Command Center</span>
+      <p class="t-body-lg hero-subtitle c-muted">Track brands, grants, and deliverables -- everything you need to run outreach for the 2026 tour.</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- ====== 2. QUICK ACTIONS ====== -->
+  <section class="quick-actions-section section" id="quick-actions">
+    <div class="container">
+      <p class="section-label reveal">Outreach Command Center</p>
+      <h2 class="t-section reveal mb-lg">Who to Contact <span class="c-pink">Next</span></h2>
+      <div class="quick-actions-list" id="quickActionsList">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- DRIP DIVIDER -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-g1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FF2D78"/>
+          <stop offset="100%" style="stop-color:#3452FF"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-g1)" d="M0,0 L0,40 Q60,38 120,40 Q150,42 180,55 Q195,70 210,55 Q240,40 360,42 Q420,44 480,40 Q540,36 600,40 Q630,50 660,65 Q675,75 690,65 Q720,45 840,42 Q900,40 960,44 Q990,56 1020,68 Q1035,78 1050,68 Q1080,48 1200,42 Q1260,40 1320,44 Q1380,46 1440,40 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- ====== 3. OUTREACH PIPELINE ====== -->
+  <section class="outreach-section section" id="outreach-pipeline">
+    <div class="container">
+      <p class="section-label reveal">Full Pipeline</p>
+      <h2 class="t-section reveal mb-lg">Brand <span class="c-pink">Targets</span></h2>
+      <div class="filter-bar reveal" id="filterBar">
+        <div class="filter-row">
+          <span class="filter-row-label">Category</span>
+          <button class="filter-pill active" data-filter="category" data-value="all">All</button>
+          <button class="filter-pill" data-filter="category" data-value="paint">Paint</button>
+          <button class="filter-pill" data-filter="category" data-value="beverage">Beverage</button>
+          <button class="filter-pill" data-filter="category" data-value="lifestyle">Lifestyle</button>
+          <button class="filter-pill" data-filter="category" data-value="vehicle">Vehicle</button>
+          <button class="filter-pill" data-filter="category" data-value="tech">Tech</button>
+          <button class="filter-pill" data-filter="category" data-value="women">Women</button>
+          <button class="filter-pill" data-filter="category" data-value="food">Food</button>
+          <button class="filter-pill" data-filter="category" data-value="arts">Arts</button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-row-label">Tier</span>
+          <button class="filter-pill active" data-filter="tier" data-value="all">All</button>
+          <button class="filter-pill" data-filter="tier" data-value="magic-maker">Magic Maker</button>
+          <button class="filter-pill" data-filter="tier" data-value="culture-partner">Culture Partner</button>
+          <button class="filter-pill" data-filter="tier" data-value="community-ally">Community Ally</button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-row-label">Priority</span>
+          <button class="filter-pill active" data-filter="priority" data-value="all">All</button>
+          <button class="filter-pill" data-filter="priority" data-value="high">High</button>
+          <button class="filter-pill" data-filter="priority" data-value="medium">Medium</button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-row-label">Status</span>
+          <button class="filter-pill active" data-filter="status" data-value="all">All</button>
+          <button class="filter-pill" data-filter="status" data-value="lead">Lead</button>
+          <button class="filter-pill" data-filter="status" data-value="contacted">Contacted</button>
+          <button class="filter-pill" data-filter="status" data-value="in-kind">In-Kind</button>
+          <button class="filter-pill" data-filter="status" data-value="proposal-sent">Proposal Sent</button>
+          <button class="filter-pill" data-filter="status" data-value="confirmed">Confirmed</button>
+        </div>
+      </div>
+      <div class="results-count reveal" id="resultsCount">Showing 32 of 32 brands</div>
+      <div class="brand-cards-grid" id="brandCardsGrid">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- DRIP DIVIDER -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-g2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#3452FF"/>
+          <stop offset="50%" style="stop-color:#FFE135"/>
+          <stop offset="100%" style="stop-color:#FF2D78"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-g2)" d="M0,0 L0,35 Q80,38 160,35 Q200,32 240,48 Q260,62 280,48 Q320,30 480,35 Q560,38 640,35 Q680,32 720,52 Q740,68 760,52 Q800,32 960,36 Q1040,38 1120,35 Q1160,32 1200,50 Q1220,65 1240,50 Q1280,32 1440,36 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- ====== 4. GRANT TRACKER ====== -->
+  <section class="grants-section section" id="grants">
+    <div class="container">
+      <p class="section-label reveal">Funding Opportunities</p>
+      <h2 class="t-section reveal mb-lg">Grant <span class="c-pink">Deadlines</span></h2>
+      <div class="grant-list" id="grantList">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- DRIP DIVIDER -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-g3" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FF2D78"/>
+          <stop offset="100%" style="stop-color:#FFE135"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-g3)" d="M0,0 L0,30 Q100,34 200,30 Q250,28 300,45 Q320,58 340,45 Q400,28 560,32 Q640,34 720,30 Q770,28 820,50 Q840,65 860,50 Q920,28 1080,32 Q1160,34 1240,30 Q1290,28 1340,42 Q1360,55 1380,42 Q1410,30 1440,32 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- ====== 5. WRAP PROGRESS ====== -->
+  <section class="wrap-section section" id="progress">
+    <div class="container">
+      <p class="section-label reveal">Internal Tracker</p>
+      <h2 class="t-section reveal mb-lg">2025 Wrap <span class="c-pink">Deliverables</span></h2>
+      <div class="progress-label reveal">2 of 7 items have drafts</div>
+      <div class="progress-bar-container reveal">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+      <ul class="deliverable-list">
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check not-started"></div>
+          <div class="deliverable-name">Tour Wrap Film</div>
+          <div class="deliverable-status not-started">Not Started</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check not-started"></div>
+          <div class="deliverable-name">Short Trailers / Clips</div>
+          <div class="deliverable-status not-started">Not Started</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check not-started"></div>
+          <div class="deliverable-name">Photo Gallery Set</div>
+          <div class="deliverable-status not-started">Not Started</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check draft">~</div>
+          <div class="deliverable-name">Case Study Deck</div>
+          <div class="deliverable-status draft">Draft Exists</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check not-started"></div>
+          <div class="deliverable-name">City Package Folders</div>
+          <div class="deliverable-status not-started">Not Started</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check draft">~</div>
+          <div class="deliverable-name">Partnership One-Pager</div>
+          <div class="deliverable-status draft">Draft Complete</div>
+        </li>
+        <li class="deliverable-item reveal">
+          <div class="deliverable-check not-started"></div>
+          <div class="deliverable-name">2026 Route Preview</div>
+          <div class="deliverable-status not-started">Not Started</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <div class="footer-cta">
+        <h2>Let's create a cultural moment together.</h2>
+        <a href="contact.html" class="btn btn--primary">Start a Conversation</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/spraycationmuraltour" target="_blank">Instagram</a>
+        <a href="https://instagram.com/zuzubee" target="_blank">@zuzubee</a>
+        <a href="mailto:spraythefuture@gmail.com">Email</a>
+        <a href="https://ihavepinkhair.com/spraycation" target="_blank">Website</a>
+      </div>
+      <div class="footer-bottom">
+        <p class="t-small">&copy; 2026 Spraycation Mural Tour. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== GRAIN + SPARKLES + TRANSITION ====== -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle sparkle--sm" aria-hidden="true"></div>
+  <div class="sparkle sparkle--lg" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle sparkle--sm" aria-hidden="true"></div>
+  <div class="sparkle sparkle--lg" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle sparkle--sm" aria-hidden="true"></div>
+  <div class="sparkle sparkle--lg" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="page-transition" aria-hidden="true"><div class="drip-curtain"></div></div>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="js/shared.js"></script>
+
+  <!-- ====== DATA ====== -->
+  <script>
+    /* ============================================================
+       BRANDS -- 32 target brands for 2026 outreach
+       To edit: change any field below and save. The page updates automatically.
+       Fields: name, category, tier, tierAmount, priority, status, warmth,
+               nextStep, rationale, approach, contactName, contactEmail, notes
+       ============================================================ */
+    var BRANDS = [
+      // --- Magic Maker tier ($25K) ---
+      { name: 'Montana Cans', category: 'paint', tier: 'magic-maker', tierAmount: 25000, priority: 'high', status: 'lead', warmth: 'cold', nextStep: 'Send cold outreach to artist relations team', rationale: 'Premium spray paint brand -- natural product alignment with a traveling mural tour', approach: 'Position as a multi-city product showcase', contactName: '', contactEmail: '', notes: 'Research their artist sponsorship program first' },
+      { name: 'Liquitex', category: 'paint', tier: 'magic-maker', tierAmount: 25000, priority: 'high', status: 'lead', warmth: 'cold', nextStep: 'Identify artist program contact', rationale: 'Professional-grade paint brand with established artist sponsorship programs', approach: 'Emphasize content creation and product demos at each stop', contactName: '', contactEmail: '', notes: 'Part of ColArt group -- check their ambassador program' },
+      { name: 'Winnebago', category: 'vehicle', tier: 'magic-maker', tierAmount: 25000, priority: 'high', status: 'lead', warmth: 'cold', nextStep: 'Research marketing/partnerships team', rationale: 'Iconic road trip brand -- SPRAYCATION is literally a road trip mural tour', approach: 'Offer vehicle wrap, route documentation, adventure content', contactName: '', contactEmail: '', notes: 'Strong lifestyle content angle' },
+      { name: 'REI Co-op', category: 'vehicle', tier: 'magic-maker', tierAmount: 25000, priority: 'high', status: 'lead', warmth: 'cold', nextStep: 'Connect through community partnerships team', rationale: 'Values-driven outdoor brand that invests in community and creative culture', approach: 'Pitch the adventure + community aspect of the tour', contactName: '', contactEmail: '', notes: 'Check REI Co-op Path Ahead Ventures and community grants' },
+      { name: 'Patagonia', category: 'lifestyle', tier: 'magic-maker', tierAmount: 25000, priority: 'high', status: 'lead', warmth: 'cold', nextStep: 'Apply through environmental grants program', rationale: 'Environmental and community values alignment -- especially if AWAW angle works', approach: 'Emphasize environmental mural themes and community impact', contactName: '', contactEmail: '', notes: 'Patagonia Action Works -- environmental focus required' },
+      { name: 'Red Bull', category: 'beverage', tier: 'magic-maker', tierAmount: 25000, priority: 'high', status: 'lead', warmth: 'warm', nextStep: 'Leverage previous collaboration -- send warm follow-up', rationale: 'Previous Zuzu collaborator -- proven relationship with the artist', approach: 'Reference past work, pitch expanded multi-city activation', contactName: '', contactEmail: '', notes: 'Zuzu has existing Red Bull relationship -- high conversion potential' },
+      { name: 'Adobe', category: 'tech', tier: 'magic-maker', tierAmount: 25000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Research Adobe for All / creative community programs', rationale: 'Creative tools company that supports artist communities', approach: 'Offer digital content series, behind-the-scenes creative process', contactName: '', contactEmail: '', notes: 'Check Adobe Creative Residency and community programs' },
+      { name: 'Bumble', category: 'women', tier: 'magic-maker', tierAmount: 25000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Research Bumble Fund and community partnerships', rationale: 'Female-empowerment brand -- strong values alignment with female-led tour', approach: 'Pitch the women-in-art angle and community activation events', contactName: '', contactEmail: '', notes: 'Bumble Fund supports women entrepreneurs' },
+
+      // --- Culture Partner tier ($15K) ---
+      { name: 'Rust-Oleum', category: 'paint', tier: 'culture-partner', tierAmount: 15000, priority: 'high', status: 'lead', warmth: 'cold', nextStep: 'Contact their spray paint / creator marketing team', rationale: 'Major spray paint manufacturer -- direct product-to-project alignment', approach: 'Product sponsorship + content creation at each mural', contactName: '', contactEmail: '', notes: 'Their Painter\'s Touch and specialty lines are relevant' },
+      { name: 'Blick Art Materials', category: 'paint', tier: 'culture-partner', tierAmount: 15000, priority: 'high', status: 'lead', warmth: 'cold', nextStep: 'Contact community / artist partnerships team', rationale: 'Largest art supply retailer -- natural supply partner for a touring muralist', approach: 'In-store events in tour cities plus supply sponsorship', contactName: '', contactEmail: '', notes: 'Check if Blick stores exist in target 2026 cities' },
+      { name: 'Subaru', category: 'vehicle', tier: 'culture-partner', tierAmount: 15000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Research Subaru Loves programs', rationale: 'Adventure and community-values brand with strong outdoor culture', approach: 'Vehicle partnership for the tour route', contactName: '', contactEmail: '', notes: 'Subaru Love Promise -- community impact focus' },
+      { name: 'Liquid Death', category: 'beverage', tier: 'culture-partner', tierAmount: 15000, priority: 'high', status: 'lead', warmth: 'cold', nextStep: 'Pitch through their creator partnerships', rationale: 'Edgy, art-forward brand that sponsors creators and events', approach: 'On-site activation at mural reveals -- fits their event culture', contactName: '', contactEmail: '', notes: 'Known for supporting independent creators and events' },
+      { name: 'Vans', category: 'lifestyle', tier: 'culture-partner', tierAmount: 15000, priority: 'high', status: 'lead', warmth: 'cold', nextStep: 'Research Vans Custom Culture and artist programs', rationale: 'Deep roots in art, music, and street culture -- perfect brand alignment', approach: 'Custom shoe collab + mural reveal event co-hosting', contactName: '', contactEmail: '', notes: 'Check Vans Custom Culture program' },
+      { name: 'GoPro', category: 'tech', tier: 'culture-partner', tierAmount: 15000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Apply to GoPro creator program', rationale: 'Action camera brand -- BTS mural painting is visually compelling content', approach: 'Timelapse and POV content series from each mural', contactName: '', contactEmail: '', notes: 'GoPro Awards and creator program' },
+      { name: 'Converse', category: 'lifestyle', tier: 'culture-partner', tierAmount: 15000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Research Converse All Stars creator program', rationale: 'Art and street culture brand with artist collaboration history', approach: 'Limited edition shoe or apparel collab', contactName: '', contactEmail: '', notes: 'Check Converse All Stars and community programs' },
+      { name: 'Aerie', category: 'women', tier: 'culture-partner', tierAmount: 15000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Research Aerie Real program partnerships', rationale: 'Female empowerment brand targeting creative, confident women', approach: 'Co-branded mural events celebrating women in art', contactName: '', contactEmail: '', notes: 'Part of American Eagle -- check their community grants' },
+
+      // --- Community Ally tier ($5K) ---
+      { name: 'Athletic Brewing', category: 'beverage', tier: 'community-ally', tierAmount: 5000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Contact events/partnerships team', rationale: 'Non-alcoholic craft brewery -- inclusive event vibe for all-ages mural reveals', approach: 'Beverage partner for reveal events', contactName: '', contactEmail: '', notes: 'Growing brand with event sponsorship budget' },
+      { name: 'Spray Planet', category: 'paint', tier: 'community-ally', tierAmount: 5000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Contact artist relations', rationale: 'Spray paint retailer focused on street art and mural community', approach: 'Supply partnership and artist feature', contactName: '', contactEmail: '', notes: 'Niche but highly relevant audience' },
+      { name: 'Best Day Brewing', category: 'beverage', tier: 'community-ally', tierAmount: 5000, priority: 'high', status: 'in-kind', warmth: 'warm', nextStep: 'Propose expanding from Denver in-kind to full paid tour partnership', rationale: 'Already provided in-kind NA beverages for Denver -- warm relationship', approach: 'Upgrade conversation from in-kind to paid sponsorship', contactName: '', contactEmail: '', notes: 'Provided NA libations for Denver 2025 -- expand to full tour' },
+      { name: 'Meow Wolf', category: 'arts', tier: 'community-ally', tierAmount: 5000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Research cross-promotion opportunities', rationale: 'Immersive art company -- strong audience overlap with SPRAYCATION fans', approach: 'Cross-promotion in cities where Meow Wolf has locations', contactName: '', contactEmail: '', notes: 'Locations in Denver, Santa Fe, Houston, Las Vegas' },
+      { name: 'Golden Artist Colors', category: 'paint', tier: 'community-ally', tierAmount: 5000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Contact artist sponsorship program', rationale: 'Premium paint manufacturer with artist support programs', approach: 'Product sponsorship and artist spotlight', contactName: '', contactEmail: '', notes: 'Known for their Golden Foundation grants' },
+      { name: 'Dr. Bronners', category: 'lifestyle', tier: 'community-ally', tierAmount: 5000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Research their activism and community programs', rationale: 'Values-driven brand that supports activism and community projects', approach: 'Mission-aligned partnership around community beautification', contactName: '', contactEmail: '', notes: 'Strong social mission alignment' },
+      { name: 'Topo Chico', category: 'beverage', tier: 'community-ally', tierAmount: 5000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Contact through Molson Coors partnerships', rationale: 'Austin-rooted sparkling water brand -- local connection to Zuzu\'s home base', approach: 'On-site beverage partner for reveals', contactName: '', contactEmail: '', notes: 'Austin roots, now owned by Molson Coors' },
+      { name: 'Yeti', category: 'lifestyle', tier: 'community-ally', tierAmount: 5000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Research Yeti ambassador and creator programs', rationale: 'Austin-based outdoor lifestyle brand -- local connection and culture fit', approach: 'Custom SPRAYCATION drinkware, on-tour product placement', contactName: '', contactEmail: '', notes: 'Austin HQ -- possible local connection' },
+      { name: 'Hydro Flask', category: 'lifestyle', tier: 'community-ally', tierAmount: 5000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Research creator and community programs', rationale: 'Popular with creative/outdoor community -- practical tour partnership', approach: 'Custom flasks for crew and giveaways at reveals', contactName: '', contactEmail: '', notes: 'Good for merch/giveaway partnership' },
+      { name: 'Clif Bar', category: 'food', tier: 'community-ally', tierAmount: 5000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Research community grants and sponsorship', rationale: 'Adventure and sustainability brand -- on-the-road fuel for the tour', approach: 'On-tour fuel sponsor and event snack partner', contactName: '', contactEmail: '', notes: 'Check Clif Bar Foundation community grants' },
+
+      // --- Existing warm leads ---
+      { name: 'Loop', category: 'lifestyle', tier: 'community-ally', tierAmount: 5000, priority: 'high', status: 'confirmed', warmth: 'warm', nextStep: 'Renew for 2026 -- send updated partnership proposal', rationale: 'Confirmed 2025 partner (caps/product sponsor) -- proven relationship', approach: 'Renewal conversation with expanded 2026 scope', contactName: '', contactEmail: '', notes: 'Caps/product sponsor -- confirmed pre-2025' },
+      { name: 'Goose', category: 'beverage', tier: 'culture-partner', tierAmount: 15000, priority: 'high', status: 'proposal-sent', warmth: 'warm', nextStep: 'Follow up on proposal sent June 2025', rationale: 'Partnership proposal already sent -- needs follow-through', approach: 'Follow up with 2025 results and updated 2026 scope', contactName: '', contactEmail: '', notes: 'Proposal sent June 2025 -- follow up needed' },
+      { name: 'MSC', category: 'lifestyle', tier: 'culture-partner', tierAmount: 15000, priority: 'high', status: 'proposal-sent', warmth: 'warm', nextStep: 'Follow up on proposal sent June 2025', rationale: 'Partnership proposal already sent -- needs follow-through', approach: 'Follow up with 2025 results and updated 2026 scope', contactName: '', contactEmail: '', notes: 'Proposal sent June 2025 -- follow up needed' },
+      { name: 'Roku', category: 'tech', tier: 'culture-partner', tierAmount: 15000, priority: 'medium', status: 'lead', warmth: 'cold', nextStep: 'Develop proposal based on route alignment', rationale: 'Media/streaming company -- potential documentary or series angle', approach: 'Pitch a SPRAYCATION mini-series or behind-the-scenes content', contactName: '', contactEmail: '', notes: 'Mentioned in route alignment' },
+      { name: 'Zero Proof', category: 'beverage', tier: 'community-ally', tierAmount: 5000, priority: 'medium', status: 'contacted', warmth: 'warm', nextStep: 'Continue conversation -- propose 2026 expansion', rationale: 'Denver local brand ambassadors -- already in conversation', approach: 'Expand from Denver to full tour partnership', contactName: '', contactEmail: '', notes: 'Denver local brand ambassadors -- contacted July 2025' }
+    ];
+
+    /* ============================================================
+       GRANTS -- 8 funding opportunities with deadlines
+       ============================================================ */
+    var GRANTS = [
+      { name: 'Amber Grants for Women', amount: '$10,000', deadline: 'Rolling', deadlineDate: null, type: 'rolling', url: 'ambergrantsforwomen.com', notes: 'Monthly grants for women-owned businesses, including creative arts' },
+      { name: 'Anonymous Was a Woman (AWAW)', amount: 'Up to $20,000', deadline: 'April 7, 2026', deadlineDate: '2026-04-07', type: 'fixed', url: 'nyfa.org/awards-grants/anonymous-was-a-woman-environmental-art-grants/', notes: 'Environmental art focus required -- needs genuine environmental angle. Apply via Submittable (NYFA). ~2.9% acceptance rate.' },
+      { name: 'NEA Grants for Arts Projects', amount: 'Up to $100,000', deadline: 'July 9, 2026', deadlineDate: '2026-07-09', type: 'fixed', url: 'arts.gov/grants', notes: 'Requires 501(c)(3) or fiscal sponsor. 1:1 cost share/match required.' },
+      { name: 'Pollock-Krasner Foundation', amount: 'Up to $50,000', deadline: 'Rolling', deadlineDate: null, type: 'rolling', url: 'pkf.org', notes: 'Financial need basis. Rolling applications accepted year-round.' },
+      { name: 'Awesome Foundation', amount: '$1,000', deadline: 'Monthly', deadlineDate: null, type: 'rolling', url: 'awesomefoundation.org', notes: 'Micro-grant for awesome projects. Simple application.' },
+      { name: 'Colorado Creative Industries', amount: '$5,000 - $35,000', deadline: 'TBD', deadlineDate: null, type: 'rolling', url: 'coloradocreativeindustries.org', notes: 'Arts in Society Grant -- for community-engaged arts projects in Colorado.' },
+      { name: 'Burning Man Arts Grants', amount: 'Varies', deadline: 'TBD', deadlineDate: null, type: 'rolling', url: 'burningman.org/culture/burning-man-arts/grants/', notes: 'Zuzu has Burning Man community involvement -- natural fit.' },
+      { name: 'Barbara Deming Memorial Fund', amount: '$500 - $1,500', deadline: 'Twice yearly', deadlineDate: null, type: 'rolling', url: 'demingfund.org', notes: 'Grants for feminists in visual art and writing.' }
+    ];
+
+    /* ============================================================
+       EMAIL TEMPLATES -- cold and warm outreach
+       Edit the text below to customize outreach messaging.
+       Use {{BRAND}}, {{CONTACT}}, {{RATIONALE}} as placeholders.
+       ============================================================ */
+    var TEMPLATES = {
+      cold: 'Subject: SPRAYCATION 2026 -- Bringing {{BRAND}} into a Nationwide Mural Movement\n\nHi {{CONTACT}},\n\nI\'m Zuzu, a muralist and the founder of SPRAYCATION -- a traveling mural tour that turns blank walls into colorful, community-centered public art across the U.S.\n\nIn 2025, we painted 5 large-scale murals in 5 cities. One of those -- at Fever Dream Vintage in Denver -- generated 3x foot traffic and more local buzz than 3 years of traditional marketing. It was featured in Westword and turned a quiet storefront into a neighborhood destination.\n\nFor 2026, we\'re expanding to 8-10 cities nationwide and partnering with a select group of brands that value creativity, community, and authentic cultural impact.\n\nI think {{BRAND}} would be a great fit because {{RATIONALE}}.\n\nHere\'s what a partnership looks like:\n- Your brand integrated into large-scale public murals seen daily by thousands\n- Professional photo, video, and BTS content -- yours to use across channels\n- Authentic community engagement at mural reveal events in every city\n- Local and regional press coverage\n- Purpose-driven alignment with a movement people love\n\nI\'d love to share our 2025 case study and discuss how we could bring {{BRAND}} into the 2026 tour. Would you be open to a quick call?\n\nWarmly,\nZuzu\nSPRAYCATION Mural Tour\npartnerships@spraycationmuraltour.com\nihavepinkhair.com/spraycation\n@spraycationmuraltour',
+      warm: 'Subject: SPRAYCATION is back -- and bigger for 2026\n\nHi {{CONTACT}},\n\nI hope you\'re doing well! We connected during the 2025 SPRAYCATION tour and I wanted to share a quick update.\n\nWe\'re expanding the tour to 8-10 cities nationwide in 2026, and we\'re looking for partners who want to be part of this next chapter.\n\nSince we last talked, here\'s what happened:\n- 5 murals painted across Denver, Portland, Vancouver, Boise, and Austin\n- 6,500+ miles traveled with an all-female creative team\n- 3x foot traffic increase at our Denver activation\n- Featured in Westword and EASTside Magazine\n- \"You Are Magic\" became a recognized creative movement\n\nFor 2026, we have partnership tiers starting at $5K (Community Ally) up to $25K (Magic Maker).\n\nWould love to catch up and explore how we could work together. What does your schedule look like?\n\nWarmly,\nZuzu\nSPRAYCATION Mural Tour\npartnerships@spraycationmuraltour.com\nihavepinkhair.com/spraycation\n@spraycationmuraltour'
+    };
+  </script>
+
+  <!-- ====== PAGE LOGIC ====== -->
+  <script>
+    /* ==========================================================================
+       PLANNING PAGE -- Outreach tools, filters, grants, progress
+       All data in BRANDS/GRANTS/TEMPLATES is hardcoded project data,
+       not user input. DOM construction below is safe from XSS.
+       ========================================================================== */
+
+    // --- State ---
+    var activeFilters = { category: 'all', tier: 'all', priority: 'all', status: 'all' };
+    var expandedCardIndex = null;
+
+    // --- Utility ---
+    function formatTier(tier) {
+      return tier.split('-').map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(' ');
+    }
+    function formatStatus(status) {
+      return status.split('-').map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(' ');
+    }
+    function formatAmount(amount) {
+      return '$' + amount.toLocaleString();
+    }
+    function createEl(tag, className, text) {
+      var el = document.createElement(tag);
+      if (className) el.className = className;
+      if (text !== undefined) el.textContent = text;
+      return el;
+    }
+
+    // --- Copy to clipboard (with file:// fallback) ---
+    function copyToClipboard(text, btn) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+          showCopied(btn);
+        }).catch(function() {
+          fallbackCopy(text, btn);
+        });
+      } else {
+        fallbackCopy(text, btn);
+      }
+    }
+    function fallbackCopy(text, btn) {
+      var textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showCopied(btn);
+      } catch (e) {
+        btn.textContent = 'FAILED';
+      }
+      document.body.removeChild(textarea);
+    }
+    function showCopied(btn) {
+      var original = btn.textContent;
+      btn.textContent = 'COPIED';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 2000);
+    }
+
+    // --- Quick Actions: top 7 priority brands ---
+    function renderQuickActions() {
+      var container = document.getElementById('quickActionsList');
+      if (!container) return;
+
+      var statusOrder = { 'lead': 0, 'proposal-sent': 1, 'contacted': 2, 'in-kind': 3, 'confirmed': 4 };
+      var priorityOrder = { 'high': 0, 'medium': 1 };
+
+      var sorted = BRANDS.slice().sort(function(a, b) {
+        var pA = priorityOrder[a.priority] !== undefined ? priorityOrder[a.priority] : 9;
+        var pB = priorityOrder[b.priority] !== undefined ? priorityOrder[b.priority] : 9;
+        if (pA !== pB) return pA - pB;
+        var sA = statusOrder[a.status] !== undefined ? statusOrder[a.status] : 9;
+        var sB = statusOrder[b.status] !== undefined ? statusOrder[b.status] : 9;
+        return sA - sB;
+      });
+
+      var top7 = sorted.slice(0, 7);
+      container._templates = [];
+      while (container.firstChild) container.removeChild(container.firstChild);
+
+      top7.forEach(function(brand, i) {
+        var templateType = brand.warmth === 'warm' ? 'warm' : 'cold';
+        var template = TEMPLATES[templateType]
+          .replace(/\{\{BRAND\}\}/g, brand.name)
+          .replace(/\{\{CONTACT\}\}/g, brand.contactName || '[NAME]')
+          .replace(/\{\{RATIONALE\}\}/g, brand.rationale.toLowerCase());
+        container._templates.push(template);
+
+        var li = createEl('div', 'quick-item reveal');
+        li.appendChild(createEl('span', 'quick-item-brand', brand.name));
+        li.appendChild(createEl('span', 'quick-item-action', brand.nextStep));
+        li.appendChild(createEl('span', 'quick-item-tier', formatTier(brand.tier) + ' -- ' + formatAmount(brand.tierAmount)));
+
+        var btn = createEl('button', 'quick-item-copy', 'COPY EMAIL');
+        btn.addEventListener('click', (function(idx) {
+          return function() { copyToClipboard(container._templates[idx], this); };
+        })(i));
+        li.appendChild(btn);
+
+        container.appendChild(li);
+      });
+    }
+
+    // --- Brand Cards ---
+    function getFilteredBrands() {
+      return BRANDS.filter(function(brand) {
+        if (activeFilters.category !== 'all' && brand.category !== activeFilters.category) return false;
+        if (activeFilters.tier !== 'all' && brand.tier !== activeFilters.tier) return false;
+        if (activeFilters.priority !== 'all' && brand.priority !== activeFilters.priority) return false;
+        if (activeFilters.status !== 'all' && brand.status !== activeFilters.status) return false;
+        return true;
+      });
+    }
+
+    function renderBrandCards() {
+      var grid = document.getElementById('brandCardsGrid');
+      var countEl = document.getElementById('resultsCount');
+      if (!grid) return;
+
+      var filtered = getFilteredBrands();
+      if (countEl) countEl.textContent = 'Showing ' + filtered.length + ' of ' + BRANDS.length + ' brands';
+      expandedCardIndex = null;
+      while (grid.firstChild) grid.removeChild(grid.firstChild);
+
+      filtered.forEach(function(brand, i) {
+        var templateType = brand.warmth === 'warm' ? 'warm' : 'cold';
+        var template = TEMPLATES[templateType]
+          .replace(/\{\{BRAND\}\}/g, brand.name)
+          .replace(/\{\{CONTACT\}\}/g, brand.contactName || '[NAME]')
+          .replace(/\{\{RATIONALE\}\}/g, brand.rationale.toLowerCase());
+
+        var card = createEl('div', 'brand-card');
+        card.setAttribute('data-card-index', i);
+
+        // Header
+        var header = createEl('div', 'brand-card-header');
+        header.addEventListener('click', function() { toggleCard(i); });
+
+        var top = createEl('div', 'brand-card-top');
+        top.appendChild(createEl('span', 'brand-card-name', brand.name));
+        top.appendChild(createEl('span', 'brand-card-amount', formatAmount(brand.tierAmount)));
+        header.appendChild(top);
+
+        var badges = createEl('div', 'brand-card-badges');
+        badges.appendChild(createEl('span', 'brand-badge cat-badge', brand.category));
+        badges.appendChild(createEl('span', 'brand-badge priority-' + brand.priority, brand.priority));
+        badges.appendChild(createEl('span', 'brand-badge status-' + brand.status, formatStatus(brand.status)));
+        header.appendChild(badges);
+
+        var rationale = createEl('div', 'brand-card-rationale');
+        rationale.textContent = brand.rationale + ' ';
+        var expandIcon = createEl('span', 'brand-card-expand-icon');
+        expandIcon.textContent = '\u25BC';
+        rationale.appendChild(expandIcon);
+        header.appendChild(rationale);
+        card.appendChild(header);
+
+        // Expandable body
+        var body = createEl('div', 'brand-card-body');
+        var bodyInner = createEl('div', 'brand-card-body-inner');
+
+        var nextStepRow = createEl('div', 'brand-detail-row');
+        nextStepRow.appendChild(createEl('div', 'brand-detail-label', 'NEXT STEP'));
+        nextStepRow.appendChild(createEl('div', 'brand-detail-value', brand.nextStep));
+        bodyInner.appendChild(nextStepRow);
+
+        var notesRow = createEl('div', 'brand-detail-row');
+        notesRow.appendChild(createEl('div', 'brand-detail-label', 'NOTES'));
+        notesRow.appendChild(createEl('div', 'brand-detail-value', brand.notes));
+        bodyInner.appendChild(notesRow);
+
+        var templateRow = createEl('div', 'brand-detail-row');
+        templateRow.appendChild(createEl('div', 'brand-detail-label', 'EMAIL TEMPLATE (' + templateType.toUpperCase() + ')'));
+        var textarea = createEl('textarea', 'brand-template-area');
+        textarea.id = 'template-' + i;
+        textarea.value = template;
+        templateRow.appendChild(textarea);
+
+        var copyBtn = createEl('button', 'brand-copy-btn', 'COPY TEMPLATE');
+        (function(idx) {
+          copyBtn.addEventListener('click', function() {
+            var ta = document.getElementById('template-' + idx);
+            if (ta) copyToClipboard(ta.value, this);
+          });
+        })(i);
+        templateRow.appendChild(copyBtn);
+        bodyInner.appendChild(templateRow);
+        body.appendChild(bodyInner);
+        card.appendChild(body);
+        grid.appendChild(card);
+      });
+    }
+
+    // --- Accordion ---
+    function toggleCard(index) {
+      var allCards = document.querySelectorAll('.brand-card');
+      allCards.forEach(function(card) {
+        var cardIndex = parseInt(card.getAttribute('data-card-index'));
+        if (cardIndex === index) {
+          card.classList.toggle('expanded');
+          expandedCardIndex = card.classList.contains('expanded') ? index : null;
+        } else {
+          card.classList.remove('expanded');
+        }
+      });
+    }
+
+    // --- Filter handler ---
+    var filterBar = document.getElementById('filterBar');
+    if (filterBar) {
+      filterBar.addEventListener('click', function(e) {
+        var pill = e.target.closest('.filter-pill');
+        if (!pill) return;
+        var filterType = pill.getAttribute('data-filter');
+        var filterValue = pill.getAttribute('data-value');
+        activeFilters[filterType] = filterValue;
+        var row = pill.closest('.filter-row');
+        row.querySelectorAll('.filter-pill').forEach(function(p) { p.classList.remove('active'); });
+        pill.classList.add('active');
+        renderBrandCards();
+      });
+    }
+
+    // --- Grant list with countdowns ---
+    function renderGrants() {
+      var container = document.getElementById('grantList');
+      if (!container) return;
+      while (container.firstChild) container.removeChild(container.firstChild);
+
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      GRANTS.forEach(function(grant) {
+        var item = createEl('div', 'grant-item reveal');
+        item.appendChild(createEl('div', 'grant-name', grant.name));
+        item.appendChild(createEl('div', 'grant-amount', grant.amount));
+        item.appendChild(createEl('div', 'grant-date', grant.deadline));
+
+        // Status badge
+        var badge = createEl('span', 'grant-status-badge');
+        var diffDays = 0;
+        if (grant.deadlineDate) {
+          var deadline = new Date(grant.deadlineDate + 'T00:00:00');
+          diffDays = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+          if (diffDays <= 30) {
+            badge.textContent = 'URGENT';
+            badge.classList.add('urgent');
+          } else {
+            badge.textContent = 'UPCOMING';
+            badge.classList.add('upcoming');
+          }
+        } else {
+          badge.textContent = 'ROLLING';
+          badge.classList.add('rolling');
+        }
+        item.appendChild(badge);
+
+        // Countdown
+        var countdown = createEl('div', 'grant-countdown');
+        if (grant.deadlineDate) {
+          if (diffDays < 0) {
+            countdown.textContent = 'PASSED';
+            countdown.classList.add('countdown-urgent');
+          } else if (diffDays <= 30) {
+            countdown.textContent = diffDays + ' DAYS LEFT';
+            countdown.classList.add('countdown-urgent');
+          } else if (diffDays <= 90) {
+            countdown.textContent = diffDays + ' DAYS LEFT';
+            countdown.classList.add('countdown-soon');
+          } else {
+            countdown.textContent = diffDays + ' DAYS LEFT';
+            countdown.classList.add('countdown-ok');
+          }
+        } else {
+          countdown.textContent = 'APPLY ANYTIME';
+          countdown.classList.add('countdown-rolling');
+        }
+        item.appendChild(countdown);
+
+        // Notes
+        if (grant.notes) {
+          item.appendChild(createEl('div', 'grant-notes', grant.notes));
+        }
+
+        // Link to grant website
+        if (grant.url) {
+          var link = document.createElement('a');
+          link.className = 'grant-link';
+          link.href = 'https://' + grant.url;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = grant.url;
+          item.appendChild(link);
+        }
+
+        container.appendChild(item);
+      });
+    }
+
+    // --- Progress bar animation ---
+    var progressObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var fill = document.getElementById('progressFill');
+          if (fill) fill.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    var progressSection = document.getElementById('progress');
+    if (progressSection) progressObserver.observe(progressSection);
+
+    // --- Initialize ---
+    renderQuickActions();
+    renderBrandCards();
+    renderGrants();
+
+    // --- GSAP animations ---
+    document.addEventListener('DOMContentLoaded', function() {
+      heroParallax('.hero-content', '.planning-hero');
+      staggerReveal('.quick-item', '.quick-actions-section', { stagger: 0.08 });
+      staggerReveal('.grant-item', '.grants-section', { stagger: 0.1 });
+      staggerReveal('.deliverable-item', '.wrap-section', { stagger: 0.08 });
+
+      // Refresh ScrollTrigger after dynamic content has been added to the DOM
+      if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+      }
+    });
+  </script>
+
+</body>
+</html>
