@@ -258,18 +258,6 @@
     .exclusivity-callout { border-left: 4px solid var(--hot-pink); padding: var(--space-lg); background: rgba(255,45,120,0.05); margin-top: var(--space-xl); max-width: 700px; margin-left: auto; margin-right: auto; }
     .exclusivity-callout p { font-size: 1rem; color: var(--white-soft); font-weight: 500; }
 
-    /* Detail Section */
-    .detail-section { background: var(--charcoal-light); }
-    .detail-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); margin-top: var(--space-xl); }
-    @media (min-width: 768px) { .detail-grid { grid-template-columns: repeat(3, 1fr); } }
-    .detail-card { background: var(--charcoal); border: 1px solid var(--white-faint); border-radius: 12px; padding: var(--space-xl); }
-    .detail-card.featured { border-color: var(--hot-pink); }
-    .detail-card h3 { font-family: var(--font-accent); color: var(--hot-pink); margin-bottom: var(--space-sm); }
-    .detail-card .price { font-family: var(--font-display); font-size: 2rem; color: var(--yellow); margin-bottom: var(--space-md); }
-    .detail-card ul { list-style: none; padding: 0; }
-    .detail-card ul li { padding: var(--space-xs) 0; font-size: 0.9rem; color: var(--white-soft); font-weight: 300; border-bottom: 1px solid var(--white-faint); }
-    .detail-card ul li::before { content: '+ '; color: var(--hot-pink); font-weight: 700; }
-
     /* Steps Section */
     .steps-section { background: var(--charcoal); }
     .step-card .step-number { font-family: var(--font-display); font-size: 3rem; color: var(--electric-blue); opacity: 0.3; margin-bottom: var(--space-sm); }
@@ -443,72 +431,11 @@
           </ul>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- DETAILED TIER BREAKDOWN -->
-  <section class="section detail-section">
-    <div class="container">
-      <p class="section-label text-center reveal">What's Included</p>
-      <h2 class="t-section text-center reveal mb-2xl">The Full <span class="c-pink">Breakdown</span></h2>
-      <div class="detail-grid">
-        <div class="detail-card featured reveal delay-1">
-          <h3>Magic Maker</h3>
-          <p class="price">$25,000</p>
-          <ul>
-            <li>Logo on all murals</li>
-            <li>Featured in all press</li>
-            <li>10+ social posts</li>
-            <li>VIP event access</li>
-            <li>Photo/video package</li>
-            <li>Content rights</li>
-            <li>Category exclusivity all cities</li>
-            <li>First right of refusal 2027</li>
-          </ul>
-        </div>
-        <div class="detail-card reveal delay-2">
-          <h3>Culture Partner</h3>
-          <p class="price">$15,000</p>
-          <ul>
-            <li>Logo on 3 city murals</li>
-            <li>Press inclusion</li>
-            <li>5+ social posts</li>
-            <li>Event access</li>
-            <li>Photo package</li>
-            <li>Content rights</li>
-            <li>Exclusivity in 3 cities</li>
-          </ul>
-        </div>
-        <div class="detail-card reveal delay-3">
-          <h3>Community Ally</h3>
-          <p class="price">$5,000</p>
-          <ul>
-            <li>Local event co-brand</li>
-            <li>Social mention</li>
-            <li>1 city photo package</li>
-            <li>Community recognition</li>
-            <li>Event passes</li>
-          </ul>
-        </div>
-      </div>
       <div class="exclusivity-callout reveal">
         <p>Limited to one brand per category per city. 8-10 cities in 2026. First come, first served.</p>
       </div>
     </div>
   </section>
-
-  <!-- PAINT DRIP -->
-  <div class="drip-divider">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="drip-g3" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#FF2D78"/>
-          <stop offset="100%" style="stop-color:#FFE135"/>
-        </linearGradient>
-      </defs>
-      <path fill="url(#drip-g3)" d="M0,0 L0,30 Q100,34 200,30 Q250,28 300,45 Q320,58 340,45 Q400,28 560,32 Q640,34 720,30 Q770,28 820,50 Q840,65 860,50 Q920,28 1080,32 Q1160,34 1240,30 Q1290,28 1340,42 Q1360,55 1380,42 Q1410,30 1440,32 L1440,0 Z"/>
-    </svg>
-  </div>
 
   <!-- 6 BRAND BENEFITS -->
   <section class="section benefits-section">
@@ -735,7 +662,7 @@
       staggerReveal('.pipeline-cat', '.pipeline-section', { stagger: 0.08, y: 20 });
 
       // Stagger detail cards
-      staggerReveal('.detail-card', '.detail-section', { stagger: 0.2 });
+
 
       // Stagger step cards
       staggerReveal('.step-card', '.steps-section', { stagger: 0.2 });
