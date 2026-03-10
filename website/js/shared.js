@@ -100,13 +100,25 @@ function initPageTransitions() {
 
 // --- SPARKLE PARALLAX ---
 function initSparkles() {
-  const sparkles = document.querySelectorAll('.sparkle');
+  var sparkles = document.querySelectorAll('.sparkle');
   if (!sparkles.length) return;
 
-  sparkles.forEach((sparkle, i) => {
+  // Inject SVG star into each sparkle if missing
+  sparkles.forEach(function(sparkle) {
+    if (!sparkle.querySelector('svg')) {
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z');
+      svg.appendChild(path);
+      sparkle.appendChild(svg);
+    }
+  });
+
+  sparkles.forEach(function(sparkle, i) {
     // Random starting positions
-    sparkle.style.left = `${10 + Math.random() * 80}%`;
-    sparkle.style.top = `${5 + Math.random() * 90}%`;
+    sparkle.style.left = (10 + Math.random() * 80) + '%';
+    sparkle.style.top = (5 + Math.random() * 90) + '%';
 
     // Parallax on scroll
     gsap.to(sparkle, {
@@ -118,6 +130,13 @@ function initSparkles() {
       ease: 'none'
     });
   });
+}
+
+// --- IMAGE OVERLAY HELPER ---
+// Builds a CSS background with dark overlay + photo
+function imageOverlayBg(imagePath, opacity) {
+  opacity = opacity || 0.5;
+  return 'linear-gradient(to bottom, rgba(10,10,15,' + opacity + '), rgba(10,10,15,' + (opacity + 0.2) + ')), url(\'' + imagePath + '\')';
 }
 
 // --- COUNTER ANIMATION ---

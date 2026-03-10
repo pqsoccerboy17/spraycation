@@ -22,8 +22,10 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, #FF2D78 0%, #FFE135 50%, #3452FF 100%);
-      opacity: 0.3;
+      background: linear-gradient(to bottom, rgba(10,10,15,0.5), rgba(10,10,15,0.7)),
+                  url('assets/images/portland-mural.jpg');
+      background-size: cover;
+      background-position: center top;
     }
     .about-hero::after {
       content: '';
@@ -310,9 +312,9 @@
     <div class="container">
       <div class="bio-layout">
         <div class="bio-visual reveal-left">
-          <div class="bio-visual-inner">
-            <p class="bio-tagline">I have pink hair and I paint walls.</p>
-          </div>
+          <img src="https://ihavepinkhair.com/wp-content/uploads/2025/12/Zuzu-Headshot-2025_square-1.jpg"
+               alt="Zuzu Perkal"
+               style="width: 100%; max-width: 350px; border-radius: 12px; object-fit: cover;">
         </div>
         <div class="bio-text">
           <p class="section-label reveal">The Artist</p>

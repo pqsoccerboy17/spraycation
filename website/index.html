@@ -25,7 +25,10 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: var(--black);
+      background: linear-gradient(to bottom, rgba(10,10,15,0.45), rgba(10,10,15,0.7)),
+                  url('assets/images/denver-mural.jpg');
+      background-size: cover;
+      background-position: center;
     }
     .hero-title-wrap {
       position: relative;
@@ -329,9 +332,65 @@
     </div>
   </section>
 
-  <!-- Drip divider: hero to stats -->
+  <!-- Drip divider: hero to brands -->
   <svg class="drip-divider-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,0 L0,40 Q60,55 120,40 Q180,28 240,40 Q280,50 320,40 L320,40 Q360,20 400,40 Q440,58 480,40 Q520,25 560,40 Q620,55 680,40 Q720,30 760,40 Q820,60 880,40 Q920,25 960,40 Q1020,55 1080,40 Q1120,28 1160,40 Q1200,55 1240,40 Q1300,22 1360,40 Q1400,52 1440,40 L1440,0 Z" fill="#141420"/>
+  </svg>
+
+  <!-- ====== BRAND LEGACY MARQUEE ====== -->
+  <section class="brands-section section section--charcoal" id="brands">
+    <div class="container text-center">
+      <div class="section-label">Brands That Believed</div>
+      <h2 class="t-section" style="margin-bottom: var(--space-lg);">Legacy Partners</h2>
+    </div>
+
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span class="marquee-item">American Express</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Coca-Cola</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Red Bull</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Budweiser</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">MLB</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Fender</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Rolling Stone</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">LIFEWTR</span>
+        <span class="marquee-separator">&#10022;</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="marquee-item">American Express</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Coca-Cola</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Red Bull</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Budweiser</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">MLB</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Fender</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Rolling Stone</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">LIFEWTR</span>
+        <span class="marquee-separator">&#10022;</span>
+      </div>
+    </div>
+
+    <div class="container text-center brands-cta">
+      <p class="t-body-lg c-muted">8 major brands. Now building the next chapter.</p>
+      <a href="partnerships.html" class="btn btn--outline" style="margin-top: var(--space-lg);">View Partnership Options</a>
+    </div>
+  </section>
+
+  <!-- Drip divider: brands to stats -->
+  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,40 Q120,58 240,40 Q360,20 480,40 Q600,55 720,40 Q840,28 960,40 Q1080,58 1200,40 Q1320,22 1440,40 L1440,0 Z" fill="#141420"/>
   </svg>
 
   <!-- ====== IMPACT STATS ====== -->
@@ -375,7 +434,7 @@
   <section class="mural-showcase section" id="murals">
     <div class="mural-track">
       <!-- Denver -->
-      <div class="mural-panel mural-gradient--denver">
+      <div class="mural-panel mural-gradient--denver" style="background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)), url('assets/images/denver-mural.jpg'); background-size: cover; background-position: center;">
         <div class="mural-panel-content">
           <span class="t-label">Denver, Colorado</span>
           <h2 class="t-section">"You Are Magic"</h2>
@@ -383,7 +442,7 @@
         </div>
       </div>
       <!-- Portland -->
-      <div class="mural-panel mural-gradient--portland">
+      <div class="mural-panel mural-gradient--portland" style="background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)), url('assets/images/portland-mural.jpg'); background-size: cover; background-position: center;">
         <div class="mural-panel-content">
           <span class="t-label">Portland, Oregon</span>
           <h2 class="t-section">Portland</h2>
@@ -391,7 +450,7 @@
         </div>
       </div>
       <!-- Vancouver -->
-      <div class="mural-panel mural-gradient--vancouver">
+      <div class="mural-panel mural-gradient--vancouver" style="background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)), url('assets/images/vancouver-mural.jpg'); background-size: cover; background-position: center;">
         <div class="mural-panel-content">
           <span class="t-label">Vancouver, BC (Canada)</span>
           <h2 class="t-section">Vancouver</h2>
@@ -399,7 +458,7 @@
         </div>
       </div>
       <!-- Boise -->
-      <div class="mural-panel mural-gradient--boise">
+      <div class="mural-panel mural-gradient--boise" style="background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)), url('assets/images/boise-mural.jpg'); background-size: cover; background-position: center;">
         <div class="mural-panel-content">
           <span class="t-label">Boise, Idaho</span>
           <h2 class="t-section">Boise</h2>
@@ -485,65 +544,9 @@
     </div>
   </section>
 
-  <!-- Drip divider: cities to brands -->
+  <!-- Drip divider: cities to partnerships -->
   <svg class="drip-divider-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,0 L0,40 Q90,56 180,40 Q270,24 360,40 Q450,58 540,40 Q630,26 720,40 Q810,54 900,40 Q990,22 1080,40 Q1170,52 1260,40 Q1350,30 1440,40 L1440,0 Z" fill="#141420"/>
-  </svg>
-
-  <!-- ====== BRAND LEGACY MARQUEE ====== -->
-  <section class="brands-section section section--charcoal" id="brands">
-    <div class="container text-center">
-      <div class="section-label">Brands That Believed</div>
-      <h2 class="t-section" style="margin-bottom: var(--space-lg);">Legacy Partners</h2>
-    </div>
-
-    <div class="marquee-wrap">
-      <div class="marquee-track">
-        <span class="marquee-item">American Express</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Coca-Cola</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Red Bull</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Budweiser</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">MLB</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Fender</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Rolling Stone</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">LIFEWTR</span>
-        <span class="marquee-separator">&#10022;</span>
-        <!-- Duplicate for seamless loop -->
-        <span class="marquee-item">American Express</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Coca-Cola</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Red Bull</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Budweiser</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">MLB</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Fender</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Rolling Stone</span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">LIFEWTR</span>
-        <span class="marquee-separator">&#10022;</span>
-      </div>
-    </div>
-
-    <div class="container text-center brands-cta">
-      <p class="t-body-lg c-muted">8 major brands. Now building the next chapter.</p>
-      <a href="partnerships.html" class="btn btn--outline" style="margin-top: var(--space-lg);">View Partnership Options</a>
-    </div>
-  </section>
-
-  <!-- Drip divider: brands to partnerships -->
-  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,0 L0,40 Q120,58 240,40 Q360,20 480,40 Q600,55 720,40 Q840,28 960,40 Q1080,58 1200,40 Q1320,22 1440,40 L1440,0 Z" fill="#141420"/>
   </svg>
 
   <!-- ====== PARTNERSHIP PREVIEW ====== -->
@@ -675,77 +678,54 @@
     document.addEventListener('DOMContentLoaded', function () {
 
       // -----------------------------------------------------------------------
-      // 1. HERO LETTER ASSEMBLY -- Letters start scattered, slam together on scroll
+      // 1. HERO -- Load-triggered letter reveal + scroll parallax
       // -----------------------------------------------------------------------
-      (function () {
+      (function() {
         var letters = document.querySelectorAll('.hero-letter');
         if (!letters.length) return;
 
-        // Set random starting positions for each letter
-        var positions = [
-          { x: -300, y: -200, rotation: -45, scale: 0.5 },
-          { x: 200, y: -350, rotation: 30, scale: 0.7 },
-          { x: -150, y: 300, rotation: -60, scale: 0.4 },
-          { x: 350, y: 200, rotation: 45, scale: 0.6 },
-          { x: -400, y: -100, rotation: -20, scale: 0.8 },
-          { x: 250, y: 350, rotation: 50, scale: 0.5 },
-          { x: -200, y: -300, rotation: -35, scale: 0.6 },
-          { x: 300, y: -150, rotation: 25, scale: 0.7 },
-          { x: -350, y: 200, rotation: -55, scale: 0.4 },
-          { x: 400, y: 100, rotation: 40, scale: 0.5 },
-          { x: -250, y: -250, rotation: -30, scale: 0.6 }
-        ];
-
-        // Set initial scattered state
-        letters.forEach(function (letter, i) {
-          var pos = positions[i] || positions[i % positions.length];
-          gsap.set(letter, {
-            x: pos.x,
-            y: pos.y,
-            rotation: pos.rotation,
-            scale: pos.scale,
-            opacity: 0
-          });
+        // Letters animate in on page load (NOT scroll)
+        gsap.from(letters, {
+          y: 30,
+          opacity: 0,
+          scale: 0.8,
+          rotation: function() { return gsap.utils.random(-8, 8); },
+          duration: 1.2,
+          stagger: 0.04,
+          ease: 'power3.out',
+          delay: 0.3
         });
 
-        // Create scroll-driven timeline to assemble letters
-        var heroTl = gsap.timeline({
+        // Accent text fades in after letters
+        gsap.from('.hero-accent', {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          ease: 'power2.out',
+          delay: 1.0
+        });
+
+        // Subtitle fades in last
+        gsap.from('.hero-subtitle', {
+          opacity: 0,
+          y: 15,
+          duration: 0.6,
+          ease: 'power2.out',
+          delay: 1.3
+        });
+
+        // On scroll, hero content parallaxes up and fades
+        gsap.to('.hero-title-wrap', {
           scrollTrigger: {
             trigger: '#hero',
             start: 'top top',
-            end: '+=800',
-            pin: true,
-            scrub: 1,
-            anticipatePin: 1
-          }
-        });
-
-        // Animate all letters to their final positions
-        heroTl.to(letters, {
-          x: 0,
-          y: 0,
-          rotation: 0,
-          scale: 1,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.03,
-          ease: 'power3.out'
-        });
-
-        // Fade in the accent and subtitle
-        heroTl.from('.hero-accent', {
+            end: 'bottom top',
+            scrub: true
+          },
+          y: -150,
           opacity: 0,
-          y: 30,
-          duration: 0.4,
-          ease: 'power2.out'
-        }, '-=0.2');
-
-        heroTl.from('.hero-subtitle', {
-          opacity: 0,
-          y: 20,
-          duration: 0.3,
-          ease: 'power2.out'
-        }, '-=0.1');
+          ease: 'none'
+        });
       })();
 
       // -----------------------------------------------------------------------

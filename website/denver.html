@@ -22,8 +22,10 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, #2A1B4E 0%, #FF2D78 30%, #3452FF 60%, #FFE135 100%);
-      opacity: 0.4;
+      background: linear-gradient(to bottom, rgba(10,10,15,0.4), rgba(10,10,15,0.65)),
+                  url('assets/images/denver-mural.jpg');
+      background-size: cover;
+      background-position: center;
     }
     .denver-hero::after {
       content: '';
@@ -57,8 +59,10 @@
       top: 0;
       width: 50%;
       height: 100%;
-      background: linear-gradient(135deg, #2A1B4E 0%, #FF2D78 30%, #3452FF 60%, #FFE135 100%);
-      opacity: 0.6;
+      background: linear-gradient(to right, rgba(10,10,15,0.1), rgba(10,10,15,0.4)),
+                  url('assets/images/denver-mural.jpg');
+      background-size: cover;
+      background-position: right center;
     }
     .denver-narrative-visual::after {
       content: '';
@@ -333,7 +337,7 @@
         </div>
         <div class="stat-card card reveal delay-4">
           <div class="card-gradient-bar"></div>
-          <p class="t-stat-number" data-counter="2" data-suffix="-hr">0</p>
+          <p class="t-stat-number">2-Hour</p>
           <p class="t-stat-label">Reveal Event</p>
         </div>
       </div>
