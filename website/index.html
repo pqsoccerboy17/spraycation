@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spraycation -- A Traveling Mural Tour</title>
+  <meta name="description" content="Spraycation is a female-led traveling mural tour transforming walls into cultural moments across America.">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="css/shared.css">
+
+  <style>
+    /* =============================================
+       HOME PAGE -- Page-Specific Styles
+       ============================================= */
+
+    /* --- HERO --- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .hero-title-wrap {
+      position: relative;
+      z-index: var(--z-content);
+      text-align: center;
+    }
+    .hero-letter {
+      display: inline-block;
+      will-change: transform, opacity;
+    }
+    .hero-subtitle {
+      margin-top: var(--space-lg);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-accent {
+      display: block;
+      margin-top: var(--space-md);
+      background: var(--gradient-energy);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Floating gradient orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      will-change: transform;
+    }
+    .orb--pink {
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 45, 120, 0.2);
+      top: 10%;
+      left: -5%;
+      animation: orb-drift-1 12s ease-in-out infinite alternate;
+    }
+    .orb--blue {
+      width: 350px;
+      height: 350px;
+      background: rgba(52, 82, 255, 0.2);
+      bottom: 15%;
+      right: -5%;
+      animation: orb-drift-2 14s ease-in-out infinite alternate;
+    }
+    .orb--yellow {
+      width: 250px;
+      height: 250px;
+      background: rgba(255, 225, 53, 0.1);
+      top: 50%;
+      left: 40%;
+      animation: orb-drift-3 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes orb-drift-1 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(60px, -40px) scale(1.15); }
+    }
+    @keyframes orb-drift-2 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-50px, 30px) scale(1.1); }
+    }
+    @keyframes orb-drift-3 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, -50px) scale(1.2); }
+    }
+
+    /* --- IMPACT STATS --- */
+    .impact-stats {
+      background: var(--charcoal);
+      padding: var(--space-xl) 0;
+      overflow: hidden;
+    }
+    .impact-stats .stat-item {
+      text-align: center;
+      padding: var(--space-md);
+    }
+
+    /* --- MURAL SHOWCASE --- */
+    .mural-showcase {
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .mural-track {
+      display: flex;
+      width: max-content;
+    }
+    .mural-panel {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-2xl) clamp(var(--space-lg), 8vw, var(--space-3xl));
+    }
+    .mural-panel-content {
+      position: relative;
+      z-index: var(--z-content);
+      max-width: 600px;
+    }
+    .mural-panel-content .t-label {
+      margin-bottom: var(--space-sm);
+    }
+    .mural-panel-content .t-section {
+      margin-bottom: var(--space-md);
+    }
+    .mural-panel-content .t-body-lg {
+      color: var(--white-soft);
+    }
+    .mural-panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 15, 0.85) 0%, rgba(10, 10, 15, 0.3) 40%, transparent 100%);
+      z-index: 1;
+    }
+    .mural-panel-content {
+      z-index: 2;
+    }
+
+    /* --- STORY SECTION --- */
+    .story-section {
+      background: var(--charcoal);
+    }
+    .story-line {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .story-line.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+    .story-paragraph {
+      margin-bottom: var(--space-lg);
+    }
+
+    /* --- CITIES PREVIEW --- */
+    .cities-preview {
+      background: var(--black);
+    }
+    .city-card {
+      will-change: transform;
+    }
+    .city-card .t-card-title {
+      margin-bottom: var(--space-sm);
+    }
+    .city-card .t-small {
+      margin-bottom: var(--space-xs);
+    }
+    .city-card .card-link {
+      display: inline-block;
+      margin-top: var(--space-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--hot-pink);
+      transition: color var(--duration-fast);
+    }
+    .city-card .card-link:hover {
+      color: var(--yellow);
+    }
+
+    /* --- MARQUEE SECTION --- */
+    .brands-section {
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+    .brands-section .marquee-wrap {
+      overflow: hidden;
+      padding: var(--space-xl) 0;
+    }
+    .brands-cta {
+      margin-top: var(--space-xl);
+    }
+
+    /* --- PARTNERSHIP PREVIEW --- */
+    .partnership-preview {
+      background: var(--black);
+    }
+    .tier-card .tier-price {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--yellow);
+      margin: var(--space-md) 0 var(--space-sm);
+    }
+    .tier-card .tier-name {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: var(--space-md);
+    }
+    .tier-card .tier-desc {
+      color: var(--white-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .tier-card.card--featured {
+      transform: scale(1.05);
+    }
+    @media (max-width: 768px) {
+      .tier-card.card--featured {
+        transform: scale(1);
+      }
+    }
+
+    /* --- PRESS SECTION --- */
+    .press-section {
+      background: var(--charcoal);
+    }
+    .press-card {
+      will-change: transform;
+    }
+    .press-card .press-source {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--hot-pink);
+      margin-bottom: var(--space-md);
+    }
+    .press-card .press-quote {
+      font-family: var(--font-accent);
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      line-height: 1.4;
+      color: var(--white);
+      margin-bottom: var(--space-md);
+    }
+    .press-card .press-attr {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      font-style: italic;
+    }
+
+    /* --- DRIP SVG DIVIDERS --- */
+    .drip-divider-svg {
+      display: block;
+      width: 100%;
+      height: 60px;
+      position: relative;
+      z-index: var(--z-content);
+    }
+    .drip-divider-svg--flip {
+      transform: scaleY(-1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">SPRAYCATION</a>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="cities.html">Cities</a>
+      <a href="denver.html">Denver Story</a>
+      <a href="partnerships.html">Partner</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Let's Talk</a>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav-overlay">
+    <a href="index.html">Home</a>
+    <a href="cities.html">Cities</a>
+    <a href="denver.html">Denver Story</a>
+    <a href="partnerships.html">Partner</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Let's Talk</a>
+  </div>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero" id="hero">
+    <!-- Floating gradient orbs -->
+    <div class="orb orb--pink"></div>
+    <div class="orb orb--blue"></div>
+    <div class="orb orb--yellow"></div>
+
+    <div class="hero-title-wrap text-center">
+      <h1 class="t-hero">
+        <span class="hero-letter">S</span><span class="hero-letter">P</span><span class="hero-letter">R</span><span class="hero-letter">A</span><span class="hero-letter">Y</span><span class="hero-letter">C</span><span class="hero-letter">A</span><span class="hero-letter">T</span><span class="hero-letter">I</span><span class="hero-letter">O</span><span class="hero-letter">N</span>
+      </h1>
+      <span class="t-accent hero-accent">You Are Magic</span>
+      <p class="t-body-lg hero-subtitle c-muted">A female-led traveling mural tour transforming walls into cultural moments</p>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- Drip divider: hero to stats -->
+  <svg class="drip-divider-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,40 Q60,55 120,40 Q180,28 240,40 Q280,50 320,40 L320,40 Q360,20 400,40 Q440,58 480,40 Q520,25 560,40 Q620,55 680,40 Q720,30 760,40 Q820,60 880,40 Q920,25 960,40 Q1020,55 1080,40 Q1120,28 1160,40 Q1200,55 1240,40 Q1300,22 1360,40 Q1400,52 1440,40 L1440,0 Z" fill="#141420"/>
+  </svg>
+
+  <!-- ====== IMPACT STATS ====== -->
+  <section class="impact-stats section--charcoal" id="stats">
+    <div class="container">
+      <div class="grid grid-6 stats-grid">
+        <div class="stat-item">
+          <div class="t-stat-number" data-counter="5" data-suffix="">5</div>
+          <div class="t-stat-label">Murals</div>
+        </div>
+        <div class="stat-item">
+          <div class="t-stat-number" data-counter="6500" data-suffix="+">6,500+</div>
+          <div class="t-stat-label">Miles</div>
+        </div>
+        <div class="stat-item">
+          <div class="t-stat-number" data-counter="5" data-suffix="">5</div>
+          <div class="t-stat-label">Cities</div>
+        </div>
+        <div class="stat-item">
+          <div class="t-stat-number" data-counter="10" data-suffix="">10</div>
+          <div class="t-stat-label">States</div>
+        </div>
+        <div class="stat-item">
+          <div class="t-stat-number" data-counter="3" data-suffix="x">3x</div>
+          <div class="t-stat-label">Foot Traffic</div>
+        </div>
+        <div class="stat-item">
+          <div class="t-stat-number" style="font-size: clamp(1.2rem, 3vw, 2rem); color: var(--hot-pink);">ALL-FEMALE</div>
+          <div class="t-stat-label">Team</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: stats to mural showcase -->
+  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,40 Q80,58 160,40 Q240,22 320,40 Q400,55 480,40 Q560,28 640,40 Q720,60 800,40 Q880,20 960,40 Q1040,52 1120,40 Q1200,30 1280,40 Q1360,55 1440,40 L1440,0 Z" fill="#141420"/>
+  </svg>
+
+  <!-- ====== MURAL SHOWCASE (Horizontal Scroll) ====== -->
+  <section class="mural-showcase section" id="murals">
+    <div class="mural-track">
+      <!-- Denver -->
+      <div class="mural-panel mural-gradient--denver">
+        <div class="mural-panel-content">
+          <span class="t-label">Denver, Colorado</span>
+          <h2 class="t-section">"You Are Magic"</h2>
+          <p class="t-body-lg">2903 E. Colfax Ave at Fever Dream Vintage. The mural that started the movement -- tripling foot traffic and generating more press than 3 years of traditional marketing.</p>
+        </div>
+      </div>
+      <!-- Portland -->
+      <div class="mural-panel mural-gradient--portland">
+        <div class="mural-panel-content">
+          <span class="t-label">Portland, Oregon</span>
+          <h2 class="t-section">Portland</h2>
+          <p class="t-body-lg">1324 SE 8th Ave. Bold color meets Pacific Northwest energy. A wall that turned heads and stopped traffic on one of Portland's busiest corridors.</p>
+        </div>
+      </div>
+      <!-- Vancouver -->
+      <div class="mural-panel mural-gradient--vancouver">
+        <div class="mural-panel-content">
+          <span class="t-label">Vancouver, BC (Canada)</span>
+          <h2 class="t-section">Vancouver</h2>
+          <p class="t-body-lg">2601 Main St. Spraycation's first international mural -- crossing the border into Canada and proving the movement has no borders.</p>
+        </div>
+      </div>
+      <!-- Boise -->
+      <div class="mural-panel mural-gradient--boise">
+        <div class="mural-panel-content">
+          <span class="t-label">Boise, Idaho</span>
+          <h2 class="t-section">Boise</h2>
+          <p class="t-body-lg">210 N 9th St. The mural that brought Spraycation to the Mountain West -- bright, bold, and impossible to ignore in downtown Boise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: murals to story -->
+  <svg class="drip-divider-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,40 Q100,58 200,40 Q300,18 400,40 Q480,52 560,40 Q640,30 720,40 Q800,55 880,40 Q960,22 1040,40 Q1120,56 1200,40 Q1280,28 1360,40 Q1420,50 1440,40 L1440,0 Z" fill="#141420"/>
+  </svg>
+
+  <!-- ====== THE STORY ====== -->
+  <section class="story-section section section--charcoal" id="story">
+    <div class="container" style="max-width: 800px;">
+      <div class="section-label">The Movement</div>
+      <div class="story-paragraph">
+        <p class="t-body-lg story-line">Spraycation is more than a mural tour.</p>
+        <p class="t-body-lg story-line">It's a bold declaration that creativity belongs everywhere --</p>
+        <p class="t-body-lg story-line">on buildings, in neighborhoods, across state lines.</p>
+        <p class="t-body-lg story-line">Led by artist <span class="c-pink">Zuzu Perkal</span> and an all-female team,</p>
+        <p class="t-body-lg story-line">we transform blank walls into cultural landmarks</p>
+        <p class="t-body-lg story-line">that spark joy, foot traffic, and community pride.</p>
+      </div>
+      <div class="story-paragraph">
+        <p class="t-body-lg story-line">In 2025, we drove <span class="c-yellow">6,500+ miles</span> across <span class="c-yellow">5 cities</span>,</p>
+        <p class="t-body-lg story-line">painting murals that generated press coverage,</p>
+        <p class="t-body-lg story-line">tripled foot traffic for local businesses,</p>
+        <p class="t-body-lg story-line">and proved that public art is</p>
+        <p class="t-body-lg story-line"><span class="c-gradient">the most powerful marketing tool nobody's using.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: story to cities -->
+  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,40 Q70,55 140,40 Q210,25 280,40 Q360,58 440,40 Q520,20 600,40 Q680,50 760,40 Q840,30 920,40 Q1000,55 1080,40 Q1160,22 1240,40 Q1320,48 1400,40 L1440,40 L1440,0 Z" fill="#141420"/>
+  </svg>
+
+  <!-- ====== CITIES PREVIEW ====== -->
+  <section class="cities-preview section section--dark" id="cities">
+    <div class="container">
+      <div class="section-label">2025 Tour</div>
+      <h2 class="t-section" style="margin-bottom: var(--space-xl);">Where We Painted</h2>
+
+      <div class="grid grid-4 cities-grid">
+        <!-- Denver (featured) -->
+        <div class="card card--tilted card--featured city-card">
+          <span class="badge badge--pink">Spotlight</span>
+          <div class="card-gradient-bar"></div>
+          <h3 class="t-card-title">Denver</h3>
+          <p class="t-small c-muted">2903 E. Colfax Ave</p>
+          <p class="t-small c-muted">Fever Dream Vintage</p>
+          <a href="cities.html" class="card-link">Explore &rarr;</a>
+        </div>
+        <!-- Portland -->
+        <div class="card card--tilted city-card">
+          <div class="card-gradient-bar"></div>
+          <h3 class="t-card-title">Portland</h3>
+          <p class="t-small c-muted">1324 SE 8th Ave</p>
+          <p class="t-small c-muted">Portland, Oregon</p>
+          <a href="cities.html" class="card-link">Explore &rarr;</a>
+        </div>
+        <!-- Vancouver -->
+        <div class="card card--tilted city-card">
+          <div class="card-gradient-bar"></div>
+          <h3 class="t-card-title">Vancouver</h3>
+          <p class="t-small c-muted">2601 Main St</p>
+          <p class="t-small c-muted">Vancouver, BC, Canada</p>
+          <a href="cities.html" class="card-link">Explore &rarr;</a>
+        </div>
+        <!-- Boise -->
+        <div class="card card--tilted city-card">
+          <div class="card-gradient-bar"></div>
+          <h3 class="t-card-title">Boise</h3>
+          <p class="t-small c-muted">210 N 9th St</p>
+          <p class="t-small c-muted">Boise, Idaho</p>
+          <a href="cities.html" class="card-link">Explore &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: cities to brands -->
+  <svg class="drip-divider-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,40 Q90,56 180,40 Q270,24 360,40 Q450,58 540,40 Q630,26 720,40 Q810,54 900,40 Q990,22 1080,40 Q1170,52 1260,40 Q1350,30 1440,40 L1440,0 Z" fill="#141420"/>
+  </svg>
+
+  <!-- ====== BRAND LEGACY MARQUEE ====== -->
+  <section class="brands-section section section--charcoal" id="brands">
+    <div class="container text-center">
+      <div class="section-label">Brands That Believed</div>
+      <h2 class="t-section" style="margin-bottom: var(--space-lg);">Legacy Partners</h2>
+    </div>
+
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span class="marquee-item">American Express</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Coca-Cola</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Red Bull</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Budweiser</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">MLB</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Fender</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Rolling Stone</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">LIFEWTR</span>
+        <span class="marquee-separator">&#10022;</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="marquee-item">American Express</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Coca-Cola</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Red Bull</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Budweiser</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">MLB</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Fender</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">Rolling Stone</span>
+        <span class="marquee-separator">&#10022;</span>
+        <span class="marquee-item">LIFEWTR</span>
+        <span class="marquee-separator">&#10022;</span>
+      </div>
+    </div>
+
+    <div class="container text-center brands-cta">
+      <p class="t-body-lg c-muted">8 major brands. Now building the next chapter.</p>
+      <a href="partnerships.html" class="btn btn--outline" style="margin-top: var(--space-lg);">View Partnership Options</a>
+    </div>
+  </section>
+
+  <!-- Drip divider: brands to partnerships -->
+  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,40 Q120,58 240,40 Q360,20 480,40 Q600,55 720,40 Q840,28 960,40 Q1080,58 1200,40 Q1320,22 1440,40 L1440,0 Z" fill="#141420"/>
+  </svg>
+
+  <!-- ====== PARTNERSHIP PREVIEW ====== -->
+  <section class="partnership-preview section section--dark" id="partnerships">
+    <div class="container">
+      <div class="section-label text-center">Be Part of 2026</div>
+      <h2 class="t-section text-center" style="margin-bottom: var(--space-2xl);">Partnership Tiers</h2>
+
+      <div class="grid grid-3 tier-grid">
+        <!-- Magic Maker (featured) -->
+        <div class="card card--featured tier-card" style="order: -1;">
+          <span class="badge badge--pink" style="margin-bottom: var(--space-md);">Top Tier</span>
+          <div class="card-gradient-bar"></div>
+          <div class="tier-name">Magic Maker</div>
+          <div class="tier-price">$25,000</div>
+          <p class="tier-desc">Own the mural, event, press, momentum. Full naming rights, press inclusion, and a permanent place in the Spraycation story.</p>
+        </div>
+        <!-- Culture Partner -->
+        <div class="card tier-card">
+          <div class="card-gradient-bar"></div>
+          <div class="tier-name">Culture Partner</div>
+          <div class="tier-price">$15,000</div>
+          <p class="tier-desc">Sponsor mural reveals, multi-city brand visibility. Your brand at every stop, in the press, and on the wall.</p>
+        </div>
+        <!-- Community Ally -->
+        <div class="card tier-card">
+          <div class="card-gradient-bar"></div>
+          <div class="tier-name">Community Ally</div>
+          <div class="tier-price">$5,000</div>
+          <p class="tier-desc">Support the movement, brand in the mix. Social media features, event presence, and community credibility.</p>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: var(--space-2xl);">
+        <a href="partnerships.html" class="btn btn--primary">View All Partnership Options</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: partnerships to press -->
+  <svg class="drip-divider-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,40 Q80,52 160,40 Q240,30 320,40 Q440,60 560,40 Q680,18 800,40 Q920,56 1040,40 Q1160,24 1280,40 Q1380,50 1440,40 L1440,0 Z" fill="#141420"/>
+  </svg>
+
+  <!-- ====== PRESS QUOTES ====== -->
+  <section class="press-section section section--charcoal" id="press">
+    <div class="container">
+      <div class="section-label">In the Press</div>
+      <h2 class="t-section" style="margin-bottom: var(--space-xl);">They're Talking</h2>
+
+      <div class="grid grid-2 press-grid">
+        <div class="card press-card">
+          <div class="press-source">Westword</div>
+          <p class="press-quote">"More buzz than 3 years of traditional marketing."</p>
+          <p class="press-attr">-- Fever Dream Vintage owner, on the Denver mural's impact</p>
+        </div>
+        <div class="card press-card">
+          <div class="press-source">EASTside Magazine</div>
+          <p class="press-quote">"Spraycation brings color, community, and a whole lot of pink hair energy."</p>
+          <p class="press-attr">-- Austin-based arts & culture publication</p>
+        </div>
+        <div class="card press-card">
+          <div class="press-source">Almost Real Things</div>
+          <p class="press-quote">"A Creative Force with Pink Hair"</p>
+          <p class="press-attr">-- Artist profile on Zuzu Perkal</p>
+        </div>
+        <div class="card press-card">
+          <div class="press-source">Austin Community</div>
+          <p class="press-quote">"Austin's Best Muralist" -- 4 consecutive years.</p>
+          <p class="press-attr">-- 2021, 2022, 2023, 2024 community vote</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: press to footer -->
+  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,40 Q100,55 200,40 Q300,28 400,40 Q520,58 640,40 Q760,20 880,40 Q1000,52 1120,40 Q1240,30 1360,40 Q1420,48 1440,40 L1440,0 Z" fill="#0A0A0F"/>
+  </svg>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <div class="footer-cta">
+        <h2>Let's create a cultural moment together.</h2>
+        <a href="contact.html" class="btn btn--primary">Start a Conversation</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/spraycationmuraltour" target="_blank">Instagram</a>
+        <a href="https://instagram.com/zuzubee" target="_blank">@zuzubee</a>
+        <a href="mailto:spraythefuture@gmail.com">Email</a>
+        <a href="https://ihavepinkhair.com/spraycation" target="_blank">Website</a>
+      </div>
+      <div class="footer-bottom">
+        <p class="t-small">&copy; 2026 Spraycation Mural Tour. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== GRAIN OVERLAY ====== -->
+  <div class="grain-overlay"></div>
+
+  <!-- ====== SPARKLES ====== -->
+  <div class="sparkle"></div>
+  <div class="sparkle sparkle--sm"></div>
+  <div class="sparkle sparkle--lg"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle sparkle--sm"></div>
+  <div class="sparkle sparkle--lg"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle sparkle--sm"></div>
+  <div class="sparkle sparkle--lg"></div>
+  <div class="sparkle"></div>
+
+  <!-- ====== PAGE TRANSITION ====== -->
+  <div class="page-transition"><div class="drip-curtain"></div></div>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="js/shared.js"></script>
+
+  <script>
+    /* ==========================================================================
+       HOME PAGE -- Page-Specific Animations
+       ========================================================================== */
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // -----------------------------------------------------------------------
+      // 1. HERO LETTER ASSEMBLY -- Letters start scattered, slam together on scroll
+      // -----------------------------------------------------------------------
+      (function () {
+        var letters = document.querySelectorAll('.hero-letter');
+        if (!letters.length) return;
+
+        // Set random starting positions for each letter
+        var positions = [
+          { x: -300, y: -200, rotation: -45, scale: 0.5 },
+          { x: 200, y: -350, rotation: 30, scale: 0.7 },
+          { x: -150, y: 300, rotation: -60, scale: 0.4 },
+          { x: 350, y: 200, rotation: 45, scale: 0.6 },
+          { x: -400, y: -100, rotation: -20, scale: 0.8 },
+          { x: 250, y: 350, rotation: 50, scale: 0.5 },
+          { x: -200, y: -300, rotation: -35, scale: 0.6 },
+          { x: 300, y: -150, rotation: 25, scale: 0.7 },
+          { x: -350, y: 200, rotation: -55, scale: 0.4 },
+          { x: 400, y: 100, rotation: 40, scale: 0.5 },
+          { x: -250, y: -250, rotation: -30, scale: 0.6 }
+        ];
+
+        // Set initial scattered state
+        letters.forEach(function (letter, i) {
+          var pos = positions[i] || positions[i % positions.length];
+          gsap.set(letter, {
+            x: pos.x,
+            y: pos.y,
+            rotation: pos.rotation,
+            scale: pos.scale,
+            opacity: 0
+          });
+        });
+
+        // Create scroll-driven timeline to assemble letters
+        var heroTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: '+=800',
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1
+          }
+        });
+
+        // Animate all letters to their final positions
+        heroTl.to(letters, {
+          x: 0,
+          y: 0,
+          rotation: 0,
+          scale: 1,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.03,
+          ease: 'power3.out'
+        });
+
+        // Fade in the accent and subtitle
+        heroTl.from('.hero-accent', {
+          opacity: 0,
+          y: 30,
+          duration: 0.4,
+          ease: 'power2.out'
+        }, '-=0.2');
+
+        heroTl.from('.hero-subtitle', {
+          opacity: 0,
+          y: 20,
+          duration: 0.3,
+          ease: 'power2.out'
+        }, '-=0.1');
+      })();
+
+      // -----------------------------------------------------------------------
+      // 2. IMPACT STATS -- Stagger reveal from left
+      // -----------------------------------------------------------------------
+      staggerReveal('.stat-item', '.stats-grid', {
+        y: 0,
+        start: 'top 85%',
+        stagger: 0.1
+      });
+
+      // -----------------------------------------------------------------------
+      // 3. MURAL HORIZONTAL SCROLL
+      // -----------------------------------------------------------------------
+      horizontalScroll('.mural-showcase', '.mural-track');
+
+      // -----------------------------------------------------------------------
+      // 4. STORY -- Line-by-line fade in
+      // -----------------------------------------------------------------------
+      (function () {
+        var lines = document.querySelectorAll('.story-line');
+        if (!lines.length) return;
+
+        lines.forEach(function (line, i) {
+          gsap.from(line, {
+            scrollTrigger: {
+              trigger: line,
+              start: 'top 88%',
+              toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            y: 25,
+            duration: 0.7,
+            delay: i * 0.05,
+            ease: 'power2.out',
+            onComplete: function () {
+              line.classList.add('visible');
+            }
+          });
+        });
+      })();
+
+      // -----------------------------------------------------------------------
+      // 5. CITIES SCATTER-TO-GRID
+      // -----------------------------------------------------------------------
+      (function () {
+        var cards = document.querySelectorAll('.city-card');
+        if (!cards.length) return;
+
+        var scatterPositions = [
+          { x: -200, y: 150, rotation: -12 },
+          { x: 180, y: -120, rotation: 8 },
+          { x: -150, y: -100, rotation: -6 },
+          { x: 220, y: 130, rotation: 10 }
+        ];
+
+        cards.forEach(function (card, i) {
+          var pos = scatterPositions[i] || scatterPositions[0];
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: '.cities-grid',
+              start: 'top 85%',
+              end: 'top 25%',
+              scrub: 1
+            },
+            x: pos.x,
+            y: pos.y,
+            rotation: pos.rotation,
+            opacity: 0,
+            ease: 'power3.out'
+          });
+        });
+      })();
+
+      // -----------------------------------------------------------------------
+      // 6. BRAND MARQUEE VELOCITY
+      // -----------------------------------------------------------------------
+      velocityMarquee('.marquee-track');
+
+      // -----------------------------------------------------------------------
+      // 7. PARTNERSHIP CARD RISE
+      // -----------------------------------------------------------------------
+      (function () {
+        var tierCards = document.querySelectorAll('.tier-card');
+        if (!tierCards.length) return;
+
+        gsap.from(tierCards, {
+          scrollTrigger: {
+            trigger: '.tier-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          },
+          y: 100,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out'
+        });
+      })();
+
+      // -----------------------------------------------------------------------
+      // 8. PRESS CARD STAGGER WITH ROTATION
+      // -----------------------------------------------------------------------
+      (function () {
+        var pressCards = document.querySelectorAll('.press-card');
+        if (!pressCards.length) return;
+
+        gsap.from(pressCards, {
+          scrollTrigger: {
+            trigger: '.press-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          },
+          y: 60,
+          opacity: 0,
+          rotation: 3,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: 'power3.out'
+        });
+      })();
+
+    });
+  </script>
+
+</body>
+</html>

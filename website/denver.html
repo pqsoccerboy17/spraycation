@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denver -- SPRAYCATION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <style>
+    /* Denver Hero */
+    .denver-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .denver-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #2A1B4E 0%, #FF2D78 30%, #3452FF 60%, #FFE135 100%);
+      opacity: 0.4;
+    }
+    .denver-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--black) 0%, transparent 40%);
+    }
+    .denver-hero-content {
+      position: relative;
+      z-index: var(--z-content);
+    }
+    .denver-hero .badge {
+      margin-bottom: var(--space-lg);
+    }
+    .denver-subtitle {
+      font-family: var(--font-accent);
+      font-size: clamp(1rem, 2.5vw, 1.6rem);
+      color: var(--yellow);
+      margin-top: var(--space-lg);
+    }
+
+    /* Pinned Narrative */
+    .denver-narrative {
+      min-height: 100vh;
+      display: flex;
+      position: relative;
+    }
+    .denver-narrative-visual {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, #2A1B4E 0%, #FF2D78 30%, #3452FF 60%, #FFE135 100%);
+      opacity: 0.6;
+    }
+    .denver-narrative-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--black) 100%);
+    }
+    .denver-narrative-panels {
+      position: relative;
+      width: 50%;
+      margin-left: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-xl);
+      min-height: 100vh;
+    }
+    .denver-panel {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      padding: var(--space-xl);
+      max-width: 560px;
+    }
+    .denver-panel .t-label {
+      color: var(--hot-pink);
+      margin-bottom: var(--space-md);
+    }
+    .denver-panel .t-card-title {
+      margin-bottom: var(--space-md);
+    }
+    .denver-panel .t-body-lg {
+      color: var(--white-soft);
+    }
+    .denver-panel .stat-big {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 15vw, 10rem);
+      line-height: 0.9;
+      background: var(--gradient-energy);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .denver-panel .stat-label {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: var(--white-soft);
+      font-weight: 300;
+      margin-top: var(--space-md);
+    }
+    .denver-panel blockquote {
+      font-family: var(--font-accent);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      line-height: 1.4;
+      color: var(--yellow);
+      border-left: 4px solid var(--hot-pink);
+      padding-left: var(--space-lg);
+    }
+    .denver-panel blockquote cite {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--white-muted);
+      margin-top: var(--space-md);
+      font-style: normal;
+    }
+
+    @media (max-width: 768px) {
+      .denver-narrative {
+        flex-direction: column;
+      }
+      .denver-narrative-visual {
+        width: 100%;
+        height: 40vh;
+        position: relative;
+      }
+      .denver-narrative-visual::after {
+        background: linear-gradient(to bottom, transparent 60%, var(--black) 100%);
+      }
+      .denver-narrative-panels {
+        width: 100%;
+        margin-left: 0;
+        padding: var(--space-lg);
+      }
+      .denver-panel {
+        position: relative;
+        top: auto;
+        transform: none;
+        padding: var(--space-lg) 0;
+      }
+    }
+
+    /* Stats Grid */
+    .stats-section {
+      background: var(--charcoal);
+    }
+    .stat-card {
+      text-align: center;
+      padding: var(--space-xl) var(--space-lg);
+    }
+    .stat-card .t-stat-number {
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Press Section */
+    .press-section {
+      background: var(--charcoal-light);
+    }
+    .press-card {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--charcoal);
+      border: 1px solid var(--white-faint);
+      border-radius: 12px;
+      padding: var(--space-xl);
+      transition: transform var(--duration-med) var(--ease-spring),
+                  border-color var(--duration-fast);
+    }
+    .press-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,45,120,0.3);
+    }
+    .press-source {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--hot-pink);
+      margin-bottom: var(--space-sm);
+    }
+    .press-headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: var(--space-md);
+    }
+    .press-meta {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+    }
+
+    /* CTA Section */
+    .denver-cta-section {
+      text-align: center;
+    }
+    .denver-cta-section .t-section {
+      margin-bottom: var(--space-lg);
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">SPRAYCATION</a>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="cities.html">Cities</a>
+      <a href="denver.html" class="active">Denver Story</a>
+      <a href="partnerships.html">Partner</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Let's Talk</a>
+    </div>
+  </nav>
+  <div class="nav-overlay">
+    <a href="index.html">Home</a>
+    <a href="cities.html">Cities</a>
+    <a href="denver.html">Denver Story</a>
+    <a href="partnerships.html">Partner</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Let's Talk</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="denver-hero">
+    <div class="denver-hero-content">
+      <span class="badge badge--pink">CASE STUDY</span>
+      <h1 class="t-hero">DENVER</h1>
+      <p class="denver-subtitle">Fever Dream Vintage / 2903 E. Colfax Ave</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP DIVIDER -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-gradient-denver" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FF2D78"/>
+          <stop offset="100%" style="stop-color:#3452FF"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-gradient-denver)" d="M0,0 L0,40 Q60,38 120,40 Q150,42 180,55 Q195,70 210,55 Q240,40 360,42 Q420,44 480,40 Q540,36 600,40 Q630,50 660,65 Q675,75 690,65 Q720,45 840,42 Q900,40 960,44 Q990,56 1020,68 Q1035,78 1050,68 Q1080,48 1200,42 Q1260,40 1320,44 Q1380,46 1440,40 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- PINNED NARRATIVE -->
+  <section class="denver-narrative section--dark">
+    <div class="denver-narrative-visual"></div>
+    <div class="denver-narrative-panels">
+      <div class="denver-panel">
+        <p class="t-label">01 -- The Location</p>
+        <h2 class="t-card-title">A Beloved Wall on Historic Colfax</h2>
+        <p class="t-body-lg">Fever Dream Vintage, a beloved vintage clothing store on historic Colfax Avenue, offered their exterior wall for Spraycation's signature "You Are Magic" mural. One of Denver's most vibrant corridors became the canvas for something unforgettable.</p>
+      </div>
+      <div class="denver-panel">
+        <p class="t-label">02 -- The Activation</p>
+        <h2 class="t-card-title">Two Hours That Changed Everything</h2>
+        <p class="t-body-lg">A 2-hour mural reveal event brought together the local community, press, and brand partners. Live painting, music, and the energy of creation turned a Saturday afternoon into a cultural moment on Colfax Avenue.</p>
+      </div>
+      <div class="denver-panel">
+        <p class="t-label">03 -- The Results</p>
+        <div class="stat-big" data-counter="3" data-suffix="x">3x</div>
+        <p class="stat-label">foot traffic increase during activation weekend</p>
+      </div>
+      <div class="denver-panel">
+        <p class="t-label">04 -- The Quote</p>
+        <blockquote>
+          "We've been here for 3 years, and this one mural made more people stop, talk, and share than any ad we've paid for."
+          <cite>-- Owner, Fever Dream Vintage</cite>
+        </blockquote>
+      </div>
+      <div class="denver-panel">
+        <p class="t-label">05 -- What's Next</p>
+        <h2 class="t-card-title">The Momentum Is Building</h2>
+        <p class="t-body-lg">4 Denver partners already committed for 2026. What started as one wall on Colfax is becoming a movement across the Mile High City. The proof is on the wall -- and in the numbers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP DIVIDER -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-gradient-denver-2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#3452FF"/>
+          <stop offset="50%" style="stop-color:#FF2D78"/>
+          <stop offset="100%" style="stop-color:#FFE135"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-gradient-denver-2)" d="M0,0 L0,35 Q80,38 160,35 Q200,32 240,48 Q260,62 280,48 Q320,30 480,35 Q560,38 640,35 Q680,32 720,52 Q740,68 760,52 Q800,32 960,36 Q1040,38 1120,35 Q1160,32 1200,50 Q1220,65 1240,50 Q1280,32 1440,36 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- BY THE NUMBERS -->
+  <section class="section stats-section">
+    <div class="container">
+      <p class="section-label text-center reveal">By The Numbers</p>
+      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-2xl);">One Mural. One Weekend.</h2>
+      <div class="grid grid-4">
+        <div class="stat-card card reveal delay-1">
+          <div class="card-gradient-bar"></div>
+          <p class="t-stat-number" data-counter="3" data-suffix="x">0</p>
+          <p class="t-stat-label">Foot Traffic</p>
+        </div>
+        <div class="stat-card card reveal delay-2">
+          <div class="card-gradient-bar"></div>
+          <p class="t-stat-number" data-counter="1">0</p>
+          <p class="t-stat-label">Westword Feature</p>
+        </div>
+        <div class="stat-card card reveal delay-3">
+          <div class="card-gradient-bar"></div>
+          <p class="t-stat-number" data-counter="4">0</p>
+          <p class="t-stat-label">Partners for 2026</p>
+        </div>
+        <div class="stat-card card reveal delay-4">
+          <div class="card-gradient-bar"></div>
+          <p class="t-stat-number" data-counter="2" data-suffix="-hr">0</p>
+          <p class="t-stat-label">Reveal Event</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP DIVIDER -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-gradient-denver-3" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FFE135"/>
+          <stop offset="100%" style="stop-color:#FF2D78"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-gradient-denver-3)" d="M0,0 L0,30 Q100,34 200,30 Q250,28 300,45 Q320,58 340,45 Q400,28 560,32 Q640,34 720,30 Q770,28 820,50 Q840,65 860,50 Q920,28 1080,32 Q1160,34 1240,30 Q1290,28 1340,42 Q1360,55 1380,42 Q1410,30 1440,32 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- PRESS -->
+  <section class="section press-section">
+    <div class="container">
+      <p class="section-label text-center reveal">Press Coverage</p>
+      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-2xl);">In The News</h2>
+      <a href="https://www.westword.com/arts/fever-dream-vintage-store-brightens-up-colfax-with-new-mural-25066803" target="_blank" class="press-card reveal" style="display: block;">
+        <p class="press-source">Westword</p>
+        <h3 class="press-headline">Fever Dream Vintage Brightens Up Colfax With New Mural</h3>
+        <p class="press-meta">By Cynthia Barnes -- July 18, 2025</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section denver-cta-section section--dark">
+    <div class="container">
+      <h2 class="t-section reveal">Want Results Like This<br><span class="c-pink">For Your Brand?</span></h2>
+      <p class="t-body-lg reveal c-muted" style="margin-bottom: var(--space-xl); max-width: 560px; margin-left: auto; margin-right: auto;">One mural generated more buzz than 3 years of traditional marketing. Imagine what a partnership could do.</p>
+      <a href="partnerships.html" class="btn btn--primary reveal">See Partnership Tiers</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <div class="footer-cta">
+        <h2>Let's create a cultural moment together.</h2>
+        <a href="contact.html" class="btn btn--primary">Start a Conversation</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/spraycationmuraltour" target="_blank">Instagram</a>
+        <a href="https://instagram.com/zuzubee" target="_blank">@zuzubee</a>
+        <a href="mailto:spraythefuture@gmail.com">Email</a>
+        <a href="https://ihavepinkhair.com/spraycation" target="_blank">Website</a>
+      </div>
+      <div class="footer-bottom">
+        <p class="t-small">&copy; 2026 Spraycation Mural Tour. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="grain-overlay"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle sparkle--sm"></div>
+  <div class="sparkle sparkle--lg"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle sparkle--sm"></div>
+  <div class="page-transition"><div class="drip-curtain"></div></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Pinned narrative
+      pinnedNarrative('.denver-narrative', '.denver-panel');
+
+      // Hero parallax
+      gsap.to('.denver-hero-content', {
+        scrollTrigger: {
+          trigger: '.denver-hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1
+        },
+        y: -100,
+        opacity: 0.3
+      });
+
+      // Stagger stat cards
+      staggerReveal('.stat-card', '.stats-section', { stagger: 0.15 });
+    });
+  </script>
+</body>
+</html>

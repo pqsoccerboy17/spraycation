@@ -29,6 +29,22 @@
 - [x] Researched fiscal sponsorship options -- Fractured Atlas recommended first
 - [x] Updated grant-opportunities.md with AWAW details + fiscal sponsorship info
 
+## Workstream 1C: Website (Completed 2026-03-09)
+- [x] Build multi-page website (6 pages) with Apple-style scroll animations
+- [x] Design system: shared CSS (Dela Gothic One + Permanent Marker + Outfit, street art palette)
+- [x] Shared JS: GSAP ScrollTrigger config, navigation, page transitions, sparkle parallax
+- [x] Home page: hero letter assembly, horizontal mural scroll, scatter-to-grid cities, velocity marquee
+- [x] Denver case study: pinned narrative, stats, press coverage link
+- [x] Partnerships page: value comparison table, tier cards, brand proof, pipeline stats
+- [x] Cities page: alternating city blocks, full route visualization, 2026 preview
+- [x] About page: Zuzu bio, team roles, mission, timeline, awards
+- [x] Contact page: partnership/wall/press inquiry cards, social links, support options
+- [x] Paint drip dividers, sparkle parallax, grain overlay, page transitions on all pages
+- [x] Responsive, mobile-first, works from file:// or any static host
+- [ ] Host website (GitHub Pages / Vercel / Netlify)
+- [ ] Add real mural photos (replace gradient placeholders)
+- [ ] Review with Zuzu for feedback
+
 ## Workstream 2: 2025 Wrap Deliverables
 These must be completed before 2026 outreach begins. See deliverables/wrap-2025-checklist.md for details.
 

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About -- SPRAYCATION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <style>
+    /* Hero */
+    .about-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #FF2D78 0%, #FFE135 50%, #3452FF 100%);
+      opacity: 0.3;
+    }
+    .about-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--black) 0%, transparent 50%);
+    }
+    .about-hero-content {
+      position: relative;
+      z-index: var(--z-content);
+    }
+
+    /* Zuzu Bio */
+    .bio-section {
+      background: var(--charcoal);
+    }
+    .bio-layout {
+      display: flex;
+      gap: var(--space-2xl);
+      align-items: flex-start;
+    }
+    .bio-visual {
+      width: 40%;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .bio-visual-inner {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #FF2D78 0%, #FFE135 50%, #B5227B 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .bio-visual-inner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.15) 0%, transparent 60%);
+    }
+    .bio-tagline {
+      position: absolute;
+      bottom: var(--space-lg);
+      left: var(--space-lg);
+      right: var(--space-lg);
+      font-family: var(--font-accent);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      color: var(--white);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .bio-text {
+      flex: 1;
+    }
+    .bio-text .t-section {
+      margin-bottom: var(--space-md);
+    }
+    .bio-text .bio-subtitle {
+      font-family: var(--font-accent);
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      color: var(--hot-pink);
+      margin-bottom: var(--space-lg);
+    }
+    .bio-text .t-body-lg {
+      margin-bottom: var(--space-lg);
+    }
+    .bio-socials {
+      display: flex;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    .bio-socials a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white-muted);
+      border-bottom: 1px solid var(--white-faint);
+      padding-bottom: 2px;
+      transition: color var(--duration-fast), border-color var(--duration-fast);
+    }
+    .bio-socials a:hover {
+      color: var(--hot-pink);
+      border-color: var(--hot-pink);
+    }
+
+    @media (max-width: 768px) {
+      .bio-layout {
+        flex-direction: column;
+      }
+      .bio-visual {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    /* Team */
+    .team-section {
+      background: var(--black);
+    }
+    .role-card {
+      text-align: center;
+    }
+    .role-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--gradient-brand);
+      margin: 0 auto var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--white);
+    }
+    .role-card .t-card-title {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      margin-bottom: var(--space-sm);
+    }
+    .role-card .t-body {
+      color: var(--white-muted);
+      font-weight: 300;
+    }
+
+    /* Mission */
+    .mission-section {
+      background: var(--charcoal-light);
+      text-align: center;
+    }
+    .mission-text {
+      max-width: 800px;
+      margin: 0 auto;
+      font-family: var(--font-body);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      line-height: 1.8;
+      font-weight: 300;
+      color: var(--white-soft);
+    }
+
+    /* Timeline */
+    .timeline-section {
+      background: var(--charcoal);
+    }
+    .timeline {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: var(--space-xl);
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gradient-brand);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: var(--space-2xl);
+    }
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: calc(-1 * var(--space-xl) + 8px);
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--hot-pink);
+      border: 3px solid var(--black);
+      z-index: 1;
+    }
+    .timeline-year {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--yellow);
+      margin-bottom: var(--space-sm);
+    }
+    .timeline-desc {
+      font-size: 1rem;
+      color: var(--white-soft);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* Awards */
+    .awards-section {
+      background: var(--black);
+      text-align: center;
+    }
+    .awards-grid {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+      margin-top: var(--space-xl);
+    }
+    .award-badge {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid var(--yellow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--duration-med) var(--ease-spring),
+                  box-shadow var(--duration-fast);
+    }
+    .award-badge:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255,225,53,0.3);
+    }
+    .award-badge .award-year {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--yellow);
+    }
+    .award-badge .award-label {
+      font-size: 0.55rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--white-muted);
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">SPRAYCATION</a>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="cities.html">Cities</a>
+      <a href="denver.html">Denver Story</a>
+      <a href="partnerships.html">Partner</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html" class="nav-cta">Let's Talk</a>
+    </div>
+  </nav>
+  <div class="nav-overlay">
+    <a href="index.html">Home</a>
+    <a href="cities.html">Cities</a>
+    <a href="denver.html">Denver Story</a>
+    <a href="partnerships.html">Partner</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Let's Talk</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="about-hero-content">
+      <h1 class="t-hero">THE ARTIST.<br>THE TEAM.<br>THE <span class="c-gradient">MISSION.</span></h1>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-a1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FF2D78"/>
+          <stop offset="50%" style="stop-color:#FFE135"/>
+          <stop offset="100%" style="stop-color:#3452FF"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-a1)" d="M0,0 L0,40 Q60,38 120,40 Q150,42 180,55 Q195,70 210,55 Q240,40 360,42 Q420,44 480,40 Q540,36 600,40 Q630,50 660,65 Q675,75 690,65 Q720,45 840,42 Q900,40 960,44 Q990,56 1020,68 Q1035,78 1050,68 Q1080,48 1200,42 Q1260,40 1320,44 Q1380,46 1440,40 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- ZUZU BIO -->
+  <section class="section bio-section">
+    <div class="container">
+      <div class="bio-layout">
+        <div class="bio-visual reveal-left">
+          <div class="bio-visual-inner">
+            <p class="bio-tagline">I have pink hair and I paint walls.</p>
+          </div>
+        </div>
+        <div class="bio-text">
+          <p class="section-label reveal">The Artist</p>
+          <h2 class="t-section reveal">Zuzu Perkal</h2>
+          <p class="bio-subtitle reveal">I have pink hair and I paint walls.</p>
+          <p class="t-body-lg reveal">Austin-based muralist and creative entrepreneur, Zuzu is a UT Austin graduate with 17+ years of creating public art that transforms communities. Named Austin's Best Muralist four consecutive years (2021-2024), she has collaborated with American Express, Coca-Cola, Red Bull, MLB, Rolling Stone, and more.</p>
+          <p class="t-body-lg reveal">Zuzu created Spraycation to prove that female-led art can transform communities and create real business value. What started as a solo road trip with a spray can became a multi-city movement with a full creative team and a mission to put color on every wall that needs it.</p>
+          <div class="bio-socials reveal">
+            <a href="https://instagram.com/zuzubee" target="_blank">@zuzubee</a>
+            <a href="https://ihavepinkhair.com" target="_blank">ihavepinkhair.com</a>
+            <a href="mailto:spraythefuture@gmail.com">spraythefuture@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-a2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#3452FF"/>
+          <stop offset="100%" style="stop-color:#FF2D78"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-a2)" d="M0,0 L0,35 Q80,38 160,35 Q200,32 240,48 Q260,62 280,48 Q320,30 480,35 Q560,38 640,35 Q680,32 720,52 Q740,68 760,52 Q800,32 960,36 Q1040,38 1120,35 Q1160,32 1200,50 Q1220,65 1240,50 Q1280,32 1440,36 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- THE TEAM -->
+  <section class="section team-section">
+    <div class="container">
+      <p class="section-label text-center reveal">All-Female Creative Team</p>
+      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-2xl);">The Team</h2>
+      <div class="grid grid-2">
+        <div class="card role-card reveal delay-1">
+          <div class="role-icon">BA</div>
+          <h3 class="t-card-title">Brand Architect</h3>
+          <p class="t-body">Strategic vision, brand identity, and creative direction. Shaping how Spraycation shows up in the world.</p>
+        </div>
+        <div class="card role-card reveal delay-2">
+          <div class="role-icon">SD</div>
+          <h3 class="t-card-title">Sponsorship Director</h3>
+          <p class="t-body">Corporate partnerships, grant applications, and revenue strategy. Building the engine that funds the art.</p>
+        </div>
+        <div class="card role-card reveal delay-3">
+          <div class="role-icon">CO</div>
+          <h3 class="t-card-title">Community Outreach Lead</h3>
+          <p class="t-body">Local partnerships, wall sourcing, and event coordination. The bridge between Spraycation and every city.</p>
+        </div>
+        <div class="card role-card reveal delay-4">
+          <div class="role-icon">SM</div>
+          <h3 class="t-card-title">Social Media Strategist</h3>
+          <p class="t-body">Content creation, audience growth, and campaign management. Telling the story across every platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-a3" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FF2D78"/>
+          <stop offset="50%" style="stop-color:#FFE135"/>
+          <stop offset="100%" style="stop-color:#3452FF"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-a3)" d="M0,0 L0,30 Q100,34 200,30 Q250,28 300,45 Q320,58 340,45 Q400,28 560,32 Q640,34 720,30 Q770,28 820,50 Q840,65 860,50 Q920,28 1080,32 Q1160,34 1240,30 Q1290,28 1340,42 Q1360,55 1380,42 Q1410,30 1440,32 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- THE MISSION -->
+  <section class="section mission-section">
+    <div class="container">
+      <p class="section-label reveal">The Mission</p>
+      <h2 class="t-section reveal" style="margin-bottom: var(--space-xl);">More Than Murals</h2>
+      <p class="mission-text reveal">Spraycation is more than murals. It's proof that art creates economic value, that women can lead bold creative ventures, and that every community deserves beauty on its walls. We're building a new model -- where brands, artists, and neighborhoods all win.</p>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-a4" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FFE135"/>
+          <stop offset="100%" style="stop-color:#FF2D78"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-a4)" d="M0,0 L0,40 Q60,38 120,40 Q150,42 180,55 Q195,70 210,55 Q240,40 360,42 Q420,44 480,40 Q540,36 600,40 Q630,50 660,65 Q675,75 690,65 Q720,45 840,42 Q900,40 960,44 Q990,56 1020,68 Q1035,78 1050,68 Q1080,48 1200,42 Q1260,40 1320,44 Q1380,46 1440,40 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- TIMELINE -->
+  <section class="section timeline-section">
+    <div class="container">
+      <p class="section-label text-center reveal">The Journey</p>
+      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-2xl);">How We Got Here</h2>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <p class="timeline-year">2024</p>
+          <p class="timeline-desc">Solo debut. 5 murals. 6,000+ miles. 10 states. A spray can, an RV named AquaBurn, and a mission to prove that public art could do more than decorate -- it could transform. Proof of concept achieved.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <p class="timeline-year">2025</p>
+          <p class="timeline-desc">Full all-female creative team. 5 cities activated. 6,500+ miles. First international stop in Vancouver. Press coverage in Westword and EASTside Magazine. 3x business impact proven in Denver. The movement found its stride.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <p class="timeline-year">2026</p>
+          <p class="timeline-desc">8-10 cities nationwide. Strategic brand partnerships. National press outreach. Larger murals, bigger events, deeper community integration. The movement goes big.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-a5" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#3452FF"/>
+          <stop offset="50%" style="stop-color:#FF2D78"/>
+          <stop offset="100%" style="stop-color:#FFE135"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-a5)" d="M0,0 L0,35 Q80,38 160,35 Q200,32 240,48 Q260,62 280,48 Q320,30 480,35 Q560,38 640,35 Q680,32 720,52 Q740,68 760,52 Q800,32 960,36 Q1040,38 1120,35 Q1160,32 1200,50 Q1220,65 1240,50 Q1280,32 1440,36 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- AWARDS -->
+  <section class="section awards-section">
+    <div class="container">
+      <p class="section-label reveal">Recognition</p>
+      <h2 class="t-section reveal">Austin's Best Muralist</h2>
+      <p class="t-body-lg c-muted reveal text-center" style="margin-top: var(--space-md);">Four consecutive years. Voted by the city.</p>
+      <div class="awards-grid">
+        <div class="award-badge reveal delay-1">
+          <span class="award-year">2021</span>
+          <span class="award-label">Best Muralist</span>
+        </div>
+        <div class="award-badge reveal delay-2">
+          <span class="award-year">2022</span>
+          <span class="award-label">Best Muralist</span>
+        </div>
+        <div class="award-badge reveal delay-3">
+          <span class="award-year">2023</span>
+          <span class="award-label">Best Muralist</span>
+        </div>
+        <div class="award-badge reveal delay-4">
+          <span class="award-year">2024</span>
+          <span class="award-label">Best Muralist</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <div class="footer-cta">
+        <h2>Let's create a cultural moment together.</h2>
+        <a href="contact.html" class="btn btn--primary">Start a Conversation</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/spraycationmuraltour" target="_blank">Instagram</a>
+        <a href="https://instagram.com/zuzubee" target="_blank">@zuzubee</a>
+        <a href="mailto:spraythefuture@gmail.com">Email</a>
+        <a href="https://ihavepinkhair.com/spraycation" target="_blank">Website</a>
+      </div>
+      <div class="footer-bottom">
+        <p class="t-small">&copy; 2026 Spraycation Mural Tour. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="grain-overlay"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle sparkle--sm"></div>
+  <div class="sparkle sparkle--lg"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle sparkle--sm"></div>
+  <div class="page-transition"><div class="drip-curtain"></div></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Stagger team roles
+      staggerReveal('.role-card', '.team-section', { stagger: 0.15 });
+
+      // Stagger timeline items
+      staggerReveal('.timeline-item', '.timeline', { stagger: 0.2, y: 40 });
+
+      // Stagger award badges
+      staggerReveal('.award-badge', '.awards-section', { stagger: 0.12, y: 30 });
+
+      // Hero parallax
+      gsap.to('.about-hero-content', {
+        scrollTrigger: {
+          trigger: '.about-hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1
+        },
+        y: -100,
+        opacity: 0.3
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Cities -- SPRAYCATION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <style>
+    /* Hero */
+    .cities-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cities-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-glow-blue);
+      opacity: 0.5;
+    }
+    .cities-hero-content {
+      position: relative;
+      z-index: var(--z-content);
+    }
+    .cities-hero .t-body-lg {
+      max-width: 600px;
+      margin: var(--space-lg) auto 0;
+      color: var(--white-muted);
+    }
+    .hero-stats {
+      display: flex;
+      gap: var(--space-xl);
+      margin-top: var(--space-xl);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+
+    /* City Block */
+    .city-block {
+      display: flex;
+      min-height: 80vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .city-block:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .city-visual {
+      width: 50%;
+      position: relative;
+      min-height: 400px;
+    }
+    .city-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 50%, var(--black) 100%);
+    }
+    .city-block:nth-child(even) .city-visual::after {
+      background: linear-gradient(to left, transparent 50%, var(--black) 100%);
+    }
+    .city-content {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-2xl) var(--space-xl);
+    }
+    .city-content .badge {
+      align-self: flex-start;
+      margin-bottom: var(--space-md);
+    }
+    .city-content .t-section {
+      margin-bottom: var(--space-md);
+    }
+    .city-address {
+      font-family: var(--font-accent);
+      font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+      color: var(--yellow);
+      margin-bottom: var(--space-lg);
+    }
+    .city-details {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-lg) 0;
+    }
+    .city-details li {
+      padding: var(--space-sm) 0;
+      font-size: 0.95rem;
+      color: var(--white-soft);
+      font-weight: 300;
+      border-bottom: 1px solid var(--white-faint);
+    }
+    .city-details li strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .city-block,
+      .city-block:nth-child(even) {
+        flex-direction: column;
+      }
+      .city-visual {
+        width: 100%;
+        min-height: 250px;
+      }
+      .city-visual::after {
+        background: linear-gradient(to bottom, transparent 50%, var(--black) 100%) !important;
+      }
+      .city-content {
+        width: 100%;
+        padding: var(--space-xl) var(--space-lg);
+      }
+    }
+
+    /* Route */
+    .route-section {
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+    .route-path {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-xl);
+    }
+    .route-stop {
+      font-family: var(--font-display);
+      font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-soft);
+      padding: 8px 16px;
+      border: 1px solid var(--white-faint);
+      border-radius: 30px;
+      transition: border-color var(--duration-fast), color var(--duration-fast);
+    }
+    .route-stop:hover {
+      border-color: var(--hot-pink);
+      color: var(--hot-pink);
+    }
+    .route-stop--mural {
+      border-color: var(--hot-pink);
+      background: rgba(255,45,120,0.1);
+      color: var(--hot-pink);
+    }
+    .route-arrow {
+      color: var(--white-muted);
+      font-size: 1.2rem;
+    }
+
+    /* 2026 Preview */
+    .preview-section {
+      background: var(--black);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">SPRAYCATION</a>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="cities.html" class="active">Cities</a>
+      <a href="denver.html">Denver Story</a>
+      <a href="partnerships.html">Partner</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Let's Talk</a>
+    </div>
+  </nav>
+  <div class="nav-overlay">
+    <a href="index.html">Home</a>
+    <a href="cities.html">Cities</a>
+    <a href="denver.html">Denver Story</a>
+    <a href="partnerships.html">Partner</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Let's Talk</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="cities-hero section--dark">
+    <div class="cities-hero-content">
+      <h1 class="t-hero">WHERE THE<br>PAINT <span class="c-gradient">HIT THE WALL</span></h1>
+      <p class="t-body-lg">6,500+ miles. 5 cities. 10 states. One mission.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <p class="t-stat-number" data-counter="6500" data-suffix="+">0</p>
+          <p class="t-stat-label">Miles</p>
+        </div>
+        <div class="hero-stat">
+          <p class="t-stat-number" data-counter="5">0</p>
+          <p class="t-stat-label">Cities</p>
+        </div>
+        <div class="hero-stat">
+          <p class="t-stat-number" data-counter="10">0</p>
+          <p class="t-stat-label">States</p>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-c1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FF2D78"/>
+          <stop offset="100%" style="stop-color:#3452FF"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-c1)" d="M0,0 L0,40 Q60,38 120,40 Q150,42 180,55 Q195,70 210,55 Q240,40 360,42 Q420,44 480,40 Q540,36 600,40 Q630,50 660,65 Q675,75 690,65 Q720,45 840,42 Q900,40 960,44 Q990,56 1020,68 Q1035,78 1050,68 Q1080,48 1200,42 Q1260,40 1320,44 Q1380,46 1440,40 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- CITY 1: DENVER (Featured) -->
+  <section class="city-block section--dark">
+    <div class="city-visual mural-gradient--denver"></div>
+    <div class="city-content">
+      <span class="badge badge--pink reveal">SPOTLIGHT</span>
+      <h2 class="t-section reveal">Denver, CO</h2>
+      <p class="city-address reveal">2903 E. Colfax Ave</p>
+      <ul class="city-details">
+        <li class="reveal"><strong>Wall Partner:</strong> Fever Dream Vintage</li>
+        <li class="reveal"><strong>Mural:</strong> "You Are Magic" -- July 2025</li>
+        <li class="reveal"><strong>Impact:</strong> 3x foot traffic increase</li>
+        <li class="reveal"><strong>Press:</strong> Featured in Westword</li>
+      </ul>
+      <a href="denver.html" class="btn btn--primary reveal" style="align-self: flex-start;">Read the Full Denver Story</a>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-c2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#3452FF"/>
+          <stop offset="50%" style="stop-color:#00D4FF"/>
+          <stop offset="100%" style="stop-color:#B5227B"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-c2)" d="M0,0 L0,35 Q80,38 160,35 Q200,32 240,48 Q260,62 280,48 Q320,30 480,35 Q560,38 640,35 Q680,32 720,52 Q740,68 760,52 Q800,32 960,36 Q1040,38 1120,35 Q1160,32 1200,50 Q1220,65 1240,50 Q1280,32 1440,36 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- CITY 2: PORTLAND -->
+  <section class="city-block section--dark">
+    <div class="city-visual mural-gradient--portland"></div>
+    <div class="city-content">
+      <h2 class="t-section reveal">Portland, OR</h2>
+      <p class="city-address reveal">1324 SE 8th Ave</p>
+      <ul class="city-details">
+        <li class="reveal"><strong>Timeline:</strong> October 2025</li>
+        <li class="reveal"><strong>Local Partners:</strong> Soaring Coffee, Portal 503, Urbanite Portland</li>
+        <li class="reveal"><strong>Vibe:</strong> Portland's creative district meets Spraycation's biggest wall yet</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-c3" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FF2D78"/>
+          <stop offset="50%" style="stop-color:#3452FF"/>
+          <stop offset="100%" style="stop-color:#00D4FF"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-c3)" d="M0,0 L0,30 Q100,34 200,30 Q250,28 300,45 Q320,58 340,45 Q400,28 560,32 Q640,34 720,30 Q770,28 820,50 Q840,65 860,50 Q920,28 1080,32 Q1160,34 1240,30 Q1290,28 1340,42 Q1360,55 1380,42 Q1410,30 1440,32 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- CITY 3: VANCOUVER -->
+  <section class="city-block section--dark">
+    <div class="city-visual mural-gradient--vancouver"></div>
+    <div class="city-content">
+      <span class="badge badge--blue reveal">FIRST INTERNATIONAL</span>
+      <h2 class="t-section reveal">Vancouver, BC</h2>
+      <p class="city-address reveal">2601 Main St</p>
+      <ul class="city-details">
+        <li class="reveal"><strong>Timeline:</strong> October 2025</li>
+        <li class="reveal"><strong>Milestone:</strong> The first international Spraycation stop -- taking the movement across borders</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-c4" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FFE135"/>
+          <stop offset="50%" style="stop-color:#FF2D78"/>
+          <stop offset="100%" style="stop-color:#3452FF"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-c4)" d="M0,0 L0,40 Q60,38 120,40 Q150,42 180,55 Q195,70 210,55 Q240,40 360,42 Q420,44 480,40 Q540,36 600,40 Q630,50 660,65 Q675,75 690,65 Q720,45 840,42 Q900,40 960,44 Q990,56 1020,68 Q1035,78 1050,68 Q1080,48 1200,42 Q1260,40 1320,44 Q1380,46 1440,40 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- CITY 4: BOISE -->
+  <section class="city-block section--dark">
+    <div class="city-visual mural-gradient--boise"></div>
+    <div class="city-content">
+      <h2 class="t-section reveal">Boise, ID</h2>
+      <p class="city-address reveal">210 N 9th St</p>
+      <ul class="city-details">
+        <li class="reveal"><strong>Timeline:</strong> November 2025</li>
+        <li class="reveal"><strong>Content:</strong> Claire Keener (videographer)</li>
+        <li class="reveal"><strong>Media Reach:</strong> Totally Boise (60.9K), This is Boise (115K), Visit Idaho (131K)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-c5" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#3452FF"/>
+          <stop offset="100%" style="stop-color:#FFE135"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-c5)" d="M0,0 L0,35 Q80,38 160,35 Q200,32 240,48 Q260,62 280,48 Q320,30 480,35 Q560,38 640,35 Q680,32 720,52 Q740,68 760,52 Q800,32 960,36 Q1040,38 1120,35 Q1160,32 1200,50 Q1220,65 1240,50 Q1280,32 1440,36 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- THE FULL ROUTE -->
+  <section class="section route-section">
+    <div class="container text-center">
+      <p class="section-label reveal">2025 Tour Route</p>
+      <h2 class="t-section reveal" style="margin-bottom: var(--space-md);">The Full Route</h2>
+      <div class="route-path">
+        <span class="route-stop route-stop--mural reveal">Austin TX</span>
+        <span class="route-arrow reveal">&rarr;</span>
+        <span class="route-stop reveal">Taos NM</span>
+        <span class="route-arrow reveal">&rarr;</span>
+        <span class="route-stop route-stop--mural reveal">Denver CO</span>
+        <span class="route-arrow reveal">&rarr;</span>
+        <span class="route-stop reveal">Rocky Mountain NP</span>
+        <span class="route-arrow reveal">&rarr;</span>
+        <span class="route-stop reveal">Jackson Hole WY</span>
+        <span class="route-arrow reveal">&rarr;</span>
+        <span class="route-stop reveal">Yellowstone</span>
+        <span class="route-arrow reveal">&rarr;</span>
+        <span class="route-stop reveal">Bozeman MT</span>
+        <span class="route-arrow reveal">&rarr;</span>
+        <span class="route-stop route-stop--mural reveal">Portland OR</span>
+        <span class="route-arrow reveal">&rarr;</span>
+        <span class="route-stop reveal">Seattle WA</span>
+        <span class="route-arrow reveal">&rarr;</span>
+        <span class="route-stop route-stop--mural reveal">Vancouver BC</span>
+        <span class="route-arrow reveal">&rarr;</span>
+        <span class="route-stop route-stop--mural reveal">Boise ID</span>
+        <span class="route-arrow reveal">&rarr;</span>
+        <span class="route-stop route-stop--mural reveal">Austin TX</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINT DRIP -->
+  <div class="drip-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="drip-c6" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FF2D78"/>
+          <stop offset="50%" style="stop-color:#FFE135"/>
+          <stop offset="100%" style="stop-color:#3452FF"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#drip-c6)" d="M0,0 L0,30 Q100,34 200,30 Q250,28 300,45 Q320,58 340,45 Q400,28 560,32 Q640,34 720,30 Q770,28 820,50 Q840,65 860,50 Q920,28 1080,32 Q1160,34 1240,30 Q1290,28 1340,42 Q1360,55 1380,42 Q1410,30 1440,32 L1440,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- 2026 PREVIEW -->
+  <section class="section preview-section">
+    <div class="container">
+      <p class="section-label reveal">Coming Soon</p>
+      <h2 class="t-section reveal">2026 Preview</h2>
+      <p class="t-accent c-yellow reveal" style="margin: var(--space-lg) 0;">8-10 cities nationwide.</p>
+      <p class="t-body-lg c-muted reveal" style="max-width: 500px; margin: 0 auto var(--space-xl);">Want your city on the list? We're looking for walls, partners, and communities ready for magic.</p>
+      <a href="contact.html" class="btn btn--primary reveal">Get Your City on the List</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <div class="footer-cta">
+        <h2>Let's create a cultural moment together.</h2>
+        <a href="contact.html" class="btn btn--primary">Start a Conversation</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/spraycationmuraltour" target="_blank">Instagram</a>
+        <a href="https://instagram.com/zuzubee" target="_blank">@zuzubee</a>
+        <a href="mailto:spraythefuture@gmail.com">Email</a>
+        <a href="https://ihavepinkhair.com/spraycation" target="_blank">Website</a>
+      </div>
+      <div class="footer-bottom">
+        <p class="t-small">&copy; 2026 Spraycation Mural Tour. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="grain-overlay"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle sparkle--sm"></div>
+  <div class="sparkle sparkle--lg"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle sparkle--sm"></div>
+  <div class="page-transition"><div class="drip-curtain"></div></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="js/shared.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Alternating city reveals
+      var cityBlocks = document.querySelectorAll('.city-block');
+      cityBlocks.forEach(function(block, i) {
+        var content = block.querySelector('.city-content');
+        var visual = block.querySelector('.city-visual');
+        var direction = i % 2 === 0 ? 'reveal-left' : 'reveal-right';
+
+        // Animate the visual
+        gsap.from(visual, {
+          scrollTrigger: {
+            trigger: block,
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          },
+          opacity: 0,
+          scale: 1.05,
+          duration: 1,
+          ease: 'power3.out'
+        });
+      });
+
+      // Stagger route stops
+      staggerReveal('.route-stop, .route-arrow', '.route-section', { stagger: 0.05, y: 20 });
+
+      // Hero parallax
+      gsap.to('.cities-hero-content', {
+        scrollTrigger: {
+          trigger: '.cities-hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1
+        },
+        y: -100,
+        opacity: 0.3
+      });
+    });
+  </script>
+</body>
+</html>
