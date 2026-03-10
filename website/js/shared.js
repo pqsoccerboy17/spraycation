@@ -201,6 +201,9 @@ function staggerReveal(selector, triggerSelector, options) {
   var elements = document.querySelectorAll(selector);
   if (!elements.length) return;
 
+  // Remove .reveal class so CSS animation system doesn't conflict with GSAP
+  elements.forEach(function(el) { el.classList.remove('reveal'); });
+
   var scrollTriggerOpts = Object.assign({
     trigger: triggerSelector || elements[0].parentElement,
     start: options.start || 'top 80%',
@@ -208,14 +211,17 @@ function staggerReveal(selector, triggerSelector, options) {
     toggleActions: 'play none none none'
   }, options.scrollTrigger || {});
 
-  gsap.from(elements, {
-    scrollTrigger: scrollTriggerOpts,
-    y: options.y || 60,
-    opacity: 0,
-    duration: options.duration || 0.8,
-    stagger: options.stagger || 0.12,
-    ease: options.ease || 'power3.out'
-  });
+  gsap.fromTo(elements,
+    { opacity: 0, y: options.y || 60 },
+    {
+      scrollTrigger: scrollTriggerOpts,
+      opacity: 1,
+      y: 0,
+      duration: options.duration || 0.8,
+      stagger: options.stagger || 0.12,
+      ease: options.ease || 'power3.out'
+    }
+  );
 }
 
 // Pattern: Horizontal scroll section
