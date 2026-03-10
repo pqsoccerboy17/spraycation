@@ -8,16 +8,6 @@
   <link rel="stylesheet" href="css/shared.css">
   <style>
     /* Hero */
-    .about-hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
     .about-hero::before {
       content: '';
       position: absolute;
@@ -33,10 +23,6 @@
       inset: 0;
       background: linear-gradient(to top, var(--black) 0%, transparent 50%);
     }
-    .about-hero-content {
-      position: relative;
-      z-index: var(--z-content);
-    }
 
     /* Zuzu Bio */
     .bio-section {
@@ -51,30 +37,6 @@
       width: 40%;
       flex-shrink: 0;
       position: relative;
-    }
-    .bio-visual-inner {
-      width: 100%;
-      aspect-ratio: 3/4;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #FF2D78 0%, #FFE135 50%, #B5227B 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .bio-visual-inner::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.15) 0%, transparent 60%);
-    }
-    .bio-tagline {
-      position: absolute;
-      bottom: var(--space-lg);
-      left: var(--space-lg);
-      right: var(--space-lg);
-      font-family: var(--font-accent);
-      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-      color: var(--white);
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
     .bio-text {
       flex: 1;
@@ -118,35 +80,6 @@
         max-width: 400px;
         margin: 0 auto;
       }
-    }
-
-    /* Team */
-    .team-section {
-      background: var(--black);
-    }
-    .role-card {
-      text-align: center;
-    }
-    .role-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--gradient-brand);
-      margin: 0 auto var(--space-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      color: var(--white);
-    }
-    .role-card .t-card-title {
-      font-size: clamp(1rem, 2vw, 1.3rem);
-      margin-bottom: var(--space-sm);
-    }
-    .role-card .t-body {
-      color: var(--white-muted);
-      font-weight: 300;
     }
 
     /* Mission */
@@ -283,9 +216,9 @@
   </div>
 
   <!-- HERO -->
-  <section class="about-hero">
-    <div class="about-hero-content">
-      <h1 class="t-hero">THE ARTIST.<br>THE TEAM.<br>THE <span class="c-gradient">MISSION.</span></h1>
+  <section class="about-hero page-hero">
+    <div class="hero-content">
+      <h1 class="t-hero">THE ARTIST.<br>THE <span class="c-gradient">MISSION.</span></h1>
     </div>
     <div class="scroll-indicator">
       <span>Scroll</span>
@@ -321,7 +254,7 @@
           <h2 class="t-section reveal">Zuzu Perkal</h2>
           <p class="bio-subtitle reveal">I have pink hair and I paint walls.</p>
           <p class="t-body-lg reveal">Austin-based muralist and creative entrepreneur, Zuzu is a UT Austin graduate with 17+ years of creating public art that transforms communities. Named Austin's Best Muralist four consecutive years (2021-2024), she has collaborated with American Express, Coca-Cola, Red Bull, MLB, Rolling Stone, and more.</p>
-          <p class="t-body-lg reveal">Zuzu created Spraycation to prove that female-led art can transform communities and create real business value. What started as a solo road trip with a spray can became a multi-city movement with a full creative team and a mission to put color on every wall that needs it.</p>
+          <p class="t-body-lg reveal">Zuzu created Spraycation to prove that female-led art can transform communities and create real business value. What started as a solo road trip with a spray can became a multi-city movement -- and a mission to put color on every wall that needs it.</p>
           <div class="bio-socials reveal">
             <a href="https://instagram.com/zuzubee" target="_blank">@zuzubee</a>
             <a href="https://ihavepinkhair.com" target="_blank">ihavepinkhair.com</a>
@@ -337,55 +270,12 @@
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
       <defs>
         <linearGradient id="drip-a2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#3452FF"/>
-          <stop offset="100%" style="stop-color:#FF2D78"/>
-        </linearGradient>
-      </defs>
-      <path fill="url(#drip-a2)" d="M0,0 L0,35 Q80,38 160,35 Q200,32 240,48 Q260,62 280,48 Q320,30 480,35 Q560,38 640,35 Q680,32 720,52 Q740,68 760,52 Q800,32 960,36 Q1040,38 1120,35 Q1160,32 1200,50 Q1220,65 1240,50 Q1280,32 1440,36 L1440,0 Z"/>
-    </svg>
-  </div>
-
-  <!-- THE TEAM -->
-  <section class="section team-section">
-    <div class="container">
-      <p class="section-label text-center reveal">All-Female Creative Team</p>
-      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-2xl);">The Team</h2>
-      <div class="grid grid-2">
-        <div class="card role-card reveal delay-1">
-          <div class="role-icon">BA</div>
-          <h3 class="t-card-title">Brand Architect</h3>
-          <p class="t-body">Strategic vision, brand identity, and creative direction. Shaping how Spraycation shows up in the world.</p>
-        </div>
-        <div class="card role-card reveal delay-2">
-          <div class="role-icon">SD</div>
-          <h3 class="t-card-title">Sponsorship Director</h3>
-          <p class="t-body">Corporate partnerships, grant applications, and revenue strategy. Building the engine that funds the art.</p>
-        </div>
-        <div class="card role-card reveal delay-3">
-          <div class="role-icon">CO</div>
-          <h3 class="t-card-title">Community Outreach Lead</h3>
-          <p class="t-body">Local partnerships, wall sourcing, and event coordination. The bridge between Spraycation and every city.</p>
-        </div>
-        <div class="card role-card reveal delay-4">
-          <div class="role-icon">SM</div>
-          <h3 class="t-card-title">Social Media Strategist</h3>
-          <p class="t-body">Content creation, audience growth, and campaign management. Telling the story across every platform.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAINT DRIP -->
-  <div class="drip-divider">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="drip-a3" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:#FF2D78"/>
           <stop offset="50%" style="stop-color:#FFE135"/>
           <stop offset="100%" style="stop-color:#3452FF"/>
         </linearGradient>
       </defs>
-      <path fill="url(#drip-a3)" d="M0,0 L0,30 Q100,34 200,30 Q250,28 300,45 Q320,58 340,45 Q400,28 560,32 Q640,34 720,30 Q770,28 820,50 Q840,65 860,50 Q920,28 1080,32 Q1160,34 1240,30 Q1290,28 1340,42 Q1360,55 1380,42 Q1410,30 1440,32 L1440,0 Z"/>
+      <path fill="url(#drip-a2)" d="M0,0 L0,30 Q100,34 200,30 Q250,28 300,45 Q320,58 340,45 Q400,28 560,32 Q640,34 720,30 Q770,28 820,50 Q840,65 860,50 Q920,28 1080,32 Q1160,34 1240,30 Q1290,28 1340,42 Q1360,55 1380,42 Q1410,30 1440,32 L1440,0 Z"/>
     </svg>
   </div>
 
@@ -393,7 +283,7 @@
   <section class="section mission-section">
     <div class="container">
       <p class="section-label reveal">The Mission</p>
-      <h2 class="t-section reveal" style="margin-bottom: var(--space-xl);">More Than Murals</h2>
+      <h2 class="t-section reveal mb-xl">More Than Murals</h2>
       <p class="mission-text reveal">Spraycation is more than murals. It's proof that art creates economic value, that women can lead bold creative ventures, and that every community deserves beauty on its walls. We're building a new model -- where brands, artists, and neighborhoods all win.</p>
     </div>
   </section>
@@ -415,7 +305,7 @@
   <section class="section timeline-section">
     <div class="container">
       <p class="section-label text-center reveal">The Journey</p>
-      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-2xl);">How We Got Here</h2>
+      <h2 class="t-section text-center reveal mb-2xl">How We Got Here</h2>
       <div class="timeline">
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
@@ -425,7 +315,7 @@
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <p class="timeline-year">2025</p>
-          <p class="timeline-desc">Full all-female creative team. 5 cities activated. 6,500+ miles. First international stop in Vancouver. Press coverage in Westword and EASTside Magazine. 3x business impact proven in Denver. The movement found its stride.</p>
+          <p class="timeline-desc">5 cities activated. 6,500+ miles. First international stop in Vancouver. Press coverage in Westword and EASTside Magazine. 3x business impact proven in Denver. The movement found its stride.</p>
         </div>
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
@@ -455,7 +345,7 @@
     <div class="container">
       <p class="section-label reveal">Recognition</p>
       <h2 class="t-section reveal">Austin's Best Muralist</h2>
-      <p class="t-body-lg c-muted reveal text-center" style="margin-top: var(--space-md);">Four consecutive years. Voted by the city.</p>
+      <p class="t-body-lg c-muted reveal text-center" style="margin-top: var(--space-md)">Four consecutive years. Voted by the city.</p>
       <div class="awards-grid">
         <div class="award-badge reveal delay-1">
           <span class="award-year">2021</span>
@@ -510,9 +400,6 @@
   <script src="js/shared.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Stagger team roles
-      staggerReveal('.role-card', '.team-section', { stagger: 0.15 });
-
       // Stagger timeline items
       staggerReveal('.timeline-item', '.timeline', { stagger: 0.2, y: 40 });
 
@@ -520,16 +407,7 @@
       staggerReveal('.award-badge', '.awards-section', { stagger: 0.12, y: 30 });
 
       // Hero parallax
-      gsap.to('.about-hero-content', {
-        scrollTrigger: {
-          trigger: '.about-hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1
-        },
-        y: -100,
-        opacity: 0.3
-      });
+      heroParallax('.hero-content', '.about-hero');
     });
   </script>
 </body>

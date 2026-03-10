@@ -277,7 +277,7 @@ function velocityMarquee(trackSelector) {
   if (!track) return;
 
   var style = window.getComputedStyle(track);
-  var animDuration = parseFloat(style.animationDuration) || 30;
+  var animDuration = parseFloat(style.animationDuration) || 60;
 
   ScrollTrigger.create({
     onUpdate: function(self) {
@@ -285,6 +285,24 @@ function velocityMarquee(trackSelector) {
       var newDuration = Math.max(5, animDuration / (1 + velocity));
       track.style.animationDuration = newDuration + 's';
     }
+  });
+}
+
+// --- HERO PARALLAX (shared across subpages) ---
+function heroParallax(contentSelector, triggerSelector) {
+  var content = document.querySelector(contentSelector);
+  var trigger = document.querySelector(triggerSelector);
+  if (!content || !trigger) return;
+
+  gsap.to(content, {
+    scrollTrigger: {
+      trigger: trigger,
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 1
+    },
+    y: -100,
+    opacity: 0.3
   });
 }
 

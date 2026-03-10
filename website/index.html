@@ -131,7 +131,7 @@
     }
     .mural-panel-content {
       position: relative;
-      z-index: var(--z-content);
+      z-index: 2;
       max-width: 600px;
     }
     .mural-panel-content .t-label {
@@ -150,8 +150,21 @@
       background: linear-gradient(to top, rgba(10, 10, 15, 0.85) 0%, rgba(10, 10, 15, 0.3) 40%, transparent 100%);
       z-index: 1;
     }
-    .mural-panel-content {
-      z-index: 2;
+    .mural-panel--denver {
+      background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
+                  url('assets/images/denver-mural.jpg') center / cover;
+    }
+    .mural-panel--portland {
+      background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
+                  url('assets/images/portland-mural.jpg') center / cover;
+    }
+    .mural-panel--vancouver {
+      background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
+                  url('assets/images/vancouver-mural.jpg') center / cover;
+    }
+    .mural-panel--boise {
+      background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
+                  url('assets/images/boise-mural.jpg') center / cover;
     }
 
     /* --- STORY SECTION --- */
@@ -319,8 +332,8 @@
     <div class="orb orb--yellow"></div>
 
     <div class="hero-title-wrap text-center">
-      <h1 class="t-hero">
-        <span class="hero-letter">S</span><span class="hero-letter">P</span><span class="hero-letter">R</span><span class="hero-letter">A</span><span class="hero-letter">Y</span><span class="hero-letter">C</span><span class="hero-letter">A</span><span class="hero-letter">T</span><span class="hero-letter">I</span><span class="hero-letter">O</span><span class="hero-letter">N</span>
+      <h1 class="t-hero" aria-label="SPRAYCATION">
+        <span class="hero-letter" aria-hidden="true">S</span><span class="hero-letter" aria-hidden="true">P</span><span class="hero-letter" aria-hidden="true">R</span><span class="hero-letter" aria-hidden="true">A</span><span class="hero-letter" aria-hidden="true">Y</span><span class="hero-letter" aria-hidden="true">C</span><span class="hero-letter" aria-hidden="true">A</span><span class="hero-letter" aria-hidden="true">T</span><span class="hero-letter" aria-hidden="true">I</span><span class="hero-letter" aria-hidden="true">O</span><span class="hero-letter" aria-hidden="true">N</span>
       </h1>
       <span class="t-accent hero-accent">You Are Magic</span>
       <p class="t-body-lg hero-subtitle c-muted">A female-led traveling mural tour transforming walls into cultural moments</p>
@@ -341,50 +354,58 @@
   <section class="brands-section section section--charcoal" id="brands">
     <div class="container text-center">
       <div class="section-label">Brands That Believed</div>
-      <h2 class="t-section" style="margin-bottom: var(--space-lg);">Legacy Partners</h2>
+      <h2 class="t-section mb-lg">Legacy Partners</h2>
     </div>
 
     <div class="marquee-wrap">
-      <div class="marquee-track">
-        <span class="marquee-item">American Express</span>
+      <div class="marquee-track" aria-hidden="true">
+        <!-- American Express -->
+        <span class="marquee-item"><svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="200" height="40" rx="4"/><text x="100" y="27" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="14" fill="#0A0A0F" letter-spacing="1">AMERICAN EXPRESS</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Coca-Cola</span>
+        <!-- Coca-Cola -->
+        <span class="marquee-item"><svg viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg"><text x="90" y="38" text-anchor="middle" font-family="'Brush Script MT','Segoe Script',cursive" font-size="36" font-style="italic" font-weight="400">Coca-Cola</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Red Bull</span>
+        <!-- Red Bull -->
+        <span class="marquee-item"><svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg"><text x="80" y="34" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-weight="900" font-size="28" letter-spacing="1">RED BULL</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Budweiser</span>
+        <!-- Budweiser -->
+        <span class="marquee-item"><svg viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg"><path d="M10 25 Q30 8 50 20 Q70 8 90 25 Q110 8 130 20 Q150 8 170 25" stroke-width="2" fill="none" stroke="currentColor" opacity="0.3"/><text x="90" y="36" text-anchor="middle" font-family="'Times New Roman',Georgia,serif" font-weight="700" font-size="26" font-style="italic" letter-spacing="2">Budweiser</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">MLB</span>
+        <!-- MLB -->
+        <span class="marquee-item"><svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 C35 5 20 15 20 28 C20 40 35 45 50 45 C65 45 80 40 80 28 C80 15 65 5 50 5 Z" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"/><path d="M42 12 L42 38 L48 38 L48 18 L58 38 L64 38 L64 12 L58 12 L58 32 L48 12 Z" opacity="0.4"/><text x="50" y="35" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-weight="900" font-size="30" letter-spacing="2">MLB</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Fender</span>
+        <!-- Fender -->
+        <span class="marquee-item"><svg viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg"><text x="75" y="36" text-anchor="middle" font-family="'Brush Script MT','Segoe Script',cursive" font-size="34" font-style="italic">Fender</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Rolling Stone</span>
+        <!-- Rolling Stone -->
+        <span class="marquee-item"><svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg"><text x="100" y="35" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="28" font-style="italic" letter-spacing="1">Rolling Stone</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">LIFEWTR</span>
+        <!-- LIFEWTR -->
+        <span class="marquee-item"><svg viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg"><text x="75" y="34" text-anchor="middle" font-family="Outfit,Helvetica,sans-serif" font-weight="300" font-size="26" letter-spacing="6">LIFEWTR</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
         <!-- Duplicate for seamless loop -->
-        <span class="marquee-item">American Express</span>
+        <span class="marquee-item"><svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="200" height="40" rx="4"/><text x="100" y="27" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="14" fill="#0A0A0F" letter-spacing="1">AMERICAN EXPRESS</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Coca-Cola</span>
+        <span class="marquee-item"><svg viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg"><text x="90" y="38" text-anchor="middle" font-family="'Brush Script MT','Segoe Script',cursive" font-size="36" font-style="italic" font-weight="400">Coca-Cola</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Red Bull</span>
+        <span class="marquee-item"><svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg"><text x="80" y="34" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-weight="900" font-size="28" letter-spacing="1">RED BULL</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Budweiser</span>
+        <span class="marquee-item"><svg viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg"><path d="M10 25 Q30 8 50 20 Q70 8 90 25 Q110 8 130 20 Q150 8 170 25" stroke-width="2" fill="none" stroke="currentColor" opacity="0.3"/><text x="90" y="36" text-anchor="middle" font-family="'Times New Roman',Georgia,serif" font-weight="700" font-size="26" font-style="italic" letter-spacing="2">Budweiser</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">MLB</span>
+        <span class="marquee-item"><svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 C35 5 20 15 20 28 C20 40 35 45 50 45 C65 45 80 40 80 28 C80 15 65 5 50 5 Z" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"/><path d="M42 12 L42 38 L48 38 L48 18 L58 38 L64 38 L64 12 L58 12 L58 32 L48 12 Z" opacity="0.4"/><text x="50" y="35" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-weight="900" font-size="30" letter-spacing="2">MLB</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Fender</span>
+        <span class="marquee-item"><svg viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg"><text x="75" y="36" text-anchor="middle" font-family="'Brush Script MT','Segoe Script',cursive" font-size="34" font-style="italic">Fender</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">Rolling Stone</span>
+        <span class="marquee-item"><svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg"><text x="100" y="35" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="28" font-style="italic" letter-spacing="1">Rolling Stone</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item">LIFEWTR</span>
+        <span class="marquee-item"><svg viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg"><text x="75" y="34" text-anchor="middle" font-family="Outfit,Helvetica,sans-serif" font-weight="300" font-size="26" letter-spacing="6">LIFEWTR</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
       </div>
     </div>
 
     <div class="container text-center brands-cta">
       <p class="t-body-lg c-muted">8 major brands. Now building the next chapter.</p>
-      <a href="partnerships.html" class="btn btn--outline" style="margin-top: var(--space-lg);">View Partnership Options</a>
+      <a href="partnerships.html" class="btn btn--outline" style="margin-top: var(--space-lg)">View Partnership Options</a>
     </div>
   </section>
 
@@ -418,8 +439,8 @@
           <div class="t-stat-label">Foot Traffic</div>
         </div>
         <div class="stat-item">
-          <div class="t-stat-number" style="font-size: clamp(1.2rem, 3vw, 2rem); color: var(--hot-pink);">ALL-FEMALE</div>
-          <div class="t-stat-label">Team</div>
+          <div class="t-stat-number" style="font-size: clamp(1.2rem, 3vw, 2rem); color: var(--hot-pink);">SOLO</div>
+          <div class="t-stat-label">Female Artist</div>
         </div>
       </div>
     </div>
@@ -434,7 +455,7 @@
   <section class="mural-showcase section" id="murals">
     <div class="mural-track">
       <!-- Denver -->
-      <div class="mural-panel mural-gradient--denver" style="background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)), url('assets/images/denver-mural.jpg'); background-size: cover; background-position: center;">
+      <div class="mural-panel mural-panel--denver">
         <div class="mural-panel-content">
           <span class="t-label">Denver, Colorado</span>
           <h2 class="t-section">"You Are Magic"</h2>
@@ -442,7 +463,7 @@
         </div>
       </div>
       <!-- Portland -->
-      <div class="mural-panel mural-gradient--portland" style="background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)), url('assets/images/portland-mural.jpg'); background-size: cover; background-position: center;">
+      <div class="mural-panel mural-panel--portland">
         <div class="mural-panel-content">
           <span class="t-label">Portland, Oregon</span>
           <h2 class="t-section">Portland</h2>
@@ -450,7 +471,7 @@
         </div>
       </div>
       <!-- Vancouver -->
-      <div class="mural-panel mural-gradient--vancouver" style="background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)), url('assets/images/vancouver-mural.jpg'); background-size: cover; background-position: center;">
+      <div class="mural-panel mural-panel--vancouver">
         <div class="mural-panel-content">
           <span class="t-label">Vancouver, BC (Canada)</span>
           <h2 class="t-section">Vancouver</h2>
@@ -458,7 +479,7 @@
         </div>
       </div>
       <!-- Boise -->
-      <div class="mural-panel mural-gradient--boise" style="background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)), url('assets/images/boise-mural.jpg'); background-size: cover; background-position: center;">
+      <div class="mural-panel mural-panel--boise">
         <div class="mural-panel-content">
           <span class="t-label">Boise, Idaho</span>
           <h2 class="t-section">Boise</h2>
@@ -481,7 +502,7 @@
         <p class="t-body-lg story-line">Spraycation is more than a mural tour.</p>
         <p class="t-body-lg story-line">It's a bold declaration that creativity belongs everywhere --</p>
         <p class="t-body-lg story-line">on buildings, in neighborhoods, across state lines.</p>
-        <p class="t-body-lg story-line">Led by artist <span class="c-pink">Zuzu Perkal</span> and an all-female team,</p>
+        <p class="t-body-lg story-line">Led by artist <span class="c-pink">Zuzu Perkal</span>,</p>
         <p class="t-body-lg story-line">we transform blank walls into cultural landmarks</p>
         <p class="t-body-lg story-line">that spark joy, foot traffic, and community pride.</p>
       </div>
@@ -504,7 +525,7 @@
   <section class="cities-preview section section--dark" id="cities">
     <div class="container">
       <div class="section-label">2025 Tour</div>
-      <h2 class="t-section" style="margin-bottom: var(--space-xl);">Where We Painted</h2>
+      <h2 class="t-section mb-xl">Where We Painted</h2>
 
       <div class="grid grid-4 cities-grid">
         <!-- Denver (featured) -->
@@ -553,7 +574,7 @@
   <section class="partnership-preview section section--dark" id="partnerships">
     <div class="container">
       <div class="section-label text-center">Be Part of 2026</div>
-      <h2 class="t-section text-center" style="margin-bottom: var(--space-2xl);">Partnership Tiers</h2>
+      <h2 class="t-section text-center mb-2xl">Partnership Tiers</h2>
 
       <div class="grid grid-3 tier-grid">
         <!-- Magic Maker (featured) -->
@@ -595,7 +616,7 @@
   <section class="press-section section section--charcoal" id="press">
     <div class="container">
       <div class="section-label">In the Press</div>
-      <h2 class="t-section" style="margin-bottom: var(--space-xl);">They're Talking</h2>
+      <h2 class="t-section mb-xl">They're Talking</h2>
 
       <div class="grid grid-2 press-grid">
         <div class="card press-card">
@@ -647,22 +668,22 @@
   </footer>
 
   <!-- ====== GRAIN OVERLAY ====== -->
-  <div class="grain-overlay"></div>
+  <div class="grain-overlay" aria-hidden="true"></div>
 
   <!-- ====== SPARKLES ====== -->
-  <div class="sparkle"></div>
-  <div class="sparkle sparkle--sm"></div>
-  <div class="sparkle sparkle--lg"></div>
-  <div class="sparkle"></div>
-  <div class="sparkle sparkle--sm"></div>
-  <div class="sparkle sparkle--lg"></div>
-  <div class="sparkle"></div>
-  <div class="sparkle sparkle--sm"></div>
-  <div class="sparkle sparkle--lg"></div>
-  <div class="sparkle"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle sparkle--sm" aria-hidden="true"></div>
+  <div class="sparkle sparkle--lg" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle sparkle--sm" aria-hidden="true"></div>
+  <div class="sparkle sparkle--lg" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle sparkle--sm" aria-hidden="true"></div>
+  <div class="sparkle sparkle--lg" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
 
   <!-- ====== PAGE TRANSITION ====== -->
-  <div class="page-transition"><div class="drip-curtain"></div></div>
+  <div class="page-transition" aria-hidden="true"><div class="drip-curtain"></div></div>
 
   <!-- ====== SCRIPTS ====== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

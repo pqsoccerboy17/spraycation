@@ -8,26 +8,12 @@
   <link rel="stylesheet" href="css/shared.css">
   <style>
     /* Hero */
-    .cities-hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
     .cities-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background: var(--gradient-glow-blue);
       opacity: 0.5;
-    }
-    .cities-hero-content {
-      position: relative;
-      z-index: var(--z-content);
     }
     .cities-hero .t-body-lg {
       max-width: 600px;
@@ -64,27 +50,19 @@
     }
     .city-visual.mural-gradient--denver {
       background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
-                  url('assets/images/denver-mural.jpg');
-      background-size: cover;
-      background-position: center;
+                  url('assets/images/denver-mural.jpg') center / cover;
     }
     .city-visual.mural-gradient--portland {
       background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
-                  url('assets/images/portland-mural.jpg');
-      background-size: cover;
-      background-position: center;
+                  url('assets/images/portland-mural.jpg') center / cover;
     }
     .city-visual.mural-gradient--vancouver {
       background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
-                  url('assets/images/vancouver-mural.jpg');
-      background-size: cover;
-      background-position: center;
+                  url('assets/images/vancouver-mural.jpg') center / cover;
     }
     .city-visual.mural-gradient--boise {
       background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
-                  url('assets/images/boise-mural.jpg');
-      background-size: cover;
-      background-position: center;
+                  url('assets/images/boise-mural.jpg') center / cover;
     }
     .city-visual::after {
       content: '';
@@ -221,21 +199,21 @@
   </div>
 
   <!-- HERO -->
-  <section class="cities-hero section--dark">
-    <div class="cities-hero-content">
+  <section class="cities-hero page-hero section--dark">
+    <div class="hero-content">
       <h1 class="t-hero">WHERE THE<br>PAINT <span class="c-gradient">HIT THE WALL</span></h1>
       <p class="t-body-lg">6,500+ miles. 5 cities. 10 states. One mission.</p>
       <div class="hero-stats">
         <div class="hero-stat">
-          <p class="t-stat-number" data-counter="6500" data-suffix="+">0</p>
+          <p class="t-stat-number" data-counter="6500" data-suffix="+">6,500+</p>
           <p class="t-stat-label">Miles</p>
         </div>
         <div class="hero-stat">
-          <p class="t-stat-number" data-counter="5">0</p>
+          <p class="t-stat-number" data-counter="5">5</p>
           <p class="t-stat-label">Cities</p>
         </div>
         <div class="hero-stat">
-          <p class="t-stat-number" data-counter="10">0</p>
+          <p class="t-stat-number" data-counter="10">10</p>
           <p class="t-stat-label">States</p>
         </div>
       </div>
@@ -377,7 +355,7 @@
   <section class="section route-section">
     <div class="container text-center">
       <p class="section-label reveal">2025 Tour Route</p>
-      <h2 class="t-section reveal" style="margin-bottom: var(--space-md);">The Full Route</h2>
+      <h2 class="t-section reveal mb-md">The Full Route</h2>
       <div class="route-path">
         <span class="route-stop route-stop--mural reveal">Austin TX</span>
         <span class="route-arrow reveal">&rarr;</span>
@@ -489,16 +467,7 @@
       staggerReveal('.route-stop, .route-arrow', '.route-section', { stagger: 0.05, y: 20 });
 
       // Hero parallax
-      gsap.to('.cities-hero-content', {
-        scrollTrigger: {
-          trigger: '.cities-hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1
-        },
-        y: -100,
-        opacity: 0.3
-      });
+      heroParallax('.hero-content', '.cities-hero');
     });
   </script>
 </body>

@@ -8,16 +8,6 @@
   <link rel="stylesheet" href="css/shared.css">
   <style>
     /* Denver Hero */
-    .denver-hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
     .denver-hero::before {
       content: '';
       position: absolute;
@@ -32,10 +22,6 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(to top, var(--black) 0%, transparent 40%);
-    }
-    .denver-hero-content {
-      position: relative;
-      z-index: var(--z-content);
     }
     .denver-hero .badge {
       margin-bottom: var(--space-lg);
@@ -241,8 +227,8 @@
   </div>
 
   <!-- HERO -->
-  <section class="denver-hero">
-    <div class="denver-hero-content">
+  <section class="denver-hero page-hero">
+    <div class="hero-content">
       <span class="badge badge--pink">CASE STUDY</span>
       <h1 class="t-hero">DENVER</h1>
       <p class="denver-subtitle">Fever Dream Vintage / 2903 E. Colfax Ave</p>
@@ -318,21 +304,21 @@
   <section class="section stats-section">
     <div class="container">
       <p class="section-label text-center reveal">By The Numbers</p>
-      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-2xl);">One Mural. One Weekend.</h2>
+      <h2 class="t-section text-center reveal mb-2xl">One Mural. One Weekend.</h2>
       <div class="grid grid-4">
         <div class="stat-card card reveal delay-1">
           <div class="card-gradient-bar"></div>
-          <p class="t-stat-number" data-counter="3" data-suffix="x">0</p>
+          <p class="t-stat-number" data-counter="3" data-suffix="x">3x</p>
           <p class="t-stat-label">Foot Traffic</p>
         </div>
         <div class="stat-card card reveal delay-2">
           <div class="card-gradient-bar"></div>
-          <p class="t-stat-number" data-counter="1">0</p>
+          <p class="t-stat-number" data-counter="1">1</p>
           <p class="t-stat-label">Westword Feature</p>
         </div>
         <div class="stat-card card reveal delay-3">
           <div class="card-gradient-bar"></div>
-          <p class="t-stat-number" data-counter="4">0</p>
+          <p class="t-stat-number" data-counter="4">4</p>
           <p class="t-stat-label">Partners for 2026</p>
         </div>
         <div class="stat-card card reveal delay-4">
@@ -361,7 +347,7 @@
   <section class="section press-section">
     <div class="container">
       <p class="section-label text-center reveal">Press Coverage</p>
-      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-2xl);">In The News</h2>
+      <h2 class="t-section text-center reveal mb-2xl">In The News</h2>
       <a href="https://www.westword.com/arts/fever-dream-vintage-store-brightens-up-colfax-with-new-mural-25066803" target="_blank" class="press-card reveal" style="display: block;">
         <p class="press-source">Westword</p>
         <h3 class="press-headline">Fever Dream Vintage Brightens Up Colfax With New Mural</h3>
@@ -416,16 +402,7 @@
       pinnedNarrative('.denver-narrative', '.denver-panel');
 
       // Hero parallax
-      gsap.to('.denver-hero-content', {
-        scrollTrigger: {
-          trigger: '.denver-hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1
-        },
-        y: -100,
-        opacity: 0.3
-      });
+      heroParallax('.hero-content', '.denver-hero');
 
       // Stagger stat cards
       staggerReveal('.stat-card', '.stats-section', { stagger: 0.15 });

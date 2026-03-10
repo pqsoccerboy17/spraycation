@@ -8,26 +8,12 @@
   <link rel="stylesheet" href="css/shared.css">
   <style>
     /* Hero */
-    .partner-hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
     .partner-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background: var(--gradient-glow-pink);
       opacity: 0.5;
-    }
-    .partner-hero-content {
-      position: relative;
-      z-index: var(--z-content);
     }
     .partner-hero .t-body-lg {
       max-width: 600px;
@@ -97,6 +83,9 @@
     @media (max-width: 768px) {
       .value-table {
         font-size: 0.85rem;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
       }
       .value-table th,
       .value-table td {
@@ -283,8 +272,8 @@
   </div>
 
   <!-- HERO -->
-  <section class="partner-hero section--dark">
-    <div class="partner-hero-content">
+  <section class="partner-hero page-hero section--dark">
+    <div class="hero-content">
       <h1 class="t-hero">BE PART OF<br>THE <span class="c-gradient">MOVEMENT</span></h1>
       <p class="t-body-lg">Turn blank walls into brand moments that last.</p>
     </div>
@@ -311,7 +300,7 @@
   <section class="section value-section">
     <div class="container">
       <p class="section-label text-center reveal">The Numbers Don't Lie</p>
-      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-2xl);">Traditional Marketing<br><span class="c-pink">vs. Spraycation</span></h2>
+      <h2 class="t-section text-center reveal mb-2xl">Traditional Marketing<br><span class="c-pink">vs. Spraycation</span></h2>
       <div class="reveal">
         <table class="value-table">
           <thead>
@@ -377,7 +366,7 @@
   <section class="section tiers-section">
     <div class="container">
       <p class="section-label text-center reveal">Investment Tiers</p>
-      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-2xl);">Choose Your <span class="c-pink">Level</span></h2>
+      <h2 class="t-section text-center reveal mb-2xl">Choose Your <span class="c-pink">Level</span></h2>
       <div class="grid grid-3">
         <!-- Community Ally -->
         <div class="card tier-card reveal delay-1">
@@ -441,7 +430,7 @@
   <section class="section benefits-section">
     <div class="container">
       <p class="section-label text-center reveal">What You Get</p>
-      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-2xl);">6 Reasons Brands <span class="c-pink">Partner</span></h2>
+      <h2 class="t-section text-center reveal mb-2xl">6 Reasons Brands <span class="c-pink">Partner</span></h2>
       <div class="grid grid-3">
         <div class="card benefit-card reveal delay-1">
           <p class="benefit-number">01</p>
@@ -494,7 +483,7 @@
   <section class="section proof-section">
     <div class="container text-center">
       <p class="section-label reveal">Brand History</p>
-      <h2 class="t-section reveal" style="margin-bottom: var(--space-md);">We've Worked With Brands<br><span class="c-pink">That Get It</span></h2>
+      <h2 class="t-section reveal mb-md">We've Worked With Brands<br><span class="c-pink">That Get It</span></h2>
       <img src="https://ihavepinkhair.com/wp-content/uploads/2025/12/Screenshot-2025-12-22-at-5.16.11-PM.png"
            alt="Brands Zuzu has worked with"
            style="width: 100%; max-width: 800px; border-radius: 12px; margin: var(--space-lg) auto; display: block; opacity: 0.9;">
@@ -516,7 +505,7 @@
     <div class="container text-center">
       <p class="section-label reveal">2026 Pipeline</p>
       <div class="pipeline-stat reveal">
-        <p class="t-stat-number" style="font-size: clamp(3rem, 8vw, 5rem);" data-counter="27" data-suffix=" brands">0</p>
+        <p class="t-stat-number" style="font-size: clamp(3rem, 8vw, 5rem);" data-counter="27" data-suffix=" brands">27 brands</p>
         <p class="t-body-lg c-muted" style="margin-top: var(--space-sm);">in the mix</p>
         <p class="t-accent c-yellow" style="margin-top: var(--space-md);">$360,000+ pipeline for 2026</p>
       </div>
@@ -612,16 +601,7 @@
       staggerReveal('.pipeline-cat', '.pipeline-section', { stagger: 0.08, y: 20 });
 
       // Hero parallax
-      gsap.to('.partner-hero-content', {
-        scrollTrigger: {
-          trigger: '.partner-hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1
-        },
-        y: -100,
-        opacity: 0.3
-      });
+      heroParallax('.hero-content', '.partner-hero');
     });
   </script>
 </body>

@@ -386,9 +386,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
               border-color var(--duration-fast);
 }
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-  border-color: rgba(255,45,120,0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 8px 30px rgba(255,45,120,0.1);
+  border-color: rgba(255,45,120,0.25);
 }
 .card--tilted { transform: rotate(-1deg); }
 .card--tilted:nth-child(2n) { transform: rotate(1.5deg); }
@@ -584,20 +584,23 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 30s linear infinite;
+  animation: marquee-scroll 60s linear infinite;
 }
 .marquee-track:hover { animation-play-state: paused; }
 .marquee-item {
   flex-shrink: 0;
-  padding: 0 var(--space-xl);
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  text-transform: uppercase;
-  color: var(--white-muted);
-  transition: color var(--duration-fast);
+  padding: 0 var(--space-2xl);
+  display: flex;
+  align-items: center;
   white-space: nowrap;
 }
-.marquee-item:hover { color: var(--hot-pink); }
+.marquee-item svg {
+  height: 40px;
+  width: auto;
+  fill: var(--white-muted);
+  transition: fill var(--duration-fast);
+}
+.marquee-item:hover svg { fill: var(--hot-pink); }
 .marquee-separator {
   flex-shrink: 0;
   padding: 0 var(--space-md);
@@ -650,6 +653,29 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
 
+/* --- PAGE HERO (shared across subpages) --- */
+.page-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-content {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+/* --- MARGIN BOTTOM UTILITIES --- */
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+.mb-2xl { margin-bottom: var(--space-2xl); }
+
 /* --- MISC --- */
 .visually-hidden {
   position: absolute;
@@ -660,28 +686,20 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   white-space: nowrap;
 }
 
-/* Mural gradient placeholders (until real photos are added) */
-.mural-gradient--denver {
-  background: linear-gradient(135deg, #2A1B4E 0%, #FF2D78 30%, #3452FF 60%, #FFE135 100%);
-}
-.mural-gradient--portland {
-  background: linear-gradient(135deg, #1a3a5c 0%, #00D4FF 40%, #B5227B 80%, #FFE135 100%);
-}
-.mural-gradient--vancouver {
-  background: linear-gradient(135deg, #0A0A0F 0%, #3452FF 35%, #FF2D78 65%, #00D4FF 100%);
-}
-.mural-gradient--boise {
-  background: linear-gradient(135deg, #2A1B4E 0%, #FFE135 30%, #FF2D78 60%, #3452FF 100%);
-}
-.mural-gradient--austin {
-  background: linear-gradient(135deg, #FF2D78 0%, #FFE135 50%, #3452FF 100%);
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .marquee-item svg {
+    height: 30px;
+  }
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 480px) {
   :root {
     --section-pad: 60px;
   }
   .t-hero { font-size: clamp(3rem, 14vw, 5rem); }
   .t-section { font-size: clamp(2rem, 8vw, 3rem); }
+  .marquee-item svg {
+    height: 24px;
+  }
 }

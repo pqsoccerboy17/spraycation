@@ -10,13 +10,6 @@
     /* Hero */
     .contact-hero {
       min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
       padding-top: var(--space-3xl);
     }
     .contact-hero::before {
@@ -25,10 +18,6 @@
       inset: 0;
       background: var(--gradient-glow-pink);
       opacity: 0.4;
-    }
-    .contact-hero-content {
-      position: relative;
-      z-index: var(--z-content);
     }
 
     /* Contact Cards */
@@ -171,8 +160,8 @@
   </div>
 
   <!-- HERO -->
-  <section class="contact-hero section--dark">
-    <div class="contact-hero-content">
+  <section class="contact-hero page-hero section--dark">
+    <div class="hero-content">
       <h1 class="t-hero" style="font-size: clamp(3rem, 12vw, 9rem);"><span class="c-gradient">LET'S CREATE</span><br>A CULTURAL<br>MOMENT TOGETHER</h1>
     </div>
   </section>
@@ -194,7 +183,7 @@
   <section class="section contact-section">
     <div class="container">
       <p class="section-label text-center reveal">Get In Touch</p>
-      <h2 class="t-section text-center reveal" style="margin-bottom: var(--space-sm);">Ready to Put Your Brand on the Wall?</h2>
+      <h2 class="t-section text-center reveal mb-sm">Ready to Put Your Brand on the Wall?</h2>
       <p class="t-body-lg text-center c-muted reveal" style="margin-bottom: var(--space-2xl); max-width: 500px; margin-left: auto; margin-right: auto;">We'd love to hear from you.</p>
       <div class="grid grid-3">
         <div class="card contact-card reveal delay-1">
