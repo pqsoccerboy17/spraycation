@@ -26,13 +26,21 @@ cd docs && python3 -m http.server 8000
 cd dashboard && python3 -m http.server 8001
 ```
 
+## Deployment
+- GitHub Pages serves from `main` branch `/docs` folder
+- Pushes to main auto-deploy (no build step needed)
+- `.nojekyll` in docs/ skips Jekyll processing
+- Live site: https://pqsoccerboy17.github.io/spraycation/
+- GitHub Actions is currently disabled at the account level -- deploy uses branch-based serving instead
+- `.github/workflows/deploy-website.yml` exists for when Actions is re-enabled
+
 ## File Structure
 - `project-plan.md` -- Master checklist (source of truth across sessions)
 - `knowledge-base/` -- zuzu-profile, spraycation-overview, tour recaps (2024/2025), brand-history, press-coverage, tour-2026-strategy
-- `sponsorship/` -- funding-strategy, corporate-sponsor-targets, grant-opportunities, outreach-tracker, partnership-one-pager
+- `sponsorship/` -- funding-strategy, corporate-sponsor-targets, grant-opportunities, outreach-tracker, partnership-one-pager, contact-database
 - `sponsorship/templates/` -- cold-outreach-brand, warm-follow-up, grant-cover-letter
 - `deliverables/` -- wrap-2025-checklist
-- `docs/` -- Multi-page marketing site (index, about, cities, denver, partnerships, contact)
+- `docs/` -- Multi-page marketing site (index, about, cities, denver, impact, partnerships, planning, scout, contact)
 - `docs/css/shared.css` -- Design system: color tokens, typography scale, spacing, grid utilities, animation classes
 - `docs/js/shared.js` -- Shared navigation, page transitions, GSAP scroll animations
 - `dashboard/index.html` -- Single-page sponsorship dashboard with animated stats
@@ -40,8 +48,8 @@ cd dashboard && python3 -m http.server 8001
 - `SPRAYCATION 2025/` -- Source materials (PDFs, photos, partnership deck .pptx)
 
 ## Website Architecture
-- `css/shared.css` defines the full design system -- colors (electric blue #3452FF, hot pink #FF2D78, magenta, yellow, cyan), typography classes (t-hero, t-section, t-body, etc.), spacing scale (xs through 3xl), grid utilities (grid-2 through grid-6), and animation classes (reveal, reveal-left, reveal-right)
-- `js/shared.js` handles nav behavior, page transition curtain effect, and GSAP ScrollTrigger setup
+- `docs/css/shared.css` defines the full design system -- colors (electric blue #3452FF, hot pink #FF2D78, magenta, yellow, cyan), typography classes (t-hero, t-section, t-body, etc.), spacing scale (xs through 3xl), grid utilities (grid-2 through grid-6), and animation classes (reveal, reveal-left, reveal-right)
+- `docs/js/shared.js` handles nav behavior, page transition curtain effect, and GSAP ScrollTrigger setup
 - Each page imports shared.css and shared.js, then adds page-specific inline styles/scripts
 - Responsive breakpoints: 1024px, 768px, 480px
 
