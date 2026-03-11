@@ -22,7 +22,7 @@ This repo supports Zuzu Perkal's SPRAYCATION mural tour -- organizing knowledge,
 ## Development
 Preview locally by opening HTML files directly or running a local server:
 ```
-cd website && python3 -m http.server 8000
+cd docs && python3 -m http.server 8000
 cd dashboard && python3 -m http.server 8001
 ```
 
@@ -32,9 +32,9 @@ cd dashboard && python3 -m http.server 8001
 - `sponsorship/` -- funding-strategy, corporate-sponsor-targets, grant-opportunities, outreach-tracker, partnership-one-pager
 - `sponsorship/templates/` -- cold-outreach-brand, warm-follow-up, grant-cover-letter
 - `deliverables/` -- wrap-2025-checklist
-- `website/` -- Multi-page marketing site (index, about, cities, denver, partnerships, contact)
-- `website/css/shared.css` -- Design system: color tokens, typography scale, spacing, grid utilities, animation classes
-- `website/js/shared.js` -- Shared navigation, page transitions, GSAP scroll animations
+- `docs/` -- Multi-page marketing site (index, about, cities, denver, partnerships, contact)
+- `docs/css/shared.css` -- Design system: color tokens, typography scale, spacing, grid utilities, animation classes
+- `docs/js/shared.js` -- Shared navigation, page transitions, GSAP scroll animations
 - `dashboard/index.html` -- Single-page sponsorship dashboard with animated stats
 - `assets/` -- Shared static assets
 - `SPRAYCATION 2025/` -- Source materials (PDFs, photos, partnership deck .pptx)

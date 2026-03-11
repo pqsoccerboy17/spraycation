@@ -46,7 +46,7 @@
 - [ ] Review with Zuzu for feedback
 
 ## Workstream 1D: Wall Scout Tool (Added 2026-03-11)
-- [x] Build Wall Scout page (website/scout.html) with Google Maps + Street View integration
+- [x] Build Wall Scout page (docs/scout.html) with Google Maps + Street View integration
 - [x] Wall assessment form with progressive disclosure (3 sections, 15+ fields)
 - [x] Wall scoring algorithm (0-100, weighted by surface, material, size, traffic, etc.)
 - [x] localStorage persistence with save/update/delete
