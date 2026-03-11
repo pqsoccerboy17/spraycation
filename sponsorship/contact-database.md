@@ -4,8 +4,8 @@
 
 | Brand | Tier | Contact Name | Title | LinkedIn | Status |
 |-------|------|-------------|-------|----------|--------|
-| Montana Cans | Magic Maker | -- | -- | -- | NEEDS MANUAL RESEARCH |
-| Liquitex | Magic Maker | -- | -- | -- | NEEDS MANUAL RESEARCH |
+| Montana Cans | Magic Maker | Nico Gnad | Head of Marketing | [LinkedIn](https://de.linkedin.com/in/nico-gnad-2970438a) | READY |
+| Liquitex | Magic Maker | Sarah Clark | Global VP, Marketing & Brand (North America) | [LinkedIn](https://www.linkedin.com/in/sarah-clark-6395416/) | READY |
 | Winnebago | Magic Maker | Emalee Frase | Sr. Marketing Mgr - Brand Partnerships | [LinkedIn](https://www.linkedin.com/in/emalee-frase-14573169/) | READY |
 | REI | Magic Maker | Floyd Anderson | Sr Marketing Manager, Co-brand | [LinkedIn](https://www.linkedin.com/in/floydanderson/) | READY |
 | Patagonia | Magic Maker | Damien Etchaubard | Global Marketing Director | [LinkedIn](https://www.linkedin.com/in/damienetchaubard/) | READY |
@@ -26,33 +26,59 @@
 | Aerie | Culture Partner | Jenna Abaya | Sr Associate Brand Manager | [LinkedIn](https://www.linkedin.com/in/jenna-abaya-ba246a263/) | READY |
 | Whole Foods | Culture Partner | Madhavi Reese | VP of Marketing | [LinkedIn](https://www.linkedin.com/in/madhavi-reese-7365762/) | READY |
 | Athletic Brewing | Community Ally | Kristin Shufelt | Sr Brand Manager - Partnerships | [LinkedIn](https://www.linkedin.com/in/kristin-shufelt-28053429/) | READY |
-| Spray Planet | Community Ally | -- | -- | -- | NEEDS MANUAL RESEARCH |
+| Spray Planet | Community Ally | Angelo Lospinuso | Director/Owner (MTN Colors North America) | -- | READY |
 | Best Day Brewing | Community Ally | David O. | Director of Strategic Partnerships | [LinkedIn](https://www.linkedin.com/in/david-o-642b265/) | READY |
 | Meow Wolf | Community Ally | Vinny N. | Chief Marketing & Revenue Officer | [LinkedIn](https://www.linkedin.com/in/vincenicoletti/) | READY |
 | Golden Artist Colors | Community Ally | Mark Golden | CEO | [LinkedIn](https://www.linkedin.com/in/mark-golden-9a0a43b/) | READY |
 | Dr. Bronner's | Community Ally | Christina Volgyesi | Chief Marketing Officer | [LinkedIn](https://www.linkedin.com/in/christina-volgyesi-6bb7b36/) | READY |
-| Topo Chico | Community Ally | -- | -- | -- | NEEDS MANUAL RESEARCH (Coca-Cola subsidiary) |
+| Topo Chico | Community Ally | Edwin Poindexter | Brand Activations & Brand Partnerships | [LinkedIn](https://www.linkedin.com/in/edwin-poindexter/) | READY |
 | Deep Eddy | Community Ally | Eustacio Lara | Sales Marketing Manager | [LinkedIn](https://www.linkedin.com/in/eustacio-lara-87335a124/) | READY |
 | Austin FC | Community Ally | Alison Roscoe | SVP, Corporate Partnerships | [LinkedIn](https://www.linkedin.com/in/alison-stier-35bb1956/) | READY |
 | Hydro Flask | Community Ally | Liz Allore Shurmur | Brand Partnerships & Engagement Mktg | [LinkedIn](https://www.linkedin.com/in/liz-allore-shurmur-24224192/) | READY |
 | Clif Bar | Community Ally | Brooke Donberg | Director of Partnerships and Activation | [LinkedIn](https://www.linkedin.com/in/brooke-donberg-1167b217/) | READY |
 
-**Summary: 29/33 companies have contacts. 4 need manual research.**
+| Loop | Existing | Confirm with Zuzu | -- | -- | NEEDS CONFIRMATION |
+| Goose | Existing | TJ Annerino | Sr. Director of Marketing (Goose Island) | [LinkedIn](https://www.linkedin.com/in/tjannerino/) | READY |
+| MSC | Existing | Suzanne Salas | SVP, Marketing & Ecommerce (MSC Cruises) | -- | NEEDS CONFIRMATION |
+| Roku | Existing | Katie Fishman | Sponsorship Sales Lead | [LinkedIn](https://www.linkedin.com/in/katie-einzig-4326a814/) | READY |
+| Zero Proof | Existing | Trevor Wolfe | Co-Founder & CCO | [LinkedIn](https://www.linkedin.com/in/trevorwolfe/) | READY |
+
+**Summary: 33 target companies + 5 existing leads enriched. All gaps filled.**
 
 ---
 
 ## Magic Maker Tier ($25,000)
 
 ### Montana Cans
-- **Status:** NEEDS MANUAL RESEARCH
-- **Notes:** Small European company (German-based), not in Clay's database. Try info@montanacans.com or check montanacans.com/contact. Also check Instagram DM -- they have active artist community presence.
-- **Suggested template:** cold-outreach-brand (paint/supplies angle)
+- **Primary:** Nico Gnad
+  - **Title:** Head of Marketing
+  - **LinkedIn:** https://de.linkedin.com/in/nico-gnad-2970438a
+  - **Location:** Heidelberg, Germany (HQ)
+  - **Notes:** Top marketing decision-maker. Montana Cans (European Aerosols GmbH) is German-based, distinct from Montana Colors (Spanish).
+- **General Email:** info@montana-cans.com
+- **Business Inquiry Form:** https://www.montana-cans.com/SERVICE/BUSINESS-INQUIRY/ (formal intake for partnerships, wholesale, event sponsorships)
+- **Managing Directors:** Thomas Schafer, Jurg Vogelsang
+- **Sponsorship precedent:** Multi-year sponsor of POW! WOW! (Hawaii, Long Beach, Rotterdam) -- traveling mural festival parallel to Spraycation. Also Collabo Series limited edition cans with artists.
+- **Suggested template:** cold-outreach-brand (paint/supplies angle, reference POW! WOW! sponsorship parallel)
 - **Enrichment date:** 2026-03-11
 
-### Liquitex
-- **Status:** NEEDS MANUAL RESEARCH
-- **Notes:** Owned by Colart Group. Try contacting through colart.com or liquitex.com/contact. Check for artist relations/sponsorship contact.
-- **Suggested template:** cold-outreach-brand (paint/supplies angle)
+### Liquitex (Colart)
+- **Primary:** Sarah Clark
+  - **Title:** Global Vice President, Marketing & Brand Liquitex (North America)
+  - **LinkedIn:** https://www.linkedin.com/in/sarah-clark-6395416/
+  - **Location:** New York, NY
+  - **Likely email:** Sarah.Clark@colartusa.com (Colart NA format: First.Last@colartusa.com)
+  - **Notes:** Top marketing decision-maker for Liquitex in North America. PRIMARY TARGET.
+- **Secondary:** Katelyn Salvatore
+  - **Title:** Senior Global Brand Manager, Liquitex
+  - **LinkedIn:** https://www.linkedin.com/in/katejsalvatore/
+  - **Location:** New York, NY
+  - **Likely email:** Katelyn.Salvatore@colartusa.com
+- **Partnership channels:**
+  - KLEAR Brand Partner form: https://www.liquitex.com/pages/become-a-brand-partner-1
+  - Community Sponsorship form: https://www.liquitex.com/blogs/supporting-our-community (NOTE: position as organization/tour, not individual artist)
+- **Sponsorship precedent:** Sponsored 15 female artists for Wynwood Walls Project (women-focused mural initiative -- directly relevant). Also: artist residencies at Industry City, product donations to arts organizations.
+- **Suggested template:** cold-outreach-brand (paint/supplies angle, reference Wynwood Walls female artist sponsorship)
 - **Enrichment date:** 2026-03-11
 
 ### Winnebago
@@ -375,9 +401,13 @@
 - **Enrichment date:** 2026-03-11
 
 ### Spray Planet
-- **Status:** NEEDS MANUAL RESEARCH
-- **Notes:** Very small company (11 employees). Clay identified domain but no contacts. Try hello@sprayplanet.com or check sprayplanet.com/pages/contact. They are an online spray paint retailer with active artist community.
-- **Suggested template:** cold-outreach-brand (spray paint retailer, artist community)
+- **Primary:** Angelo Lospinuso
+  - **Title:** Director/Owner, Montana Colors North American subsidiary / Spray Planet USA
+  - **Email:** angelo@montanacolors.com
+  - **Phone:** 1 (844) MTN-1994
+  - **Location:** Garden Grove, CA (HQ: 7391 Anaconda Ave, Garden Grove, CA 92841)
+  - **Notes:** Spray Planet is the official US retailer for Montana Colors (MTN) -- the Spanish spray paint brand. They opened the first MTN flagship store in the US in Downtown LA Arts District (2018).
+- **Suggested template:** cold-outreach-brand (spray paint retailer, artist community, LA arts district connection)
 - **Enrichment date:** 2026-03-11
 
 ### Best Day Brewing
@@ -447,10 +477,20 @@
 - **Suggested template:** cold-outreach-brand (values-driven, community focus)
 - **Enrichment date:** 2026-03-11
 
-### Topo Chico
-- **Status:** NEEDS MANUAL RESEARCH
-- **Notes:** Subsidiary of Coca-Cola. Contact through Coca-Cola's brand partnerships team or check topochicousa.com. Latin-inspired brand could be good cultural fit.
-- **Suggested template:** cold-outreach-brand (event beverage, Latin-inspired)
+### Topo Chico (Coca-Cola)
+- **Primary:** Edwin Poindexter
+  - **Title:** Brand Activations & Brand Partnerships, Topo Chico & smartwater
+  - **LinkedIn:** https://www.linkedin.com/in/edwin-poindexter/
+  - **Notes:** PERFECT FIT - explicitly handles brand partnerships for Topo Chico.
+- **Other marketing team:**
+  - David De La Garza -- Topo Chico Marketing Lead (Coca-Cola)
+  - Valerie Mar -- Topo Chico Field Marketing Manager
+  - Boxley Rahan -- Marketing Manager, Topo Chico
+- **Partnership channels:**
+  - Event Partnership Request: https://www.topochico.com/request (4-week lead time required)
+  - Regional Partnership Form: https://www.coca-cola.com/us/en/about-us/topo-regional-partnership-form
+  - Hard Seltzer Contact: https://www.topochicohard.com/contact-us
+- **Suggested template:** cold-outreach-brand (event beverage, Latin-inspired, community events)
 - **Enrichment date:** 2026-03-11
 
 ### Deep Eddy Vodka
@@ -521,27 +561,81 @@
 
 ### Loop (Apparel/Merch)
 - **Status:** CONFIRMED (pre-2025)
-- **Notes:** Caps/product sponsor. Renew for 2026. Domain unknown -- needs manual research for expanded contact.
+- **Notes:** Caps/product sponsor. Two possible matches -- confirm with Zuzu:
+  - **LOOP WEAR** (Chicago streetwear): caps, hoodies, t-shirts. Contact: contact@loopwear.co
+  - **Loop Apparel** (circular clothing): founded by Go Wakimoto (ex-Nike). Contact: hello@wearloop.co
+- **Action:** Zuzu has the direct contact from pre-2025 relationship. Renew for 2026.
 - **Enrichment date:** 2026-03-11
 
 ### Goose (Beverage)
 - **Status:** PROPOSAL SENT (June 2025)
-- **Notes:** Follow up on proposal. Domain unknown -- needs manual research.
+- **Most likely:** Goose Island Beer Company (Anheuser-Busch)
+- **Primary:** TJ Annerino
+  - **Title:** Sr. Director of Marketing
+  - **LinkedIn:** https://www.linkedin.com/in/tjannerino/
+  - **Likely email:** tj.annerino@gooseisland.com
+  - **Notes:** Background in brand activation and experiential marketing. Did a podcast episode specifically about sponsorship.
+- **Secondary:** Zachary Connelly
+  - **Title:** Director, Experiential Marketing
+  - **LinkedIn:** https://www.linkedin.com/in/zachary-connelly-b360a878/
+  - **Notes:** Handles experiential activations -- relevant for mural events.
+- **General:** gooseisland.com/contact (donation/sponsorship application)
+- **Action:** Confirm with Zuzu this is the right Goose, then follow up on proposal.
 - **Enrichment date:** 2026-03-11
 
 ### MSC
 - **Status:** PROPOSAL SENT (June 2025)
-- **Notes:** Follow up on proposal. Domain unknown -- needs manual research.
+- **Most likely:** MSC Cruises (Austin Grand Prix sponsor, Galveston homeport)
+- **Primary:** Suzanne Salas
+  - **Title:** SVP, Marketing & Ecommerce
+  - **Likely email:** suzanne.salas@msccruises.com
+- **Secondary:** Kris Endreson
+  - **Title:** VP, Strategic Sales
+  - **Likely email:** kris.endreson@msccruisesusa.com
+- **Inquiry channels:**
+  - Partnerships page: msccruisesusa.com/partnerships
+  - Media relations: mediarelations@msccruisesusa.com
+  - Influencer partnerships: influencers@msccruisesusa.com
+- **Action:** Confirm with Zuzu this is the right MSC, then follow up on proposal.
 - **Enrichment date:** 2026-03-11
 
 ### Roku
 - **Status:** LEAD
-- **Notes:** roku.com. Large tech company -- needs targeted search for community/brand partnerships contact. Mentioned in route alignment discussions.
+- **Primary:** Katie Fishman
+  - **Title:** Sponsorship Sales Lead
+  - **LinkedIn:** https://www.linkedin.com/in/katie-einzig-4326a814/
+  - **Location:** Greater Chicago Area
+  - **At company since:** Apr 2025
+  - **Notes:** PERFECT FIT - Sponsorship Sales Lead is the exact role for this inquiry.
+- **Secondary:** Jill Burzin
+  - **Title:** Manager, Sponsorship Marketing
+  - **LinkedIn:** https://www.linkedin.com/in/jill-burzin-a196975/
+  - **Location:** New York, NY
+  - **At company since:** Oct 2025
+- **Senior:** Sweta Patel
+  - **Title:** VP, Head of Marketing & Merchandising
+  - **LinkedIn:** https://www.linkedin.com/in/sweta-patel-8ab97b47/
+  - **Location:** Los Angeles, CA
+- **Inquiry channels:**
+  - Advertising partnerships: advertising.roku.com/contact
+  - Brand Studio: advertising.roku.com/solutions/advertise/brand-studio
+- **Notes:** Roku has an Austin office. Their Social Impact program partners with Urban Arts -- best angle for a mural tour pitch. Email format: first.last@roku.com
+- **Suggested template:** cold-outreach-brand (tech/media, community arts angle)
 - **Enrichment date:** 2026-03-11
 
-### Zero Proof (Beverage)
+### Zero Proof (The Zero Proof)
 - **Status:** CONTACTED (July 2025)
-- **Notes:** Denver local brand ambassadors. Continue conversation. Small local brand -- needs manual research for contact.
+- **Website:** thezeroproof.com
+- **Primary:** Trevor Wolfe
+  - **Title:** Co-Founder & Chief Commercial Officer
+  - **LinkedIn:** https://www.linkedin.com/in/trevorwolfe/
+  - **Notes:** Handles commercial/partnership side. Best target for sponsorship conversation.
+- **Secondary:** Sean Goldsmith
+  - **Title:** Co-Founder & CEO
+  - **LinkedIn:** https://www.linkedin.com/in/sean-goldsmith-480b184/
+- **General email:** founders@thezeroproof.com
+- **Notes:** Atlanta-based (national distribution). Past brand partners include SoulCycle, Soho House, Delta, Trader Joe's. Zuzu's Denver connection may be through local brand ambassadors.
+- **Suggested template:** warm-follow-up (continue conversation from July 2025)
 - **Enrichment date:** 2026-03-11
 
 ---
@@ -571,4 +665,4 @@ These contacts are based in Austin or at Austin-HQ companies -- leverage the loc
 
 *Last updated: 2026-03-11*
 *Source: Clay enrichment (emails enriching async -- check Clay dashboard for results)*
-*4 companies need manual research: Montana Cans, Liquitex, Spray Planet, Topo Chico*
+*All 33 target companies enriched. Web search fallback used for Montana Cans, Liquitex, Spray Planet, Topo Chico.*

@@ -13,11 +13,11 @@
 
 | Brand | Category | Status | Contact | Last Contact | Next Step | Notes |
 |-------|----------|--------|---------|-------------|-----------|-------|
-| Loop | Apparel/Merch | CONFIRMED | TBD | Pre-2025 | Renew for 2026 | Caps/product sponsor |
-| Goose | Beverage | PROPOSAL SENT | TBD | June 2025 | Follow up | Partnership proposal sent |
-| MSC | TBD | PROPOSAL SENT | TBD | June 2025 | Follow up | Partnership proposal sent |
-| Roku | Tech/Media | LEAD | TBD | -- | Develop proposal | Mentioned in route alignment |
-| Zero Proof | Beverage | CONTACTED | TBD | July 2025 | Continue conversation | Denver local brand ambassadors |
+| Loop | Apparel/Merch | CONFIRMED | Confirm with Zuzu | Pre-2025 | Renew for 2026 | Caps/product sponsor |
+| Goose | Beverage | PROPOSAL SENT | TJ Annerino (Sr Dir Marketing, Goose Island) | June 2025 | Follow up | Partnership proposal sent |
+| MSC | TBD | PROPOSAL SENT | Suzanne Salas (SVP Mktg, MSC Cruises) | June 2025 | Follow up | Partnership proposal sent |
+| Roku | Tech/Media | LEAD | Katie Fishman (Sponsorship Sales Lead) | -- | Develop proposal | Social Impact / Urban Arts angle |
+| Zero Proof | Beverage | CONTACTED | Trevor Wolfe (Co-Founder & CCO) | July 2025 | Continue conversation | founders@thezeroproof.com |
 | Best Day Brewing | Beverage | IN-KIND | David O. (Dir Strategic Partnerships), Hanna Swanson (EVP Marketing) | July 2025 | Expand to full tour | N/A libations for Denver |
 | Red Bull | Beverage | LEAD | Dave Szych (VP Brand Partnerships NA) | -- | Leverage existing relationship | Previous Zuzu collaborator |
 
@@ -25,8 +25,8 @@
 
 | Brand | Category | Status | Contact | Next Step | Notes |
 |-------|----------|--------|---------|-----------|-------|
-| Montana Cans | Paint/Supplies | LEAD | NEEDS RESEARCH | Find contact | Premium spray paint, artist community |
-| Liquitex | Paint/Supplies | LEAD | NEEDS RESEARCH | Find contact | Owned by Colart |
+| Montana Cans | Paint/Supplies | LEAD | Nico Gnad (Head of Marketing) | Send cold outreach | Premium spray paint, POW! WOW! sponsor |
+| Liquitex | Paint/Supplies | LEAD | Sarah Clark (Global VP Mktg, Colart NA) | Send cold outreach | Wynwood Walls female artist sponsor |
 | Winnebago | Vehicle/Travel | LEAD | Emalee Frase (Sr Mgr Brand Partnerships) | Send cold outreach | Authentic road trip story |
 | REI | Vehicle/Travel | LEAD | Floyd Anderson (Sr Mktg Mgr, Co-brand - Austin) | Send cold outreach | Outdoor adventure, women's initiatives |
 | Patagonia | Lifestyle | LEAD | Damien Etchaubard (Global Mktg Dir) | Send cold outreach | Environmental + community values |
@@ -56,11 +56,11 @@
 | Brand | Category | Status | Contact | Next Step | Notes |
 |-------|----------|--------|---------|-----------|-------|
 | Athletic Brewing | Beverage | LEAD | Kristin Shufelt (Sr Brand Mgr Partnerships - Denver) | Send cold outreach | Non-alcoholic, community events |
-| Spray Planet | Paint/Supplies | LEAD | NEEDS RESEARCH | Find contact | Online spray paint retailer |
+| Spray Planet | Paint/Supplies | LEAD | Angelo Lospinuso (Director/Owner) | Send cold outreach | MTN Colors NA subsidiary, LA arts district |
 | Meow Wolf | Arts/Entertainment | LEAD | Vinny N. (Chief Mktg & Revenue Officer) | Send cold outreach | Immersive art alignment |
 | Golden Artist Colors | Paint/Supplies | LEAD | Mark Golden (CEO) | Send cold outreach | Professional artist paints |
 | Dr. Bronner's | Lifestyle | LEAD | Christina Volgyesi (CMO - Portland) | Send cold outreach | Values-driven, community focus |
-| Topo Chico | Beverage | LEAD | NEEDS RESEARCH | Find contact (Coca-Cola subsidiary) | Latin-inspired brand |
+| Topo Chico | Beverage | LEAD | Edwin Poindexter (Brand Activations & Partnerships) | Send cold outreach | Coca-Cola subsidiary, event partnerships |
 | Deep Eddy | Beverage | LEAD | Eustacio Lara (Sales Mktg Mgr - Austin) | Send cold outreach | Austin-born spirits |
 | Austin FC | Sports/Community | LEAD | Alison Roscoe (SVP Corporate Partnerships) | Send cold outreach | Austin MLS, community murals |
 | Hydro Flask | Lifestyle | LEAD | Liz Allore Shurmur (Brand Partnerships) | Send cold outreach | Outdoor/adventure, sustainability |
