@@ -45,6 +45,19 @@
 - [ ] Add real mural photos (replace gradient placeholders)
 - [ ] Review with Zuzu for feedback
 
+## Workstream 1D: Wall Scout Tool (Added 2026-03-11)
+- [x] Build Wall Scout page (website/scout.html) with Google Maps + Street View integration
+- [x] Wall assessment form with progressive disclosure (3 sections, 15+ fields)
+- [x] Wall scoring algorithm (0-100, weighted by surface, material, size, traffic, etc.)
+- [x] localStorage persistence with save/update/delete
+- [x] My Walls tab with filtering (city, status, score), sorting, expandable cards
+- [x] CSV and JSON export/import
+- [x] Property ownership research helper links (county assessor, Google search)
+- [x] Added Scout link to nav on all 8 existing pages
+- [ ] Add Google Maps API key (user action -- see scout.html comments)
+- [ ] Test with real addresses in 2026 target cities
+- [ ] Review with Zuzu for feedback
+
 ## Workstream 2: 2025 Wrap Deliverables
 These must be completed before 2026 outreach begins. See deliverables/wrap-2025-checklist.md for details.
 

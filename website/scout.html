@@ -1,0 +1,2503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Wall Scout -- SPRAYCATION</title>
+  <meta name="description" content="Find and evaluate potential mural walls for the 2026 SPRAYCATION tour.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Wall Scout -- SPRAYCATION">
+  <meta property="og:description" content="Find and evaluate potential mural walls for the 2026 SPRAYCATION tour.">
+  <meta property="og:image" content="https://pqsoccerboy17.github.io/spraycation/assets/images/denver-mural.jpg">
+  <meta property="og:url" content="https://pqsoccerboy17.github.io/spraycation/scout.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SPRAYCATION">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wall Scout -- SPRAYCATION">
+  <meta name="twitter:description" content="Find and evaluate potential mural walls for the 2026 SPRAYCATION tour.">
+  <meta name="twitter:image" content="https://pqsoccerboy17.github.io/spraycation/assets/images/denver-mural.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Permanent+Marker&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <style>
+    /* =============================================
+       WALL SCOUT PAGE -- Page-Specific Styles
+       ============================================= */
+
+    /* --- HERO (compact) --- */
+    .scout-hero {
+      min-height: 50vh;
+      padding-top: var(--space-3xl);
+    }
+    .scout-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(255,45,120,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 40%, rgba(52,82,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .scout-hero .hero-subtitle {
+      margin-top: var(--space-lg);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* --- TAB BAR --- */
+    .scout-tabs {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--charcoal);
+      border-bottom: 2px solid var(--white-faint);
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+    }
+    .scout-tab {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+      padding: 10px 28px;
+      border-radius: 30px;
+      border: 2px solid var(--white-faint);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-spring);
+      background: transparent;
+    }
+    .scout-tab:hover {
+      border-color: var(--hot-pink);
+      color: var(--white);
+    }
+    .scout-tab.active {
+      background: var(--gradient-brand);
+      border-color: transparent;
+      color: var(--white);
+    }
+    .tab-count {
+      background: var(--hot-pink);
+      color: var(--white);
+      font-size: 0.6rem;
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin-left: 6px;
+      font-family: var(--font-body);
+      font-weight: 700;
+    }
+    .scout-tab.active .tab-count {
+      background: rgba(255,255,255,0.3);
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* --- SEARCH BAR --- */
+    .search-section {
+      background: var(--charcoal);
+      padding: var(--space-lg) 0;
+    }
+    .search-row {
+      display: flex;
+      gap: var(--space-sm);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .search-input {
+      flex: 1;
+      background: var(--charcoal-light);
+      border: 2px solid var(--white-faint);
+      border-radius: 30px;
+      color: var(--white-soft);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      padding: 14px 24px;
+      transition: border-color var(--duration-fast);
+    }
+    .search-input:focus {
+      border-color: var(--hot-pink);
+      outline: none;
+    }
+    .search-input::placeholder {
+      color: var(--white-muted);
+    }
+    .location-btn {
+      background: var(--charcoal-light);
+      border: 2px solid var(--white-faint);
+      border-radius: 30px;
+      color: var(--white-muted);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 14px 20px;
+      cursor: pointer;
+      transition: all var(--duration-fast);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .location-btn:hover {
+      border-color: var(--electric-blue);
+      color: var(--white);
+    }
+    .location-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    /* --- MAP AREA --- */
+    .map-section {
+      background: var(--black);
+      padding: 0 0 var(--space-lg);
+    }
+    .map-area {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 2px;
+      background: var(--white-faint);
+      border-radius: 12px;
+      overflow: hidden;
+      height: 500px;
+      margin-bottom: var(--space-md);
+    }
+    #scoutMap {
+      min-height: 100%;
+      background: var(--charcoal);
+    }
+    .streetview-container {
+      position: relative;
+      background: var(--charcoal);
+    }
+    #scoutStreetView {
+      width: 100%;
+      height: 100%;
+    }
+    .streetview-status {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      color: var(--white-muted);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: var(--space-lg);
+      pointer-events: none;
+    }
+    .streetview-status svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--white-faint);
+      fill: none;
+      stroke-width: 1.5;
+    }
+    .streetview-status.hidden { display: none; }
+
+    .pin-wall-btn {
+      position: absolute;
+      bottom: var(--space-md);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gradient-brand);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform var(--duration-fast) var(--ease-spring),
+                  box-shadow var(--duration-fast);
+      box-shadow: 0 4px 20px rgba(255,45,120,0.3);
+      display: none;
+    }
+    .pin-wall-btn.visible { display: block; }
+    .pin-wall-btn:hover {
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 4px 30px rgba(255,45,120,0.5);
+    }
+
+    .map-api-missing {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 500px;
+      background: var(--charcoal);
+      border-radius: 12px;
+      color: var(--white-muted);
+      text-align: center;
+      padding: var(--space-xl);
+      gap: var(--space-md);
+    }
+    .map-api-missing .t-card-title { margin-bottom: var(--space-sm); }
+
+    /* --- FORM --- */
+    .form-section-wrapper {
+      background: var(--charcoal);
+      padding: var(--space-xl) 0;
+    }
+    .wall-form-card {
+      background: var(--charcoal-light);
+      border: 1px solid var(--white-faint);
+      border-radius: 12px;
+      padding: var(--space-lg);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .form-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+    .form-full { grid-column: 1 / -1; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+    }
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background: var(--charcoal);
+      border: 1px solid var(--white-faint);
+      border-radius: 8px;
+      color: var(--white-soft);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      padding: 12px 16px;
+      transition: border-color var(--duration-fast);
+      width: 100%;
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--hot-pink);
+      outline: none;
+    }
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    .form-select option {
+      background: var(--charcoal);
+      color: var(--white-soft);
+    }
+    .form-textarea {
+      min-height: 80px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .form-hint {
+      font-size: 0.75rem;
+      color: rgba(240,235,227,0.35);
+      font-weight: 300;
+    }
+
+    /* Checkbox group */
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .checkbox-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--white-faint);
+      cursor: pointer;
+      transition: all var(--duration-fast);
+      font-size: 0.8rem;
+      color: var(--white-muted);
+    }
+    .checkbox-pill:hover {
+      border-color: var(--hot-pink);
+      color: var(--white);
+    }
+    .checkbox-pill input {
+      display: none;
+    }
+    .checkbox-pill.checked {
+      background: rgba(255,45,120,0.15);
+      border-color: var(--hot-pink);
+      color: var(--hot-pink);
+    }
+
+    /* Foot traffic rating */
+    .rating-group {
+      display: flex;
+      gap: 6px;
+    }
+    .rating-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      border: 1px solid var(--white-faint);
+      background: transparent;
+      color: var(--white-muted);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all var(--duration-fast);
+    }
+    .rating-btn:hover {
+      border-color: var(--hot-pink);
+      color: var(--white);
+    }
+    .rating-btn.active {
+      background: var(--hot-pink);
+      border-color: var(--hot-pink);
+      color: var(--white);
+    }
+
+    /* Form sections (collapsible) */
+    .form-section-block {
+      border-top: 1px solid var(--white-faint);
+      margin-top: var(--space-lg);
+      padding-top: var(--space-lg);
+    }
+    .form-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: var(--space-md);
+    }
+    .form-section-header .t-label {
+      color: var(--hot-pink);
+      font-size: 0.7rem;
+    }
+    .form-section-toggle {
+      font-size: 0.65rem;
+      color: var(--hot-pink);
+      transition: transform var(--duration-med) var(--ease-out);
+    }
+    .form-section-block.collapsed .form-section-toggle {
+      transform: rotate(-90deg);
+    }
+    .form-section-body {
+      max-height: 800px;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 1;
+    }
+    .form-section-block.collapsed .form-section-body {
+      max-height: 0;
+      opacity: 0;
+    }
+
+    /* --- WALL SCORE --- */
+    .wall-score-display {
+      text-align: center;
+      padding: var(--space-md) var(--space-lg);
+      background: var(--charcoal);
+      border-radius: 12px;
+      min-width: 140px;
+    }
+    .wall-score-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      line-height: 1;
+      display: block;
+    }
+    .wall-score-label {
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+      display: block;
+      margin-top: 4px;
+    }
+    .wall-score-tag {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .score-magic { color: var(--hot-pink); }
+    .score-magic .wall-score-tag { background: rgba(255,45,120,0.15); color: var(--hot-pink); }
+    .score-solid { color: var(--yellow); }
+    .score-solid .wall-score-tag { background: rgba(255,225,53,0.15); color: var(--yellow); }
+    .score-look { color: var(--electric-blue); }
+    .score-look .wall-score-tag { background: rgba(52,82,255,0.15); color: var(--electric-blue); }
+    .score-work { color: var(--white-muted); }
+    .score-work .wall-score-tag { background: var(--white-faint); color: var(--white-muted); }
+
+    /* Form buttons */
+    .form-actions {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+      flex-wrap: wrap;
+    }
+
+    /* --- OWNERSHIP HELPER --- */
+    .ownership-helper {
+      background: var(--charcoal);
+      border: 1px dashed var(--white-faint);
+      border-radius: 8px;
+      padding: var(--space-md);
+      margin-top: var(--space-md);
+      grid-column: 1 / -1;
+    }
+    .helper-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: var(--space-sm);
+    }
+    .helper-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--white-faint);
+      color: var(--white-muted);
+      transition: all var(--duration-fast);
+      text-decoration: none;
+    }
+    .helper-link:hover {
+      border-color: var(--electric-blue);
+      color: var(--electric-blue);
+    }
+
+    /* --- MY WALLS TAB --- */
+    .walls-section {
+      background: var(--black);
+      padding: var(--space-xl) 0;
+      min-height: 60vh;
+    }
+    .walls-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      align-items: center;
+      margin-bottom: var(--space-lg);
+    }
+    .walls-toolbar-left {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      flex: 1;
+    }
+    .walls-toolbar-right {
+      display: flex;
+      gap: var(--space-sm);
+    }
+    .toolbar-select {
+      background: var(--charcoal-light);
+      border: 1px solid var(--white-faint);
+      border-radius: 20px;
+      color: var(--white-muted);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 6px 30px 6px 14px;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      cursor: pointer;
+      transition: border-color var(--duration-fast);
+    }
+    .toolbar-select:focus {
+      border-color: var(--hot-pink);
+      outline: none;
+    }
+    .toolbar-btn {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--white-faint);
+      background: transparent;
+      color: var(--white-muted);
+      cursor: pointer;
+      transition: all var(--duration-fast);
+    }
+    .toolbar-btn:hover {
+      border-color: var(--hot-pink);
+      color: var(--white);
+    }
+    .import-file { display: none; }
+    .walls-count {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      margin-bottom: var(--space-md);
+    }
+
+    /* Wall cards */
+    .walls-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+    }
+    .wall-card {
+      background: var(--charcoal-light);
+      border: 1px solid var(--white-faint);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow var(--duration-med), border-color var(--duration-fast);
+    }
+    .wall-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      border-color: rgba(255,45,120,0.2);
+    }
+    .wall-card-header {
+      padding: 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .wall-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      margin-bottom: 10px;
+    }
+    .wall-card-name {
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .wall-card-score {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      white-space: nowrap;
+      padding: 2px 10px;
+      border-radius: 8px;
+    }
+    .wall-card-address {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+    .wall-card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .wall-badge {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+    .wall-badge-city { border-color: var(--electric-blue); color: var(--electric-blue); }
+    .wall-badge-material { border-color: var(--white-faint); color: var(--white-muted); }
+    .wall-badge-size { border-color: var(--white-faint); color: var(--white-muted); }
+    .status-new { border-color: var(--white-faint); color: rgba(255,255,255,0.4); }
+    .status-contacted { border-color: #64B5F6; color: #64B5F6; }
+    .status-interested { border-color: var(--yellow); color: var(--yellow); }
+    .status-confirmed { border-color: #4CAF50; color: #4CAF50; }
+    .status-rejected { border-color: var(--hot-pink); color: var(--hot-pink); }
+    .wall-card-date {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+      font-weight: 300;
+    }
+    .wall-card-expand-icon {
+      display: inline-block;
+      font-size: 0.6rem;
+      color: var(--hot-pink);
+      margin-left: 6px;
+      transition: transform var(--duration-med) var(--ease-out);
+    }
+    .wall-card.expanded .wall-card-expand-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Expanded body */
+    .wall-card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .wall-card.expanded .wall-card-body {
+      max-height: 1200px;
+    }
+    .wall-card-body-inner {
+      padding: var(--space-md) 20px 20px;
+      border-top: 1px solid var(--white-faint);
+    }
+    .wall-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: var(--space-md);
+    }
+    .wall-detail-row { }
+    .wall-detail-label {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--hot-pink);
+      margin-bottom: 2px;
+    }
+    .wall-detail-value {
+      font-size: 0.85rem;
+      color: var(--white-muted);
+      line-height: 1.4;
+      font-weight: 300;
+    }
+
+    /* Status pills on expanded card */
+    .status-update-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: var(--space-md) 0;
+    }
+    .status-pill {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--white-faint);
+      background: transparent;
+      color: var(--white-muted);
+      cursor: pointer;
+      transition: all var(--duration-fast);
+    }
+    .status-pill:hover { border-color: var(--hot-pink); color: var(--white); }
+    .status-pill.active-status {
+      background: var(--hot-pink);
+      border-color: var(--hot-pink);
+      color: var(--white);
+    }
+
+    /* Card action buttons */
+    .wall-card-actions {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+      flex-wrap: wrap;
+    }
+    .wall-action-btn {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--white-faint);
+      background: transparent;
+      color: var(--white-muted);
+      cursor: pointer;
+      transition: all var(--duration-fast);
+    }
+    .wall-action-btn:hover {
+      border-color: var(--hot-pink);
+      color: var(--white);
+    }
+    .wall-action-btn.delete-btn:hover {
+      border-color: #f44336;
+      color: #f44336;
+    }
+
+    /* Research links in expanded card */
+    .research-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: var(--space-md);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--white-faint);
+    }
+    .research-link {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--electric-blue);
+      color: var(--electric-blue);
+      text-decoration: none;
+      transition: all var(--duration-fast);
+    }
+    .research-link:hover {
+      background: rgba(52,82,255,0.15);
+    }
+
+    /* --- EMPTY STATE --- */
+    .empty-state {
+      text-align: center;
+      padding: var(--space-3xl) var(--space-lg);
+    }
+    .empty-state svg {
+      width: 80px;
+      height: 80px;
+      stroke: var(--white-faint);
+      fill: none;
+      stroke-width: 1;
+      margin-bottom: var(--space-lg);
+    }
+
+    /* --- TOAST --- */
+    .toast {
+      position: fixed;
+      bottom: var(--space-xl);
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--charcoal-light);
+      border: 1px solid var(--hot-pink);
+      border-radius: 12px;
+      padding: var(--space-md) var(--space-lg);
+      color: var(--white);
+      font-size: 0.9rem;
+      z-index: 1500;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      opacity: 0;
+      transition: transform 0.3s var(--ease-spring), opacity 0.3s;
+      pointer-events: none;
+    }
+    .toast.visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .toast-btn {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--hot-pink);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .map-area {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      #scoutMap { min-height: 300px; }
+      .streetview-container { min-height: 250px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .walls-grid { grid-template-columns: 1fr; }
+      .wall-detail-grid { grid-template-columns: 1fr; }
+      .search-row { flex-direction: column; }
+      .walls-toolbar { flex-direction: column; align-items: stretch; }
+      .walls-toolbar-right { justify-content: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .scout-hero { min-height: 40vh; }
+      .rating-btn { width: 40px; height: 40px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">SPRAYCATION</a>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="cities.html">Cities</a>
+      <a href="denver.html">Case Study</a>
+      <a href="impact.html">Impact</a>
+      <a href="partnerships.html">Partner</a>
+      <a href="about.html">About</a>
+      <a href="scout.html" class="active">Scout</a>
+      <a href="contact.html" class="nav-cta">Let's Talk</a>
+    </div>
+  </nav>
+  <div class="nav-overlay">
+    <a href="index.html">Home</a>
+    <a href="cities.html">Cities</a>
+    <a href="denver.html">Case Study</a>
+    <a href="impact.html">Impact</a>
+    <a href="partnerships.html">Partner</a>
+    <a href="about.html">About</a>
+    <a href="scout.html">Scout</a>
+    <a href="contact.html">Let's Talk</a>
+  </div>
+
+  <!-- ====== HERO ====== -->
+  <section class="scout-hero page-hero section--dark" id="scout-hero">
+    <div class="hero-content">
+      <h1 class="t-hero" style="font-size: clamp(3rem, 12vw, 9rem);"><span class="c-gradient">WALL</span><br>SCOUT</h1>
+      <p class="t-body-lg hero-subtitle c-muted">Find and evaluate the perfect walls for the 2026 tour.</p>
+    </div>
+  </section>
+
+  <!-- ====== TAB BAR ====== -->
+  <div class="scout-tabs" id="scoutTabs">
+    <button class="scout-tab active" data-tab="scout">Scout</button>
+    <button class="scout-tab" data-tab="walls">My Walls <span class="tab-count" id="wallCount">0</span></button>
+  </div>
+
+  <!-- ====== SCOUT TAB ====== -->
+  <div class="tab-content active" id="tab-scout">
+
+    <!-- Search -->
+    <section class="search-section">
+      <div class="container">
+        <div class="search-row">
+          <input type="text" id="scoutSearch" class="search-input" placeholder="Search an address or city...">
+          <button class="location-btn" id="locationBtn">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+            My Location
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map + Street View -->
+    <section class="map-section">
+      <div class="container">
+        <div class="map-area" id="mapArea">
+          <div id="scoutMap"></div>
+          <div class="streetview-container">
+            <div id="scoutStreetView"></div>
+            <div class="streetview-status" id="streetviewStatus">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Search an address or click the map to load Street View</span>
+            </div>
+            <button class="pin-wall-btn" id="pinWallBtn">Pin This Wall</button>
+          </div>
+        </div>
+        <div class="map-api-missing" id="mapFallback" style="display:none;">
+          <h3 class="t-card-title">Google Maps API Key Required</h3>
+          <p class="t-body c-muted">To use the interactive map, add your Google Maps API key to the script tag in scout.html.</p>
+          <p class="t-small c-muted">You can still manually enter wall information using the form below.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wall Assessment Form -->
+    <section class="form-section-wrapper">
+      <div class="container">
+        <div class="wall-form-card">
+          <form id="wallForm" autocomplete="off">
+
+            <div class="form-title-row">
+              <div>
+                <p class="section-label" style="margin-bottom:4px;">Wall Assessment</p>
+                <h3 class="t-card-title" id="formTitle">New Wall</h3>
+              </div>
+              <div class="wall-score-display" id="scoreDisplay">
+                <span class="wall-score-number" id="scoreNumber">--</span>
+                <span class="wall-score-label">Wall Score</span>
+                <span class="wall-score-tag" id="scoreTag"></span>
+              </div>
+            </div>
+
+            <!-- Section 1: Basics (always visible) -->
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="wallAddress">Address</label>
+                <input type="text" id="wallAddress" class="form-input" placeholder="Auto-filled from map or enter manually">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="wallNickname">Nickname *</label>
+                <input type="text" id="wallNickname" class="form-input" placeholder="e.g. Red brick on Colfax" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="wallCity">City</label>
+                <input type="text" id="wallCity" class="form-input" placeholder="Auto-filled or enter manually">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="wallState">State</label>
+                <input type="text" id="wallState" class="form-input" placeholder="e.g. CO">
+              </div>
+              <div class="form-group form-full">
+                <label class="form-label" for="wallNotes">Quick Notes</label>
+                <textarea id="wallNotes" class="form-textarea" placeholder="Corner of 5th and Main, next to the coffee shop..."></textarea>
+              </div>
+            </div>
+
+            <!-- Section 2: Wall Details -->
+            <div class="form-section-block" id="detailsSection">
+              <div class="form-section-header" data-section="details">
+                <span class="t-label">Wall Details</span>
+                <span class="form-section-toggle">&#9660;</span>
+              </div>
+              <div class="form-section-body">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label class="form-label" for="wallSize">Size Estimate</label>
+                    <select id="wallSize" class="form-select">
+                      <option value="">Select size...</option>
+                      <option value="10x10">10 x 10 ft</option>
+                      <option value="15x15">15 x 15 ft</option>
+                      <option value="20x20">20 x 20 ft</option>
+                      <option value="25x25">25 x 25 ft</option>
+                      <option value="30x30">30 x 30 ft</option>
+                      <option value="custom">Custom</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="customSizeGroup" style="display:none;">
+                    <label class="form-label" for="wallCustomSize">Custom Size</label>
+                    <input type="text" id="wallCustomSize" class="form-input" placeholder="e.g. 12x18 ft">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="wallMaterial">Surface Material</label>
+                    <select id="wallMaterial" class="form-select">
+                      <option value="">Select material...</option>
+                      <option value="cinder-block">Cinder Block</option>
+                      <option value="concrete">Concrete</option>
+                      <option value="stucco">Stucco</option>
+                      <option value="brick">Brick</option>
+                      <option value="metal">Metal</option>
+                      <option value="wood">Wood</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="wallFlat">Flat Surface</label>
+                    <select id="wallFlat" class="form-select">
+                      <option value="">Not sure yet</option>
+                      <option value="yes">Yes - flat and smooth</option>
+                      <option value="no">No - textured or uneven</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="wallPhoto">Photo-Friendly</label>
+                    <select id="wallPhoto" class="form-select">
+                      <option value="">Not sure yet</option>
+                      <option value="yes">Yes - great photo spot</option>
+                      <option value="no">No - hard to photograph</option>
+                    </select>
+                  </div>
+                  <div class="form-group form-full">
+                    <label class="form-label">Obstructions</label>
+                    <div class="checkbox-group" id="obstructionGroup">
+                      <label class="checkbox-pill"><input type="checkbox" value="none" data-exclusive> None</label>
+                      <label class="checkbox-pill"><input type="checkbox" value="trees"> Trees</label>
+                      <label class="checkbox-pill"><input type="checkbox" value="power-lines"> Power Lines</label>
+                      <label class="checkbox-pill"><input type="checkbox" value="dumpsters"> Dumpsters</label>
+                      <label class="checkbox-pill"><input type="checkbox" value="signage"> Signage</label>
+                      <label class="checkbox-pill"><input type="checkbox" value="electrical"> Electrical</label>
+                      <label class="checkbox-pill"><input type="checkbox" value="ac-units"> AC Units</label>
+                      <label class="checkbox-pill"><input type="checkbox" value="other"> Other</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Scouting Intel -->
+            <div class="form-section-block collapsed" id="intelSection">
+              <div class="form-section-header" data-section="intel">
+                <span class="t-label">Scouting Intel</span>
+                <span class="form-section-toggle">&#9660;</span>
+              </div>
+              <div class="form-section-body">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label class="form-label">Foot Traffic (1-5)</label>
+                    <div class="rating-group" id="footTrafficGroup">
+                      <button type="button" class="rating-btn" data-value="1">1</button>
+                      <button type="button" class="rating-btn" data-value="2">2</button>
+                      <button type="button" class="rating-btn" data-value="3">3</button>
+                      <button type="button" class="rating-btn" data-value="4">4</button>
+                      <button type="button" class="rating-btn" data-value="5">5</button>
+                    </div>
+                    <span class="form-hint">1 = quiet, 5 = very busy</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="wallOwnership">Locally Owned</label>
+                    <select id="wallOwnership" class="form-select">
+                      <option value="">Unknown</option>
+                      <option value="yes">Yes - local business</option>
+                      <option value="no">No - chain or corporate</option>
+                      <option value="unknown">Not sure</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="wallBusinessType">Business Type</label>
+                    <select id="wallBusinessType" class="form-select">
+                      <option value="">Select...</option>
+                      <option value="small-local">Small Local Business</option>
+                      <option value="restaurant">Restaurant / Bar</option>
+                      <option value="chain">Chain / Corporate</option>
+                      <option value="vacant">Vacant</option>
+                      <option value="government">Government</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="wallBusinessName">Business Name</label>
+                    <input type="text" id="wallBusinessName" class="form-input" placeholder="If visible">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="wallOwnerName">Owner Name</label>
+                    <input type="text" id="wallOwnerName" class="form-input" placeholder="From property records">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="wallOwnerContact">Owner Contact</label>
+                    <input type="text" id="wallOwnerContact" class="form-input" placeholder="Email or phone">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="wallTenantName">Tenant Name</label>
+                    <input type="text" id="wallTenantName" class="form-input" placeholder="If different from owner">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="wallTenantContact">Tenant Contact</label>
+                    <input type="text" id="wallTenantContact" class="form-input" placeholder="Email or phone">
+                  </div>
+                  <div class="form-group form-full">
+                    <label class="form-label" for="wallNeighborhood">Neighborhood / Vibe Notes</label>
+                    <textarea id="wallNeighborhood" class="form-textarea" placeholder="Artsy strip, lots of foot traffic, near transit..."></textarea>
+                  </div>
+
+                  <!-- Ownership helper links -->
+                  <div class="ownership-helper" id="ownershipHelper" style="display:none;">
+                    <span class="form-label">Look Up Property Owner</span>
+                    <p class="form-hint" style="margin: 4px 0 8px;">Search for the address to find owner info, then enter it above.</p>
+                    <div class="helper-links" id="helperLinks"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Status -->
+            <div class="form-section-block">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="wallStatus">Status</label>
+                  <select id="wallStatus" class="form-select">
+                    <option value="new">New</option>
+                    <option value="contacted">Contacted</option>
+                    <option value="interested">Interested</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="rejected">Rejected</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+              <button type="submit" class="btn btn--primary">Save Wall</button>
+              <button type="button" class="btn btn--outline" id="clearFormBtn">Clear Form</button>
+            </div>
+
+            <input type="hidden" id="wallId" value="">
+            <input type="hidden" id="wallLat" value="">
+            <input type="hidden" id="wallLng" value="">
+            <input type="hidden" id="wallZip" value="">
+            <input type="hidden" id="wallFormattedAddress" value="">
+            <input type="hidden" id="wallStreetViewHeading" value="">
+            <input type="hidden" id="wallStreetViewPitch" value="">
+            <input type="hidden" id="wallStreetViewZoom" value="">
+            <input type="hidden" id="wallFootTraffic" value="">
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====== MY WALLS TAB ====== -->
+  <div class="tab-content" id="tab-walls">
+    <section class="walls-section">
+      <div class="container">
+        <div class="walls-toolbar">
+          <div class="walls-toolbar-left">
+            <select class="toolbar-select" id="filterCity">
+              <option value="all">All Cities</option>
+            </select>
+            <select class="toolbar-select" id="filterStatus">
+              <option value="all">All Statuses</option>
+              <option value="new">New</option>
+              <option value="contacted">Contacted</option>
+              <option value="interested">Interested</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="rejected">Rejected</option>
+            </select>
+            <select class="toolbar-select" id="filterScore">
+              <option value="all">All Scores</option>
+              <option value="80-100">Magic (80+)</option>
+              <option value="60-79">Solid (60-79)</option>
+              <option value="40-59">Worth a Look (40-59)</option>
+              <option value="0-39">Needs Work (0-39)</option>
+            </select>
+            <select class="toolbar-select" id="sortWalls">
+              <option value="date-desc">Newest First</option>
+              <option value="score-desc">Highest Score</option>
+              <option value="city">By City</option>
+              <option value="status">By Status</option>
+            </select>
+          </div>
+          <div class="walls-toolbar-right">
+            <button class="toolbar-btn" id="exportCsvBtn">Export CSV</button>
+            <button class="toolbar-btn" id="exportJsonBtn">Export JSON</button>
+            <button class="toolbar-btn" id="importJsonBtn">Import</button>
+            <input type="file" class="import-file" id="importFileInput" accept=".json">
+          </div>
+        </div>
+        <div class="walls-count" id="wallsCount"></div>
+        <div class="walls-grid" id="wallsGrid"></div>
+        <div class="empty-state" id="emptyState" style="display:none;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg>
+          <h3 class="t-card-title" style="margin-bottom:var(--space-sm);">No Walls Saved Yet</h3>
+          <p class="t-body c-muted">Use the Scout tab to find and save potential mural walls.</p>
+          <p class="t-small c-muted" style="margin-top:var(--space-md);">Your walls are saved on this device only. Export regularly to keep a backup.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <div class="footer-cta">
+        <h2>Let's create a cultural moment together.</h2>
+        <a href="contact.html" class="btn btn--primary">Start a Conversation</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/spraycationmuraltour" target="_blank">Instagram</a>
+        <a href="https://instagram.com/zuzubee" target="_blank">@zuzubee</a>
+        <a href="mailto:spraythefuture@gmail.com">Email</a>
+        <a href="https://ihavepinkhair.com/spraycation" target="_blank">Website</a>
+      </div>
+      <div class="footer-bottom">
+        <p class="t-small">&copy; 2026 Spraycation Mural Tour. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== GRAIN + SPARKLES + TRANSITION ====== -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle sparkle--sm" aria-hidden="true"></div>
+  <div class="sparkle sparkle--lg" aria-hidden="true"></div>
+  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle sparkle--sm" aria-hidden="true"></div>
+  <div class="page-transition" aria-hidden="true"><div class="drip-curtain"></div></div>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="js/shared.js"></script>
+
+  <!--
+    ============================================================
+    GOOGLE MAPS API
+    Replace YOUR_GOOGLE_MAPS_API_KEY with your actual API key.
+    Get one at: https://console.cloud.google.com/
+    Enable: Maps JavaScript API, Places API, Geocoding API
+    ============================================================
+  -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places" defer></script>
+
+  <!-- ====== PAGE LOGIC ====== -->
+  <script>
+    /* ==========================================================================
+       WALL SCOUT -- Map integration, wall assessment, localStorage persistence
+       ========================================================================== */
+
+    // --- State ---
+    var map = null;
+    var panorama = null;
+    var currentMarker = null;
+    var savedWalls = [];
+    var activeTab = 'scout';
+    var expandedWallId = null;
+    var editingWallId = null;
+    var footTrafficValue = 0;
+    var savedWallMarkers = [];
+    var mapsLoaded = false;
+
+    // --- Dark map style matching Spraycation brand ---
+    var MAP_STYLES = [
+      { elementType: 'geometry', stylers: [{ color: '#1E1E30' }] },
+      { elementType: 'labels.text.stroke', stylers: [{ color: '#0A0A0F' }] },
+      { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+      { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a40' }] },
+      { featureType: 'poi', stylers: [{ visibility: 'off' }] },
+      { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#2a2a40' }] },
+      { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#1a1a2e' }] },
+      { featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: '#8a8a8a' }] },
+      { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#3a3a55' }] },
+      { featureType: 'transit', stylers: [{ visibility: 'off' }] },
+      { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#141420' }] },
+      { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#515c6d' }] }
+    ];
+
+    // --- County assessor lookup table ---
+    var ASSESSOR_LINKS = {
+      'CO-Denver': { name: 'Denver Assessor', url: 'https://www.denvergov.org/property' },
+      'CO': { name: 'CO Property Search', url: 'https://www.colorado.gov/pacific/dola/property-tax' },
+      'TX-Austin': { name: 'Travis County Appraisal', url: 'https://traviscad.org/property-search' },
+      'TX-San Antonio': { name: 'Bexar Appraisal District', url: 'https://www.bcad.org/' },
+      'TX': { name: 'TX Property Search', url: 'https://comptroller.texas.gov/taxes/property-tax/' },
+      'OR-Portland': { name: 'Multnomah County', url: 'https://multcoproptax.com/' },
+      'OR': { name: 'OR Property Records', url: 'https://www.oregon.gov/dor/programs/property/pages/default.aspx' },
+      'ID-Boise': { name: 'Ada County Assessor', url: 'https://www.adacountyassessor.org/' },
+      'TN-Nashville': { name: 'Nashville Property', url: 'https://www.padctn.org/' },
+      'LA-New Orleans': { name: 'Orleans Assessor', url: 'https://www.nolaassessor.com/' },
+      'WA-Seattle': { name: 'King County Assessor', url: 'https://blue.kingcounty.com/Assessor/eRealProperty/' },
+      'CA-Los Angeles': { name: 'LA County Assessor', url: 'https://portal.assessor.lacounty.gov/' },
+      'AZ-Phoenix': { name: 'Maricopa Assessor', url: 'https://mcassessor.maricopa.gov/' },
+      'NM-Albuquerque': { name: 'Bernalillo Assessor', url: 'https://www.bernco.gov/assessor/' }
+    };
+
+    // --- Utility ---
+    function createEl(tag, className, text) {
+      var el = document.createElement(tag);
+      if (className) el.className = className;
+      if (text !== undefined) el.textContent = text;
+      return el;
+    }
+
+    function formatDate(isoString) {
+      var d = new Date(isoString);
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    function formatStatus(status) {
+      return status.charAt(0).toUpperCase() + status.slice(1);
+    }
+
+    function formatMaterial(mat) {
+      if (!mat) return '';
+      return mat.split('-').map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(' ');
+    }
+
+    // --- localStorage ---
+    function loadWalls() {
+      try {
+        var data = localStorage.getItem('spraycation-walls');
+        if (data) {
+          var parsed = JSON.parse(data);
+          savedWalls = parsed.walls || parsed || [];
+        } else {
+          savedWalls = [];
+        }
+      } catch (e) {
+        savedWalls = [];
+      }
+    }
+
+    function persistWalls() {
+      try {
+        localStorage.setItem('spraycation-walls', JSON.stringify({ version: 1, walls: savedWalls }));
+      } catch (e) {
+        showToast('Could not save -- storage full. Export your walls to free space.');
+      }
+      updateWallCount();
+    }
+
+    function updateWallCount() {
+      var countEl = document.getElementById('wallCount');
+      if (countEl) countEl.textContent = savedWalls.length;
+    }
+
+    // --- Wall Score ---
+    function calculateWallScore(wall) {
+      var score = 0;
+      var maxScore = 0;
+      var criteriaUsed = 0;
+      var totalCriteria = 7;
+
+      // Flat surface (25 pts)
+      maxScore += 25;
+      if (wall.flatSurface === 'yes') { score += 25; criteriaUsed++; }
+      else if (wall.flatSurface === 'no') { score += 0; criteriaUsed++; }
+
+      // Material (20 pts)
+      maxScore += 20;
+      var materialScores = { 'cinder-block': 20, 'concrete': 18, 'stucco': 15, 'brick': 12, 'metal': 8, 'wood': 5, 'other': 5 };
+      if (wall.material && materialScores[wall.material] !== undefined) {
+        score += materialScores[wall.material];
+        criteriaUsed++;
+      }
+
+      // Size (15 pts)
+      maxScore += 15;
+      var sizeScores = { '30x30': 15, '25x25': 13, '20x20': 11, '15x15': 8, '10x10': 5, 'custom': 10 };
+      if (wall.size && sizeScores[wall.size] !== undefined) {
+        score += sizeScores[wall.size];
+        criteriaUsed++;
+      }
+
+      // Foot traffic (15 pts)
+      maxScore += 15;
+      if (wall.footTraffic && wall.footTraffic > 0) {
+        score += (wall.footTraffic / 5) * 15;
+        criteriaUsed++;
+      }
+
+      // Photo-friendly (10 pts)
+      maxScore += 10;
+      if (wall.photoFriendly === 'yes') { score += 10; criteriaUsed++; }
+      else if (wall.photoFriendly === 'no') { score += 2; criteriaUsed++; }
+
+      // Obstructions (10 pts)
+      maxScore += 10;
+      if (wall.obstructions) {
+        if (wall.obstructions.length === 1 && wall.obstructions[0] === 'none') {
+          score += 10;
+          criteriaUsed++;
+        } else if (wall.obstructions.length > 0) {
+          score += Math.max(0, 10 - (wall.obstructions.length * 2.5));
+          criteriaUsed++;
+        }
+      }
+
+      // Locally owned (5 pts)
+      maxScore += 5;
+      if (wall.locallyOwned === 'yes') { score += 5; criteriaUsed++; }
+      else if (wall.locallyOwned === 'unknown') { score += 2; criteriaUsed++; }
+      else if (wall.locallyOwned === 'no') { score += 0; criteriaUsed++; }
+
+      var finalScore = maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
+      return { score: finalScore, criteriaUsed: criteriaUsed, totalCriteria: totalCriteria };
+    }
+
+    function getScoreClass(score) {
+      if (score >= 80) return 'score-magic';
+      if (score >= 60) return 'score-solid';
+      if (score >= 40) return 'score-look';
+      return 'score-work';
+    }
+
+    function getScoreLabel(score) {
+      if (score >= 80) return 'Magic Wall';
+      if (score >= 60) return 'Solid Prospect';
+      if (score >= 40) return 'Worth a Look';
+      return 'Needs Work';
+    }
+
+    function updateScoreDisplay() {
+      var wall = getFormData();
+      var result = calculateWallScore(wall);
+      var el = document.getElementById('scoreNumber');
+      var tag = document.getElementById('scoreTag');
+      var display = document.getElementById('scoreDisplay');
+
+      if (result.criteriaUsed === 0) {
+        el.textContent = '--';
+        tag.textContent = '';
+        display.className = 'wall-score-display';
+        return;
+      }
+
+      el.textContent = result.score;
+      tag.textContent = getScoreLabel(result.score);
+      if (result.criteriaUsed < result.totalCriteria) {
+        tag.textContent += ' (' + result.criteriaUsed + '/' + result.totalCriteria + ')';
+      }
+      display.className = 'wall-score-display ' + getScoreClass(result.score);
+    }
+
+    // --- Form data ---
+    function getFormData() {
+      var obstructions = [];
+      document.querySelectorAll('#obstructionGroup input:checked').forEach(function(cb) {
+        obstructions.push(cb.value);
+      });
+
+      return {
+        address: document.getElementById('wallAddress').value.trim(),
+        nickname: document.getElementById('wallNickname').value.trim(),
+        city: document.getElementById('wallCity').value.trim(),
+        state: document.getElementById('wallState').value.trim(),
+        zip: document.getElementById('wallZip').value,
+        lat: parseFloat(document.getElementById('wallLat').value) || 0,
+        lng: parseFloat(document.getElementById('wallLng').value) || 0,
+        formattedAddress: document.getElementById('wallFormattedAddress').value,
+        size: document.getElementById('wallSize').value,
+        customSize: document.getElementById('wallCustomSize').value.trim(),
+        material: document.getElementById('wallMaterial').value,
+        flatSurface: document.getElementById('wallFlat').value,
+        photoFriendly: document.getElementById('wallPhoto').value,
+        obstructions: obstructions,
+        footTraffic: footTrafficValue,
+        locallyOwned: document.getElementById('wallOwnership').value,
+        businessType: document.getElementById('wallBusinessType').value,
+        businessName: document.getElementById('wallBusinessName').value.trim(),
+        ownerName: document.getElementById('wallOwnerName').value.trim(),
+        ownerContact: document.getElementById('wallOwnerContact').value.trim(),
+        tenantName: document.getElementById('wallTenantName').value.trim(),
+        tenantContact: document.getElementById('wallTenantContact').value.trim(),
+        neighborhoodNotes: document.getElementById('wallNeighborhood').value.trim(),
+        notes: document.getElementById('wallNotes').value.trim(),
+        status: document.getElementById('wallStatus').value,
+        streetViewPov: {
+          heading: parseFloat(document.getElementById('wallStreetViewHeading').value) || 0,
+          pitch: parseFloat(document.getElementById('wallStreetViewPitch').value) || 0,
+          zoom: parseFloat(document.getElementById('wallStreetViewZoom').value) || 1
+        }
+      };
+    }
+
+    function clearForm() {
+      document.getElementById('wallForm').reset();
+      document.getElementById('wallId').value = '';
+      document.getElementById('wallLat').value = '';
+      document.getElementById('wallLng').value = '';
+      document.getElementById('wallZip').value = '';
+      document.getElementById('wallFormattedAddress').value = '';
+      document.getElementById('wallStreetViewHeading').value = '';
+      document.getElementById('wallStreetViewPitch').value = '';
+      document.getElementById('wallStreetViewZoom').value = '';
+      document.getElementById('wallFootTraffic').value = '';
+      document.getElementById('customSizeGroup').style.display = 'none';
+      document.getElementById('formTitle').textContent = 'New Wall';
+      footTrafficValue = 0;
+      editingWallId = null;
+      document.querySelectorAll('.rating-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.checkbox-pill').forEach(function(p) { p.classList.remove('checked'); });
+      updateScoreDisplay();
+      updateOwnershipHelper();
+    }
+
+    // --- Save / Update / Delete ---
+    function saveWall() {
+      var data = getFormData();
+      if (!data.nickname) {
+        showToast('Please enter a nickname for this wall.');
+        return;
+      }
+
+      var scoreResult = calculateWallScore(data);
+      data.wallScore = scoreResult.score;
+
+      if (editingWallId) {
+        // Update existing
+        for (var i = 0; i < savedWalls.length; i++) {
+          if (savedWalls[i].id === editingWallId) {
+            data.id = editingWallId;
+            data.createdAt = savedWalls[i].createdAt;
+            data.updatedAt = new Date().toISOString();
+            savedWalls[i] = data;
+            break;
+          }
+        }
+        showToast('Wall updated: ' + data.nickname);
+      } else {
+        // Check for duplicate address nearby
+        if (data.lat && data.lng) {
+          var duplicate = savedWalls.find(function(w) {
+            if (!w.lat || !w.lng) return false;
+            var dlat = Math.abs(w.lat - data.lat);
+            var dlng = Math.abs(w.lng - data.lng);
+            return dlat < 0.0005 && dlng < 0.0005; // ~50m
+          });
+          if (duplicate) {
+            if (!confirm('You have a wall saved nearby: "' + duplicate.nickname + '"\nSave anyway?')) {
+              return;
+            }
+          }
+        }
+
+        data.id = 'wall_' + Date.now();
+        data.createdAt = new Date().toISOString();
+        data.updatedAt = new Date().toISOString();
+        savedWalls.push(data);
+        showToast('Wall saved: ' + data.nickname);
+
+        // Backup reminder every 5 walls
+        if (savedWalls.length > 0 && savedWalls.length % 5 === 0) {
+          setTimeout(function() {
+            showToast('You have ' + savedWalls.length + ' walls. Consider exporting a backup.', 'exportJsonBtn');
+          }, 2000);
+        }
+      }
+
+      persistWalls();
+      clearForm();
+      if (mapsLoaded) renderSavedWallMarkers();
+    }
+
+    function deleteWall(id) {
+      var wall = savedWalls.find(function(w) { return w.id === id; });
+      if (!wall) return;
+
+      // Undo pattern
+      var idx = savedWalls.indexOf(wall);
+      savedWalls.splice(idx, 1);
+      persistWalls();
+      renderWallsList();
+      if (mapsLoaded) renderSavedWallMarkers();
+
+      showToast('Wall deleted: ' + wall.nickname, null, function() {
+        // Undo - find correct insert position in case array shifted
+        var insertIdx = Math.min(idx, savedWalls.length);
+        savedWalls.splice(insertIdx, 0, wall);
+        persistWalls();
+        renderWallsList();
+        if (mapsLoaded) renderSavedWallMarkers();
+      });
+    }
+
+    function editWall(id) {
+      var wall = savedWalls.find(function(w) { return w.id === id; });
+      if (!wall) return;
+
+      editingWallId = id;
+      document.getElementById('formTitle').textContent = 'Editing: ' + wall.nickname;
+      document.getElementById('wallId').value = wall.id;
+      document.getElementById('wallAddress').value = wall.address || '';
+      document.getElementById('wallNickname').value = wall.nickname || '';
+      document.getElementById('wallCity').value = wall.city || '';
+      document.getElementById('wallState').value = wall.state || '';
+      document.getElementById('wallZip').value = wall.zip || '';
+      document.getElementById('wallLat').value = wall.lat || '';
+      document.getElementById('wallLng').value = wall.lng || '';
+      document.getElementById('wallFormattedAddress').value = wall.formattedAddress || '';
+      document.getElementById('wallSize').value = wall.size || '';
+      document.getElementById('wallCustomSize').value = wall.customSize || '';
+      document.getElementById('customSizeGroup').style.display = wall.size === 'custom' ? '' : 'none';
+      document.getElementById('wallMaterial').value = wall.material || '';
+      document.getElementById('wallFlat').value = wall.flatSurface || '';
+      document.getElementById('wallPhoto').value = wall.photoFriendly || '';
+      document.getElementById('wallOwnership').value = wall.locallyOwned || '';
+      document.getElementById('wallBusinessType').value = wall.businessType || '';
+      document.getElementById('wallBusinessName').value = wall.businessName || '';
+      document.getElementById('wallOwnerName').value = wall.ownerName || '';
+      document.getElementById('wallOwnerContact').value = wall.ownerContact || '';
+      document.getElementById('wallTenantName').value = wall.tenantName || '';
+      document.getElementById('wallTenantContact').value = wall.tenantContact || '';
+      document.getElementById('wallNeighborhood').value = wall.neighborhoodNotes || '';
+      document.getElementById('wallNotes').value = wall.notes || '';
+      document.getElementById('wallStatus').value = wall.status || 'new';
+
+      if (wall.streetViewPov) {
+        document.getElementById('wallStreetViewHeading').value = wall.streetViewPov.heading || '';
+        document.getElementById('wallStreetViewPitch').value = wall.streetViewPov.pitch || '';
+        document.getElementById('wallStreetViewZoom').value = wall.streetViewPov.zoom || '';
+      }
+
+      // Foot traffic
+      footTrafficValue = wall.footTraffic || 0;
+      document.getElementById('wallFootTraffic').value = footTrafficValue;
+      document.querySelectorAll('#footTrafficGroup .rating-btn').forEach(function(btn) {
+        btn.classList.toggle('active', parseInt(btn.dataset.value) === footTrafficValue);
+      });
+
+      // Obstructions
+      document.querySelectorAll('#obstructionGroup input').forEach(function(cb) {
+        var checked = wall.obstructions && wall.obstructions.indexOf(cb.value) !== -1;
+        cb.checked = checked;
+        cb.closest('.checkbox-pill').classList.toggle('checked', checked);
+      });
+
+      updateScoreDisplay();
+      updateOwnershipHelper();
+      switchTab('scout');
+      document.getElementById('wallForm').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // --- Google Maps ---
+    function initMap() {
+      if (typeof google === 'undefined' || !google.maps) {
+        document.getElementById('mapArea').style.display = 'none';
+        document.getElementById('mapFallback').style.display = 'flex';
+        return;
+      }
+
+      mapsLoaded = true;
+
+      map = new google.maps.Map(document.getElementById('scoutMap'), {
+        center: { lat: 39.8283, lng: -98.5795 },
+        zoom: 5,
+        styles: MAP_STYLES,
+        mapTypeControl: false,
+        streetViewControl: true,
+        fullscreenControl: true,
+        zoomControl: true
+      });
+
+      panorama = new google.maps.StreetViewPanorama(
+        document.getElementById('scoutStreetView'), {
+          enableCloseButton: false,
+          addressControl: false,
+          linksControl: true,
+          panControl: true,
+          zoomControl: true
+        }
+      );
+
+      map.setStreetView(panorama);
+
+      // Click map to drop pin
+      map.addListener('click', function(e) {
+        placeMarker(e.latLng);
+        reverseGeocode(e.latLng);
+        loadStreetView(e.latLng);
+      });
+
+      // Track Street View POV changes
+      panorama.addListener('pov_changed', function() {
+        var pov = panorama.getPov();
+        document.getElementById('wallStreetViewHeading').value = pov.heading;
+        document.getElementById('wallStreetViewPitch').value = pov.pitch;
+        document.getElementById('wallStreetViewZoom').value = panorama.getZoom();
+      });
+
+      // Show pin button when Street View is visible
+      panorama.addListener('visible_changed', function() {
+        var pinBtn = document.getElementById('pinWallBtn');
+        if (panorama.getVisible()) {
+          pinBtn.classList.add('visible');
+        } else {
+          pinBtn.classList.remove('visible');
+        }
+      });
+
+      initAutocomplete();
+      renderSavedWallMarkers();
+    }
+
+    function initAutocomplete() {
+      var input = document.getElementById('scoutSearch');
+      var autocomplete = new google.maps.places.Autocomplete(input, {
+        types: ['address'],
+        componentRestrictions: { country: 'us' },
+        fields: ['address_components', 'geometry', 'formatted_address', 'name']
+      });
+
+      autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        if (!place.geometry) return;
+
+        map.setCenter(place.geometry.location);
+        map.setZoom(18);
+        placeMarker(place.geometry.location);
+        loadStreetView(place.geometry.location);
+        populateFormFromPlace(place);
+      });
+    }
+
+    function placeMarker(latLng) {
+      if (currentMarker) currentMarker.setMap(null);
+
+      currentMarker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 12,
+          fillColor: '#FF2D78',
+          fillOpacity: 1,
+          strokeColor: '#FFFFFF',
+          strokeWeight: 3
+        },
+        title: 'Scouting this wall'
+      });
+
+      document.getElementById('wallLat').value = latLng.lat();
+      document.getElementById('wallLng').value = latLng.lng();
+    }
+
+    function loadStreetView(latLng) {
+      var svService = new google.maps.StreetViewService();
+      svService.getPanorama({
+        location: { lat: latLng.lat(), lng: latLng.lng() },
+        radius: 100,
+        preference: google.maps.StreetViewPreference.NEAREST
+      }, function(data, status) {
+        var statusEl = document.getElementById('streetviewStatus');
+        if (status === 'OK') {
+          panorama.setPano(data.location.pano);
+          panorama.setPov({ heading: google.maps.geometry
+            ? google.maps.geometry.spherical.computeHeading(data.location.latLng, latLng)
+            : 0, pitch: 0 });
+          panorama.setVisible(true);
+          statusEl.classList.add('hidden');
+        } else {
+          panorama.setVisible(false);
+          statusEl.classList.remove('hidden');
+          statusEl.querySelector('span').textContent = 'No Street View available here. Try a nearby street.';
+        }
+      });
+    }
+
+    function reverseGeocode(latLng) {
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ location: { lat: latLng.lat(), lng: latLng.lng() } }, function(results, status) {
+        if (status === 'OK' && results[0]) {
+          populateFormFromPlace(results[0]);
+        }
+      });
+    }
+
+    function populateFormFromPlace(place) {
+      var address = '';
+      var city = '';
+      var state = '';
+      var zip = '';
+
+      var components = place.address_components || [];
+      components.forEach(function(c) {
+        if (c.types.indexOf('street_number') !== -1) address = c.long_name + ' ';
+        if (c.types.indexOf('route') !== -1) address += c.long_name;
+        if (c.types.indexOf('locality') !== -1) city = c.long_name;
+        if (c.types.indexOf('administrative_area_level_1') !== -1) state = c.short_name;
+        if (c.types.indexOf('postal_code') !== -1) zip = c.long_name;
+      });
+
+      document.getElementById('wallAddress').value = address.trim();
+      document.getElementById('wallCity').value = city;
+      document.getElementById('wallState').value = state;
+      document.getElementById('wallZip').value = zip;
+      document.getElementById('wallFormattedAddress').value = place.formatted_address || '';
+      updateOwnershipHelper();
+    }
+
+    function renderSavedWallMarkers() {
+      // Clear existing
+      savedWallMarkers.forEach(function(m) { m.setMap(null); });
+      savedWallMarkers = [];
+
+      if (!map) return;
+
+      savedWalls.forEach(function(wall) {
+        if (!wall.lat || !wall.lng) return;
+        var marker = new google.maps.Marker({
+          position: { lat: wall.lat, lng: wall.lng },
+          map: map,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 7,
+            fillColor: '#3452FF',
+            fillOpacity: 0.8,
+            strokeColor: '#FFFFFF',
+            strokeWeight: 1.5
+          },
+          title: wall.nickname
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+          content: '<div style="color:#0A0A0F;font-family:Outfit,sans-serif;padding:4px;"><strong>' +
+            wall.nickname + '</strong><br><span style="font-size:0.85em;color:#666;">' +
+            (wall.address || 'No address') + '</span><br><span style="font-size:0.85em;">Score: ' +
+            wall.wallScore + '</span></div>'
+        });
+
+        marker.addListener('click', function() {
+          infoWindow.open(map, marker);
+        });
+
+        savedWallMarkers.push(marker);
+      });
+    }
+
+    // --- Ownership helper links ---
+    function updateOwnershipHelper() {
+      var city = document.getElementById('wallCity').value.trim();
+      var state = document.getElementById('wallState').value.trim();
+      var address = document.getElementById('wallAddress').value.trim();
+      var helper = document.getElementById('ownershipHelper');
+      var linksEl = document.getElementById('helperLinks');
+
+      if (!address && !city) {
+        helper.style.display = 'none';
+        return;
+      }
+
+      helper.style.display = '';
+      while (linksEl.firstChild) linksEl.removeChild(linksEl.firstChild);
+
+      var fullAddress = address + (city ? ', ' + city : '') + (state ? ', ' + state : '');
+
+      // County assessor
+      var assessorKey = state + '-' + city;
+      var assessor = ASSESSOR_LINKS[assessorKey] || ASSESSOR_LINKS[state] || null;
+      if (assessor) {
+        var a = document.createElement('a');
+        a.className = 'helper-link';
+        a.href = assessor.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = assessor.name;
+        linksEl.appendChild(a);
+      }
+
+      // Google property search
+      var propLink = document.createElement('a');
+      propLink.className = 'helper-link';
+      propLink.href = 'https://www.google.com/search?q=' + encodeURIComponent(fullAddress + ' property records owner');
+      propLink.target = '_blank';
+      propLink.rel = 'noopener';
+      propLink.textContent = 'Property Records Search';
+      linksEl.appendChild(propLink);
+
+      // Google Maps link
+      var mapsLink = document.createElement('a');
+      mapsLink.className = 'helper-link';
+      mapsLink.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(fullAddress);
+      mapsLink.target = '_blank';
+      mapsLink.rel = 'noopener';
+      mapsLink.textContent = 'Google Maps';
+      linksEl.appendChild(mapsLink);
+
+      // Mural permit search
+      if (city) {
+        var permitLink = document.createElement('a');
+        permitLink.className = 'helper-link';
+        permitLink.href = 'https://www.google.com/search?q=' + encodeURIComponent(city + ' ' + state + ' mural permit requirements');
+        permitLink.target = '_blank';
+        permitLink.rel = 'noopener';
+        permitLink.textContent = 'Mural Permits';
+        linksEl.appendChild(permitLink);
+      }
+    }
+
+    // --- My Walls list ---
+    function renderWallsList() {
+      var grid = document.getElementById('wallsGrid');
+      var countEl = document.getElementById('wallsCount');
+      var emptyEl = document.getElementById('emptyState');
+
+      var filtered = getFilteredWalls();
+      var sorted = sortWallsList(filtered);
+
+      if (countEl) countEl.textContent = 'Showing ' + sorted.length + ' of ' + savedWalls.length + ' walls';
+
+      while (grid.firstChild) grid.removeChild(grid.firstChild);
+
+      if (sorted.length === 0) {
+        grid.style.display = 'none';
+        emptyEl.style.display = savedWalls.length === 0 ? '' : 'none';
+        if (savedWalls.length > 0 && sorted.length === 0) {
+          countEl.textContent = 'No walls match your filters.';
+        }
+        return;
+      }
+
+      grid.style.display = '';
+      emptyEl.style.display = 'none';
+
+      sorted.forEach(function(wall) {
+        grid.appendChild(buildWallCard(wall));
+      });
+    }
+
+    function getFilteredWalls() {
+      var cityFilter = document.getElementById('filterCity').value;
+      var statusFilter = document.getElementById('filterStatus').value;
+      var scoreFilter = document.getElementById('filterScore').value;
+
+      return savedWalls.filter(function(wall) {
+        if (cityFilter !== 'all' && wall.city !== cityFilter) return false;
+        if (statusFilter !== 'all' && wall.status !== statusFilter) return false;
+        if (scoreFilter !== 'all') {
+          var parts = scoreFilter.split('-');
+          var min = parseInt(parts[0]);
+          var max = parseInt(parts[1]);
+          var score = typeof wall.wallScore === 'number' ? wall.wallScore : -1;
+          if (score < min || score > max) return false;
+        }
+        return true;
+      });
+    }
+
+    function sortWallsList(walls) {
+      var sortBy = document.getElementById('sortWalls').value;
+      return walls.slice().sort(function(a, b) {
+        if (sortBy === 'score-desc') return (b.wallScore || 0) - (a.wallScore || 0);
+        if (sortBy === 'city') return (a.city || '').localeCompare(b.city || '');
+        if (sortBy === 'status') {
+          var order = { 'new': 0, 'contacted': 1, 'interested': 2, 'confirmed': 3, 'rejected': 4 };
+          var aOrder = order.hasOwnProperty(a.status) ? order[a.status] : 99;
+          var bOrder = order.hasOwnProperty(b.status) ? order[b.status] : 99;
+          return aOrder - bOrder;
+        }
+        // date-desc default
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+    }
+
+    function buildWallCard(wall) {
+      var card = createEl('div', 'wall-card');
+      card.setAttribute('data-wall-id', wall.id);
+      if (expandedWallId === wall.id) card.classList.add('expanded');
+
+      // Header
+      var header = createEl('div', 'wall-card-header');
+      header.addEventListener('click', function() { toggleWallCard(wall.id); });
+
+      var top = createEl('div', 'wall-card-top');
+      top.appendChild(createEl('span', 'wall-card-name', wall.nickname || 'Unnamed Wall'));
+
+      var scoreSpan = createEl('span', 'wall-card-score ' + getScoreClass(wall.wallScore || 0));
+      scoreSpan.textContent = (wall.wallScore || 0);
+      top.appendChild(scoreSpan);
+      header.appendChild(top);
+
+      if (wall.address || wall.formattedAddress) {
+        header.appendChild(createEl('div', 'wall-card-address', wall.formattedAddress || wall.address));
+      }
+
+      var badges = createEl('div', 'wall-card-badges');
+      if (wall.city) badges.appendChild(createEl('span', 'wall-badge wall-badge-city', wall.city));
+      if (wall.material) badges.appendChild(createEl('span', 'wall-badge wall-badge-material', formatMaterial(wall.material)));
+      if (wall.size) badges.appendChild(createEl('span', 'wall-badge wall-badge-size', wall.size));
+      badges.appendChild(createEl('span', 'wall-badge status-' + (wall.status || 'new'), formatStatus(wall.status || 'new')));
+      header.appendChild(badges);
+
+      var dateRow = createEl('span', 'wall-card-date', formatDate(wall.createdAt));
+      var expandIcon = createEl('span', 'wall-card-expand-icon', '\u25BC');
+      dateRow.appendChild(expandIcon);
+      header.appendChild(dateRow);
+      card.appendChild(header);
+
+      // Expanded body
+      var body = createEl('div', 'wall-card-body');
+      var inner = createEl('div', 'wall-card-body-inner');
+
+      var detailGrid = createEl('div', 'wall-detail-grid');
+      var details = [
+        ['Size', wall.size === 'custom' ? (wall.customSize || 'Custom') : (wall.size || '--')],
+        ['Material', formatMaterial(wall.material) || '--'],
+        ['Flat Surface', wall.flatSurface ? formatStatus(wall.flatSurface) : '--'],
+        ['Photo-Friendly', wall.photoFriendly ? formatStatus(wall.photoFriendly) : '--'],
+        ['Foot Traffic', wall.footTraffic ? wall.footTraffic + '/5' : '--'],
+        ['Locally Owned', wall.locallyOwned ? formatStatus(wall.locallyOwned) : '--'],
+        ['Business', wall.businessName || '--'],
+        ['Business Type', wall.businessType ? formatMaterial(wall.businessType) : '--'],
+        ['Owner', wall.ownerName || '--'],
+        ['Owner Contact', wall.ownerContact || '--'],
+        ['Tenant', wall.tenantName || '--'],
+        ['Tenant Contact', wall.tenantContact || '--']
+      ];
+      details.forEach(function(d) {
+        var row = createEl('div', 'wall-detail-row');
+        row.appendChild(createEl('div', 'wall-detail-label', d[0]));
+        row.appendChild(createEl('div', 'wall-detail-value', d[1]));
+        detailGrid.appendChild(row);
+      });
+      inner.appendChild(detailGrid);
+
+      // Obstructions
+      if (wall.obstructions && wall.obstructions.length > 0) {
+        var obRow = createEl('div', 'wall-detail-row');
+        obRow.appendChild(createEl('div', 'wall-detail-label', 'Obstructions'));
+        obRow.appendChild(createEl('div', 'wall-detail-value', wall.obstructions.join(', ')));
+        inner.appendChild(obRow);
+      }
+
+      // Notes
+      if (wall.notes || wall.neighborhoodNotes) {
+        var notesRow = createEl('div', 'wall-detail-row');
+        notesRow.appendChild(createEl('div', 'wall-detail-label', 'Notes'));
+        notesRow.appendChild(createEl('div', 'wall-detail-value', [wall.notes, wall.neighborhoodNotes].filter(Boolean).join(' -- ')));
+        inner.appendChild(notesRow);
+      }
+
+      // Status update pills
+      var statusRow = createEl('div', 'status-update-row');
+      var statusLabel = createEl('span', 'form-label', 'Update Status:');
+      statusLabel.style.marginRight = '8px';
+      statusLabel.style.alignSelf = 'center';
+      statusRow.appendChild(statusLabel);
+      ['new', 'contacted', 'interested', 'confirmed', 'rejected'].forEach(function(s) {
+        var pill = createEl('button', 'status-pill' + (wall.status === s ? ' active-status' : ''), formatStatus(s));
+        pill.addEventListener('click', function(e) {
+          e.stopPropagation();
+          wall.status = s;
+          wall.updatedAt = new Date().toISOString();
+          persistWalls();
+          renderWallsList();
+        });
+        statusRow.appendChild(pill);
+      });
+      inner.appendChild(statusRow);
+
+      // Research links
+      var researchDiv = createEl('div', 'research-links');
+      var researchLabel = createEl('span', 'form-label', 'Research:');
+      researchLabel.style.marginRight = '8px';
+      researchLabel.style.alignSelf = 'center';
+      researchLabel.style.whiteSpace = 'nowrap';
+      researchDiv.appendChild(researchLabel);
+
+      var fullAddr = (wall.address || '') + (wall.city ? ', ' + wall.city : '') + (wall.state ? ', ' + wall.state : '');
+
+      if (fullAddr.trim()) {
+        // Assessor link
+        var aKey = (wall.state || '') + '-' + (wall.city || '');
+        var aLink = ASSESSOR_LINKS[aKey] || ASSESSOR_LINKS[wall.state || ''] || null;
+        if (aLink) {
+          var ra = document.createElement('a');
+          ra.className = 'research-link';
+          ra.href = aLink.url;
+          ra.target = '_blank';
+          ra.rel = 'noopener';
+          ra.textContent = aLink.name;
+          researchDiv.appendChild(ra);
+        }
+
+        var links = [
+          { text: 'Property Records', query: fullAddr + ' property records owner' },
+          { text: 'Google Maps', url: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(fullAddr) },
+          { text: 'Mural Permits', query: (wall.city || '') + ' ' + (wall.state || '') + ' mural permit requirements' }
+        ];
+        if (wall.businessName) {
+          links.splice(1, 0, { text: 'Business Search', query: wall.businessName + ' ' + fullAddr });
+        }
+        links.forEach(function(l) {
+          var a = document.createElement('a');
+          a.className = 'research-link';
+          a.href = l.url || ('https://www.google.com/search?q=' + encodeURIComponent(l.query));
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.textContent = l.text;
+          researchDiv.appendChild(a);
+        });
+      }
+      inner.appendChild(researchDiv);
+
+      // Action buttons
+      var actions = createEl('div', 'wall-card-actions');
+
+      if (wall.lat && wall.lng && mapsLoaded) {
+        var viewBtn = createEl('button', 'wall-action-btn', 'View on Map');
+        viewBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          switchTab('scout');
+          map.setCenter({ lat: wall.lat, lng: wall.lng });
+          map.setZoom(18);
+          placeMarker(new google.maps.LatLng(wall.lat, wall.lng));
+          loadStreetView(new google.maps.LatLng(wall.lat, wall.lng));
+        });
+        actions.appendChild(viewBtn);
+      }
+
+      var editBtn = createEl('button', 'wall-action-btn', 'Edit');
+      editBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        editWall(wall.id);
+      });
+      actions.appendChild(editBtn);
+
+      var delBtn = createEl('button', 'wall-action-btn delete-btn', 'Delete');
+      delBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        deleteWall(wall.id);
+      });
+      actions.appendChild(delBtn);
+
+      inner.appendChild(actions);
+      body.appendChild(inner);
+      card.appendChild(body);
+      return card;
+    }
+
+    function toggleWallCard(id) {
+      expandedWallId = expandedWallId === id ? null : id;
+      document.querySelectorAll('.wall-card').forEach(function(card) {
+        var cardId = card.getAttribute('data-wall-id');
+        card.classList.toggle('expanded', cardId === expandedWallId);
+      });
+    }
+
+    // --- City filter population ---
+    function populateCityFilter() {
+      var select = document.getElementById('filterCity');
+      var cities = [];
+      savedWalls.forEach(function(w) {
+        if (w.city && cities.indexOf(w.city) === -1) cities.push(w.city);
+      });
+      cities.sort();
+
+      // Keep existing selection
+      var current = select.value;
+      while (select.options.length > 1) select.remove(1);
+      cities.forEach(function(city) {
+        var opt = document.createElement('option');
+        opt.value = city;
+        opt.textContent = city;
+        select.appendChild(opt);
+      });
+      select.value = current;
+    }
+
+    // --- Export ---
+    function exportCSV() {
+      if (savedWalls.length === 0) {
+        showToast('No walls to export.');
+        return;
+      }
+      var headers = ['Nickname','Address','City','State','Zip','Score','Status','Size','Material','Flat Surface','Photo-Friendly','Foot Traffic','Obstructions','Locally Owned','Business Type','Business Name','Owner Name','Owner Contact','Tenant Name','Tenant Contact','Notes','Neighborhood Notes','Lat','Lng','Created','Updated'];
+      var rows = savedWalls.map(function(w) {
+        return [
+          csvEscape(w.nickname), csvEscape(w.address), csvEscape(w.city), csvEscape(w.state), csvEscape(w.zip),
+          w.wallScore || 0, csvEscape(w.status), csvEscape(w.size), csvEscape(w.material),
+          csvEscape(w.flatSurface), csvEscape(w.photoFriendly), w.footTraffic || '',
+          csvEscape((w.obstructions || []).join('; ')), csvEscape(w.locallyOwned),
+          csvEscape(w.businessType), csvEscape(w.businessName), csvEscape(w.ownerName),
+          csvEscape(w.ownerContact), csvEscape(w.tenantName), csvEscape(w.tenantContact),
+          csvEscape(w.notes), csvEscape(w.neighborhoodNotes), w.lat || '', w.lng || '',
+          w.createdAt || '', w.updatedAt || ''
+        ].join(',');
+      });
+      var csv = headers.join(',') + '\n' + rows.join('\n');
+      downloadFile(csv, 'spraycation-walls-' + new Date().toISOString().split('T')[0] + '.csv', 'text/csv');
+      showToast('CSV exported with ' + savedWalls.length + ' walls.');
+    }
+
+    function exportJSON() {
+      if (savedWalls.length === 0) {
+        showToast('No walls to export.');
+        return;
+      }
+      var json = JSON.stringify({ version: 1, walls: savedWalls, exportedAt: new Date().toISOString() }, null, 2);
+      downloadFile(json, 'spraycation-walls-' + new Date().toISOString().split('T')[0] + '.json', 'application/json');
+      showToast('JSON exported with ' + savedWalls.length + ' walls.');
+    }
+
+    function importJSON(file) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          var data = JSON.parse(e.target.result);
+          var walls = data.walls || data;
+          if (!Array.isArray(walls)) {
+            showToast('Invalid file format.');
+            return;
+          }
+          var countBefore = savedWalls.length;
+          // Normalize imported walls to ensure required fields exist
+          walls = walls.map(function(w) {
+            if (typeof w !== 'object' || !w) return null;
+            w.id = w.id || 'wall_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+            w.obstructions = Array.isArray(w.obstructions) ? w.obstructions : [];
+            w.status = w.status || 'new';
+            w.createdAt = w.createdAt || new Date().toISOString();
+            w.updatedAt = w.updatedAt || w.createdAt;
+            w.wallScore = typeof w.wallScore === 'number' ? w.wallScore : 0;
+            w.nickname = w.nickname || 'Imported Wall';
+            return w;
+          }).filter(Boolean);
+
+          // Merge: add walls that don't already exist (by id)
+          var existingIds = savedWalls.map(function(w) { return w.id; });
+          var added = 0;
+          walls.forEach(function(w) {
+            if (existingIds.indexOf(w.id) === -1) {
+              savedWalls.push(w);
+              added++;
+            }
+          });
+          if (added === 0 && walls.length > 0) {
+            // All duplicates - offer to replace
+            if (confirm('All ' + walls.length + ' walls already exist. Replace all data?')) {
+              savedWalls = walls;
+              added = walls.length;
+            }
+          }
+          persistWalls();
+          populateCityFilter();
+          renderWallsList();
+          if (mapsLoaded) renderSavedWallMarkers();
+          showToast('Imported ' + added + ' walls.');
+        } catch (err) {
+          showToast('Error reading file: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function csvEscape(val) {
+      if (val === null || val === undefined) return '';
+      var str = String(val);
+      if (str.indexOf(',') !== -1 || str.indexOf('"') !== -1 || str.indexOf('\n') !== -1) {
+        return '"' + str.replace(/"/g, '""') + '"';
+      }
+      return str;
+    }
+
+    function downloadFile(content, filename, type) {
+      var blob = new Blob([content], { type: type });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // --- Toast ---
+    var toastEl = null;
+    var toastTimeout = null;
+
+    function showToast(message, actionId, undoCallback) {
+      if (!toastEl) {
+        toastEl = createEl('div', 'toast');
+        document.body.appendChild(toastEl);
+      }
+      if (toastTimeout) clearTimeout(toastTimeout);
+
+      while (toastEl.firstChild) toastEl.removeChild(toastEl.firstChild);
+      toastEl.appendChild(createEl('span', '', message));
+
+      if (undoCallback) {
+        var undoBtn = createEl('button', 'toast-btn', 'UNDO');
+        undoBtn.addEventListener('click', function() {
+          undoCallback();
+          toastEl.classList.remove('visible');
+        });
+        toastEl.appendChild(undoBtn);
+      }
+
+      if (actionId) {
+        var actionBtn = createEl('button', 'toast-btn', 'EXPORT');
+        actionBtn.addEventListener('click', function() {
+          toastEl.classList.remove('visible');
+          document.getElementById(actionId).click();
+        });
+        toastEl.appendChild(actionBtn);
+      }
+
+      toastEl.classList.add('visible');
+      toastTimeout = setTimeout(function() {
+        toastEl.classList.remove('visible');
+      }, undoCallback ? 8000 : 4000);
+    }
+
+    // --- Tab switching ---
+    function switchTab(tab) {
+      activeTab = tab;
+      document.querySelectorAll('.scout-tab').forEach(function(t) {
+        t.classList.toggle('active', t.dataset.tab === tab);
+      });
+      document.querySelectorAll('.tab-content').forEach(function(c) {
+        c.classList.toggle('active', c.id === 'tab-' + tab);
+      });
+      if (tab === 'walls') {
+        populateCityFilter();
+        renderWallsList();
+      }
+      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+    }
+
+    // --- Event listeners ---
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load data
+      loadWalls();
+      updateWallCount();
+
+      // Check if API key is still the placeholder
+      var mapsScript = document.querySelector('script[src*="maps.googleapis.com"]');
+      var hasRealKey = mapsScript && mapsScript.src.indexOf('YOUR_GOOGLE_MAPS_API_KEY') === -1;
+
+      if (!hasRealKey) {
+        // Placeholder key - show fallback immediately
+        document.getElementById('mapArea').style.display = 'none';
+        document.getElementById('mapFallback').style.display = 'flex';
+      } else if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+        initMap();
+      } else {
+        // Wait for maps API (including places library)
+        var checkMaps = setInterval(function() {
+          if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+            clearInterval(checkMaps);
+            initMap();
+          }
+        }, 200);
+        // Give up after 10 seconds
+        setTimeout(function() {
+          clearInterval(checkMaps);
+          if (!mapsLoaded) {
+            document.getElementById('mapArea').style.display = 'none';
+            document.getElementById('mapFallback').style.display = 'flex';
+          }
+        }, 10000);
+      }
+
+      // Tab switching
+      document.querySelectorAll('.scout-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          switchTab(this.dataset.tab);
+        });
+      });
+
+      // Pin This Wall button
+      document.getElementById('pinWallBtn').addEventListener('click', function() {
+        if (panorama && panorama.getVisible()) {
+          var pov = panorama.getPov();
+          document.getElementById('wallStreetViewHeading').value = pov.heading;
+          document.getElementById('wallStreetViewPitch').value = pov.pitch;
+          document.getElementById('wallStreetViewZoom').value = panorama.getZoom();
+          document.getElementById('wallForm').scrollIntoView({ behavior: 'smooth' });
+          showToast('Wall pinned! Fill out the form below.');
+        }
+      });
+
+      // My Location button
+      document.getElementById('locationBtn').addEventListener('click', function() {
+        if (!navigator.geolocation) {
+          showToast('Geolocation not supported by your browser.');
+          return;
+        }
+        var btn = this;
+        btn.textContent = 'Locating...';
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          btn.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg> My Location';
+          if (mapsLoaded) {
+            var latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+            map.setCenter(latLng);
+            map.setZoom(17);
+            placeMarker(latLng);
+            reverseGeocode(latLng);
+            loadStreetView(latLng);
+          }
+        }, function(err) {
+          btn.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg> My Location';
+          showToast('Could not get your location. Check browser permissions.');
+        });
+      });
+
+      // Form submission
+      document.getElementById('wallForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        saveWall();
+      });
+
+      // Clear form
+      document.getElementById('clearFormBtn').addEventListener('click', clearForm);
+
+      // Custom size toggle
+      document.getElementById('wallSize').addEventListener('change', function() {
+        document.getElementById('customSizeGroup').style.display = this.value === 'custom' ? '' : 'none';
+        updateScoreDisplay();
+      });
+
+      // Score-affecting fields
+      ['wallMaterial', 'wallFlat', 'wallPhoto', 'wallOwnership'].forEach(function(id) {
+        document.getElementById(id).addEventListener('change', updateScoreDisplay);
+      });
+
+      // Foot traffic rating buttons
+      document.getElementById('footTrafficGroup').addEventListener('click', function(e) {
+        var btn = e.target.closest('.rating-btn');
+        if (!btn) return;
+        footTrafficValue = parseInt(btn.dataset.value);
+        document.getElementById('wallFootTraffic').value = footTrafficValue;
+        this.querySelectorAll('.rating-btn').forEach(function(b) {
+          b.classList.toggle('active', parseInt(b.dataset.value) <= footTrafficValue);
+        });
+        updateScoreDisplay();
+      });
+
+      // Obstruction checkboxes
+      document.getElementById('obstructionGroup').addEventListener('change', function(e) {
+        var cb = e.target;
+        if (!cb.matches('input[type="checkbox"]')) return;
+        var pill = cb.closest('.checkbox-pill');
+
+        if (cb.dataset.exclusive && cb.checked) {
+          // "None" unchecks all others
+          this.querySelectorAll('input:not([data-exclusive])').forEach(function(other) {
+            other.checked = false;
+            other.closest('.checkbox-pill').classList.remove('checked');
+          });
+        } else if (!cb.dataset.exclusive && cb.checked) {
+          // Uncheck "None" if checking another
+          var noneBox = this.querySelector('input[data-exclusive]');
+          if (noneBox) {
+            noneBox.checked = false;
+            noneBox.closest('.checkbox-pill').classList.remove('checked');
+          }
+        }
+
+        pill.classList.toggle('checked', cb.checked);
+        updateScoreDisplay();
+      });
+
+      // Form section toggles
+      document.querySelectorAll('.form-section-header').forEach(function(header) {
+        header.addEventListener('click', function() {
+          this.closest('.form-section-block').classList.toggle('collapsed');
+        });
+      });
+
+      // Ownership helper updates when address/city/state change
+      ['wallAddress', 'wallCity', 'wallState'].forEach(function(id) {
+        document.getElementById(id).addEventListener('blur', updateOwnershipHelper);
+      });
+
+      // Filter and sort handlers
+      ['filterCity', 'filterStatus', 'filterScore', 'sortWalls'].forEach(function(id) {
+        document.getElementById(id).addEventListener('change', renderWallsList);
+      });
+
+      // Export/Import
+      document.getElementById('exportCsvBtn').addEventListener('click', exportCSV);
+      document.getElementById('exportJsonBtn').addEventListener('click', exportJSON);
+      document.getElementById('importJsonBtn').addEventListener('click', function() {
+        document.getElementById('importFileInput').click();
+      });
+      document.getElementById('importFileInput').addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+          importJSON(this.files[0]);
+          this.value = '';
+        }
+      });
+
+      // GSAP animations
+      heroParallax('.hero-content', '.scout-hero');
+    });
+  </script>
+
+</body>
+</html>
