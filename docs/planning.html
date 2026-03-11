@@ -971,7 +971,7 @@
         var templateType = brand.warmth === 'warm' ? 'warm' : 'cold';
         var template = TEMPLATES[templateType]
           .replace(/\{\{BRAND\}\}/g, brand.name)
-          .replace(/\{\{CONTACT\}\}/g, brand.contactName || '[NAME]')
+          .replace(/\{\{CONTACT\}\}/g, (brand.contactName || '[NAME]').split(' ')[0])
           .replace(/\{\{RATIONALE\}\}/g, brand.rationale.toLowerCase());
         container._templates.push(template);
 
@@ -1018,7 +1018,7 @@
         var templateType = brand.warmth === 'warm' ? 'warm' : 'cold';
         var template = TEMPLATES[templateType]
           .replace(/\{\{BRAND\}\}/g, brand.name)
-          .replace(/\{\{CONTACT\}\}/g, brand.contactName || '[NAME]')
+          .replace(/\{\{CONTACT\}\}/g, (brand.contactName || '[NAME]').split(' ')[0])
           .replace(/\{\{RATIONALE\}\}/g, brand.rationale.toLowerCase());
 
         var card = createEl('div', 'brand-card');
