@@ -9,17 +9,63 @@
 - DECLINED -- Not moving forward
 - IN-KIND -- Non-cash partnership confirmed
 
-## Corporate Sponsors
+## Corporate Sponsors -- Existing Leads
 
-| Brand | Category | Status | Last Contact | Next Step | Notes |
-|-------|----------|--------|-------------|-----------|-------|
-| Loop | Apparel/Merch | CONFIRMED | Pre-2025 | Renew for 2026 | Caps/product sponsor |
-| Goose | Beverage | PROPOSAL SENT | June 2025 | Follow up | Partnership proposal sent |
-| MSC | TBD | PROPOSAL SENT | June 2025 | Follow up | Partnership proposal sent |
-| Roku | Tech/Media | LEAD | -- | Develop proposal | Mentioned in route alignment |
-| Zero Proof | Beverage | CONTACTED | July 2025 | Continue conversation | Denver local brand ambassadors |
-| Best Day Brewing | Beverage | IN-KIND | July 2025 | Expand to full tour | N/A libations for Denver |
-| Red Bull | Beverage | LEAD | -- | Leverage existing relationship | Previous Zuzu collaborator |
+| Brand | Category | Status | Contact | Last Contact | Next Step | Notes |
+|-------|----------|--------|---------|-------------|-----------|-------|
+| Loop | Apparel/Merch | CONFIRMED | TBD | Pre-2025 | Renew for 2026 | Caps/product sponsor |
+| Goose | Beverage | PROPOSAL SENT | TBD | June 2025 | Follow up | Partnership proposal sent |
+| MSC | TBD | PROPOSAL SENT | TBD | June 2025 | Follow up | Partnership proposal sent |
+| Roku | Tech/Media | LEAD | TBD | -- | Develop proposal | Mentioned in route alignment |
+| Zero Proof | Beverage | CONTACTED | TBD | July 2025 | Continue conversation | Denver local brand ambassadors |
+| Best Day Brewing | Beverage | IN-KIND | David O. (Dir Strategic Partnerships), Hanna Swanson (EVP Marketing) | July 2025 | Expand to full tour | N/A libations for Denver |
+| Red Bull | Beverage | LEAD | Dave Szych (VP Brand Partnerships NA) | -- | Leverage existing relationship | Previous Zuzu collaborator |
+
+## Corporate Sponsors -- New Targets (Magic Maker $25K)
+
+| Brand | Category | Status | Contact | Next Step | Notes |
+|-------|----------|--------|---------|-----------|-------|
+| Montana Cans | Paint/Supplies | LEAD | NEEDS RESEARCH | Find contact | Premium spray paint, artist community |
+| Liquitex | Paint/Supplies | LEAD | NEEDS RESEARCH | Find contact | Owned by Colart |
+| Winnebago | Vehicle/Travel | LEAD | Emalee Frase (Sr Mgr Brand Partnerships) | Send cold outreach | Authentic road trip story |
+| REI | Vehicle/Travel | LEAD | Floyd Anderson (Sr Mktg Mgr, Co-brand - Austin) | Send cold outreach | Outdoor adventure, women's initiatives |
+| Patagonia | Lifestyle | LEAD | Damien Etchaubard (Global Mktg Dir) | Send cold outreach | Environmental + community values |
+| Adobe | Tech/Media | LEAD | Kevin Maxwell (Sponsorship Sales Mgr - Austin) | Send cold outreach | Creative tools, artist support |
+| Bumble | Women/Empowerment | LEAD | Neela Pal (CMO) | Send cold outreach | Women-first brand, Austin HQ |
+| H-E-B | Grocery/Community | LEAD | Ashwin Nathan (GVP Head of Mktg) | Send cold outreach | San Antonio HQ, legendary TX community investment |
+
+## Corporate Sponsors -- New Targets (Culture Partner $15K)
+
+| Brand | Category | Status | Contact | Next Step | Notes |
+|-------|----------|--------|---------|-----------|-------|
+| Rust-Oleum | Paint/Supplies | LEAD | Jason Olson (VP Marketing) | Send cold outreach | Major spray paint brand |
+| Blick Art Materials | Paint/Supplies | LEAD | Jason Del Valle (Dir of Marketing) | Send cold outreach | Retail art supply |
+| Liquid Death | Beverage | LEAD | Christina Kowalsky (Dir Sponsorship Mktg) | Send cold outreach | Bold brand, mural-friendly |
+| Vans | Lifestyle | LEAD | Matt Watts (VP/Head Mktg Americas) | Send cold outreach | Art + culture DNA |
+| YETI | Lifestyle | LEAD | Bill Neff (Head of Marketing - Austin) | Send cold outreach | Austin HQ, $1.6B company |
+| Tito's | Beverage | LEAD | TJ Mathias (Dir Sponsorship & Experiential - Austin) | Send cold outreach | Austin-born, Love Tito's program |
+| Kendra Scott | Women/Empowerment | LEAD | Michelle Peterson (CMO) | Send cold outreach | Austin-born, women's empowerment |
+| Subaru | Vehicle/Travel | LEAD | Abbey Solomon (Brand Partnerships & Experiential) | Send cold outreach | Community-driven brand |
+| GoPro | Tech/Media | LEAD | Hannah Stevenson (Sr Sports & Influencer Mktg) | Send cold outreach | Action content, creator sponsorship |
+| Converse | Lifestyle | LEAD | Rodney Rambo (CMO Global) | Send cold outreach | Art community, All Stars |
+| Aerie | Women/Empowerment | LEAD | Jenna Abaya (Sr Assoc Brand Mgr) | Send cold outreach | Body positivity, empowerment |
+| Whole Foods | Lifestyle | LEAD | Madhavi Reese (VP Marketing - Austin) | Send cold outreach | Austin HQ, community arts |
+
+## Corporate Sponsors -- New Targets (Community Ally $5K)
+
+| Brand | Category | Status | Contact | Next Step | Notes |
+|-------|----------|--------|---------|-----------|-------|
+| Athletic Brewing | Beverage | LEAD | Kristin Shufelt (Sr Brand Mgr Partnerships - Denver) | Send cold outreach | Non-alcoholic, community events |
+| Spray Planet | Paint/Supplies | LEAD | NEEDS RESEARCH | Find contact | Online spray paint retailer |
+| Meow Wolf | Arts/Entertainment | LEAD | Vinny N. (Chief Mktg & Revenue Officer) | Send cold outreach | Immersive art alignment |
+| Golden Artist Colors | Paint/Supplies | LEAD | Mark Golden (CEO) | Send cold outreach | Professional artist paints |
+| Dr. Bronner's | Lifestyle | LEAD | Christina Volgyesi (CMO - Portland) | Send cold outreach | Values-driven, community focus |
+| Topo Chico | Beverage | LEAD | NEEDS RESEARCH | Find contact (Coca-Cola subsidiary) | Latin-inspired brand |
+| Deep Eddy | Beverage | LEAD | Eustacio Lara (Sales Mktg Mgr - Austin) | Send cold outreach | Austin-born spirits |
+| Austin FC | Sports/Community | LEAD | Alison Roscoe (SVP Corporate Partnerships) | Send cold outreach | Austin MLS, community murals |
+| Hydro Flask | Lifestyle | LEAD | Liz Allore Shurmur (Brand Partnerships) | Send cold outreach | Outdoor/adventure, sustainability |
+| Clif Bar | Food | LEAD | Brooke Donberg (Dir Partnerships & Activation) | Send cold outreach | Adventure/outdoor, community |
+| Dick Blick (local) | Paint/Supplies | LEAD | Jason Del Valle (Dir of Marketing - corporate) | Identify local store mgrs | Local store partnerships per city |
 
 ## Wall Partners
 
