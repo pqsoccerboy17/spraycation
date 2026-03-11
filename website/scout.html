@@ -672,7 +672,6 @@
       gap: 12px;
       margin-bottom: var(--space-md);
     }
-    .wall-detail-row { }
     .wall-detail-label {
       font-family: var(--font-display);
       font-size: 0.6rem;
@@ -1142,7 +1141,6 @@
             <input type="hidden" id="wallStreetViewHeading" value="">
             <input type="hidden" id="wallStreetViewPitch" value="">
             <input type="hidden" id="wallStreetViewZoom" value="">
-            <input type="hidden" id="wallFootTraffic" value="">
           </form>
         </div>
       </div>
@@ -1241,7 +1239,7 @@
     Enable: Maps JavaScript API, Places API, Geocoding API
     ============================================================
   -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places" defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places,geometry" defer></script>
 
   <!-- ====== PAGE LOGIC ====== -->
   <script>
@@ -1254,11 +1252,13 @@
     var panorama = null;
     var currentMarker = null;
     var savedWalls = [];
-    var activeTab = 'scout';
     var expandedWallId = null;
     var editingWallId = null;
     var footTrafficValue = 0;
     var savedWallMarkers = [];
+    var sharedInfoWindow = null;
+    var streetViewService = null;
+    var geocoderService = null;
     var mapsLoaded = false;
 
     // --- Dark map style matching Spraycation brand ---
@@ -1349,17 +1349,14 @@
     // --- Wall Score ---
     function calculateWallScore(wall) {
       var score = 0;
-      var maxScore = 0;
       var criteriaUsed = 0;
       var totalCriteria = 7;
 
       // Flat surface (25 pts)
-      maxScore += 25;
       if (wall.flatSurface === 'yes') { score += 25; criteriaUsed++; }
-      else if (wall.flatSurface === 'no') { score += 0; criteriaUsed++; }
+      else if (wall.flatSurface === 'no') { criteriaUsed++; }
 
       // Material (20 pts)
-      maxScore += 20;
       var materialScores = { 'cinder-block': 20, 'concrete': 18, 'stucco': 15, 'brick': 12, 'metal': 8, 'wood': 5, 'other': 5 };
       if (wall.material && materialScores[wall.material] !== undefined) {
         score += materialScores[wall.material];
@@ -1367,7 +1364,6 @@
       }
 
       // Size (15 pts)
-      maxScore += 15;
       var sizeScores = { '30x30': 15, '25x25': 13, '20x20': 11, '15x15': 8, '10x10': 5, 'custom': 10 };
       if (wall.size && sizeScores[wall.size] !== undefined) {
         score += sizeScores[wall.size];
@@ -1375,19 +1371,16 @@
       }
 
       // Foot traffic (15 pts)
-      maxScore += 15;
       if (wall.footTraffic && wall.footTraffic > 0) {
         score += (wall.footTraffic / 5) * 15;
         criteriaUsed++;
       }
 
       // Photo-friendly (10 pts)
-      maxScore += 10;
       if (wall.photoFriendly === 'yes') { score += 10; criteriaUsed++; }
       else if (wall.photoFriendly === 'no') { score += 2; criteriaUsed++; }
 
       // Obstructions (10 pts)
-      maxScore += 10;
       if (wall.obstructions) {
         if (wall.obstructions.length === 1 && wall.obstructions[0] === 'none') {
           score += 10;
@@ -1399,13 +1392,11 @@
       }
 
       // Locally owned (5 pts)
-      maxScore += 5;
       if (wall.locallyOwned === 'yes') { score += 5; criteriaUsed++; }
       else if (wall.locallyOwned === 'unknown') { score += 2; criteriaUsed++; }
-      else if (wall.locallyOwned === 'no') { score += 0; criteriaUsed++; }
+      else if (wall.locallyOwned === 'no') { criteriaUsed++; }
 
-      var finalScore = maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
-      return { score: finalScore, criteriaUsed: criteriaUsed, totalCriteria: totalCriteria };
+      return { score: Math.round(score), criteriaUsed: criteriaUsed, totalCriteria: totalCriteria };
     }
 
     function getScoreClass(score) {
@@ -1442,6 +1433,43 @@
         tag.textContent += ' (' + result.criteriaUsed + '/' + result.totalCriteria + ')';
       }
       display.className = 'wall-score-display ' + getScoreClass(result.score);
+    }
+
+    // --- Research link data (shared by ownership helper and wall cards) ---
+    function getResearchLinkData(wall) {
+      var address = wall.address || '';
+      var city = wall.city || '';
+      var state = wall.state || '';
+      var fullAddress = address + (city ? ', ' + city : '') + (state ? ', ' + state : '');
+
+      if (!fullAddress.trim()) return [];
+
+      var links = [];
+
+      // County assessor
+      var assessorKey = state + '-' + city;
+      var assessor = ASSESSOR_LINKS[assessorKey] || ASSESSOR_LINKS[state] || null;
+      if (assessor) {
+        links.push({ text: assessor.name, url: assessor.url });
+      }
+
+      // Property records search
+      links.push({ text: 'Property Records', url: 'https://www.google.com/search?q=' + encodeURIComponent(fullAddress + ' property records owner') });
+
+      // Business search (if applicable)
+      if (wall.businessName) {
+        links.push({ text: 'Business Search', url: 'https://www.google.com/search?q=' + encodeURIComponent(wall.businessName + ' ' + fullAddress) });
+      }
+
+      // Google Maps
+      links.push({ text: 'Google Maps', url: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(fullAddress) });
+
+      // Mural permits
+      if (city) {
+        links.push({ text: 'Mural Permits', url: 'https://www.google.com/search?q=' + encodeURIComponent(city + ' ' + state + ' mural permit requirements') });
+      }
+
+      return links;
     }
 
     // --- Form data ---
@@ -1495,7 +1523,6 @@
       document.getElementById('wallStreetViewHeading').value = '';
       document.getElementById('wallStreetViewPitch').value = '';
       document.getElementById('wallStreetViewZoom').value = '';
-      document.getElementById('wallFootTraffic').value = '';
       document.getElementById('customSizeGroup').style.display = 'none';
       document.getElementById('formTitle').textContent = 'New Wall';
       footTrafficValue = 0;
@@ -1625,7 +1652,6 @@
 
       // Foot traffic
       footTrafficValue = wall.footTraffic || 0;
-      document.getElementById('wallFootTraffic').value = footTrafficValue;
       document.querySelectorAll('#footTrafficGroup .rating-btn').forEach(function(btn) {
         btn.classList.toggle('active', parseInt(btn.dataset.value) === footTrafficValue);
       });
@@ -1674,6 +1700,9 @@
       );
 
       map.setStreetView(panorama);
+
+      streetViewService = new google.maps.StreetViewService();
+      geocoderService = new google.maps.Geocoder();
 
       // Click map to drop pin
       map.addListener('click', function(e) {
@@ -1746,8 +1775,7 @@
     }
 
     function loadStreetView(latLng) {
-      var svService = new google.maps.StreetViewService();
-      svService.getPanorama({
+      streetViewService.getPanorama({
         location: { lat: latLng.lat(), lng: latLng.lng() },
         radius: 100,
         preference: google.maps.StreetViewPreference.NEAREST
@@ -1769,8 +1797,7 @@
     }
 
     function reverseGeocode(latLng) {
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ location: { lat: latLng.lat(), lng: latLng.lng() } }, function(results, status) {
+      geocoderService.geocode({ location: { lat: latLng.lat(), lng: latLng.lng() } }, function(results, status) {
         if (status === 'OK' && results[0]) {
           populateFormFromPlace(results[0]);
         }
@@ -1807,6 +1834,10 @@
 
       if (!map) return;
 
+      if (!sharedInfoWindow) {
+        sharedInfoWindow = new google.maps.InfoWindow();
+      }
+
       savedWalls.forEach(function(wall) {
         if (!wall.lat || !wall.lng) return;
         var marker = new google.maps.Marker({
@@ -1823,15 +1854,14 @@
           title: wall.nickname
         });
 
-        var infoWindow = new google.maps.InfoWindow({
-          content: '<div style="color:#0A0A0F;font-family:Outfit,sans-serif;padding:4px;"><strong>' +
+        marker.addListener('click', function() {
+          sharedInfoWindow.setContent(
+            '<div style="color:#0A0A0F;font-family:Outfit,sans-serif;padding:4px;"><strong>' +
             wall.nickname + '</strong><br><span style="font-size:0.85em;color:#666;">' +
             (wall.address || 'No address') + '</span><br><span style="font-size:0.85em;">Score: ' +
             wall.wallScore + '</span></div>'
-        });
-
-        marker.addListener('click', function() {
-          infoWindow.open(map, marker);
+          );
+          sharedInfoWindow.open(map, marker);
         });
 
         savedWallMarkers.push(marker);
@@ -1854,49 +1884,16 @@
       helper.style.display = '';
       while (linksEl.firstChild) linksEl.removeChild(linksEl.firstChild);
 
-      var fullAddress = address + (city ? ', ' + city : '') + (state ? ', ' + state : '');
-
-      // County assessor
-      var assessorKey = state + '-' + city;
-      var assessor = ASSESSOR_LINKS[assessorKey] || ASSESSOR_LINKS[state] || null;
-      if (assessor) {
+      var wallData = { address: address, city: city, state: state, businessName: document.getElementById('wallBusinessName').value.trim() };
+      getResearchLinkData(wallData).forEach(function(l) {
         var a = document.createElement('a');
         a.className = 'helper-link';
-        a.href = assessor.url;
+        a.href = l.url;
         a.target = '_blank';
         a.rel = 'noopener';
-        a.textContent = assessor.name;
+        a.textContent = l.text;
         linksEl.appendChild(a);
-      }
-
-      // Google property search
-      var propLink = document.createElement('a');
-      propLink.className = 'helper-link';
-      propLink.href = 'https://www.google.com/search?q=' + encodeURIComponent(fullAddress + ' property records owner');
-      propLink.target = '_blank';
-      propLink.rel = 'noopener';
-      propLink.textContent = 'Property Records Search';
-      linksEl.appendChild(propLink);
-
-      // Google Maps link
-      var mapsLink = document.createElement('a');
-      mapsLink.className = 'helper-link';
-      mapsLink.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(fullAddress);
-      mapsLink.target = '_blank';
-      mapsLink.rel = 'noopener';
-      mapsLink.textContent = 'Google Maps';
-      linksEl.appendChild(mapsLink);
-
-      // Mural permit search
-      if (city) {
-        var permitLink = document.createElement('a');
-        permitLink.className = 'helper-link';
-        permitLink.href = 'https://www.google.com/search?q=' + encodeURIComponent(city + ' ' + state + ' mural permit requirements');
-        permitLink.target = '_blank';
-        permitLink.rel = 'noopener';
-        permitLink.textContent = 'Mural Permits';
-        linksEl.appendChild(permitLink);
-      }
+      });
     }
 
     // --- My Walls list ---
@@ -2054,7 +2051,20 @@
           wall.status = s;
           wall.updatedAt = new Date().toISOString();
           persistWalls();
-          renderWallsList();
+          // Update pills in-place instead of full DOM rebuild
+          statusRow.querySelectorAll('.status-pill').forEach(function(p) {
+            p.classList.remove('active-status');
+          });
+          pill.classList.add('active-status');
+          // Update the status badge in the card header
+          var cardEl = pill.closest('.wall-card');
+          if (cardEl) {
+            var statusBadge = cardEl.querySelector('.wall-card-badges .wall-badge[class*="status-"]');
+            if (statusBadge) {
+              statusBadge.className = 'wall-badge status-' + s;
+              statusBadge.textContent = formatStatus(s);
+            }
+          }
         });
         statusRow.appendChild(pill);
       });
@@ -2068,40 +2078,15 @@
       researchLabel.style.whiteSpace = 'nowrap';
       researchDiv.appendChild(researchLabel);
 
-      var fullAddr = (wall.address || '') + (wall.city ? ', ' + wall.city : '') + (wall.state ? ', ' + wall.state : '');
-
-      if (fullAddr.trim()) {
-        // Assessor link
-        var aKey = (wall.state || '') + '-' + (wall.city || '');
-        var aLink = ASSESSOR_LINKS[aKey] || ASSESSOR_LINKS[wall.state || ''] || null;
-        if (aLink) {
-          var ra = document.createElement('a');
-          ra.className = 'research-link';
-          ra.href = aLink.url;
-          ra.target = '_blank';
-          ra.rel = 'noopener';
-          ra.textContent = aLink.name;
-          researchDiv.appendChild(ra);
-        }
-
-        var links = [
-          { text: 'Property Records', query: fullAddr + ' property records owner' },
-          { text: 'Google Maps', url: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(fullAddr) },
-          { text: 'Mural Permits', query: (wall.city || '') + ' ' + (wall.state || '') + ' mural permit requirements' }
-        ];
-        if (wall.businessName) {
-          links.splice(1, 0, { text: 'Business Search', query: wall.businessName + ' ' + fullAddr });
-        }
-        links.forEach(function(l) {
-          var a = document.createElement('a');
-          a.className = 'research-link';
-          a.href = l.url || ('https://www.google.com/search?q=' + encodeURIComponent(l.query));
-          a.target = '_blank';
-          a.rel = 'noopener';
-          a.textContent = l.text;
-          researchDiv.appendChild(a);
-        });
-      }
+      getResearchLinkData(wall).forEach(function(l) {
+        var a = document.createElement('a');
+        a.className = 'research-link';
+        a.href = l.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = l.text;
+        researchDiv.appendChild(a);
+      });
       inner.appendChild(researchDiv);
 
       // Action buttons
@@ -2213,7 +2198,6 @@
             showToast('Invalid file format.');
             return;
           }
-          var countBefore = savedWalls.length;
           // Normalize imported walls to ensure required fields exist
           walls = walls.map(function(w) {
             if (typeof w !== 'object' || !w) return null;
@@ -2316,7 +2300,6 @@
 
     // --- Tab switching ---
     function switchTab(tab) {
-      activeTab = tab;
       document.querySelectorAll('.scout-tab').forEach(function(t) {
         t.classList.toggle('active', t.dataset.tab === tab);
       });
@@ -2432,7 +2415,6 @@
         var btn = e.target.closest('.rating-btn');
         if (!btn) return;
         footTrafficValue = parseInt(btn.dataset.value);
-        document.getElementById('wallFootTraffic').value = footTrafficValue;
         this.querySelectorAll('.rating-btn').forEach(function(b) {
           b.classList.toggle('active', parseInt(b.dataset.value) <= footTrafficValue);
         });
