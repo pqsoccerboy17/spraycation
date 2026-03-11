@@ -59,13 +59,13 @@
       margin-left: auto;
       margin-right: auto;
     }
+    .hero .t-hero {
+      font-size: clamp(2.8rem, 10vw, 8rem);
+    }
     .hero-accent {
       display: block;
       margin-top: var(--space-md);
-      background: var(--gradient-energy);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--white);
     }
 
     /* Floating gradient orbs */
@@ -125,61 +125,41 @@
       padding: var(--space-md);
     }
 
-    /* --- MURAL SHOWCASE --- */
-    .mural-showcase {
-      position: relative;
-      overflow: hidden;
+    /* --- TOUR HISTORY GRID --- */
+    .tour-history {
       background: var(--black);
     }
-    .mural-track {
-      display: flex;
-      width: max-content;
+    .tour-year {
+      margin-bottom: var(--space-2xl);
     }
-    .mural-panel {
-      width: 100vw;
-      height: 100vh;
+    .tour-year:last-child {
+      margin-bottom: 0;
+    }
+    .tour-card {
       position: relative;
+      overflow: hidden;
+      min-height: 200px;
       display: flex;
-      align-items: flex-end;
-      padding: var(--space-2xl) clamp(var(--space-lg), 8vw, var(--space-3xl));
+      flex-direction: column;
+      justify-content: flex-end;
+      background-size: cover !important;
+      background-position: center !important;
     }
-    .mural-panel-content {
-      position: relative;
-      z-index: 2;
-      max-width: 600px;
-    }
-    .mural-panel-content .t-label {
-      margin-bottom: var(--space-sm);
-    }
-    .mural-panel-content .t-section {
-      margin-bottom: var(--space-md);
-    }
-    .mural-panel-content .t-body-lg {
-      color: var(--white-soft);
-    }
-    .mural-panel::after {
+    .tour-card::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(10, 10, 15, 0.85) 0%, rgba(10, 10, 15, 0.3) 40%, transparent 100%);
+      background: linear-gradient(to top, rgba(10,10,15,0.85) 0%, rgba(10,10,15,0.2) 100%);
       z-index: 1;
     }
-    .mural-panel--denver {
-      background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
-                  url('assets/images/denver-mural.jpg') center / cover;
+    .tour-card-content {
+      position: relative;
+      z-index: 2;
     }
-    .mural-panel--portland {
-      background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
-                  url('assets/images/portland-mural.jpg') center / cover;
-    }
-    .mural-panel--vancouver {
-      background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
-                  url('assets/images/vancouver-mural.jpg') center / cover;
-    }
-    .mural-panel--boise {
-      background: linear-gradient(to right, rgba(10,10,15,0.2), rgba(10,10,15,0.5)),
-                  url('assets/images/boise-mural.jpg') center / cover;
-    }
+    .tour-card--denver { background: url('assets/images/denver-mural.jpg') center / cover !important; }
+    .tour-card--portland { background: url('assets/images/portland-mural.jpg') center / cover !important; }
+    .tour-card--vancouver { background: url('assets/images/vancouver-mural.jpg') center / cover !important; }
+    .tour-card--boise { background: url('assets/images/boise-mural.jpg') center / cover !important; }
 
     /* --- STORY SECTION --- */
     .story-section {
@@ -198,41 +178,35 @@
       margin-bottom: var(--space-lg);
     }
 
-    /* --- CITIES PREVIEW --- */
-    .cities-preview {
-      background: var(--black);
-    }
-    .city-card {
-      will-change: transform;
-    }
-    .city-card .t-card-title {
-      margin-bottom: var(--space-sm);
-    }
-    .city-card .t-small {
-      margin-bottom: var(--space-xs);
-    }
-    .city-card .card-link {
-      display: inline-block;
-      margin-top: var(--space-md);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--hot-pink);
-      transition: color var(--duration-fast);
-    }
-    .city-card .card-link:hover {
-      color: var(--yellow);
-    }
 
-    /* --- MARQUEE SECTION --- */
+
+    /* --- BRANDS SECTION --- */
     .brands-section {
       background: var(--charcoal);
       overflow: hidden;
     }
+    .brands-section .t-section {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+    }
     .brands-section .marquee-wrap {
       overflow: hidden;
       padding: var(--space-xl) 0;
+    }
+    .brands-section .marquee-track {
+      animation: none;
+      width: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-lg);
+    }
+    .brands-section .marquee-item {
+      padding: 0 var(--space-lg);
+    }
+    .brands-section .marquee-item svg {
+      height: 28px;
+    }
+    .brands-section .marquee-separator {
+      display: none;
     }
     .brands-cta {
       margin-top: var(--space-xl);
@@ -275,6 +249,8 @@
     }
     .press-card {
       will-change: transform;
+      border-left: 3px solid var(--hot-pink);
+      border-radius: 0 12px 12px 0;
     }
     .press-card .press-source {
       font-family: var(--font-display);
@@ -285,9 +261,10 @@
       margin-bottom: var(--space-md);
     }
     .press-card .press-quote {
-      font-family: var(--font-accent);
-      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-      line-height: 1.4;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      line-height: 1.5;
       color: var(--white);
       margin-bottom: var(--space-md);
     }
@@ -321,10 +298,9 @@
     <div class="nav-links">
       <a href="index.html" class="active">Home</a>
       <a href="cities.html">Cities</a>
-      <a href="denver.html">Denver Story</a>
+      <a href="denver.html">Case Study</a>
       <a href="impact.html">Impact</a>
       <a href="partnerships.html">Partner</a>
-      <a href="planning.html">2026 Planning</a>
       <a href="about.html">About</a>
       <a href="contact.html" class="nav-cta">Let's Talk</a>
     </div>
@@ -334,10 +310,9 @@
   <div class="nav-overlay">
     <a href="index.html">Home</a>
     <a href="cities.html">Cities</a>
-    <a href="denver.html">Denver Story</a>
+    <a href="denver.html">Case Study</a>
     <a href="impact.html">Impact</a>
     <a href="partnerships.html">Partner</a>
-    <a href="planning.html">2026 Planning</a>
     <a href="about.html">About</a>
     <a href="contact.html">Let's Talk</a>
   </div>
@@ -401,29 +376,11 @@
         <!-- LIFEWTR -->
         <span class="marquee-item"><svg viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg"><text x="75" y="34" text-anchor="middle" font-family="Outfit,Helvetica,sans-serif" font-weight="300" font-size="26" letter-spacing="6">LIFEWTR</text></svg></span>
         <span class="marquee-separator">&#10022;</span>
-        <!-- Duplicate for seamless loop -->
-        <span class="marquee-item"><svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="200" height="40" rx="4"/><text x="100" y="27" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="14" fill="#0A0A0F" letter-spacing="1">AMERICAN EXPRESS</text></svg></span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item"><svg viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg"><text x="90" y="38" text-anchor="middle" font-family="'Brush Script MT','Segoe Script',cursive" font-size="36" font-style="italic" font-weight="400">Coca-Cola</text></svg></span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item"><svg viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg"><text x="80" y="34" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-weight="900" font-size="28" letter-spacing="1">RED BULL</text></svg></span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item"><svg viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg"><path d="M10 25 Q30 8 50 20 Q70 8 90 25 Q110 8 130 20 Q150 8 170 25" stroke-width="2" fill="none" stroke="currentColor" opacity="0.3"/><text x="90" y="36" text-anchor="middle" font-family="'Times New Roman',Georgia,serif" font-weight="700" font-size="26" font-style="italic" letter-spacing="2">Budweiser</text></svg></span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item"><svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 C35 5 20 15 20 28 C20 40 35 45 50 45 C65 45 80 40 80 28 C80 15 65 5 50 5 Z" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"/><path d="M42 12 L42 38 L48 38 L48 18 L58 38 L64 38 L64 12 L58 12 L58 32 L48 12 Z" opacity="0.4"/><text x="50" y="35" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-weight="900" font-size="30" letter-spacing="2">MLB</text></svg></span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item"><svg viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg"><text x="75" y="36" text-anchor="middle" font-family="'Brush Script MT','Segoe Script',cursive" font-size="34" font-style="italic">Fender</text></svg></span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item"><svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg"><text x="100" y="35" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="28" font-style="italic" letter-spacing="1">Rolling Stone</text></svg></span>
-        <span class="marquee-separator">&#10022;</span>
-        <span class="marquee-item"><svg viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg"><text x="75" y="34" text-anchor="middle" font-family="Outfit,Helvetica,sans-serif" font-weight="300" font-size="26" letter-spacing="6">LIFEWTR</text></svg></span>
-        <span class="marquee-separator">&#10022;</span>
       </div>
     </div>
 
     <div class="container text-center brands-cta">
-      <p class="t-body-lg c-muted">From American Express to Rolling Stone. Now building the next chapter.</p>
-      <a href="partnerships.html" class="btn btn--outline" style="margin-top: var(--space-lg)">View Partnership Options</a>
+      <a href="partnerships.html" class="btn btn--outline">View Partnership Options</a>
     </div>
   </section>
 
@@ -435,7 +392,8 @@
   <!-- ====== IMPACT STATS ====== -->
   <section class="impact-stats section--charcoal" id="stats">
     <div class="container">
-      <div class="grid grid-6 stats-grid">
+      <!-- TODO: Update stats when Zuzu confirms combined 2024+2025 numbers -->
+      <div class="grid grid-5 stats-grid">
         <div class="stat-item">
           <div class="t-stat-number" data-counter="5" data-suffix="">5</div>
           <div class="t-stat-label">Murals</div>
@@ -456,10 +414,6 @@
           <div class="t-stat-number" data-counter="3" data-suffix="x">3x</div>
           <div class="t-stat-label">Foot Traffic</div>
         </div>
-        <div class="stat-item">
-          <div class="t-stat-number" style="font-size: clamp(1.2rem, 3vw, 2rem); color: var(--hot-pink);">SOLO</div>
-          <div class="t-stat-label">Female Artist</div>
-        </div>
       </div>
     </div>
   </section>
@@ -469,45 +423,86 @@
     <path d="M0,0 L0,40 Q80,58 160,40 Q240,22 320,40 Q400,55 480,40 Q560,28 640,40 Q720,60 800,40 Q880,20 960,40 Q1040,52 1120,40 Q1200,30 1280,40 Q1360,55 1440,40 L1440,0 Z" fill="#141420"/>
   </svg>
 
-  <!-- ====== MURAL SHOWCASE (Horizontal Scroll) ====== -->
-  <section class="mural-showcase section" id="murals">
-    <div class="mural-track">
-      <!-- Denver -->
-      <div class="mural-panel mural-panel--denver">
-        <div class="mural-panel-content">
-          <span class="t-label">Denver, Colorado</span>
-          <h2 class="t-section">"You Are Magic"</h2>
-          <p class="t-body-lg">2903 E. Colfax Ave at Fever Dream Vintage. The mural that started the movement -- tripling foot traffic and generating more press than 3 years of traditional marketing.</p>
+  <!-- ====== WHERE WE PAINTED ====== -->
+  <section class="tour-history section section--dark" id="murals">
+    <div class="container">
+      <div class="section-label">Where We Painted</div>
+
+      <!-- 2025 Tour -->
+      <div class="tour-year">
+        <h3 class="t-card-title mb-lg">2025 Tour</h3>
+        <div class="grid grid-2">
+          <div class="card tour-card tour-card--denver reveal">
+            <div class="tour-card-content">
+              <h4 class="t-card-title" style="font-size: 1.1rem;">Denver, CO</h4>
+              <p class="t-small c-muted">2903 E. Colfax Ave - Fever Dream Vintage</p>
+            </div>
+          </div>
+          <div class="card tour-card tour-card--portland reveal delay-1">
+            <div class="tour-card-content">
+              <h4 class="t-card-title" style="font-size: 1.1rem;">Portland, OR</h4>
+              <p class="t-small c-muted">1324 SE 8th Ave</p>
+            </div>
+          </div>
+          <div class="card tour-card tour-card--vancouver reveal delay-2">
+            <div class="tour-card-content">
+              <h4 class="t-card-title" style="font-size: 1.1rem;">Vancouver, BC</h4>
+              <p class="t-small c-muted">2601 Main St</p>
+            </div>
+          </div>
+          <div class="card tour-card tour-card--boise reveal delay-3">
+            <div class="tour-card-content">
+              <h4 class="t-card-title" style="font-size: 1.1rem;">Boise, ID</h4>
+              <p class="t-small c-muted">210 N 9th St</p>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- Portland -->
-      <div class="mural-panel mural-panel--portland">
-        <div class="mural-panel-content">
-          <span class="t-label">Portland, Oregon</span>
-          <h2 class="t-section">Portland</h2>
-          <p class="t-body-lg">1324 SE 8th Ave. Bold color meets Pacific Northwest energy. A wall that turned heads and stopped traffic on one of Portland's busiest corridors.</p>
-        </div>
-      </div>
-      <!-- Vancouver -->
-      <div class="mural-panel mural-panel--vancouver">
-        <div class="mural-panel-content">
-          <span class="t-label">Vancouver, BC (Canada)</span>
-          <h2 class="t-section">Vancouver</h2>
-          <p class="t-body-lg">2601 Main St. Spraycation's first international mural -- crossing the border into Canada and proving the movement has no borders.</p>
-        </div>
-      </div>
-      <!-- Boise -->
-      <div class="mural-panel mural-panel--boise">
-        <div class="mural-panel-content">
-          <span class="t-label">Boise, Idaho</span>
-          <h2 class="t-section">Boise</h2>
-          <p class="t-body-lg">210 N 9th St. The mural that brought Spraycation to the Mountain West -- bright, bold, and impossible to ignore in downtown Boise.</p>
+
+      <!-- 2024 Tour -->
+      <!-- TODO: Zuzu to provide specific 2024 city names and addresses -->
+      <div class="tour-year">
+        <h3 class="t-card-title mb-lg">2024 Tour</h3>
+        <div class="grid grid-2">
+          <div class="card tour-card reveal" style="background: var(--charcoal-light);">
+            <div class="tour-card-content">
+              <h4 class="t-card-title" style="font-size: 1.1rem;">The Debut</h4>
+              <p class="t-small c-muted">5 murals across 10 states - 6,000+ miles solo</p>
+            </div>
+          </div>
+          <div class="card tour-card reveal delay-1" style="background: var(--charcoal-light);">
+            <div class="tour-card-content">
+              <h4 class="t-card-title" style="font-size: 1.1rem;">Where It Started</h4>
+              <p class="t-small c-muted">The solo debut tour that proved the model</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Drip divider: murals to story -->
+  <!-- ====== 2025 RECAP VIDEO ====== -->
+  <section class="section section--dark" id="recap" style="padding-bottom: 0;">
+    <div class="container text-center">
+      <div class="section-label">2025 Recap</div>
+      <h2 class="t-card-title mb-xl">The Journey</h2>
+      <div class="reveal" style="
+        max-width: 800px;
+        margin: 0 auto;
+        aspect-ratio: 16/9;
+        background: var(--charcoal-light);
+        border: 2px dashed var(--white-faint);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <p class="t-body c-muted">2025 Recap Video - Coming Soon</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drip divider: video to story -->
   <svg class="drip-divider-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,0 L0,40 Q100,58 200,40 Q300,18 400,40 Q480,52 560,40 Q640,30 720,40 Q800,55 880,40 Q960,22 1040,40 Q1120,56 1200,40 Q1280,28 1360,40 Q1420,50 1440,40 L1440,0 Z" fill="#141420"/>
   </svg>
@@ -531,60 +526,18 @@
         <p class="t-body-lg story-line">and proved that public art is</p>
         <p class="t-body-lg story-line"><span class="c-gradient">the most powerful marketing tool nobody's using.</span></p>
       </div>
-    </div>
-  </section>
-
-  <!-- Drip divider: story to cities -->
-  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,0 L0,40 Q70,55 140,40 Q210,25 280,40 Q360,58 440,40 Q520,20 600,40 Q680,50 760,40 Q840,30 920,40 Q1000,55 1080,40 Q1160,22 1240,40 Q1320,48 1400,40 L1440,40 L1440,0 Z" fill="#141420"/>
-  </svg>
-
-  <!-- ====== CITIES PREVIEW ====== -->
-  <section class="cities-preview section section--dark" id="cities">
-    <div class="container">
-      <div class="section-label">2025 Tour</div>
-      <h2 class="t-section mb-xl">Where We Painted</h2>
-
-      <div class="grid grid-4 cities-grid">
-        <!-- Denver (featured) -->
-        <div class="card card--tilted card--featured city-card">
-          <span class="badge badge--pink">Spotlight</span>
-          <div class="card-gradient-bar"></div>
-          <h3 class="t-card-title">Denver</h3>
-          <p class="t-small c-muted">2903 E. Colfax Ave</p>
-          <p class="t-small c-muted">Fever Dream Vintage</p>
-          <a href="cities.html" class="card-link">Explore &rarr;</a>
-        </div>
-        <!-- Portland -->
-        <div class="card card--tilted city-card">
-          <div class="card-gradient-bar"></div>
-          <h3 class="t-card-title">Portland</h3>
-          <p class="t-small c-muted">1324 SE 8th Ave</p>
-          <p class="t-small c-muted">Portland, Oregon</p>
-          <a href="cities.html" class="card-link">Explore &rarr;</a>
-        </div>
-        <!-- Vancouver -->
-        <div class="card card--tilted city-card">
-          <div class="card-gradient-bar"></div>
-          <h3 class="t-card-title">Vancouver</h3>
-          <p class="t-small c-muted">2601 Main St</p>
-          <p class="t-small c-muted">Vancouver, BC, Canada</p>
-          <a href="cities.html" class="card-link">Explore &rarr;</a>
-        </div>
-        <!-- Boise -->
-        <div class="card card--tilted city-card">
-          <div class="card-gradient-bar"></div>
-          <h3 class="t-card-title">Boise</h3>
-          <p class="t-small c-muted">210 N 9th St</p>
-          <p class="t-small c-muted">Boise, Idaho</p>
-          <a href="cities.html" class="card-link">Explore &rarr;</a>
-        </div>
+      <!-- TODO: Zuzu to provide movement copy for 2026 vision -->
+      <div class="story-paragraph" style="border-left: 3px solid var(--hot-pink); padding-left: var(--space-lg); margin-top: var(--space-lg);">
+        <p class="t-body-lg story-line">In 2026, we're taking it nationwide.</p>
+        <p class="t-body-lg story-line">More cities. More walls. More brands joining the movement.</p>
+        <p class="t-body-lg story-line">Every mural is an invitation -- to connect, to believe,</p>
+        <p class="t-body-lg story-line">and to prove that <span class="c-pink">you are magic.</span></p>
       </div>
     </div>
   </section>
 
-  <!-- Drip divider: cities to partnerships -->
-  <svg class="drip-divider-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Drip divider: story to partnerships -->
+  <svg class="drip-divider-svg drip-divider-svg--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,0 L0,40 Q90,56 180,40 Q270,24 360,40 Q450,58 540,40 Q630,26 720,40 Q810,54 900,40 Q990,22 1080,40 Q1170,52 1260,40 Q1350,30 1440,40 L1440,0 Z" fill="#141420"/>
   </svg>
 
@@ -592,30 +545,37 @@
   <section class="partnership-preview section section--dark" id="partnerships">
     <div class="container">
       <div class="section-label text-center">Be Part of 2026</div>
-      <h2 class="t-section text-center mb-2xl">Partnership Tiers</h2>
+      <h2 class="t-card-title text-center mb-2xl">Partnership Tiers</h2>
 
-      <div class="grid grid-3 tier-grid">
+      <div class="grid grid-4 tier-grid">
         <!-- Magic Maker (featured) -->
         <div class="card card--featured tier-card" style="order: -1;">
           <span class="badge badge--pink" style="margin-bottom: var(--space-md);">Top Tier</span>
           <div class="card-gradient-bar"></div>
           <div class="tier-name">Magic Maker</div>
-          <div class="tier-price">$25,000</div>
+          <div class="tier-price">$60,000</div>
           <p class="tier-desc">Own the mural, event, press, momentum. Full naming rights, press inclusion, and a permanent place in the Spraycation story.</p>
         </div>
         <!-- Culture Partner -->
         <div class="card tier-card">
           <div class="card-gradient-bar"></div>
           <div class="tier-name">Culture Partner</div>
-          <div class="tier-price">$15,000</div>
+          <div class="tier-price">$25,000</div>
           <p class="tier-desc">Sponsor mural reveals, multi-city brand visibility. Your brand at every stop, in the press, and on the wall.</p>
         </div>
         <!-- Community Ally -->
         <div class="card tier-card">
           <div class="card-gradient-bar"></div>
           <div class="tier-name">Community Ally</div>
-          <div class="tier-price">$5,000</div>
+          <div class="tier-price">$10,000</div>
           <p class="tier-desc">Support the movement, brand in the mix. Social media features, event presence, and community credibility.</p>
+        </div>
+        <!-- Community Supporter -->
+        <div class="card tier-card">
+          <div class="card-gradient-bar"></div>
+          <div class="tier-name">Community Supporter</div>
+          <div class="tier-price">$2,500</div>
+          <p class="tier-desc">Get involved at the grassroots level. Social media mention, event access, and community partner recognition.</p>
         </div>
       </div>
 
@@ -654,8 +614,8 @@
         </div>
         <div class="card press-card">
           <div class="press-source">Austin Community</div>
-          <p class="press-quote">"Austin's Best Muralist" -- 4 consecutive years.</p>
-          <p class="press-attr">-- 2021, 2022, 2023, 2024 community vote</p>
+          <p class="press-quote">"Austin's Best Muralist" -- 5 consecutive years.</p>
+          <p class="press-attr">-- 2021, 2022, 2023, 2024, 2025</p>
         </div>
       </div>
     </div>
@@ -777,9 +737,9 @@
       });
 
       // -----------------------------------------------------------------------
-      // 3. MURAL HORIZONTAL SCROLL
+      // 3. TOUR HISTORY CARDS
       // -----------------------------------------------------------------------
-      horizontalScroll('.mural-showcase', '.mural-track');
+      initReveals();
 
       // -----------------------------------------------------------------------
       // 4. STORY -- Line-by-line fade in
@@ -808,41 +768,12 @@
       })();
 
       // -----------------------------------------------------------------------
-      // 5. CITIES SCATTER-TO-GRID
+      // 5. (Cities section removed)
       // -----------------------------------------------------------------------
-      (function () {
-        var cards = document.querySelectorAll('.city-card');
-        if (!cards.length) return;
-
-        var scatterPositions = [
-          { x: -200, y: 150, rotation: -12 },
-          { x: 180, y: -120, rotation: 8 },
-          { x: -150, y: -100, rotation: -6 },
-          { x: 220, y: 130, rotation: 10 }
-        ];
-
-        cards.forEach(function (card, i) {
-          var pos = scatterPositions[i] || scatterPositions[0];
-          gsap.from(card, {
-            scrollTrigger: {
-              trigger: '.cities-grid',
-              start: 'top 85%',
-              end: 'top 25%',
-              scrub: 1
-            },
-            x: pos.x,
-            y: pos.y,
-            rotation: pos.rotation,
-            opacity: 0,
-            ease: 'power3.out'
-          });
-        });
-      })();
 
       // -----------------------------------------------------------------------
-      // 6. BRAND MARQUEE VELOCITY
+      // 6. (Marquee velocity removed -- now static grid)
       // -----------------------------------------------------------------------
-      velocityMarquee('.marquee-track');
 
       // -----------------------------------------------------------------------
       // 7. PARTNERSHIP CARD RISE

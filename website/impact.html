@@ -56,10 +56,7 @@
     .impact-hero .hero-accent {
       display: block;
       margin-top: var(--space-lg);
-      background: var(--gradient-energy);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--white);
     }
     .impact-hero .hero-subtitle {
       margin-top: var(--space-lg);
@@ -323,10 +320,9 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="cities.html">Cities</a>
-      <a href="denver.html">Denver Story</a>
+      <a href="denver.html">Case Study</a>
       <a href="impact.html" class="active">Impact</a>
       <a href="partnerships.html">Partner</a>
-      <a href="planning.html">2026 Planning</a>
       <a href="about.html">About</a>
       <a href="contact.html" class="nav-cta">Let's Talk</a>
     </div>
@@ -336,10 +332,9 @@
   <div class="nav-overlay">
     <a href="index.html">Home</a>
     <a href="cities.html">Cities</a>
-    <a href="denver.html">Denver Story</a>
+    <a href="denver.html">Case Study</a>
     <a href="impact.html">Impact</a>
     <a href="partnerships.html">Partner</a>
-    <a href="planning.html">2026 Planning</a>
     <a href="about.html">About</a>
     <a href="contact.html">Let's Talk</a>
   </div>
@@ -384,6 +379,32 @@
         <div class="stat-item">
           <div class="t-stat-number" style="font-size: clamp(1.2rem, 3vw, 2rem); color: var(--hot-pink);">ALL FEMALE</div>
           <div class="t-stat-label">Team</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2024 TOUR DATA -->
+  <section class="section section--charcoal-light">
+    <div class="container">
+      <div class="section-label text-center reveal">2024 Tour</div>
+      <h2 class="t-card-title text-center reveal mb-xl">Where It All Started</h2>
+      <div class="grid grid-4 stats-grid">
+        <div class="stat-item reveal">
+          <div class="t-stat-number" data-counter="5">5</div>
+          <div class="t-stat-label">Murals</div>
+        </div>
+        <div class="stat-item reveal delay-1">
+          <div class="t-stat-number" data-counter="6000" data-suffix="+">6,000+</div>
+          <div class="t-stat-label">Miles</div>
+        </div>
+        <div class="stat-item reveal delay-2">
+          <div class="t-stat-number" data-counter="10">10</div>
+          <div class="t-stat-label">States</div>
+        </div>
+        <div class="stat-item reveal delay-3">
+          <div class="t-stat-number" style="font-size: clamp(1.2rem, 3vw, 2rem);">SOLO</div>
+          <div class="t-stat-label">Debut Tour</div>
         </div>
       </div>
     </div>
@@ -517,15 +538,18 @@
 
       <div class="grid grid-4">
         <!-- Denver (featured) -->
-        <div class="card card--featured city-impact-card">
-          <span class="badge badge--pink">Spotlight</span>
-          <div class="card-gradient-bar"></div>
-          <h3 class="t-card-title">Denver</h3>
-          <p class="t-small c-muted">Fever Dream Vintage</p>
-          <p class="t-small c-muted">2903 E. Colfax Ave</p>
-          <p class="city-impact-highlight">3x foot traffic</p>
-          <p class="city-impact-meta">July 2025</p>
-        </div>
+        <a href="denver.html" style="text-decoration: none; color: inherit;">
+          <div class="card card--featured city-impact-card">
+            <span class="badge badge--pink">Spotlight</span>
+            <div class="card-gradient-bar"></div>
+            <h3 class="t-card-title">Denver</h3>
+            <p class="t-small c-muted">Fever Dream Vintage</p>
+            <p class="t-small c-muted">2903 E. Colfax Ave</p>
+            <p class="city-impact-highlight">3x foot traffic</p>
+            <p class="city-impact-meta">July 2025</p>
+            <p class="t-small c-pink" style="margin-top: var(--space-sm);">Read Case Study &rarr;</p>
+          </div>
+        </a>
         <!-- Portland -->
         <div class="card city-impact-card">
           <div class="card-gradient-bar"></div>
@@ -533,6 +557,7 @@
           <p class="t-small c-muted">1324 SE 8th Ave</p>
           <p class="t-small c-muted">Portland, Oregon</p>
           <p class="city-impact-meta">October 2025</p>
+          <p class="t-small c-muted" style="margin-top: var(--space-sm); opacity: 0.5;">Coming Soon</p>
         </div>
         <!-- Vancouver -->
         <div class="card city-impact-card">
@@ -541,6 +566,7 @@
           <p class="t-small c-muted">2601 Main St</p>
           <p class="t-small c-muted">Vancouver, BC, Canada</p>
           <p class="city-impact-meta">October 2025</p>
+          <p class="t-small c-muted" style="margin-top: var(--space-sm); opacity: 0.5;">Coming Soon</p>
         </div>
         <!-- Boise -->
         <div class="card city-impact-card">
@@ -549,6 +575,57 @@
           <p class="t-small c-muted">210 N 9th St</p>
           <p class="t-small c-muted">Boise, Idaho</p>
           <p class="city-impact-meta">November 2025</p>
+          <p class="t-small c-muted" style="margin-top: var(--space-sm); opacity: 0.5;">Coming Soon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AQUABURN VISIBILITY -->
+  <section class="section section--charcoal-light" id="aquaburn">
+    <div class="container">
+      <div class="section-label reveal">AquaBurn: The Tour Vehicle</div>
+      <h2 class="t-section reveal mb-lg">1M+ Views <span class="c-pink">On The Road</span></h2>
+      <div class="grid grid-2">
+        <div class="reveal">
+          <!-- TODO: Zuzu to provide AquaBurn photos -->
+          <div style="aspect-ratio: 4/3; background: var(--charcoal); border: 2px dashed var(--white-faint); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+            <p class="t-body c-muted">AquaBurn Photo - Coming Soon</p>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <p class="t-body-lg" style="margin-bottom: var(--space-lg);">Every mile on the road is a branding opportunity. AquaBurn -- Spraycation's custom-wrapped tour RV -- generates over 1 million impressions per tour across highways, city streets, and social media.</p>
+          <div class="card" style="margin-top: var(--space-lg);">
+            <p class="t-card-title c-pink" style="margin-bottom: var(--space-sm);">Partner Opportunity</p>
+            <p class="t-body">Logo placement available on AquaBurn's exterior. Your brand travels with the tour -- visible in every city, on every highway, and across all social content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL MEDIA METRICS -->
+  <!-- TODO: Zuzu to provide actual social media numbers -->
+  <section class="section section--dark" id="social">
+    <div class="container text-center">
+      <div class="section-label reveal">Digital Reach</div>
+      <h2 class="t-card-title reveal mb-xl">Social Impact</h2>
+      <div class="grid grid-4">
+        <div class="card reveal">
+          <div class="t-stat-number" style="font-size: clamp(1.5rem, 3vw, 2.5rem);">TBD</div>
+          <div class="t-stat-label">Instagram Followers</div>
+        </div>
+        <div class="card reveal delay-1">
+          <div class="t-stat-number" style="font-size: clamp(1.5rem, 3vw, 2.5rem);">TBD</div>
+          <div class="t-stat-label">Engagement Rate</div>
+        </div>
+        <div class="card reveal delay-2">
+          <div class="t-stat-number" style="font-size: clamp(1.5rem, 3vw, 2.5rem);">TBD</div>
+          <div class="t-stat-label">Monthly Impressions</div>
+        </div>
+        <div class="card reveal delay-3">
+          <div class="t-stat-number" style="font-size: clamp(1.5rem, 3vw, 2.5rem);">TBD</div>
+          <div class="t-stat-label">Content Reach</div>
         </div>
       </div>
     </div>
