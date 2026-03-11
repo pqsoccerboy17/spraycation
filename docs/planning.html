@@ -66,10 +66,10 @@
       border-left: 4px solid var(--hot-pink);
       border-radius: 0 8px 8px 0;
       padding: 20px 24px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 12px 20px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto auto;
+      gap: 8px 20px;
       transition: transform var(--duration-med) var(--ease-out),
                   box-shadow var(--duration-med),
                   padding-left var(--duration-med);
@@ -81,21 +81,18 @@
       padding-left: 28px;
     }
     .quick-item-brand {
+      grid-column: 1;
+      grid-row: 1;
       font-family: var(--font-display);
       font-size: clamp(1rem, 2vw, 1.3rem);
       letter-spacing: 0.03em;
       text-transform: uppercase;
       color: var(--white);
-      min-width: 140px;
-    }
-    .quick-item-action {
-      font-size: 0.9rem;
-      color: var(--white-muted);
-      flex: 1;
-      min-width: 200px;
-      font-weight: 300;
+      align-self: center;
     }
     .quick-item-tier {
+      grid-column: 2;
+      grid-row: 1;
       font-family: var(--font-display);
       font-size: 0.65rem;
       letter-spacing: 0.12em;
@@ -104,8 +101,23 @@
       background: var(--white-faint);
       color: var(--yellow);
       white-space: nowrap;
+      align-self: center;
+    }
+    .quick-item-contact {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+    .quick-item-action {
+      grid-column: 1;
+      grid-row: 3;
+      font-size: 0.9rem;
+      color: var(--white-muted);
+      font-weight: 300;
+      align-self: center;
     }
     .quick-item-copy {
+      grid-column: 2;
+      grid-row: 3;
       font-family: var(--font-body);
       font-size: 0.75rem;
       font-weight: 600;
@@ -119,6 +131,7 @@
       cursor: pointer;
       transition: all var(--duration-fast) var(--ease-spring);
       white-space: nowrap;
+      align-self: center;
     }
     .quick-item-copy:hover {
       background: var(--hot-pink);
@@ -129,6 +142,17 @@
       border-color: #4CAF50;
       background: rgba(76,175,80,0.12);
       color: #4CAF50;
+    }
+    @media (max-width: 768px) {
+      .quick-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .quick-item-brand { grid-column: 1; grid-row: 1; }
+      .quick-item-tier { grid-column: 1; grid-row: 2; justify-self: start; }
+      .quick-item-contact { grid-column: 1; grid-row: 3; }
+      .quick-item-action { grid-column: 1; grid-row: 4; }
+      .quick-item-copy { grid-column: 1; grid-row: 5; justify-self: start; }
     }
 
     /* --- FILTER BAR --- */
@@ -366,8 +390,6 @@
       font-size: 0.78rem;
       color: var(--white-muted);
       font-weight: 300;
-      display: block;
-      margin-top: 2px;
     }
 
     /* --- GRANT TRACKER --- */
@@ -955,11 +977,11 @@
 
         var li = createEl('div', 'quick-item reveal');
         li.appendChild(createEl('span', 'quick-item-brand', brand.name));
+        li.appendChild(createEl('span', 'quick-item-tier', formatTier(brand.tier) + ' -- ' + formatAmount(brand.tierAmount)));
         if (brand.contactName && brand.contactName.trim() && brand.contactTitle) {
           li.appendChild(createEl('span', 'quick-item-contact', brand.contactName + ' -- ' + brand.contactTitle));
         }
         li.appendChild(createEl('span', 'quick-item-action', brand.nextStep));
-        li.appendChild(createEl('span', 'quick-item-tier', formatTier(brand.tier) + ' -- ' + formatAmount(brand.tierAmount)));
 
         var btn = createEl('button', 'quick-item-copy', 'COPY EMAIL');
         btn.addEventListener('click', (function(idx) {
