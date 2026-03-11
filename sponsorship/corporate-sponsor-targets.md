@@ -2,7 +2,7 @@
 
 ## Tier 1: Brand Partners (27 National Targets)
 
-### Magic Maker Tier ($25,000)
+### Magic Maker Tier ($60,000)
 
 | Brand | Category | Priority | Why |
 |-------|----------|----------|-----|
@@ -16,7 +16,7 @@
 | Bumble | Women/Empowerment | MEDIUM | Women-first brand, community events |
 | H-E-B | Grocery/Community | HIGH | San Antonio HQ, legendary TX community investment, massive marketing budget |
 
-### Culture Partner Tier ($15,000)
+### Culture Partner Tier ($25,000)
 
 | Brand | Category | Priority | Why |
 |-------|----------|----------|-----|
@@ -33,7 +33,7 @@
 | Kendra Scott | Women/Empowerment | HIGH | Austin-born, women's empowerment DNA, "Kendra Cares" philanthropy |
 | Whole Foods | Lifestyle | MEDIUM | Austin HQ, community arts programs, "Whole Cities Foundation" |
 
-### Community Ally Tier ($5,000)
+### Community Ally Tier ($10,000)
 
 | Brand | Category | Priority | Why |
 |-------|----------|----------|-----|

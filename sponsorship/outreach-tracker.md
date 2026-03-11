@@ -21,7 +21,7 @@
 | Best Day Brewing | Beverage | IN-KIND | David O. (Dir Strategic Partnerships), Hanna Swanson (EVP Marketing) | July 2025 | Expand to full tour | N/A libations for Denver |
 | Red Bull | Beverage | LEAD | Dave Szych (VP Brand Partnerships NA) | -- | Leverage existing relationship | Previous Zuzu collaborator |
 
-## Corporate Sponsors -- New Targets (Magic Maker $25K)
+## Corporate Sponsors -- New Targets (Magic Maker $60K)
 
 | Brand | Category | Status | Contact | Next Step | Notes |
 |-------|----------|--------|---------|-----------|-------|
@@ -34,7 +34,7 @@
 | Bumble | Women/Empowerment | LEAD | Neela Pal (CMO) | Send cold outreach | Women-first brand, Austin HQ |
 | H-E-B | Grocery/Community | LEAD | Ashwin Nathan (GVP Head of Mktg) | Send cold outreach | San Antonio HQ, legendary TX community investment |
 
-## Corporate Sponsors -- New Targets (Culture Partner $15K)
+## Corporate Sponsors -- New Targets (Culture Partner $25K)
 
 | Brand | Category | Status | Contact | Next Step | Notes |
 |-------|----------|--------|---------|-----------|-------|
@@ -51,7 +51,7 @@
 | Aerie | Women/Empowerment | LEAD | Jenna Abaya (Sr Assoc Brand Mgr) | Send cold outreach | Body positivity, empowerment |
 | Whole Foods | Lifestyle | LEAD | Madhavi Reese (VP Marketing - Austin) | Send cold outreach | Austin HQ, community arts |
 
-## Corporate Sponsors -- New Targets (Community Ally $5K)
+## Corporate Sponsors -- New Targets (Community Ally $10K)
 
 | Brand | Category | Status | Contact | Next Step | Notes |
 |-------|----------|--------|---------|-----------|-------|

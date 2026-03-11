@@ -47,7 +47,7 @@
 
 ---
 
-## Magic Maker Tier ($25,000)
+## Magic Maker Tier ($60,000)
 
 ### Montana Cans
 - **Primary:** Nico Gnad
@@ -207,7 +207,7 @@
 
 ---
 
-## Culture Partner Tier ($15,000)
+## Culture Partner Tier ($25,000)
 
 ### Rust-Oleum
 - **Primary:** Jason Olson
@@ -385,7 +385,7 @@
 
 ---
 
-## Community Ally Tier ($5,000)
+## Community Ally Tier ($10,000)
 
 ### Athletic Brewing
 - **Primary:** Kristin Shufelt
