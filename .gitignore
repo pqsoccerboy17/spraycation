@@ -24,3 +24,9 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# Large project archive (11GB media - use Google Drive for these)
+SPRAYCATION 2025/
+
+# Playwright temp data
+.playwright-mcp/
